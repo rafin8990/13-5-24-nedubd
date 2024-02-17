@@ -24,7 +24,7 @@
 <body class="">
     @include('Shared.navbar')
     @include('Shared.sidebar')
-    <div class="p-4 sm:ml-64 mt-14">
+    <div class="p-4 sm:ml-72 mt-14 ">
         @yield('Dashboard')
     </div>
 </body>

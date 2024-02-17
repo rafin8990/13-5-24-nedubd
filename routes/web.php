@@ -23,6 +23,8 @@ Route::get('/login', [AuthController::class,'index'])->name('login');
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+
+    
     // student module
     Route::get('/add-student', [StudentController::class,'AddStudentForm'])->name('AddStudentForm');
    
