@@ -1,6 +1,6 @@
 <style>
     .scrollbar::-webkit-scrollbar {
-    width: 10px;
+    width: 1px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -9,12 +9,12 @@
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-    background: white;
+    background: #0000FF;
     border-radius: 10px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #cecaca;
+    background: white;
 }
 </style>
 
