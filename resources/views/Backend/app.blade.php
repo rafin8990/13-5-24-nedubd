@@ -8,6 +8,7 @@
     <!-- tailwind css -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://kit.fontawesome.com/d703802588.js" crossorigin="anonymous"></script>
     <!-- flowbite -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
@@ -23,7 +24,7 @@
 <body class="">
     @include('Shared.navbar')
     @include('Shared.sidebar')
-    <div class="p-4 sm:ml-64">
+    <div class="p-4 sm:ml-64 mt-14">
         @yield('Dashboard')
     </div>
 </body>

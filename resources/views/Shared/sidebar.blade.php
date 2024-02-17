@@ -1,3 +1,6 @@
+
+
+
 <aside id="logo-sidebar"
     class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
     aria-label="logo-sidebar">
@@ -10,8 +13,7 @@
                 </a>
             </li>
             <li>
-                <a href="/dashboard"
-                    class="flex items-center p-2 text-white  group">
+                <a href="/dashboard" class="flex items-center p-2 text-white  group">
                     <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 dark:group-hover:text-white"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <path
@@ -24,9 +26,8 @@
                 </a>
             </li>
             <li>
-                <p 
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    aria-controls="dropdown-content" data-collapse-toggle="dropdown-content">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                         <rect fill="none" />
@@ -47,43 +48,68 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
-</p>
-                <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                </p>
+                <ul id="dropdown-content" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add New Student </a>
+                        <a href="{{route('AddStudentForm')}}"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
+                            New Student </a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Update Student Basic Info</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Update
+                            Student Basic Info</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Student Profile Update</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Student
+                            Profile Update</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload Exel File</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Exel File</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload Photo</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Photo</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Migrate Student</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Migrate
+                            Student</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload Photo</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Photo</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload Photo</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Photo</a>
                     </li>
                 </ul>
             </li>
-
         </ul>
     </div>
+
 </aside>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var dropdownItems = document.querySelectorAll('.dropdown-content a');
+        dropdownItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                localStorage.setItem('selectedItem', item.innerText);
+            });
+        });
+
+        var selectedItem = localStorage.getItem('selectedItem');
+        if (selectedItem) {
+            var dropdownButton = document.querySelector('.dropbtn');
+            dropdownButton.innerText = selectedItem;
+        }
+    });
+</script>

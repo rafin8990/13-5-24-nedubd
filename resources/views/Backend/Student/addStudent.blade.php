@@ -1,10 +1,12 @@
 @extends('Backend.app')
 @section('title')
-Dashboard
+Add Student
 @endsection
 @section('Dashboard')
 
 
-<h1>This is Dashboard </h1>
+<div>
+    <h1>Add New student Section </h1>
+</div>
 
 @endsection
