@@ -3,6 +3,9 @@
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
+use App\Http\Controllers\Backend\ExamResult\ExamResultController;
+use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
+use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +30,33 @@ Route::prefix('dashboard')->group(function () {
     
     // student module
     Route::get('/add-student', [StudentController::class,'AddStudentForm'])->name('AddStudentForm');
-   
+    
+
+    
+     // exam-Result 
+     Route::get('/exam_marks', [ExamResultController::class, 'exam_marks']);
+     Route::get('/exam_process', [ExamResultController::class, 'exam_process']); 
+     Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']); 
+     Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']); 
+     Route::get('/exam_sms', [ExamResultController::class, 'exam_sms']); 
+    // exam-report
+    Route::get('/progressReport', [ReportsExamsReportsController::class, 'progressReport']);
+    Route::get('/exam-failList', [ReportsExamsReportsController::class, 'failList1']);
+    Route::get('/tebular-format1', [ReportsExamsReportsController::class, 'format1']);
+    Route::get('/tebular-format2', [ReportsExamsReportsController::class, 'format2']);
+    Route::get('/tebular-format3', [ReportsExamsReportsController::class, 'format3']);
+    Route::get('/gradeInfo', [ReportsExamsReportsController::class, 'gradeInfo']);
+    Route::get('/grandFinal', [ReportsExamsReportsController::class, 'grandFinal']);
+    Route::get('/meritClass', [ReportsExamsReportsController::class, 'meritClass']);
+    Route::get('/meritList', [ReportsExamsReportsController::class, 'meritList']);
+    Route::get('/passFailPercentage', [ReportsExamsReportsController::class, 'passFailPercentage']);
+    Route::get('/unassignedSubject', [ReportsExamsReportsController::class, 'unassignedSubject']);
+    //grand final
+    Route::get('/grand_fail_list', [GrandFinalController::class, 'grandFailList']);
+    Route::get('/grand_exam_final_process', [GrandFinalController::class, 'grandFinalProcess']);
+    Route::get('/grand_merit_list', [GrandFinalController::class, 'grandMeritList']);
+    Route::get('/grand_exam_progress_report', [GrandFinalController::class, 'grandProgressReport']);
+    Route::get('/grand_result_pass_fail_percentage', [GrandFinalController::class, 'passFailPercentage']);
+    Route::get('/grand_exam_setup', [GrandFinalController::class, 'setupGrand']);
 
 });
