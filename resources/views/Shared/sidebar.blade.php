@@ -355,19 +355,63 @@
                         <ul id="dropdown-student-reports" class="hidden py-2 space-y-2">
                             <li>
                                 <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Form Fee</a>
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Daily Collection reports</a>
                             </li>
                             <li>
                                 <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Donation </a>
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Gene. Transfer Inquiry </a>
                             </li>
                             <li>
                                 <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Fine/Fail/Absent Fess</a>
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Duw/Pay Summary</a>
                             </li>
                             <li>
                                 <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Others Fee</a>
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Head wise Summary</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Oth. Trans Inquiry</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Transfer to Accounts</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Paid Invoice</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Due/Pay</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List of Head wise </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Special Discount</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Month wise Fees</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Fine / Fail/Absent</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Donation</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Form Fees</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Monthly Paid Details</a>
                             </li>
                         </ul>
                     </li>
