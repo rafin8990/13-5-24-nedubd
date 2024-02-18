@@ -1,21 +1,21 @@
 <style>
     .scrollbar::-webkit-scrollbar {
-    width: 1px;
-}
+        width: 1px;
+    }
 
-.scrollbar::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px rgb(255, 255, 255);
-    border-radius: 10px;
-}
+    .scrollbar::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgb(255, 255, 255);
+        border-radius: 10px;
+    }
 
-.scrollbar::-webkit-scrollbar-thumb {
-    background: #0000FF;
-    border-radius: 10px;
-}
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: #0000FF;
+        border-radius: 10px;
+    }
 
-.scrollbar::-webkit-scrollbar-thumb:hover {
-    background: white;
-}
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: white;
+    }
 </style>
 
 <aside id="logo-sidebar"
@@ -44,14 +44,46 @@
                 </a>
             </li>
 
+            <!-- online Application  -->
+            <li>
+                <button type="button"
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    aria-controls="dropdown-online-examination" data-collapse-toggle="dropdown-online-examination">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                        <path
+                            d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                    </svg>
+                    <span
+                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Online
+                        Application </span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+
+                </button>
+                <ul id="dropdown-online-examination" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                            Of Application</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Report
+                            Applicant</a>
+                    </li>
+
+                </ul>
+            </li>
+
+
             <!-- Student route  -->
             <li>
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-
-                    aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-
                     aria-controls="dropdown-student" data-collapse-toggle="dropdown-student">
-
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                         <rect fill="none" />
@@ -74,7 +106,6 @@
                     </svg>
                 </p>
 
-                <ul id="dropdown-example" class="hidden py-2 space-y-2">
 
                 <ul id="dropdown-student" class="hidden py-2 space-y-2">
 
@@ -138,26 +169,10 @@
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
                     </svg>
                     <span
-                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Exam & Result</span>
+                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Exam
+                        & Result</span>
 
                     <svg class="w-3 h-3 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-
- 
-            <!-- online Application  -->
-            <li>
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-online-examination" data-collapse-toggle="dropdown-online-examination">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                        <path
-                            d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                    </svg>
-                    <span
-                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Online
-                        Application </span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
@@ -167,8 +182,18 @@
                 <ul id="dropdown-exam" class="hidden py-2 space-y-2">
                     <li>
                         <a href="/dashboard/exam_marks"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
                             Marks Input </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/exam_process"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            Exam Process </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/exam_excel"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                            Exam Excel </a>
                     </li>
                     <li>
                         <a href="/dashboard/exam_process"
@@ -193,40 +218,223 @@
                 </ul>
             </li>
 
-            
+
+            <!-- student accounts  -->
+
             <li>
-                <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-grand" data-collapse-toggle="dropdown-grand">
-                    <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
-                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                        <rect fill="none" />
-                        <line x1="32" y1="64" x2="32" y2="144" fill="none" stroke="currentColor" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="8" />
-                        <path d="M54.2,216a88.1,88.1,0,0,1,147.6,0" fill="none" stroke="currentColor"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
-                        <polygon points="224 64 128 96 32 64 128 32 224 64" fill="none" stroke="currentColor"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
-                        <path d="M169.3,82.2a56,56,0,1,1-82.6,0" fill="none" stroke="currentColor"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
+
+                <button type="button"
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    aria-controls="dropdown-student-Accounts" data-collapse-toggle="dropdown-student-Accounts">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                        <path
+                            d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                     </svg>
                     <span
-                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Grand Final</span>
-
-                    <svg class="w-3 h-3 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Student
+                        Accounts</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
 
                 </button>
-                <ul id="dropdown-online-examination" class="hidden py-2 space-y-2">
+
+                <ul id="dropdown-student-Accounts" class="hidden py-2 space-y-2">
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
-                            Of Application</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">
+                            Pay Slip Collection</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Report
-                            Applicant</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Quick
+                            Collection</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Print
+                            Unpaid Payslip </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Collect
+                            Unpaid PaySlip</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Delete
+                            Payslip</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">New
+                            STD Add PaySlip</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">New/Old
+                            STD Add payslip</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Generate
+                            Payslip</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Edit
+                            Generated Payslip</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Generate
+                            Multiple Payslip</a>
+                    </li>
+                    <li>
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-student-others" data-collapse-toggle="dropdown-student-others">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 21">
+                                <path
+                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                            </svg>
+                            <span
+                                class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Others
+                            </span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <ul id="dropdown-student-others" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Form
+                                    Fee</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Donation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Fine/Fail/Absent
+                                    Fess</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Others
+                                    Fee</a>
+                            </li>
+                        </ul>
                     </li>
 
+                    <!-- reports student fees  -->
+
+                    <li>
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-student-reports" data-collapse-toggle="dropdown-student-reports">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 21">
+                                <path
+                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                            </svg>
+                            <span
+                                class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Reports
+                                (STD FEES) </span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <ul id="dropdown-student-reports" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Daily
+                                    Collection reports</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Gene.
+                                    Transfer Inquiry </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Duw/Pay
+                                    Summary</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Head
+                                    wise Summary</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Oth.
+                                    Trans Inquiry</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Transfer
+                                    to Accounts</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Paid
+                                    Invoice</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                                    Of Due/Pay</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                                    of Head wise </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                                    Of Special Discount</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                                    Of Month wise Fees</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                                    Of Fine / Fail/Absent</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                                    Of Donation</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                                    Of Form Fees</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Monthly
+                                    Paid Details</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
 
@@ -241,14 +449,105 @@
                             d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                     </svg>
                     <span
-                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Student Attendence </span>
+                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Student
+                        Attendence </span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                      viewBox="0 0 10 6">
+                        viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
-                </p>
+                </button>
+                <ul id="dropdown-student-Attendence" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add
+                            STD Attendence</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Leave
+                            Entry Form </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add
+                            Leave Type </a>
+                    </li>
+
+
+                    <!-- reports of student attendence  -->
+                    <li>
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-student-Reports" data-collapse-toggle="dropdown-student-Reports">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 21">
+                                <path
+                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                            </svg>
+                            <span
+                                class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Reports
+                                (STD Attendence) </span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <ul id="dropdown-student-Reports" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">
+                                    Attendence Report</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Attendence
+                                    Blank report </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Date
+                                    Wise Report</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List
+                                    Of Leave Report</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Section
+                                    Wise Summary</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </li>
+
+<!-- grand final  -->
+            <li>
+                <button type="button"
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    aria-controls="dropdown-grand" data-collapse-toggle="dropdown-grand">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                        <path
+                            d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                    </svg>
+                    <span
+                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Grand
+                        Final</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+
+                </button>
                 <ul id="dropdown-grand" class="hidden py-2 space-y-2">
                     <li>
                         <a href="/dashboard/grand_exam_setup"
@@ -279,73 +578,9 @@
                         <a href="/dashboard/grand_result_pass_fail_percentage"
                             class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
                             Grand Pass/Fail Percentage</a>
-
-                </button>
-                <ul id="dropdown-student-Attendence" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add
-                            STD Attendence</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Leave
-                            Entry Form </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add
-                            Leave Type </a>
-                    </li>
-
-
-                    <!-- reports of student attendence  -->
-                    <li>
-                        <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                            aria-controls="dropdown-student-Reports"
-                            data-collapse-toggle="dropdown-student-Reports">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                viewBox="0 0 18 21">
-                                <path
-                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                            </svg>
-                            <span
-                                class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Reports (STD Attendence) </span>
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <ul id="dropdown-student-Reports" class="hidden py-2 space-y-2">
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"> Attendence Report</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Attendence Blank report </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Date Wise Report</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Leave Report</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Section Wise Summary</a>
-                            </li>
-                        </ul>
-
                     </li>
                 </ul>
             </li>
-
 
             <li>
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -363,272 +598,72 @@
                             stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
                     </svg>
                     <span
-                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Reports(Exams & Reports)</span>
+                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Reports(Exams
+                        & Result)</span>
 
-                    <svg class="w-3 h-3 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-
-
-
-
-            <!-- Student Accounts  -->
-            <li>
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-student-Accounts" data-collapse-toggle="dropdown-student-Accounts">
-                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
-                        <path
-                            d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                    </svg>
-                    <span
-                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Student Accounts</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
-                </p>
-                <ul id="dropdown-report" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="/dashboard/progressReport"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
-                            Single Mark Sheet </a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/grandFinal"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Update
-                            Grand Final</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/tebular-format1"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Student
-                            Tabulation [Format-1]</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/tebular-format2"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                            Tabulation [Format-2]</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/tebular-format3"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                            Tabulation [Format-3]</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/meritList"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                            Merit List</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/meritClass"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                            Merit List</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/exam-failList"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                            Fail List Summary</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/unassignedSubject"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                            List of Unassigned Subject</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/passFailPercentage"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                            List of Pass/Fail Percentage</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/gradeInfo"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                            List of Grade Info</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-</aside>
-
- 
-
-                </button>
-                <ul id="dropdown-student-Accounts" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"> Pay Slip Collection</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Quick Collection</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Print Unpaid Payslip </a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Collect Unpaid PaySlip</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Delete Payslip</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">New STD Add PaySlip</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">New/Old STD Add payslip</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Generate Payslip</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Edit Generated Payslip</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Generate Multiple Payslip</a>
-                    </li>
-
-
-
-                    <li>
-                        <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                            aria-controls="dropdown-student-others"
-                            data-collapse-toggle="dropdown-student-others">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                viewBox="0 0 18 21">
-                                <path
-                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                            </svg>
-                            <span
-                                class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Others </span>
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <ul id="dropdown-student-others" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-report" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Form Fee</a>
+                                <a href="/dashboard/progressReport"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
+                                    Single Mark Sheet </a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Donation </a>
+                                <a href="/dashboard/grandFinal"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Update
+                                    Grand Final</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Fine/Fail/Absent Fess</a>
+                                <a href="/dashboard/tebular-format1"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Student
+                                    Tabulation [Format-1]</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Others Fee</a>
+                                <a href="/dashboard/tebular-format2"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                                    Tabulation [Format-2]</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/tebular-format3"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                                    Tabulation [Format-3]</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/meritList"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                                    Merit List</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/meritClass"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                                    Merit List</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/exam-failList"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                                    Fail List Summary</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/unassignedSubject"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                                    List of Unassigned Subject</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/passFailPercentage"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                                    List of Pass/Fail Percentage</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/gradeInfo"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                                    List of Grade Info</a>
                             </li>
                         </ul>
-                    </li>
-
-                    <li>
-                        <button type="button"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700"
-                            aria-controls="dropdown-student-reports"
-                            data-collapse-toggle="dropdown-student-reports">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                viewBox="0 0 18 21">
-                                <path
-                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                            </svg>
-                            <span
-                                class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Reports (STD FEES) </span>
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        <ul id="dropdown-student-reports" class="hidden py-2 space-y-2">
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Daily Collection reports</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Gene. Transfer Inquiry </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Duw/Pay Summary</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Head wise Summary</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Oth. Trans Inquiry</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Transfer to Accounts</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Paid Invoice</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Due/Pay</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List of Head wise </a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Special Discount</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Month wise Fees</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Fine / Fail/Absent</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Donation</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">List Of Form Fees</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Monthly Paid Details</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
             </li>
-
-            <!-- General accounts  -->
-
-
-        </ul>
     </div>
-
 </aside>
-
