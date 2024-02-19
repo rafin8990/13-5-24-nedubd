@@ -3,7 +3,7 @@
 Dashboard
 @endsection
 @section('Dashboard')
-
+@include('/Message/message')
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
     <div class="bg-gradient-to-r  from-cyan-500 to-blue-500 p-5 rounded lg:w-[250px] mx-2 lg:mx-0">
         <h1 class="text-2xl font-bold text-white">Balance</h1>

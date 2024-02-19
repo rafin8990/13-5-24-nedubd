@@ -3,7 +3,7 @@
 Excel Import Student Exam data
 @endsection
 @section('Dashboard')
-
+@include('/Message/message')
 <div>
     <h1 class="text-4xl font font-bold my-5 mx-5 text-accent">Excel Import Student Exam data</h1>
 </div>

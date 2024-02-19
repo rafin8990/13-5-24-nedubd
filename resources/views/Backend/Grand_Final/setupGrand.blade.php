@@ -3,6 +3,7 @@
 Exam Mark Setup Grand Final
 @endsection
 @section('Dashboard')
+@include('/Message/message')
 <div>
     <h1 class="ml-5 font font-semibold text-accent  my-10"> Exam Mark Setup Grand Final
     </h1>

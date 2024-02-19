@@ -3,6 +3,7 @@
 Section Wise Grade List
 @endsection
 @section('Dashboard')
+@include('/Message/message')
 
 <div>
     <h1 class="text-4xl font font-bold my-5 mx-5 text-accent">Section Wise Grade List</h1>
