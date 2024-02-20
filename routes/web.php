@@ -88,6 +88,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/board',function(){
         return view ('Backend/BasicInfo/CommonSetting/addBoardExam');
     });
+
+  
     Route::get('/category',function(){
         return view ('Backend/BasicInfo/CommonSetting/addCategory');
     });
