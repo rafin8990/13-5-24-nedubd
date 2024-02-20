@@ -16,6 +16,13 @@
     .scrollbar::-webkit-scrollbar-thumb:hover {
         background: white;
     }
+
+    .clicked {
+
+    background-color: #f8f8f8;
+    color: #333;
+
+}
 </style>
 
 <aside id="logo-sidebar"
@@ -45,7 +52,7 @@
             </li>
 
             <!-- online Application  -->
-            <li>
+            <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-online-examination" data-collapse-toggle="dropdown-online-examination">
@@ -81,7 +88,7 @@
 
 
             <!-- Student route  -->
-            <li>
+            <li class="dropdown">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-student" data-collapse-toggle="dropdown-student">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
@@ -153,7 +160,7 @@
             </li>
 
 
-            <li>
+            <li class="dropdown">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-exam" data-collapse-toggle="dropdown-exam">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
@@ -217,11 +224,9 @@
                     </li>
                 </ul>
             </li>
-
-
             <!-- student accounts  -->
 
-            <li>
+            <li class="dropdown">
 
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -294,7 +299,7 @@
                             Multiple Payslip</a>
                     </li>
                     <!-- others  -->
-                    <li>
+                    <li class="dropdown">
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-student-others" data-collapse-toggle="dropdown-student-others">
@@ -340,7 +345,7 @@
 
                     <!-- reports student fees  -->
 
-                    <li>
+                    <li class="dropdown">
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-student-reports" data-collapse-toggle="dropdown-student-reports">
@@ -443,7 +448,7 @@
             </li>
 
             <!-- Student Attendence  -->
-            <li>
+            <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-student-Attendence" data-collapse-toggle="dropdown-student-Attendence">
@@ -481,7 +486,7 @@
 
 
                     <!-- reports of student attendence  -->
-                    <li>
+                    <li class="dropdown">
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-student-Reports" data-collapse-toggle="dropdown-student-Reports">
@@ -533,7 +538,7 @@
             </li>
 
             <!-- grand final  -->
-            <li>
+            <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-grand" data-collapse-toggle="dropdown-grand">
@@ -586,7 +591,7 @@
                 </ul>
             </li>
 
-            <li>
+            <li class="dropdown">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-report" data-collapse-toggle="dropdown-report">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
@@ -672,9 +677,9 @@
 
 
             </li>
-            <li>
+            <li class="dropdown">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                    aria-controls="dropdown-report" data-collapse-toggle="dropdown-report">
+                    aria-controls="dropdown-teacher" data-collapse-toggle="dropdown-teacher">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
                         <rect fill="none" />
@@ -697,7 +702,7 @@
                     </svg>
                 </p>
 
-                <ul id="dropdown-report" class="hidden py-2 space-y-2">
+                <ul id="dropdown-teacher" class="hidden py-2 space-y-2">
                     <li>
                         <a href=""
                             class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
@@ -705,7 +710,8 @@
                     </li>
                     <li>
                         <a href="/dashboard/grandFinal"
-                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Teacher List</a>
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Teacher
+                            List</a>
                     </li>
                     <li>
                         <a href="/dashboard/tebular-format1"
@@ -753,8 +759,131 @@
                             List of Grade Info</a>
                     </li>
                 </ul>
+            </li>
+            <!-- Basic Setting -->
 
+            <li class="dropdown">
+                <button type="button"
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    aria-controls="dropdown-basic-setting" data-collapse-toggle="dropdown-basic-setting">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                        <path
+                            d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                    </svg>
+                    <span
+                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Basic
+                        Setting </span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
 
+                </button>
+                <ul id="dropdown-basic-setting" class="hidden py-2 space-y-2">
+
+                    <li class="dropdown">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-common-setting"
+                            data-collapse-toggle="dropdown-common-setting">
+                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 18 21">
+                                <path
+                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+                            </svg>
+                            <span
+                                class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Common Settings</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+
+                        </button>
+                        <ul id="dropdown-common-setting" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Section</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add shift</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Group</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Academic Session</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Academic Year</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Board Exam</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Category</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class Exam</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Group</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Section</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Shift</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
     </div>
 </aside>
+
+
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+    const clickedLink = localStorage.getItem("clickedLink");
+    if (clickedLink) {
+        const clickedElement = document.querySelector(`a[href="${clickedLink}"]`);
+        if (clickedElement) {
+            clickedElement.classList.add("clicked");
+            const parentDropdown = clickedElement.closest(".dropdown");
+            if (parentDropdown) {
+                parentDropdown.querySelector("ul").classList.remove("hidden");
+            }
+        }
+    }
+    const dropdownLinks = document.querySelectorAll("#logo-sidebar .dropdown a");
+    dropdownLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            dropdownLinks.forEach(function (link) {
+                link.classList.remove("clicked");
+            });
+            event.target.classList.add("clicked");
+            localStorage.setItem("clickedLink", event.target.getAttribute("href"));
+        });
+    });
+});
+
+
+</script>
