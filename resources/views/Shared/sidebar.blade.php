@@ -805,51 +805,51 @@
                         </button>
                         <ul id="dropdown-common-setting" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#"
+                                <a href="/class"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/addSection"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Section</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/addShift"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add shift</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/addGroup"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Group</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/session"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Academic Session</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/year"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Academic Year</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/board"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Board Exam</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/category"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Category</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/classExam"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class Exam</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/group"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Group</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/section"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Section</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/shift"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Shift</a>
                             </li>
                         </ul>
