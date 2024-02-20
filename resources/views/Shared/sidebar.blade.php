@@ -217,8 +217,6 @@
                     </li>
                 </ul>
             </li>
-
-
             <!-- student accounts  -->
 
             <li>
