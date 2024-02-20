@@ -78,4 +78,14 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/teachers/{id}/teacherview', [TeacherController::class, 'view'])->name('teachers.view');
     Route::delete('/techers/{id}', [TeacherController::class, 'Deleteteacher'])->name('teacher.delete');
 
+    //Basic setting
+    Route::get('/session',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addAcademicSession');
+    });
+    Route::get('/year',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addAcademicYear');
+    });
+    Route::get('/board',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addBoardExam');
+    });
 });
