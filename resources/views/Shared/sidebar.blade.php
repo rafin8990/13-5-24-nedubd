@@ -16,6 +16,13 @@
     .scrollbar::-webkit-scrollbar-thumb:hover {
         background: white;
     }
+
+    .clicked {
+
+    background-color: #f8f8f8;
+    color: #333;
+
+}
 </style>
 
 <aside id="logo-sidebar"
@@ -45,7 +52,7 @@
             </li>
 
             <!-- online Application  -->
-            <li>
+            <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-online-examination" data-collapse-toggle="dropdown-online-examination">
@@ -81,7 +88,7 @@
 
 
             <!-- Student route  -->
-            <li>
+            <li class="dropdown">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-student" data-collapse-toggle="dropdown-student">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
@@ -153,7 +160,7 @@
             </li>
 
 
-            <li>
+            <li class="dropdown">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-exam" data-collapse-toggle="dropdown-exam">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
@@ -219,7 +226,7 @@
             </li>
             <!-- student accounts  -->
 
-            <li>
+            <li class="dropdown">
 
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -292,7 +299,7 @@
                             Multiple Payslip</a>
                     </li>
                     <!-- others  -->
-                    <li>
+                    <li class="dropdown">
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-student-others" data-collapse-toggle="dropdown-student-others">
@@ -338,7 +345,7 @@
 
                     <!-- reports student fees  -->
 
-                    <li>
+                    <li class="dropdown">
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-student-reports" data-collapse-toggle="dropdown-student-reports">
@@ -441,7 +448,7 @@
             </li>
 
             <!-- Student Attendence  -->
-            <li>
+            <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-student-Attendence" data-collapse-toggle="dropdown-student-Attendence">
@@ -479,7 +486,7 @@
 
 
                     <!-- reports of student attendence  -->
-                    <li>
+                    <li class="dropdown">
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-student-Reports" data-collapse-toggle="dropdown-student-Reports">
@@ -531,7 +538,7 @@
             </li>
 
             <!-- grand final  -->
-            <li>
+            <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-grand" data-collapse-toggle="dropdown-grand">
@@ -584,7 +591,7 @@
                 </ul>
             </li>
 
-            <li>
+            <li class="dropdown">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-report" data-collapse-toggle="dropdown-report">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
@@ -670,7 +677,7 @@
 
 
             </li>
-            <li>
+            <li class="dropdown">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-teacher" data-collapse-toggle="dropdown-teacher">
                     <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
@@ -755,7 +762,7 @@
             </li>
             <!-- Basic Setting -->
 
-            <li>
+            <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     aria-controls="dropdown-basic-setting" data-collapse-toggle="dropdown-basic-setting">
@@ -776,7 +783,7 @@
                 </button>
                 <ul id="dropdown-basic-setting" class="hidden py-2 space-y-2">
 
-                    <li>
+                    <li class="dropdown">
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-common-setting"
@@ -851,3 +858,58 @@
             </li>
     </div>
 </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+ document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve the clicked link's href from localStorage
+    const clickedLink = localStorage.getItem("clickedLink");
+
+    // If a link was previously clicked, add a class to it to style it differently
+    if (clickedLink) {
+        const clickedElement = document.querySelector(`a[href="${clickedLink}"]`);
+        if (clickedElement) {
+            clickedElement.classList.add("clicked");
+            const parentDropdown = clickedElement.closest(".dropdown");
+            if (parentDropdown) {
+                parentDropdown.querySelector("ul").classList.remove("hidden");
+            }
+        }
+    }
+
+    // Add event listeners to all dropdown links
+    const dropdownLinks = document.querySelectorAll("#logo-sidebar .dropdown a");
+    dropdownLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            // Remove "clicked" class from all links
+            dropdownLinks.forEach(function (link) {
+                link.classList.remove("clicked");
+            });
+
+            // Add "clicked" class to the clicked link
+            event.target.classList.add("clicked");
+
+            // Store the clicked link's href in localStorage
+            localStorage.setItem("clickedLink", event.target.getAttribute("href"));
+        });
+    });
+});
+
+
+</script>
