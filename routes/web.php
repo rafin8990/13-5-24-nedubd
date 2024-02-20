@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Backend\Student\StudentController;
+use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
@@ -42,6 +43,9 @@ Route::prefix('dashboard')->group(function () {
      Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']); 
      Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']); 
      Route::get('/exam_sms', [ExamResultController::class, 'exam_sms']); 
+
+
+
     // exam-report
     Route::get('/progressReport', [ReportsExamsReportsController::class, 'progressReport']);
     Route::get('/exam-failList', [ReportsExamsReportsController::class, 'failList1']);
@@ -54,6 +58,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/meritList', [ReportsExamsReportsController::class, 'meritList']);
     Route::get('/passFailPercentage', [ReportsExamsReportsController::class, 'passFailPercentage']);
     Route::get('/unassignedSubject', [ReportsExamsReportsController::class, 'unassignedSubject']);
+
+
     //grand final
     Route::get('/grand_fail_list', [GrandFinalController::class, 'grandFailList']);
     Route::get('/grand_exam_final_process', [GrandFinalController::class, 'grandFinalProcess']);
@@ -61,5 +67,15 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/grand_exam_progress_report', [GrandFinalController::class, 'grandProgressReport']);
     Route::get('/grand_result_pass_fail_percentage', [GrandFinalController::class, 'passFailPercentage']);
     Route::get('/grand_exam_setup', [GrandFinalController::class, 'setupGrand']);
+
+
+    // teacher routes
+    Route::get('/teachers/{schoolCode}', [TeacherController::class, 'teachers'])->name('teachers');
+    Route::get('/addteacher', [TeacherController::class, 'addTeachers']);
+    Route::post('/create-teacher', [TeacherController::class, 'addteacher'])->name('teacher.add');
+    Route::get('/teacher/{id}/edit', [TeacherController::class, 'edit'])->name('teachers.edit');
+    Route::put('/teacher/{id}/update', [TeacherController::class, 'update'])->name('teachers.update');
+    Route::get('/teachers/{id}/teacherview', [TeacherController::class, 'view'])->name('teachers.view');
+    Route::delete('/techers/{id}', [TeacherController::class, 'Deleteteacher'])->name('teacher.delete');
 
 });

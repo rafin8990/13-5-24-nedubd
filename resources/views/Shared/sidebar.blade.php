@@ -438,7 +438,7 @@
                         </ul>
                     </li>
 
-                    
+
                 </ul>
             </li>
 
@@ -532,7 +532,7 @@
                 </ul>
             </li>
 
-<!-- grand final  -->
+            <!-- grand final  -->
             <li>
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -605,69 +605,156 @@
                         class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Reports(Exams
                         & Result)</span>
 
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
+                </p>
 
-                        <ul id="dropdown-report" class="hidden py-2 space-y-2">
-                            <li>
-                                <a href="/dashboard/progressReport"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
-                                    Single Mark Sheet </a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/grandFinal"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Update
-                                    Grand Final</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/tebular-format1"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Student
-                                    Tabulation [Format-1]</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/tebular-format2"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                                    Tabulation [Format-2]</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/tebular-format3"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                                    Tabulation [Format-3]</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/meritList"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                                    Merit List</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/meritClass"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                                    Merit List</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/exam-failList"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                                    Fail List Summary</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/unassignedSubject"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                                    List of Unassigned Subject</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/passFailPercentage"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                                    List of Pass/Fail Percentage</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/gradeInfo"
-                                    class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
-                                    List of Grade Info</a>
-                            </li>
-                        </ul>
+                <ul id="dropdown-report" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="/dashboard/progressReport"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
+                            Single Mark Sheet </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/grandFinal"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Update
+                            Grand Final</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/tebular-format1"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Student
+                            Tabulation [Format-1]</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/tebular-format2"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Tabulation [Format-2]</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/tebular-format3"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Tabulation [Format-3]</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/meritList"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Merit List</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/meritClass"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Merit List</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/exam-failList"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Fail List Summary</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/unassignedSubject"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            List of Unassigned Subject</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/passFailPercentage"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            List of Pass/Fail Percentage</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/gradeInfo"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            List of Grade Info</a>
+                    </li>
+                </ul>
+
+
+            </li>
+            <li>
+                <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    aria-controls="dropdown-report" data-collapse-toggle="dropdown-report">
+                    <svg class="w-5 h-5 text-white transition duration-75 hover:text-black dark:text-gray-400 dark:hover:text-white group-hover:text-gray-900 group-hover:dark:text-white"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                        <rect fill="none" />
+                        <line x1="32" y1="64" x2="32" y2="144" fill="none" stroke="currentColor" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="8" />
+                        <path d="M54.2,216a88.1,88.1,0,0,1,147.6,0" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
+                        <polygon points="224 64 128 96 32 64 128 32 224 64" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
+                        <path d="M169.3,82.2a56,56,0,1,1-82.6,0" fill="none" stroke="currentColor"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
+                    </svg>
+                    <span
+                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white hover:text-black">Teachers</span>
+
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+                </p>
+
+                <ul id="dropdown-report" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href=""
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
+                            Teacher </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/grandFinal"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Teacher List</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/tebular-format1"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Student
+                            Tabulation [Format-1]</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/tebular-format2"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Tabulation [Format-2]</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/tebular-format3"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Tabulation [Format-3]</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/meritList"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Merit List</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/meritClass"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Merit List</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/exam-failList"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            Fail List Summary</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/unassignedSubject"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            List of Unassigned Subject</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/passFailPercentage"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            List of Pass/Fail Percentage</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/gradeInfo"
+                            class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Upload
+                            List of Grade Info</a>
+                    </li>
+                </ul>
+
+
             </li>
     </div>
 </aside>
