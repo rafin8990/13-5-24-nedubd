@@ -860,28 +860,9 @@
 </aside>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
  document.addEventListener("DOMContentLoaded", function () {
-    // Retrieve the clicked link's href from localStorage
     const clickedLink = localStorage.getItem("clickedLink");
-
-    // If a link was previously clicked, add a class to it to style it differently
     if (clickedLink) {
         const clickedElement = document.querySelector(`a[href="${clickedLink}"]`);
         if (clickedElement) {
@@ -892,20 +873,13 @@
             }
         }
     }
-
-    // Add event listeners to all dropdown links
     const dropdownLinks = document.querySelectorAll("#logo-sidebar .dropdown a");
     dropdownLinks.forEach(function (link) {
         link.addEventListener("click", function (event) {
-            // Remove "clicked" class from all links
             dropdownLinks.forEach(function (link) {
                 link.classList.remove("clicked");
             });
-
-            // Add "clicked" class to the clicked link
             event.target.classList.add("clicked");
-
-            // Store the clicked link's href in localStorage
             localStorage.setItem("clickedLink", event.target.getAttribute("href"));
         });
     });
