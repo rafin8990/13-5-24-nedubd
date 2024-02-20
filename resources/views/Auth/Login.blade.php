@@ -16,7 +16,7 @@
 <body class="gradient-bg flex justify-center items-center h-screen">
     <div class="gradient-bg p-8 m-2 rounded-lg shadow-md w-full max-w-md">
         <h2 class="text-3xl text-white text-center font-semibold mb-4">Login</h2>
-        <form>
+        <form action="">
             <div class="mb-4">
                 <label for="username" class="block text-white ">Email Or Phone</label>
                 <div class="relative">
