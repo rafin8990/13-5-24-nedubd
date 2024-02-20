@@ -805,51 +805,51 @@
                         </button>
                         <ul id="dropdown-common-setting" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="/class"
+                                <a href="/dashboard/class"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class</a>
                             </li>
                             <li>
-                                <a href="/addSection"
+                                <a href="/dashboard/addSection"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Section</a>
                             </li>
                             <li>
-                                <a href="/addShift"
+                                <a href="/dashboard/addShift"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add shift</a>
                             </li>
                             <li>
-                                <a href="/addGroup"
+                                <a href="/dashboard/addGroup"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Group</a>
                             </li>
                             <li>
-                                <a href="/session"
+                                <a href="/dashboard/session"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Academic Session</a>
                             </li>
                             <li>
-                                <a href="/year"
+                                <a href="/dashboard/year"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Academic Year</a>
                             </li>
                             <li>
-                                <a href="/board"
+                                <a href="/dashboard/board"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Board Exam</a>
                             </li>
                             <li>
-                                <a href="/category"
+                                <a href="/dashboard/category"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Category</a>
                             </li>
                             <li>
-                                <a href="/classExam"
+                                <a href="/dashboard/classExam"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class Exam</a>
                             </li>
                             <li>
-                                <a href="/group"
+                                <a href="/dashboard/group"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Group</a>
                             </li>
                             <li>
-                                <a href="/section"
+                                <a href="/dashboard/section"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Section</a>
                             </li>
                             <li>
-                                <a href="/shift"
+                                <a href="/dashboard/shift"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Class wise Shift</a>
                             </li>
                         </ul>
