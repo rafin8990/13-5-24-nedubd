@@ -88,4 +88,37 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/board',function(){
         return view ('Backend/BasicInfo/CommonSetting/addBoardExam');
     });
+    Route::get('/category',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addCategory');
+    });
+    Route::get('/class',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addClass');
+    });
+    Route::get('/classExam',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addClassExam');
+    });
+    Route::get('/group',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addClassWiseGroup');
+    });
+    Route::get('/section',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addClassWiseSection');
+    });
+    Route::get('/shift',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addClassWiseShift');
+    });
+    Route::get('/addGroup',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addGroup');
+    });
+    Route::get('/addPeriod',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addPeriod');
+    });
+    Route::get('/addSection',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addSection');
+    });
+    Route::get('/addShift',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addShift');
+    });
+    Route::get('/addSubject',function(){
+        return view ('Backend/BasicInfo/CommonSetting/addSubject');
+    });
 });
