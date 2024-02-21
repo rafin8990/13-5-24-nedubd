@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\CommonSetting\AddClassController;
+use App\Http\Controllers\Backend\CommonSetting\AddSectionController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
@@ -23,26 +25,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/login');
 });
-Route::get('/login', [AuthController::class,'index'])->name('login');
+Route::get('/login', [AuthController::class, 'index'])->name('login');
 //Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
-Route::get('/register', [AuthController::class,'register'])->name('register');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register/admin', [AuthController::class, 'store'])->name('users.store');
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
-    
-    // student module
-    Route::get('/add-student', [StudentController::class,'AddStudentForm'])->name('AddStudentForm');
-    
 
-    
-     // exam-Result 
-     Route::get('/exam_marks', [ExamResultController::class, 'exam_marks']);
-     Route::get('/exam_process', [ExamResultController::class, 'exam_process']); 
-     Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']); 
-     Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']); 
-     Route::get('/exam_sms', [ExamResultController::class, 'exam_sms']); 
+    // student module
+    Route::get('/add-student', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
+
+
+
+    // exam-Result 
+    Route::get('/exam_marks', [ExamResultController::class, 'exam_marks']);
+    Route::get('/exam_process', [ExamResultController::class, 'exam_process']);
+    Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']);
+    Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']);
+    Route::get('/exam_sms', [ExamResultController::class, 'exam_sms']);
 
 
 
@@ -78,49 +80,68 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/teachers/{id}/teacherview', [TeacherController::class, 'view'])->name('teachers.view');
     Route::delete('/techers/{id}', [TeacherController::class, 'Deleteteacher'])->name('teacher.delete');
 
+
+
+    // Common Setting
+    // Add Class
+    Route::get('/class', [AddClassController::class, 'add_class'])->name('add.class');
+    Route::put('/class', [AddClassController::class, 'update_add_class'])->name('update.class');
+    Route::delete('/delete_class/{id}', [AddClassController::class, 'delete_add_class'])->name('delete.class');
+
+    // Add Section
+    Route::get('/addSection', [AddSectionController::class, 'add_section'])->name('add.section');
+    Route::put('/addSection', [AddSectionController::class, 'update_add_section'])->name('update.section');
+    Route::delete('/delete_section/{id}', [AddSectionController::class, 'delete_add_section'])->name('delete.section');
+
+
+
+
+
+
+
     //Basic setting
-    Route::get('/session',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addAcademicSession');
+    Route::get('/session', function () {
+        return view('Backend/BasicInfo/CommonSetting/addAcademicSession');
     });
-    Route::get('/year',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addAcademicYear');
+    Route::get('/year', function () {
+        return view('Backend/BasicInfo/CommonSetting/addAcademicYear');
     });
-    Route::get('/board',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addBoardExam');
+    Route::get('/board', function () {
+        return view('Backend/BasicInfo/CommonSetting/addBoardExam');
     });
 
-  
-    Route::get('/category',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addCategory');
+
+    Route::get('/category', function () {
+        return view('Backend/BasicInfo/CommonSetting/addCategory');
     });
-    Route::get('/class',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addClass');
+    // Route::get('/class',function(){
+    //     return view ('Backend/BasicInfo/CommonSetting/addClass');
+    // });
+    Route::get('/classExam', function () {
+        return view('Backend/BasicInfo/CommonSetting/addClassExam');
     });
-    Route::get('/classExam',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addClassExam');
+    Route::get('/group', function () {
+        return view('Backend/BasicInfo/CommonSetting/addClassWiseGroup');
     });
-    Route::get('/group',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addClassWiseGroup');
+    Route::get('/section', function () {
+        return view('Backend/BasicInfo/CommonSetting/addClassWiseSection');
     });
-    Route::get('/section',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addClassWiseSection');
+    Route::get('/shift', function () {
+        return view('Backend/BasicInfo/CommonSetting/addClassWiseShift');
     });
-    Route::get('/shift',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addClassWiseShift');
+    Route::get('/addGroup', function () {
+        return view('Backend/BasicInfo/CommonSetting/addGroup');
     });
-    Route::get('/addGroup',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addGroup');
+    Route::get('/addPeriod', function () {
+        return view('Backend/BasicInfo/CommonSetting/addPeriod');
     });
-    Route::get('/addPeriod',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addPeriod');
+    // Route::get('/addSection', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addSection');
+    // });
+    Route::get('/addShift', function () {
+        return view('Backend/BasicInfo/CommonSetting/addShift');
     });
-    Route::get('/addSection',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addSection');
-    });
-    Route::get('/addShift',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addShift');
-    });
-    Route::get('/addSubject',function(){
-        return view ('Backend/BasicInfo/CommonSetting/addSubject');
+    Route::get('/addSubject', function () {
+        return view('Backend/BasicInfo/CommonSetting/addSubject');
     });
 });
