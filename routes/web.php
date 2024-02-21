@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CommonSetting\AddAcademicSessionController;
 use App\Http\Controllers\Backend\CommonSetting\AddClassController;
 use App\Http\Controllers\Backend\CommonSetting\AddGroupController;
 use App\Http\Controllers\Backend\CommonSetting\AddSectionController;
@@ -106,15 +107,21 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/delete_group/{id}', [AddGroupController::class, 'delete_add_group'])->name('delete.group');
 
 
+    // Add academic session
+    Route::get('/addAcademicSession', [AddAcademicSessionController::class, 'add_academic_session'])->name('add.academic.session');
+    Route::put('/addAcademicSession', [AddAcademicSessionController::class, 'update_add_academic_session'])->name('update.academic.session');
+    Route::delete('/delete_academic_session/{id}', [AddAcademicSessionController::class, 'delete_add_academic_session'])->name('delete.academic.session');
+
+
 
 
 
 
 
     //Basic setting
-    Route::get('/session', function () {
-        return view('Backend/BasicInfo/CommonSetting/addAcademicSession');
-    });
+    // Route::get('/addAcademicSession', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addAcademicSession');
+    // });
     Route::get('/year', function () {
         return view('Backend/BasicInfo/CommonSetting/addAcademicYear');
     });
