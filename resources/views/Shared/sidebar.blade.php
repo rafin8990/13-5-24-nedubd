@@ -825,11 +825,11 @@
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Academic Session</a>
                             </li>
                             <li>
-                                <a href="/dashboard/year"
+                                <a href="/dashboard/addAcademicYear"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Academic Year</a>
                             </li>
                             <li>
-                                <a href="/dashboard/board"
+                                <a href="/dashboard/addBoardExam"
                                     class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700">Add Board Exam</a>
                             </li>
                             <li>

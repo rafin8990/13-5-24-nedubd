@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Backend\CommonSetting\AddAcademicSessionController;
+use App\Http\Controllers\Backend\CommonSetting\AddAcademicYearController;
+use App\Http\Controllers\Backend\CommonSetting\AddBoardExamController;
 use App\Http\Controllers\Backend\CommonSetting\AddClassController;
 use App\Http\Controllers\Backend\CommonSetting\AddGroupController;
 use App\Http\Controllers\Backend\CommonSetting\AddSectionController;
@@ -112,6 +114,16 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/addAcademicSession', [AddAcademicSessionController::class, 'update_add_academic_session'])->name('update.academic.session');
     Route::delete('/delete_academic_session/{id}', [AddAcademicSessionController::class, 'delete_add_academic_session'])->name('delete.academic.session');
 
+    // Add academic year
+    Route::get('/addAcademicYear', [AddAcademicYearController::class, 'add_academic_year'])->name('add.academic.year');
+    Route::put('/addAcademicYear', [AddAcademicYearController::class, 'update_add_academic_year'])->name('update.academic.year');
+    Route::delete('/delete_academic_Year/{id}', [AddAcademicYearController::class, 'delete_add_academic_year'])->name('delete.academic.year');
+
+    // Add board exam
+    Route::get('/addBoardExam', [AddBoardExamController::class, 'add_board_exam'])->name('add.board.exam');
+    Route::put('/addBoardExam', [AddBoardExamController::class, 'update_add_board_exam'])->name('update.board.exam');
+    Route::delete('/delete_board_exam/{id}', [AddBoardExamController::class, 'delete_add_board_exam'])->name('delete.board.exam');
+
 
 
 
@@ -122,12 +134,12 @@ Route::prefix('dashboard')->group(function () {
     // Route::get('/addAcademicSession', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addAcademicSession');
     // });
-    Route::get('/year', function () {
-        return view('Backend/BasicInfo/CommonSetting/addAcademicYear');
-    });
-    Route::get('/board', function () {
-        return view('Backend/BasicInfo/CommonSetting/addBoardExam');
-    });
+    // Route::get('/year', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addAcademicYear');
+    // });
+    // Route::get('/board', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addBoardExam');
+    // });
 
 
     Route::get('/category', function () {
