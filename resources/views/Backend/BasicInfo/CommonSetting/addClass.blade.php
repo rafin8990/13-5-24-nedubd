@@ -35,7 +35,7 @@ Add Class
                     <!-- Modal body  -->
                     <div class="p-4 md:p-5">
 
-                        <form action="{{ url('dashboard/class') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('dashboard/addClass') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div>

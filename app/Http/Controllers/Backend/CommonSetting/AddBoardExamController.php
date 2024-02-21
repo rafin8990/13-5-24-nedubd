@@ -10,10 +10,12 @@ class AddBoardExamController extends Controller
 {
     public function add_board_exam()
     {
-        $boardExamData = AddBoardExam::where('action', 'approved')->get();
+        $school_code = '100';
+        $boardExamData = AddBoardExam::where('action', 'approved')->where('school_code', $school_code)->get();
+       
         return view('Backend/BasicInfo/CommonSetting/addBoardExam', compact('boardExamData'));
     }
-    
+
     public function update_add_board_exam(Request $request)
     {
         // Validate the incoming request data

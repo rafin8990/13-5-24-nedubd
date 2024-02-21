@@ -10,7 +10,10 @@ class AddClassController extends Controller
 {
     public function add_class()
     {
-        $classData = AddClass::where('action', 'approved')->get();
+        
+        $school_code = '100';
+        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
+       
         return view('Backend/BasicInfo/CommonSetting/addClass', compact('classData'));
     }
     

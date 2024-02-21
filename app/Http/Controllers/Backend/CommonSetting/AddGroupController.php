@@ -10,8 +10,10 @@ class AddGroupController extends Controller
 {
     public function add_group()
     {
-        $groupData = AddGroup::where('action', 'approved')->get();
-        // dd($groupData);
+        
+        $school_code = '100';
+        $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
+       
         return view('Backend/BasicInfo/CommonSetting/addGroup', compact('groupData'));
     }
     

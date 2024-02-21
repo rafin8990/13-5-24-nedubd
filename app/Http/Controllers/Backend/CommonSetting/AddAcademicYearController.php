@@ -8,13 +8,14 @@ use Illuminate\Http\Request;
 
 class AddAcademicYearController extends Controller
 {
-     public function add_academic_year()
+    public function add_academic_year()
     {
-        $academicYearData = AddAcademicYear::where('action', 'approved')->get();
+        $school_code = '100';
+        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
         // dd($academicYearData);
         return view('Backend/BasicInfo/CommonSetting/addAcademicYear', compact('academicYearData'));
     }
-    
+
 
     public function update_add_academic_year(Request $request)
     {
@@ -22,11 +23,11 @@ class AddAcademicYearController extends Controller
         // dd($request);
         // Validate the incoming request data
         $request->validate([
-            'academic_year_name' => 'required|string|max:255',            
+            'academic_year_name' => 'required|string|max:255',
             'status' => 'required|string|in:active,in active',
         ]);
 
-       
+
 
         // Set the school code
         $school_code = '100'; // Your school code here
@@ -34,7 +35,7 @@ class AddAcademicYearController extends Controller
         // Check if any record with the same school_code, academic_year_name, or position already exists
         $existingRecord = AddAcademicYear::where('school_code', $school_code)
             ->where(function ($query) use ($request) {
-                $query->where('academic_year_name', $request->academic_year_name);                   
+                $query->where('academic_year_name', $request->academic_year_name);
             })
             ->exists();
 
@@ -46,7 +47,7 @@ class AddAcademicYearController extends Controller
         // If no duplicate record is found, proceed to create a new record
         $academicYear = new AddAcademicYear();
         $academicYear->academic_year_name = $request->academic_year_name;
-        
+
         $academicYear->status = $request->status;
         // dd($academicYear);
         $academicYear->action = 'approved';

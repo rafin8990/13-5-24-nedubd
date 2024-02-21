@@ -3,7 +3,12 @@
 use App\Http\Controllers\Backend\CommonSetting\AddAcademicSessionController;
 use App\Http\Controllers\Backend\CommonSetting\AddAcademicYearController;
 use App\Http\Controllers\Backend\CommonSetting\AddBoardExamController;
+use App\Http\Controllers\Backend\CommonSetting\AddCategoryController;
 use App\Http\Controllers\Backend\CommonSetting\AddClassController;
+use App\Http\Controllers\Backend\CommonSetting\AddClassExamController;
+use App\Http\Controllers\Backend\CommonSetting\AddClassWiseGroupController;
+use App\Http\Controllers\Backend\CommonSetting\AddClassWiseSectionController;
+use App\Http\Controllers\Backend\CommonSetting\AddClassWiseShiftController;
 use App\Http\Controllers\Backend\CommonSetting\AddGroupController;
 use App\Http\Controllers\Backend\CommonSetting\AddSectionController;
 use App\Http\Controllers\Backend\CommonSetting\AddShiftController;
@@ -89,15 +94,15 @@ Route::prefix('dashboard')->group(function () {
 
     // Common Setting
     // Add Class
-    Route::get('/class', [AddClassController::class, 'add_class'])->name('add.class');
-    Route::put('/class', [AddClassController::class, 'update_add_class'])->name('update.class');
+    Route::get('/addClass', [AddClassController::class, 'add_class'])->name('add.class');
+    Route::put('/addClass', [AddClassController::class, 'update_add_class'])->name('update.class');
     Route::delete('/delete_class/{id}', [AddClassController::class, 'delete_add_class'])->name('delete.class');
 
     // Add Section
     Route::get('/addSection', [AddSectionController::class, 'add_section'])->name('add.section');
     Route::put('/addSection', [AddSectionController::class, 'update_add_section'])->name('update.section');
     Route::delete('/delete_section/{id}', [AddSectionController::class, 'delete_add_section'])->name('delete.section');
-    
+
     // Add Shift
     Route::get('/addShift', [AddShiftController::class, 'add_shift'])->name('add.shift');
     Route::put('/addShift', [AddShiftController::class, 'update_add_shift'])->name('update.shift');
@@ -124,6 +129,32 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/addBoardExam', [AddBoardExamController::class, 'update_add_board_exam'])->name('update.board.exam');
     Route::delete('/delete_board_exam/{id}', [AddBoardExamController::class, 'delete_add_board_exam'])->name('delete.board.exam');
 
+    // Add category
+    Route::get('/addCategory', [AddCategoryController::class, 'add_category'])->name('add.category');
+    Route::put('/addCategory', [AddCategoryController::class, 'update_add_category'])->name('update.category');
+    Route::delete('/delete_category/{id}', [AddCategoryController::class, 'delete_add_category'])->name('delete.category');
+
+   // Add board exam
+   Route::get('/addClassExam', [AddClassExamController::class, 'add_class_exam'])->name('add.class.exam');
+   Route::put('/addClassExam', [AddClassExamController::class, 'update_add_class_exam'])->name('update.class.exam');
+   Route::delete('/delete_class_exam/{id}', [AddClassExamController::class, 'delete_add_class_exam'])->name('delete.class.exam');
+
+   // Add class wise group
+   Route::get('/addClassWiseGroup', [AddClassWiseGroupController::class, 'add_class_wise_group'])->name('add.class.wise.group');
+   Route::post('/addClassWiseGroup', [AddClassWiseGroupController::class, 'update_add_class_wise_group'])->name('add.class.wise.group');
+   Route::delete('/delete_class_wise_group/{id}', [AddClassWiseGroupController::class, 'delete_add_class_wise_group'])->name('delete.class.wise.group');
+
+   // Add class wise section
+   Route::get('/addClassWiseSection', [AddClassWiseSectionController::class, 'add_class_wise_section'])->name('add.class.wise.section');
+   Route::post('/addClassWiseSection', [AddClassWiseSectionController::class, 'update_add_class_wise_section'])->name('add.class.wise.section');
+   Route::delete('/delete_class_wise_section/{id}', [AddClassWiseSectionController::class, 'delete_add_class_wise_section'])->name('delete.class.wise.section');
+   
+   // Add class wise shift
+   Route::get('/addClassWiseShift', [AddClassWiseShiftController::class, 'add_class_wise_shift'])->name('add.class.wise.shift');
+   Route::post('/addClassWiseShift', [AddClassWiseShiftController::class, 'update_add_class_wise_shift'])->name('add.class.wise.shift');
+   Route::delete('/delete_class_wise_shift/{id}', [AddClassWiseShiftController::class, 'delete_add_class_wise_shift'])->name('delete.class.wise.shift');
+
+   
 
 
 
@@ -142,24 +173,24 @@ Route::prefix('dashboard')->group(function () {
     // });
 
 
-    Route::get('/category', function () {
-        return view('Backend/BasicInfo/CommonSetting/addCategory');
-    });
+    // Route::get('/category', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addCategory');
+    // });
     // Route::get('/class',function(){
     //     return view ('Backend/BasicInfo/CommonSetting/addClass');
     // });
-    Route::get('/classExam', function () {
-        return view('Backend/BasicInfo/CommonSetting/addClassExam');
-    });
-    Route::get('/group', function () {
-        return view('Backend/BasicInfo/CommonSetting/addClassWiseGroup');
-    });
-    Route::get('/section', function () {
-        return view('Backend/BasicInfo/CommonSetting/addClassWiseSection');
-    });
-    Route::get('/shift', function () {
-        return view('Backend/BasicInfo/CommonSetting/addClassWiseShift');
-    });
+    // Route::get('/classExam', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addClassExam');
+    // });
+    // Route::get('/group', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addClassWiseGroup');
+    // });
+    // Route::get('/section', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addClassWiseSection');
+    // });
+    // Route::get('/shift', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addClassWiseShift');
+    // });
     // Route::get('/addGroup', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addGroup');
     // });
