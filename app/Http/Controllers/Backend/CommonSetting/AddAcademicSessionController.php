@@ -10,11 +10,12 @@ class AddAcademicSessionController extends Controller
 {
     public function add_academic_session()
     {
-        $academicSessionData = AddAcademicSession::where('action', 'approved')->get();
+        $school_code = '100';
+        $academicSessionData = AddAcademicSession::where('action', 'approved')->where('school_code', $school_code)->get();
         // dd($academicSessionData);
         return view('Backend/BasicInfo/CommonSetting/addAcademicSession', compact('academicSessionData'));
     }
-    
+
 
     public function update_add_academic_session(Request $request)
     {
@@ -22,11 +23,11 @@ class AddAcademicSessionController extends Controller
         // dd($request);
         // Validate the incoming request data
         $request->validate([
-            'academic_session_name' => 'required|string|max:255',            
+            'academic_session_name' => 'required|string|max:255',
             'status' => 'required|string|in:active,in active',
         ]);
 
-       
+
 
         // Set the school code
         $school_code = '100'; // Your school code here
@@ -34,7 +35,7 @@ class AddAcademicSessionController extends Controller
         // Check if any record with the same school_code, academic_session_name, or position already exists
         $existingRecord = AddAcademicSession::where('school_code', $school_code)
             ->where(function ($query) use ($request) {
-                $query->where('academic_session_name', $request->academic_session_name);                   
+                $query->where('academic_session_name', $request->academic_session_name);
             })
             ->exists();
 
@@ -46,7 +47,7 @@ class AddAcademicSessionController extends Controller
         // If no duplicate record is found, proceed to create a new record
         $academicSession = new AddAcademicSession();
         $academicSession->academic_session_name = $request->academic_session_name;
-        
+
         $academicSession->status = $request->status;
         // dd($academicSession);
         $academicSession->action = 'approved';

@@ -10,7 +10,10 @@ class AddShiftController extends Controller
 {
     public function add_shift()
     {
-        $shiftData = AddShift::where('action', 'approved')->get();
+        
+        $school_code = '100';
+        $shiftData = AddShift::where('action', 'approved')->where('school_code', $school_code)->get();
+       
         return view('Backend/BasicInfo/CommonSetting/addShift', compact('shiftData'));
     }
     

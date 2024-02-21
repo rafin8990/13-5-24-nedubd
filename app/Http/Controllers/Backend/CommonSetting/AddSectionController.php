@@ -10,7 +10,10 @@ class AddSectionController extends Controller
 {
     public function add_section()
     {
-        $sectionData = AddSection::where('action', 'approved')->get();
+        
+        $school_code = '100';
+        $sectionData = AddSection::where('action', 'approved')->where('school_code', $school_code)->get();
+       
         return view('Backend/BasicInfo/CommonSetting/addSection', compact('sectionData'));
     }
     
