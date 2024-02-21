@@ -30,7 +30,7 @@ class AddSectionController extends Controller
         // Set the school code
         $school_code = '100'; // Your school code here
 
-        // Check if any record with the same school_code, class_name, or position already exists
+        // Check if any record with the same school_code, section_name, or position already exists
         $existingRecord = AddSection::where('school_code', $school_code)
             ->where(function ($query) use ($request) {
                 $query->where('section_name', $request->section_name);                   
@@ -47,7 +47,7 @@ class AddSectionController extends Controller
         $section->section_name = $request->section_name;
         
         $section->status = $request->status;
-        // dd($class);
+        // dd($section);
         $section->action = 'approved';
         $section->school_code = $school_code;
 
@@ -60,8 +60,8 @@ class AddSectionController extends Controller
 
     public function delete_add_section($id)
     {
-        $class = AddSection::findOrFail($id);
-        $class->delete();
-        return redirect()->back()->with('success', 'Class deleted successfully!');
+        $section = AddSection::findOrFail($id);
+        $section->delete();
+        return redirect()->back()->with('success', 'section deleted successfully!');
     }
 }

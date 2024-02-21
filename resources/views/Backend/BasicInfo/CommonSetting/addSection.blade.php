@@ -17,7 +17,7 @@ Add Section
             New</button>
         <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
-                <!-- Modal content -->
+                <!-- Modal content Start -->
                 <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
@@ -43,8 +43,8 @@ Add Section
 
 
                             <div class="flex justify-between">
-                                <div class="flex items-start">
-                                    <select  name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <div class="flex items-start mt-2">
+                                    <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <!-- <option selected="">Select status</option> -->
                                         <option value="active">Active</option>
                                         <option value="in active">In active</option>
@@ -61,6 +61,7 @@ Add Section
                         </form>
                     </div>
                 </div>
+                <!-- Modal content End -->
             </div>
         </div>
 
@@ -69,7 +70,7 @@ Add Section
 
     </div>
     <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-        <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+        <thead class="text-lg text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
             <tr>
                 <th scope="col" class="px-6 py-3 bg-blue-500">
                     SL
@@ -86,26 +87,39 @@ Add Section
             </tr>
         </thead>
         <tbody>
-            <tr class=" border-b border-blue-400">
+            @foreach($sectionData as $key=> $data)
+            <tr class=" border-b capitalize text-lg">
                 <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
-
+                    {{$key + 1}}
                 </th>
                 <td class="px-6 py-4">
-
+                    {{$data->section_name}}
                 </td>
                 <td class="px-6 py-4 ">
-
+                    @if($data->status == 'active')
+                    <span class="text-green-500">Active</span>
+                    @else
+                    <span class="text-red-500">Inactive</span>
+                    @endif
                 </td>
 
 
-                <td class="px-6 py-4 ">
-                    <div class="flex justify-center">
-                        <a href="" class="mr-2"><i class="fa fa-edit" style="color:green;"></i></a>
-                        <a href=""><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
-                    </div>
+                <td class="px-6 py-4  text-xl flex justify-center">
+
+                    <a class="mr-2"><i class="fa fa-edit" style="color:green;"></i></a>
+
+
+                    <form method="POST" action="{{ url('dashboard/delete_section', $data->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn ">
+                            <a href=""><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
+                        </button>
+                    </form>
+
                 </td>
             </tr>
-
+            @endforeach
 
 
         </tbody>
