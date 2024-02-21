@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Registration extends Model
+class AddSection extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'email',
-        'phone_number',
-        'password',
-        'address'
-    ];
-   
 
-    protected $table="registrations";
+    protected $table = 'add_section';
+
+    protected $fillable = [
+        'class_name',
+        'status',
+        'action',
+        'school_code',
+    ];
 }
