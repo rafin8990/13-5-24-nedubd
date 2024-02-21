@@ -9,14 +9,17 @@ class SchoolInfo extends Model
 {
     use HasFactory;
 
-    protected $fillable=[
-        'schoolName',
-        'email',
-        'phone_number',
-        'logo',
+    protected $fillable = [
+        'school_email',
+        'school_name',
+        'school_phone',
+        'mobile_number',
         'address',
-        'school_code'
-
+        'eiin',
+        'website',
+        'school_code',
     ];
-    protected $table="_school_addresses";
+
+
+    protected $table = 'school_info';
 }

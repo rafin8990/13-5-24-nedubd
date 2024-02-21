@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
@@ -30,10 +31,17 @@ Route::post('/register/admin', [AuthController::class, 'store'])->name('users.st
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    // NEDUBD Module 
+    Route::get('/addAdmin', [NEDUBDController::class,'addAdmin']);
+    Route::post('/create-admin', [NEDUBDController::class,'createAdmin'])->name('admin.add');
+    Route::get('/addSchoolInfo', [NEDUBDController::class, 'addSchoolInfo']);
+    Route::post('/create-schoolInfo',[NEDUBDController::class,'createSchoolInfo'])->name('schoolInfo.add');
 
-    
+
     // student module
+    Route::post('/create-student', [StudentController::class,'addStudent'])->name('student.add');
     Route::get('/add-student', [StudentController::class,'AddStudentForm'])->name('AddStudentForm');
+    
     
 
     
