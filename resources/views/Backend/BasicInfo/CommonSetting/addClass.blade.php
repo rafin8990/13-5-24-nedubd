@@ -78,7 +78,7 @@ Add Class
         </div>
     </div>
     <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-        <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+        <thead class="text-lg text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
             <tr>
                 <th scope="col" class="px-6 py-3 bg-blue-500">
                     SL

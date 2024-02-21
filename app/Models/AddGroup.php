@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AddSection extends Model
+class AddGroup extends Model
 {
     use HasFactory;
 
-    protected $table = 'add_section';
+    protected $table = 'add_group';
 
     protected $fillable = [
-        'section_name',
+        'group_name',
         'status',
         'action',
         'school_code',

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Backend\CommonSetting\AddClassController;
+use App\Http\Controllers\Backend\CommonSetting\AddGroupController;
 use App\Http\Controllers\Backend\CommonSetting\AddSectionController;
+use App\Http\Controllers\Backend\CommonSetting\AddShiftController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
@@ -92,6 +94,16 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/addSection', [AddSectionController::class, 'add_section'])->name('add.section');
     Route::put('/addSection', [AddSectionController::class, 'update_add_section'])->name('update.section');
     Route::delete('/delete_section/{id}', [AddSectionController::class, 'delete_add_section'])->name('delete.section');
+    
+    // Add Shift
+    Route::get('/addShift', [AddShiftController::class, 'add_shift'])->name('add.shift');
+    Route::put('/addShift', [AddShiftController::class, 'update_add_shift'])->name('update.shift');
+    Route::delete('/delete_shift/{id}', [AddShiftController::class, 'delete_add_shift'])->name('delete.shift');
+
+    // Add Group
+    Route::get('/addGroup', [AddGroupController::class, 'add_group'])->name('add.group');
+    Route::put('/addGroup', [AddGroupController::class, 'update_add_group'])->name('update.group');
+    Route::delete('/delete_group/{id}', [AddGroupController::class, 'delete_add_group'])->name('delete.group');
 
 
 
@@ -129,18 +141,18 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/shift', function () {
         return view('Backend/BasicInfo/CommonSetting/addClassWiseShift');
     });
-    Route::get('/addGroup', function () {
-        return view('Backend/BasicInfo/CommonSetting/addGroup');
-    });
+    // Route::get('/addGroup', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addGroup');
+    // });
     Route::get('/addPeriod', function () {
         return view('Backend/BasicInfo/CommonSetting/addPeriod');
     });
     // Route::get('/addSection', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addSection');
     // });
-    Route::get('/addShift', function () {
-        return view('Backend/BasicInfo/CommonSetting/addShift');
-    });
+    // Route::get('/addShift', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addShift');
+    // });
     Route::get('/addSubject', function () {
         return view('Backend/BasicInfo/CommonSetting/addSubject');
     });
