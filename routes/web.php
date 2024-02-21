@@ -10,8 +10,12 @@ use App\Http\Controllers\Backend\CommonSetting\AddClassWiseGroupController;
 use App\Http\Controllers\Backend\CommonSetting\AddClassWiseSectionController;
 use App\Http\Controllers\Backend\CommonSetting\AddClassWiseShiftController;
 use App\Http\Controllers\Backend\CommonSetting\AddGroupController;
+use App\Http\Controllers\Backend\CommonSetting\AddPeriodController;
 use App\Http\Controllers\Backend\CommonSetting\AddSectionController;
 use App\Http\Controllers\Backend\CommonSetting\AddShiftController;
+use App\Http\Controllers\Backend\CommonSetting\AddSubjectController;
+use App\Http\Controllers\Backend\CommonSetting\AddSubjectSetupController;
+use App\Http\Controllers\Backend\CommonSetting\InstituteInfoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
@@ -92,7 +96,9 @@ Route::prefix('dashboard')->group(function () {
 
 
 
-    // Common Setting
+    // Common Setting start .............................................................................................................
+
+
     // Add Class
     Route::get('/addClass', [AddClassController::class, 'add_class'])->name('add.class');
     Route::put('/addClass', [AddClassController::class, 'update_add_class'])->name('update.class');
@@ -112,6 +118,11 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/addGroup', [AddGroupController::class, 'add_group'])->name('add.group');
     Route::put('/addGroup', [AddGroupController::class, 'update_add_group'])->name('update.group');
     Route::delete('/delete_group/{id}', [AddGroupController::class, 'delete_add_group'])->name('delete.group');
+
+    // Add Subject
+    Route::get('/addSubject', [AddSubjectController::class, 'add_subject'])->name('add.subject');
+    Route::put('/addSubject', [AddSubjectController::class, 'update_add_subject'])->name('update.subject');
+    Route::delete('/delete_subject/{id}', [AddSubjectController::class, 'delete_add_subject'])->name('delete.subject');
 
 
     // Add academic session
@@ -134,34 +145,56 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/addCategory', [AddCategoryController::class, 'update_add_category'])->name('update.category');
     Route::delete('/delete_category/{id}', [AddCategoryController::class, 'delete_add_category'])->name('delete.category');
 
-   // Add board exam
-   Route::get('/addClassExam', [AddClassExamController::class, 'add_class_exam'])->name('add.class.exam');
-   Route::put('/addClassExam', [AddClassExamController::class, 'update_add_class_exam'])->name('update.class.exam');
-   Route::delete('/delete_class_exam/{id}', [AddClassExamController::class, 'delete_add_class_exam'])->name('delete.class.exam');
+    // Add board exam
+    Route::get('/addClassExam', [AddClassExamController::class, 'add_class_exam'])->name('add.class.exam');
+    Route::put('/addClassExam', [AddClassExamController::class, 'update_add_class_exam'])->name('update.class.exam');
+    Route::delete('/delete_class_exam/{id}', [AddClassExamController::class, 'delete_add_class_exam'])->name('delete.class.exam');
 
-   // Add class wise group
-   Route::get('/addClassWiseGroup', [AddClassWiseGroupController::class, 'add_class_wise_group'])->name('add.class.wise.group');
-   Route::post('/addClassWiseGroup', [AddClassWiseGroupController::class, 'update_add_class_wise_group'])->name('add.class.wise.group');
-   Route::delete('/delete_class_wise_group/{id}', [AddClassWiseGroupController::class, 'delete_add_class_wise_group'])->name('delete.class.wise.group');
+    // Add class wise group
+    Route::get('/addClassWiseGroup', [AddClassWiseGroupController::class, 'add_class_wise_group'])->name('add.class.wise.group');
+    Route::post('/addClassWiseGroup', [AddClassWiseGroupController::class, 'update_add_class_wise_group'])->name('add.class.wise.group');
+    Route::delete('/delete_class_wise_group/{id}', [AddClassWiseGroupController::class, 'delete_add_class_wise_group'])->name('delete.class.wise.group');
 
-   // Add class wise section
-   Route::get('/addClassWiseSection', [AddClassWiseSectionController::class, 'add_class_wise_section'])->name('add.class.wise.section');
-   Route::post('/addClassWiseSection', [AddClassWiseSectionController::class, 'update_add_class_wise_section'])->name('add.class.wise.section');
-   Route::delete('/delete_class_wise_section/{id}', [AddClassWiseSectionController::class, 'delete_add_class_wise_section'])->name('delete.class.wise.section');
-   
-   // Add class wise shift
-   Route::get('/addClassWiseShift', [AddClassWiseShiftController::class, 'add_class_wise_shift'])->name('add.class.wise.shift');
-   Route::post('/addClassWiseShift', [AddClassWiseShiftController::class, 'update_add_class_wise_shift'])->name('add.class.wise.shift');
-   Route::delete('/delete_class_wise_shift/{id}', [AddClassWiseShiftController::class, 'delete_add_class_wise_shift'])->name('delete.class.wise.shift');
+    // Add class wise section
+    Route::get('/addClassWiseSection', [AddClassWiseSectionController::class, 'add_class_wise_section'])->name('add.class.wise.section');
+    Route::post('/addClassWiseSection', [AddClassWiseSectionController::class, 'update_add_class_wise_section'])->name('add.class.wise.section');
+    Route::delete('/delete_class_wise_section/{id}', [AddClassWiseSectionController::class, 'delete_add_class_wise_section'])->name('delete.class.wise.section');
 
-   
+    // Add class wise shift
+    Route::get('/addClassWiseShift', [AddClassWiseShiftController::class, 'add_class_wise_shift'])->name('add.class.wise.shift');
+    Route::post('/addClassWiseShift', [AddClassWiseShiftController::class, 'update_add_class_wise_shift'])->name('add.class.wise.shift');
+    Route::delete('/delete_class_wise_shift/{id}', [AddClassWiseShiftController::class, 'delete_add_class_wise_shift'])->name('delete.class.wise.shift');
+
+    // Add category
+    Route::get('/addPeriod', [AddPeriodController::class, 'add_period'])->name('add.period');
+    Route::put('/addPeriod', [AddPeriodController::class, 'update_add_period'])->name('update.period');
+    Route::delete('/delete_period/{id}', [AddPeriodController::class, 'delete_add_period'])->name('delete.period');
+
+    // Add Institute Info
+    Route::get('/addInstituteInfo', [InstituteInfoController::class, 'add_institute_info'])->name('add.institute.info');
+    Route::put('/addInstituteInfo', [InstituteInfoController::class, 'update_add_institute_info'])->name('update.institute.info');
 
 
+    // Add Subject Setup
+    Route::get('/addSubjectSetup', [AddSubjectSetupController::class, 'add_subject_setup'])->name('add.subject.setup');
+    Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'update_add_subject_setup'])->name('update.subject.setup');
+    Route::delete('/delete_subject_setup/{id}', [AddSubjectSetupController::class, 'delete_add_subject_setup'])->name('delete.subject.setup');
 
+    // Common Setting End .............................................................................................................
 
 
 
     //Basic setting
+
+    // Route::get('/addSubjectSetup', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addSubjectSetup');
+    // });
+    Route::get('/addGradePoint', function () {
+        return view('Backend/BasicInfo/ExamSetting/addGradePoint');
+    });
+    Route::get('/gradeSetup', function () {
+        return view('Backend/BasicInfo/ExamSetting/gradeSetup');
+    });
     // Route::get('/addAcademicSession', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addAcademicSession');
     // });
@@ -194,16 +227,16 @@ Route::prefix('dashboard')->group(function () {
     // Route::get('/addGroup', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addGroup');
     // });
-    Route::get('/addPeriod', function () {
-        return view('Backend/BasicInfo/CommonSetting/addPeriod');
-    });
+    // Route::get('/addPeriod', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addPeriod');
+    // });
     // Route::get('/addSection', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addSection');
     // });
     // Route::get('/addShift', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addShift');
     // });
-    Route::get('/addSubject', function () {
-        return view('Backend/BasicInfo/CommonSetting/addSubject');
-    });
+    // Route::get('/addSubject', function () {
+    //     return view('Backend/BasicInfo/CommonSetting/addSubject');
+    // });
 });
