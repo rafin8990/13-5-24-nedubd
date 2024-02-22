@@ -16,14 +16,14 @@
 <body class="gradient-bg flex justify-center items-center h-screen">
     <div class="gradient-bg p-8 m-2 rounded-lg shadow-md w-full max-w-md">
         <h2 class="text-3xl text-white text-center font-semibold mb-4">Login</h2>
-        <form action="">
+        <form action="{{route('login-user')}}">
             <div class="mb-4">
-                <label for="username" class="block text-white ">Email Or Phone</label>
+                <label for="username" class="block text-white ">Student ID or teacher ID or Email</label>
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-2">
                         <i class="fas fa-user text-gray-400"></i>
                     </span>
-                    <input type="text" id="username" name="username" class="form-input pl-10 mt-1 p-2 block w-full" placeholder="Enter your email or Phone Number">
+                    <input type="text" id="username" name="name" class="form-input pl-10 mt-1 p-2 block w-full" placeholder="Enter your Id or email or Phone Number">
                 </div>
             </div>
             <div class="mb-4">

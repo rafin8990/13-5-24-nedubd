@@ -60,7 +60,7 @@ return new class extends Migration
     $table->string('last_class_name');
     $table->string('last_result');
     $table->string('last_passing_year');
-    $table->string('email');
+    $table->string('email')->unique();
     $table->string('password');
     $table->string('school_code');
     $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->default('pending');

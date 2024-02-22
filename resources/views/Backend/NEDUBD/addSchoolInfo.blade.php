@@ -4,7 +4,7 @@ School Info
 @endsection
 @section('Dashboard')
 @include('/Message/message')
-<div class="flex justify-center items-center min-h-screen">
+<div class="flex justify-center items-center ">
 
 
     <form class="max-w-[800px] mx-auto border-2 p-5" action="{{route('schoolInfo.add')}}" method="POST" >
@@ -90,7 +90,7 @@ School Info
 
 
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

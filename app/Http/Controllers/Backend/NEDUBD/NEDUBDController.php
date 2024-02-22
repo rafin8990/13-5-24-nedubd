@@ -14,7 +14,7 @@ class NEDUBDController extends Controller
     {
         $admins=Admin::all();
 
-        return view("Backend.NEDUBD.addAdmin");
+        return view("Backend.NEDUBD.addAdmin",["admins"=>$admins]);
     }
 
     public function createAdmin(Request $request)
@@ -25,6 +25,7 @@ class NEDUBDController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'required|string',
             'role' => 'required|string',
+            'phone_number' => 'required|string',
             'password' => 'required|string|min:4',
             'repeat_password' => 'required|string|min:4',
         ]);

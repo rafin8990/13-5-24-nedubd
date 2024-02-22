@@ -25,9 +25,8 @@ Route::get('/', function () {
     return redirect('/login');
 });
 Route::get('/login', [AuthController::class,'index'])->name('login');
-//Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
-Route::get('/register', [AuthController::class,'register'])->name('register');
-Route::post('/register/admin', [AuthController::class, 'store'])->name('users.store');
+Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
+
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');

@@ -91,4 +91,56 @@ Add Admin
 </div>
 
 
+<!-- all Admin table  -->
+
+
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                     Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Mobile Number
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Role
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                @foreach($admins as $admin)
+                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                <td class="px-6 py-4">
+                    {{$admin->first_name}} {{$admin->last_name}}
+                </td>
+                <td class="px-6 py-4">
+                    {{$admin->email}}
+                </td>
+                <td class="px-6 py-4">
+                   {{ $admin->phone_number}}
+                </td>
+                <td class="px-6 py-4">
+                   {{ $admin->role}}
+                </td>
+                <td class="px-6 py-4">
+                    <button>Update</button>
+                </td>
+                </tr>
+                @endforeach
+                
+                
+                
+</div>
+
+
 @endsection
