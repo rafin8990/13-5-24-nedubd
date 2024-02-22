@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\View;
 
@@ -23,8 +24,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
+
             $schoolCodeProvider = "100";
             $view->with('schoolCodeProvider', $schoolCodeProvider);
+
         });
     }
 }

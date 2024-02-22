@@ -1,22 +1,23 @@
 @extends('Backend.app')
 @section('title')
-    Add Student
+Add Student
 @endsection
 @section('Dashboard')
-    @include('/Message/message')
-    <div class="">
-        <h3>Add New Student </h3>
-    </div>
-    <div class="flex justify-center text-3xl font-semibold">
-        <h1>Application Form </h1>
-    </div>
+@include('/Message/message')
+<div class="">
+    <h3>Add New Student </h3>
+</div>
+<div class="flex justify-center text-3xl font-semibold">
+    <h1>Application Form </h1>
+</div>
 
 
-    <div class="mx-10 mt-10">
+<div class="mx-10 mt-10">
 
 
-        <form>
-            <div class="font-bold">
+    <form action="{{url('/dashboard/create-student')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+    <div class="font-bold">
                 <h3>Student Information</h3>
             </div>
             <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4">
@@ -54,17 +55,11 @@
 
 
                 </div>
-                <div>
-                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">student
-                        Id</label>
-                    <input type="tel" name="student_id" id="phone"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="student_id" required />
-                </div>
+                
                 <div>
                     <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">student
                         Roll</label>
-                    <input type="url" name="student_roll" id="website"
+                    <input type="text" name="student_roll" id="website"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="student_roll" required />
                 </div>
@@ -74,10 +69,10 @@
                     <select id="countries" name="Class_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose a class</option>
-                        <option value="">Class One</option>
-                        <option value="">Class Two</option>
-                        <option value="">Class Three</option>
-                        <option value="">Class Four</option>
+                        <option >Class One</option>
+                        <option >Class Two</option>
+                        <option >Class Three</option>
+                        <option >Class Four</option>
                     </select>
                 </div>
                 <div>
@@ -85,8 +80,8 @@
                     <select id="countries" name="group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose a group</option>
-                        <option value="">N/A</option>
-                        <option value="">Science</option>
+                        <option >N/A</option>
+                        <option >Science</option>
 
                     </select>
                 </div>
@@ -96,10 +91,10 @@
                     <select id="countries" name="section"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose a Section</option>
-                        <option value="">Section A</option>
-                        <option value="">Section B</option>
-                        <option value="">Section C</option>
-                        <option value="">Section D</option>
+                        <option >Section A</option>
+                        <option >Section B</option>
+                        <option >Section C</option>
+                        <option >Section D</option>
                     </select>
                 </div>
                 <div>
@@ -107,10 +102,10 @@
                     <select id="countries" name="shift"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose a Shift</option>
-                        <option value="">Shift-1st</option>
-                        <option value="">Shift-2nd</option>
-                        <option value="">Shift-3rd</option>
-                        <option value="">Shift-4th</option>
+                        <option >Shift-1st</option>
+                        <option >Shift-2nd</option>
+                        <option >Shift-3rd</option>
+                        <option >Shift-4th</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -119,8 +114,8 @@
                     <select id="countries" name="category"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose a Category</option>
-                        <option value="">Day</option>
-                        <option value="">General</option>
+                        <option >Day</option>
+                        <option >General</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -137,8 +132,8 @@
                     <select id="countries" name="gender"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose gender</option>
-                        <option value="">Male</option>
-                        <option value="">Female</option>
+                        <option >Male</option>
+                        <option >Female</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -147,8 +142,8 @@
                     <select id="countries" name="religious"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Religious</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
+                        <option >x</option>
+                        <option >y</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -157,8 +152,8 @@
                     <select id="countries" name="nationality"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Nationality</option>
-                        <option value="">Bangladesh</option>
-                        <option value="">y</option>
+                        <option >Bangladesh</option>
+                        <option >y</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -167,8 +162,8 @@
                     <select id="countries" name="blood_group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Blood_group</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
+                        <option >x</option>
+                        <option >y</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -177,8 +172,8 @@
                     <select id="countries" name="session"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Session</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
+                        <option >x</option>
+                        <option >y</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -237,7 +232,7 @@
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father's
                         Yearly Income
                     </label>
-                    <input type="text" name="father-income" id="last_name"
+                    <input type="text" name="father_income" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter The Income" required />
                 </div>
@@ -245,7 +240,7 @@
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father's
                         NID
                     </label>
-                    <input type="text" name="father-nid" id="last_name"
+                    <input type="text" name="father_nid" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter The NID" required />
                 </div>
@@ -266,14 +261,7 @@
                             placeholder="Select date">
                     </div>
                 </div>
-                <div>
-                    <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father's
-                        Yearly Income
-                    </label>
-                    <input type="text" name="father-income" id="last_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Enter The Income" required />
-                </div>
+                
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mother's
                         Name</label>
@@ -285,7 +273,7 @@
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mother's
                         Number
                     </label>
-                    <input type="text" name="mother_name" id="last_name"
+                    <input type="text" name="mother_number" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter The Number" required />
                 </div>
@@ -301,7 +289,7 @@
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mother's
                         NID
                     </label>
-                    <input type="text" name="mother-nid" id="last_name"
+                    <input type="text" name="mother_nid" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter The NID" required />
                 </div>
@@ -369,7 +357,7 @@
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">present
                         District</label>
-                    <input type="text" name="present _district" id="first_name"
+                    <input type="text" name="present_district" id="first_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter The District Name" required />
                 </div>
@@ -385,7 +373,7 @@
             </div>
             <div class="font-bold">
                 <h3>Parmanent Address( if same as present address
-                    <input id="link-checkbox" type="checkbox" value=""
+                    <input id="link-checkbox" type="checkbox" 
                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     )
                 </h3>
@@ -529,39 +517,43 @@
             </div>
          
             <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4 hidden">
-                <div>
+                <div class="hidden">
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role
                     </label>
-                    <input type="text" name="role" id="last_name"
+                    <input type="text" value="student" name="role" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Enter The Police Station Name" required />
+                        placeholder="Enter The Police Station Name" />
                 </div>
-                <div>
+                <div class="hidden">
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Action
                     </label>
-                    <input type="text" name="action" id="last_name"
+                    <input type="text" value="pending" name="action" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Enter The Police Station Name" required />
+                        placeholder="Enter The Police Station Name"  />
                 </div>
-                <div>
+                <div class="hidden">
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Code 
                     </label>
-                    <input type="text" name="school_code" id="last_name"
+                    <input type="text" value="100" name="school_code" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Enter The Police Station Name" required />
+                        placeholder="Enter The Police Station Name" />
                 </div>
             </div>
 
             <button type="submit"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
-        </form>
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Submit
+            </button>
+        
 
-    </div>
+</form>
+
+</div>
 @endsection
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         let $dateDropdown = $('#date-dropdown');
 
         let currentYear = new Date().getFullYear();

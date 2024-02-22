@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\CommonSetting\AddSubjectController;
 use App\Http\Controllers\Backend\CommonSetting\AddSubjectSetupController;
 use App\Http\Controllers\Backend\CommonSetting\InstituteInfoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
@@ -39,14 +40,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/login');
 });
-Route::get('/login', [AuthController::class, 'index'])->name('login');
-//Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
-Route::get('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/register/admin', [AuthController::class, 'store'])->name('users.store');
+
+Route::get('/login', [AuthController::class,'index'])->name('login');
+Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
+
+
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    // NEDUBD Module 
+    Route::get('/addAdmin', [NEDUBDController::class,'addAdmin']);
+    Route::post('/create-admin', [NEDUBDController::class,'createAdmin'])->name('admin.add');
+    Route::get('/addSchoolInfo', [NEDUBDController::class, 'addSchoolInfo']);
+    Route::post('/create-schoolInfo',[NEDUBDController::class,'createSchoolInfo'])->name('schoolInfo.add');
 
+
+
+    // student module
+    Route::post('/create-student', [StudentController::class,'addStudent'])->name('student.add');
+    Route::get('/add-student', [StudentController::class,'AddStudentForm'])->name('AddStudentForm');
+    
+    
 
     // student module
     Route::get('/add-student', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
