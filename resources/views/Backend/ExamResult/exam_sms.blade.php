@@ -13,11 +13,11 @@ Exam SMS Send
 
 
 <div class=" mb-3 card">
-    <div class="card-body min-h-500 border border-primary w-4/6 mx-auto">
+    <div class="card-body min-h-500 border border-primary w-4/6 mx-auto p-5">
         <div class="w-4/6 mx-auto">
             <div class="flex justify-between items-center mb-5">
-                <label for="class" class="text-gray-700 text-xl">CLASS:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <label for="class" class="text-gray-700 text-xl w-[150px] mr-5">CLASS:</label>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ">
                     <option disabled selected value="">Select</option>
                     <option value="1">Play</option>
                     <option value="2">Nursery</option>
@@ -38,8 +38,8 @@ Exam SMS Send
             </div>
 
             <div class="flex justify-between items-center mb-5">
-                <label for="class" class="text-gray-700 text-xl">GROUP:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <label for="class" class="text-gray-700 text-xl w-[150px] mr-5">GROUP:</label>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ">
                     <option disabled selected value="">Select</option>
                     <option value="1">Bangla Version</option>
                     <option value="2">English Version</option>
@@ -50,8 +50,8 @@ Exam SMS Send
                 </select>
             </div>
             <div class="flex justify-between items-center mb-5">
-                <label for="class" class="text-gray-700 text-xl">SECTION:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <label for="class" class="text-gray-700 text-xl w-[150px] mr-5">SECTION:</label>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ">
                     <option disabled selected value="">Select</option>
                     <option value="1">N/A</option>
                     <option value="2">Morning</option>
@@ -73,8 +73,8 @@ Exam SMS Send
             </div>
 
             <div class="flex justify-between items-center mb-5">
-                <label for="class" class="text-gray-700 text-xl">STUDENT ROLL:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <label for="class" class="text-gray-700 text-xl w-[150px] mr-5">STUDENT ROLL:</label>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ">
                     <option disabled selected value="">Select</option>
                     <option value="1193">20240006</option>
                     <option value="913">20220645</option>
@@ -98,8 +98,8 @@ Exam SMS Send
 
             </div>
             <div class="flex justify-between items-center mb-5">
-                <label for="class" class="text-gray-700 text-xl">EXAM NAME:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <label for="class" class="text-gray-700 text-xl w-[150px] mr-5">EXAM NAME:</label>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ">
                     <option disabled selected value="">Select</option>
                     <option value="1">1st Semester </option>
                     <option value="2">2nd Semester </option>
@@ -111,8 +111,8 @@ Exam SMS Send
                 </select>
             </div>
             <div class="flex justify-between items-center mb-5">
-                <label for="class" class="text-gray-700 text-xl">EXAM NAME:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <label for="class" class="text-gray-700 text-xl w-[150px] mr-5">EXAM NAME:</label>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ">
                     <option disabled selected value="">Select</option>
                     <option value="1">1st Semester</option>
                     <option value="2">2nd Semester</option>
@@ -123,8 +123,8 @@ Exam SMS Send
                 </select>
             </div>
             <div class="flex justify-between items-center mb-5">
-                <label for="class" class="text-gray-700 text-xl">YEAR:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <label for="class" class="text-gray-700 text-xl w-[150px] mr-5">YEAR:</label>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  ">
                     <option value="2023">2023</option>
                     <option value="2024" selected="">2024</option>
                     <option value="2025">2025</option>
@@ -133,10 +133,9 @@ Exam SMS Send
             </div>
             <div class="row form-group">
                 <div class="offset-md-8 col-md-2" style="">
-                    <button style="width: 100%;" class="btn text-2xl btn-primary" id="feesCollectSaved">Send</button>
+                    <button style="width: 100%;" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" id="feesCollectSaved">Send</button>
                 </div>
             </div>
-
 
 
         </div>

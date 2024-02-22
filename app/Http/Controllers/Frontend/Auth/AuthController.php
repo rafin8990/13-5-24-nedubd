@@ -32,7 +32,7 @@ class AuthController extends Controller
 
         if ($admin) {
             if (Hash::check($request->password, $admin->password)) {
-                $request->session()->put('AdminId', $admin->id);
+                Session::put('AdminId', $admin->id);
 
                 return redirect('/dashboard')->with('success', 'Login successful!');
             } else {
@@ -41,7 +41,8 @@ class AuthController extends Controller
         }
         else if($student){
             if (Hash::check($request->password, $student->password)) {
-                $request->session()->put('studentId', $student->id);
+                Session::put('studentId', $student->id);
+                Session::put('school_code', $student->school_code);
 
                 return redirect('/dashboard')->with('success', 'Login successful!');
             } else {

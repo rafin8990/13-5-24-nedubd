@@ -10,11 +10,11 @@ Excel Import Student Exam data
 
 
 <div class=" mb-3 card">
-    <div class="card-body min-h-500 border border-primary w-4/6 mx-auto">
+    <div class="card-body min-h-500 border border-primary w-4/6 mx-auto p-5">
         <div class="grid grid-cols-3 gap-10 w-5/6 mx-auto">
             <div>
                 <label for="class" class="text-gray-700 text-xl">Class:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
                     <option disabled selected value="">Select</option>
                     <option value="1">Play</option>
                     <option value="2">Nursery</option>
@@ -36,7 +36,7 @@ Excel Import Student Exam data
 
             <div>
                 <label for="class" class="text-gray-700 text-xl">Group:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
                     <option disabled selected value="">Select</option>
                     <option value="1">Bangla Version</option>
                     <option value="2">English Version</option>
@@ -48,7 +48,7 @@ Excel Import Student Exam data
             </div>
             <div>
                 <label for="class" class="text-gray-700 text-xl">Section:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
                     <option disabled selected value="">Select</option>
                     <option value="1">N/A</option>
                     <option value="2">Morning</option>
@@ -70,7 +70,7 @@ Excel Import Student Exam data
             </div>
             <div>
                 <label for="class" class="text-gray-700 text-xl">YEAR:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
                     <option value="2023">2023</option>
                     <option value="2024" selected="">2024</option>
                     <option value="2025">2025</option>
@@ -82,7 +82,7 @@ Excel Import Student Exam data
 
             <div>
                 <label for="class" class="text-gray-700 text-xl">Subject:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
                     <option disabled selected value="">Select</option>
 
 
@@ -90,7 +90,7 @@ Excel Import Student Exam data
             </div>
             <div>
                 <label for="class" class="text-gray-700 text-xl">Exam:</label>
-                <select class="select select-primary text-md w-full max-w-xs ">
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
                     <option disabled selected value="">Select</option>
 
 
@@ -102,7 +102,7 @@ Excel Import Student Exam data
             </div>
 
             <div>
-                <button type="submit" name="submit" style="width: 100%;" class="btn  text-2xl btn-primary">Submit</button>
+                <button type="submit" name="submit" style="width: 100%;" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Submit</button>
             </div>
 
 
