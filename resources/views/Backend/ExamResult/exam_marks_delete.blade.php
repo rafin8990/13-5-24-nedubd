@@ -19,7 +19,7 @@ Exam Marks Delete
                     <div class="">
                         <label for="class" class="text-gray-700">Class Name:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
                             <option disabled selected value="">Select</option>
                             <option value="1">Play</option>
                             <option value="2">Nursery</option>
@@ -45,7 +45,7 @@ Exam Marks Delete
                         <label for="class" class="text-gray-700">Group Name: </label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
 
                             <option disabled selected value="">Select</option>
                             <option value="1">Bangla Version</option>
@@ -62,7 +62,7 @@ Exam Marks Delete
                         <label for="class" class="text-gray-700">Section:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
 
                             <option disabled selected value="">Select</option>
                             <option value="1">N/A</option>
@@ -89,7 +89,7 @@ Exam Marks Delete
                         <label for="class" class="text-gray-700">Subject Name:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
 
                             <option disabled selected value="">Select</option>
 
@@ -103,7 +103,7 @@ Exam Marks Delete
                         <label for="class" class="text-gray-700">Exam Name:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
 
                             <option disabled selected value="">Select</option>
                             <option value="1">1st Semester </option>
@@ -122,7 +122,7 @@ Exam Marks Delete
                         <label for="class" class="text-gray-700">Year:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
 
                             <option disabled selected value="">Select</option>
                             <option value="2023">2023</option>

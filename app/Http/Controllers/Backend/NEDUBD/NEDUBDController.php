@@ -62,8 +62,9 @@ class NEDUBDController extends Controller
 
         $schoolInfo=SchoolInfo::all();
         $school_code = null;
-        $getSchoolCode = $latestSchoolInfo->school_code;
-        if ($getSchoolCode) {
+       
+        if ($latestSchoolInfo) {
+            $getSchoolCode = $latestSchoolInfo->school_code;
             $school_code = (int) $getSchoolCode + 1;
         }
         else{

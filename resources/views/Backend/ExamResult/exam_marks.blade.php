@@ -19,7 +19,8 @@ Exam Marks
                     <div class="">
                         <label for="class" class="text-gray-700">Class Name:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option disabled selected value="">Select</option>
                             <option value="1">Play</option>
                             <option value="2">Nursery</option>
@@ -45,7 +46,8 @@ Exam Marks
                         <label for="class" class="text-gray-700">Group:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
                             <option value="1">Bangla Version</option>
@@ -62,7 +64,7 @@ Exam Marks
                         <label for="class" class="text-gray-700">Section:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
                             <option value="1">N/A</option>
@@ -89,7 +91,7 @@ Exam Marks
                         <label for="class" class="text-gray-700">Shift:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
 
@@ -102,7 +104,7 @@ Exam Marks
                         <label for="class" class="text-gray-700">Subject:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
 
@@ -115,7 +117,7 @@ Exam Marks
                         <label for="class" class="text-gray-700">Exam:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
                             <option value="1">1st Semester </option>
@@ -134,7 +136,7 @@ Exam Marks
                         <label for="class" class="text-gray-700">Year:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="select select-primary text-md w-full max-w-xs">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
                             <option value="2023">2023</option>
@@ -149,14 +151,15 @@ Exam Marks
 
                 <div class="col-span-1">
                     <div class="">
-                        <button class="btn btn-primary mt-5" onclick="exam_marks_input_search()">Find</button>
+                        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-5" onclick="exam_marks_input_search()">Find</button>
                     </div>
                 </div>
                 <div class="col-span-3">
                     <div class="">
                         <input type="file" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                         <br>
-                        <button class="btn btn-primary mt-1 w-full max-w-xs" onclick="exam_marks_input_search()">Upload</button>
+                        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-3"
+                            onclick="exam_marks_input_search()">Upload</button>
                     </div>
                 </div>
 
@@ -179,8 +182,8 @@ Exam Marks
             </div>
             <div class=" flex justify-between gap-5">
 
-                <input class="btn bg-blue-500 text-white w-full" type="submit" value="Save">
-                <a class="btn bg-red-500 text-white w-full" href="/dashboard"><i class="fa fa-times"></i> Close</a>
+                <input class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="submit" value="Save">
+                <a class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" href="/dashboard"><i class="fa fa-times"></i> Close</a>
             </div>
 
         </div>
