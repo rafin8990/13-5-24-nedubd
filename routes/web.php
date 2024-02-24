@@ -9,12 +9,14 @@ use App\Http\Controllers\Backend\CommonSetting\AddClassExamController;
 use App\Http\Controllers\Backend\CommonSetting\AddClassWiseGroupController;
 use App\Http\Controllers\Backend\CommonSetting\AddClassWiseSectionController;
 use App\Http\Controllers\Backend\CommonSetting\AddClassWiseShiftController;
+use App\Http\Controllers\Backend\CommonSetting\AddGradePointController;
 use App\Http\Controllers\Backend\CommonSetting\AddGroupController;
 use App\Http\Controllers\Backend\CommonSetting\AddPeriodController;
 use App\Http\Controllers\Backend\CommonSetting\AddSectionController;
 use App\Http\Controllers\Backend\CommonSetting\AddShiftController;
 use App\Http\Controllers\Backend\CommonSetting\AddSubjectController;
 use App\Http\Controllers\Backend\CommonSetting\AddSubjectSetupController;
+use App\Http\Controllers\Backend\CommonSetting\GradeSetupController;
 use App\Http\Controllers\Backend\CommonSetting\InstituteInfoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
@@ -24,6 +26,7 @@ use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
+use App\Models\AddGradePoint;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -195,6 +198,17 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/addSubjectSetup', [AddSubjectSetupController::class, 'add_subject_setup'])->name('add.subject.setup');
     Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'update_add_subject_setup'])->name('update.subject.setup');
     Route::delete('/delete_subject_setup/{id}', [AddSubjectSetupController::class, 'delete_add_subject_setup'])->name('delete.subject.setup');
+   
+
+     // Add Grade Point
+    Route::get('/addGradePoint', [AddGradePointController::class, 'add_grade_point'])->name('add.grade.point');
+    Route::put('/addGradePoint', [AddGradePointController::class, 'update_add_grade_point'])->name('update.grade.point');
+    Route::delete('/delete_grade_point/{id}', [AddGradePointController::class, 'delete_add_grade_point'])->name('delete.grade.point');
+
+     // Grade Setup
+    Route::get('/gradeSetup', [GradeSetupController::class, 'grade_setup'])->name('add.grade.setup');
+    Route::put('/gradeSetup', [GradeSetupController::class, 'update_grade_setup'])->name('update.grade.setup');
+    Route::delete('/delete_grade_setup/{id}', [GradeSetupController::class, 'delete_grade_setup'])->name('delete.grade.setup');
 
     // Common Setting End .............................................................................................................
 
@@ -205,12 +219,12 @@ Route::prefix('dashboard')->group(function () {
     // Route::get('/addSubjectSetup', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addSubjectSetup');
     // });
-    Route::get('/addGradePoint', function () {
-        return view('Backend/BasicInfo/ExamSetting/addGradePoint');
-    });
-    Route::get('/gradeSetup', function () {
-        return view('Backend/BasicInfo/ExamSetting/gradeSetup');
-    });
+    // Route::get('/addGradePoint', function () {
+    //     return view('Backend/BasicInfo/ExamSetting/addGradePoint');
+    // });
+    // Route::get('/gradeSetup', function () {
+    //     return view('Backend/BasicInfo/ExamSetting/gradeSetup');
+    // });
     // Route::get('/addAcademicSession', function () {
     //     return view('Backend/BasicInfo/CommonSetting/addAcademicSession');
     // });

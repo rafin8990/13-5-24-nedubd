@@ -15,7 +15,6 @@ GroupData
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
     <form id="dataForm" method="POST" action="{{ route('add.class.wise.group') }}">
         @csrf
-        @method('PUT')
 
         <div class="flex my-10">
             <div class="mr-5">

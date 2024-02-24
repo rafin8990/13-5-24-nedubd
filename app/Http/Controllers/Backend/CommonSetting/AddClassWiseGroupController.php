@@ -30,6 +30,7 @@ class AddClassWiseGroupController extends Controller
             'class_name' => 'required|string',
             'group_name' => 'required|string'
         ]);
+        
 
         $school_code = '100';
 
