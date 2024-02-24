@@ -22,7 +22,7 @@ class TeacherController extends Controller
       $validatedData = $request->validate([
          "name" => "string",
          "mobile" => "string",
-         "image" => "file|mimes:jpeg,png,jpg,gif,svg|max:2048",
+         "image" => "image|mimes:jpeg,png,jpg,gif,svg|max:2048",
          "emg_mobile" => "string",
          'email' => 'required|string',
          'password' => 'required|string|min:4',
@@ -83,7 +83,6 @@ class TeacherController extends Controller
          "versity_gpa" => "string",
          "versity_passing_year" => "string",
       ]);
-
       dd($validatedData);
 
       if ($request->hasFile('image')) {
