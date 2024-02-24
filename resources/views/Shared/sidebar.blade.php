@@ -575,7 +575,7 @@
 
                 <ul id="dropdown-teacher" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="" class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
+                        <a href="/dashboard/add-teacher" class="flex items-center w-full p-2 text-white hover:text-black transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Add
                             Teacher </a>
                     </li>
                     <li>
