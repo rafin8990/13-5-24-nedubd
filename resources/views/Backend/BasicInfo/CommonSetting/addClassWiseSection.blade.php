@@ -20,15 +20,20 @@ SectionData
             </div>
 
             <div class="mr-5">
-                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onchange="saveSelectedValue()">
+                    @if($selectedClassName=== null)
                     <option disabled selected>Choose a class</option>
+                    @elseif($selectedClassName )
+                    <option disabled selected>{{$selectedClassName}}</option>
+                    @endif
+
                     @foreach($classData as $data)
                     <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
                     @endforeach
                 </select>
             </div>
             <div>
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
+                <button type="button" onclick="getData()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
             </div>
 
         </div>
@@ -44,7 +49,40 @@ SectionData
         </div>
 
     </form>
-    
+    <script>
+        // Function to save the selected value in local storage
+        function saveSelectedValue() {
+            var selectedClass = document.getElementById('class_name').value;
+            console.log('data', selectedClass)
+            localStorage.setItem('selectedClass', selectedClass);
+        }
+
+        // Function to submit the form
+        function getData() {
+            var selectedClass = document.getElementById('class_name').value;
+
+            // Fetching the route URL based on its name
+            var routeUrl = "{{ route('add.class.wise.section') }}";
+
+            // Create a form element
+            var form = document.createElement('form');
+            form.setAttribute('method', 'GET');
+            form.setAttribute('action', routeUrl);
+
+            // Create an input element to hold the selected class name
+            var input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('name', 'class_name');
+            input.setAttribute('value', selectedClass);
+
+            // Append the input element to the form
+            form.appendChild(input);
+
+            // Append the form to the document body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const checkboxes = document.querySelectorAll('.section-checkbox');

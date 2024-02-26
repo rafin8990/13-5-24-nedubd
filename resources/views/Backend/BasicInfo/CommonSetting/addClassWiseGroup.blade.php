@@ -27,6 +27,7 @@ GroupData
                     @elseif($selectedClassName )
                     <option disabled selected>{{$selectedClassName}}</option>
                     @endif
+
                     @foreach($classData as $data)
                     <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
                     @endforeach
