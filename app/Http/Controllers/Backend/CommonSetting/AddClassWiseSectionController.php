@@ -15,7 +15,9 @@ class AddClassWiseSectionController extends Controller
 
         $school_code = '100';
 
+      
         $classWiseSectionData = AddClassWiseSection::where('action', 'approved')->where('school_code', $school_code)->get();
+
         $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
         $sectionData = AddSection::where('action', 'approved')->where('school_code', $school_code)->get();
 
@@ -32,6 +34,18 @@ class AddClassWiseSectionController extends Controller
         ]);
 
         $school_code = '100';
+
+
+              // Check if the combination of class name and group name already exists for this school
+              $existingRecord = AddClassWiseSection::where('school_code', $school_code)
+              ->where('class_name', $request->class_name)
+              ->where('section_name', $request->section_name)
+              ->exists();
+      
+          // If a record with the same combination already exists, return with an error message
+          if ($existingRecord) {
+              return redirect()->back()->with('error', 'A record with the same class name and group name already exists for this school.');
+          }
 
         // Save class name to database
         $classWiseSection = new AddClassWiseSection();

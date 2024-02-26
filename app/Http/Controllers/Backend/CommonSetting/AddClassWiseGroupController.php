@@ -24,28 +24,37 @@ class AddClassWiseGroupController extends Controller
 
     public function update_add_class_wise_group(Request $request)
     {
-        // dd($request);
         // Validate form data
         $request->validate([
             'class_name' => 'required|string',
             'group_name' => 'required|string'
         ]);
-        
-
+    
         $school_code = '100';
-
-        // Save class name to database
-        $classWiseGroup = new AddClassWiseGroup();
-        $classWiseGroup->class_name = $request->class_name;
-        $classWiseGroup->group_name = $request->group_name;
-        $classWiseGroup->status = 'active';
-        $classWiseGroup->action = 'approved';
-        $classWiseGroup->school_code = $school_code;
-        // dd($classWiseGroup);
-        $classWiseGroup->save();
-
-        return redirect()->back()->with('success', 'class wise group added successfully!');
+    
+        // Check if the combination of class name and group name already exists for this school
+        $existingRecord = AddClassWiseGroup::where('school_code', $school_code)
+            ->where('class_name', $request->class_name)
+            ->where('group_name', $request->group_name)
+            ->exists();
+    
+        // If a record with the same combination already exists, return with an error message
+        if ($existingRecord) {
+            return redirect()->back()->with('error', 'A record with the same class name and group name already exists for this school.');
+        }
+    
+        // Create a new record for the selected group and class combination
+        $newRecord = new AddClassWiseGroup();
+        $newRecord->school_code = $school_code;
+        $newRecord->class_name = $request->class_name; 
+        $newRecord->group_name = $request->group_name;
+        $newRecord->status = 'active';
+        $newRecord->action = 'approved';
+        $newRecord->save();
+    
+        return redirect()->back()->with('success', 'Class wise group added successfully!');
     }
+        
 
     public function delete_add_class_wise_group($id)
     {

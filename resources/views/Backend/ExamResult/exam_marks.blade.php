@@ -3,7 +3,10 @@
 Exam Marks
 @endsection
 @section('Dashboard')
+
+<!-- Message -->
 @include('/Message/message')
+
 <div>
     <h1 class="text-4xl font font-bold my-5 mx-5 text-accent">Exam Marks</h1>
 </div>
@@ -16,29 +19,18 @@ Exam Marks
             <div class="grid grid-cols-11 gap-4">
                 <!-- Class Name -->
                 <div class="col-span-1">
+
                     <div class="">
                         <label for="class" class="text-gray-700">Class Name:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
-                        <select
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option disabled selected value="">Select</option>
-                            <option value="1">Play</option>
-                            <option value="2">Nursery</option>
-                            <option value="3">KG</option>
-                            <option value="4">One</option>
-                            <option value="5">Two</option>
-                            <option value="6">Three</option>
-                            <option value="7">Four</option>
-                            <option value="8">Five</option>
-                            <option value="9">Six</option>
-                            <option value="10">Seven</option>
-                            <option value="11">Eight</option>
-                            <option value="12">Nine</option>
-                            <option value="13">Ten</option>
-                            <option value="14">all inactive</option>
-                            <option value="15">Pre Play</option>
+                            @foreach($classData as $data)
+                            <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
+                            @endforeach
                         </select>
                     </div>
+
                 </div>
                 <!-- Group -->
                 <div class="col-span-1">
@@ -46,15 +38,12 @@ Exam Marks
                         <label for="class" class="text-gray-700">Group:</label>
                         <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
-                            <option value="1">Bangla Version</option>
-                            <option value="2">English Version</option>
-                            <option value="3">Science</option>
-                            <option value="4">Business Study</option>
-                            <option value="5">N/A</option>
+                            @foreach($groupData as $data)
+                            <option value="{{ $data->group_name }}">{{ $data->group_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -67,21 +56,9 @@ Exam Marks
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
-                            <option value="1">N/A</option>
-                            <option value="2">Morning</option>
-                            <option value="3">Day</option>
-                            <option value="4">Lotus Play Mor</option>
-                            <option value="5">Lotus Play Day</option>
-                            <option value="6">Rose Play Day</option>
-                            <option value="7">Rose Play Mor</option>
-                            <option value="8">Maloti Mor Nur</option>
-                            <option value="9">Sunflower Day Nur</option>
-                            <option value="10">Lily KG Mor</option>
-                            <option value="11">Bela Day KG</option>
-                            <option value="12">Bokul One</option>
-                            <option value="13">Day Daffodil</option>
-                            <option value="14"> Day Crimson</option>
-                            <option value="15">Morning Crimson</option>
+                            @foreach($sectionData as $data)
+                            <option value="{{ $data->section_name }}">{{ $data->section_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -94,6 +71,9 @@ Exam Marks
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
+                            @foreach($shiftData as $data)
+                            <option value="{{ $data->shift_name }}">{{ $data->shift_name }}</option>
+                            @endforeach
 
                         </select>
                     </div>
@@ -107,6 +87,9 @@ Exam Marks
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
+                            @foreach($subjectData as $data)
+                            <option value="{{ $data->subject_name }}">{{ $data->subject_name }}</option>
+                            @endforeach
 
                         </select>
                     </div>
@@ -120,13 +103,9 @@ Exam Marks
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
-                            <option value="1">1st Semester </option>
-                            <option value="2">2nd Semester </option>
-                            <option value="3">3rd Semester</option>
-                            <option value="4">1st Midterm</option>
-                            <option value="5">2nd Midterm</option>
-                            <option value="6">3rd Midterm</option>
-
+                            @foreach($classExamData as $data)
+                            <option value="{{ $data->class_exam_name }}">{{ $data->class_exam_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -139,9 +118,9 @@ Exam Marks
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                             <option disabled selected value="">Select</option>
-                            <option value="2023">2023</option>
-                            <option value="2024" selected>2024</option>
-                            <option value="2025">2025</option>
+                            @foreach($academicYearData as $data)
+                            <option value="{{ $data->academic_year_name }}">{{ $data->academic_year_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -158,8 +137,7 @@ Exam Marks
                     <div class="">
                         <input type="file" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                         <br>
-                        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-3"
-                            onclick="exam_marks_input_search()">Upload</button>
+                        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-3" onclick="exam_marks_input_search()">Upload</button>
                     </div>
                 </div>
 
