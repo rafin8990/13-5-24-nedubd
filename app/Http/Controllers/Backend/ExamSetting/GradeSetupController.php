@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\CommonSetting;
+namespace App\Http\Controllers\Backend\ExamSetting;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddAcademicYear;

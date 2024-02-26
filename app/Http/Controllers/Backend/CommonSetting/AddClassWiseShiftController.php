@@ -10,16 +10,38 @@ use Illuminate\Http\Request;
 
 class AddClassWiseShiftController extends Controller
 {
-    public function add_class_wise_shift()
+    public function add_class_wise_shift(Request $request)
     {
-
         $school_code = '100';
+        // $classWiseShiftData = AddClassWiseShift::where('action', 'approved')->where('school_code', $school_code)->get();
 
-        $classWiseShiftData = AddClassWiseShift::where('action', 'approved')->where('school_code', $school_code)->get();
+        if ($request->has('class_name')) {
+            // If a class name is provided, filter the $classWiseShiftData based on that class name
+            $selectedClassName = $request->input('class_name');
+            // dd($selectedClassName);
+            $classWiseShiftData = AddClassWiseShift::where('action', 'approved')
+                ->where('school_code', $school_code)
+                ->where('class_name', $selectedClassName)
+                ->get();
+        } elseif ($request->session()->get('class_name')) {
+            $selectedClassName = $request->session()->get('class_name');
+            // dd($selectedClassName);
+            $classWiseShiftData = AddClassWiseShift::where('action', 'approved')
+                ->where('school_code', $school_code)
+                ->where('class_name', $selectedClassName)
+                ->get();
+        } else {
+            // If no class name is provided, retrieve all class-wise shift data
+            $selectedClassName = null;
+            $classWiseShiftData = AddClassWiseShift::where('action', 'approved')
+                ->where('school_code', $school_code)
+                ->get();
+        }
+
         $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
         $shiftData = AddShift::where('action', 'approved')->where('school_code', $school_code)->get();
 
-        return view('Backend/BasicInfo/CommonSetting/addClassWiseShift', compact('classData', 'shiftData', 'classWiseShiftData'));
+        return view('Backend/BasicInfo/CommonSetting/addClassWiseShift', compact('classData', 'shiftData', 'classWiseShiftData', 'selectedClassName'));
     }
 
     public function update_add_class_wise_shift(Request $request)
@@ -33,8 +55,19 @@ class AddClassWiseShiftController extends Controller
 
         $school_code = '100';
 
+        // Check if the combination of class name and shift name already exists for this school
+        $existingRecord = AddClassWiseShift::where('school_code', $school_code)
+            ->where('class_name', $request->class_name)
+            ->where('shift_name', $request->shift_name)
+            ->exists();
+
+        // If a record with the same combination already exists, return with an error message
+        if ($existingRecord) {
+            return redirect()->back()->with('error', 'A record with the same class name and shift name already exists for this school.');
+        }
+
         // Save class name to database
-        $classWiseShift = new AddClassWiseshift();
+        $classWiseShift = new AddClassWiseShift();
         $classWiseShift->class_name = $request->class_name;
         $classWiseShift->shift_name = $request->shift_name;
         $classWiseShift->status = 'active';
@@ -43,7 +76,8 @@ class AddClassWiseShiftController extends Controller
         // dd($classWiseShift);
         $classWiseShift->save();
 
-        return redirect()->back()->with('success', 'class wise shift added successfully!');
+        // return redirect()->back()->with('success', 'class wise shift added successfully!');
+        return redirect()->route('add.class.wise.shift')->with('success', 'Class wise shift added successfully!')->with('class_name', $request->class_name);
     }
 
     public function delete_add_class_wise_shift($id)
