@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddAcademicSession;
+use App\Models\AddAcademicYear;
 use App\Models\AddClass;
 use App\Models\AddGroup;
 use App\Models\AddSection;
@@ -22,7 +23,8 @@ class StudentController extends Controller
         $groups=AddGroup::all();
         $shifts=AddShift::all();
         $sessions=AddAcademicSession::all();
-        return view("Backend.Student.addStudent",compact("studentId","classes","sections","groups", "shifts","sessions"));
+        $years=AddAcademicYear::all();
+        return view("Backend.Student.addStudent",compact("studentId","classes","sections","groups", "shifts","sessions","years"));
     }
 
     public function addStudent(Request $request)
