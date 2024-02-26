@@ -150,8 +150,10 @@ Add Student
                     <select id="countries" name="religious"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Religious</option>
-                        <option >x</option>
-                        <option >y</option>
+                        <option >Islam</option>
+                        <option >Hindu</option>
+                        <option >Buddhism</option>
+                        <option >Christian</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -159,9 +161,9 @@ Add Student
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nationality</label>
                     <select id="countries" name="nationality"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose Nationality</option>
-                        <option >Bangladesh</option>
-                        <option >y</option>
+                        <option selected>Bangladesh</option>
+                       
+                       
                     </select>
                 </div>
                 <div class="mb-6">
@@ -170,8 +172,14 @@ Add Student
                     <select id="countries" name="blood_group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Blood_group</option>
-                        <option >x</option>
-                        <option >y</option>
+                        <option >A+</option>
+                        <option >A-</option>
+                        <option >O+</option>
+                        <option >O-</option>
+                        <option >B+</option>
+                        <option >B-</option>
+                        <option >AB+</option>
+                        <option >AB-</option>
                     </select>
                 </div>
                 <div class="mb-6">
@@ -180,8 +188,9 @@ Add Student
                     <select id="countries" name="session"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Session</option>
-                        <option >x</option>
-                        <option >y</option>
+                        @foreach($sessions as $session)
+                        <option >{{$session->academic_session_name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="mb-6">
