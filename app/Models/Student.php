@@ -18,7 +18,7 @@ class Student extends Model
         'group',
         'section',
         'shift',
-        'category',
+     
         'year',
         'gender',
         'religious',
@@ -62,15 +62,6 @@ class Student extends Model
         'action',
         'role',
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($student) {
-            $student->student_id = 'STU' . date('Y') . str_pad(static::count() + 1, 4, '0', STR_PAD_LEFT);
-        });
-    }
 
     protected $table="students";
 }

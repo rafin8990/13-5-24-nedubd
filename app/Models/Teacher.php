@@ -10,11 +10,13 @@ class Teacher extends Model
     use HasFactory;
 
     protected $fillable = [
+        'teacher_id',
         'name',
         'mobile',
         'image',
         'emg_mobile',
         'email',
+        'password',
         'fbid',
         'department',
         'designation',
@@ -45,14 +47,14 @@ class Teacher extends Model
         'parmanent_zip_code',
         'parmanent_district',
         'parmanent_police_station',
-        'SSC',
+        'ssc',
         'school_name',
         'ssc_department',
         'ssc_roll',
         'ssc_reg',
         'ssc_gpa',
         'ssc_year',
-        'HSC',
+        'hsc',
         'college_name',
         'college_department',
         'college_roll',
@@ -80,18 +82,6 @@ class Teacher extends Model
         'role',
         'action',
     ];
-
-    protected $casts = [
-        'action' => 'string', 
-    ];
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($teacher) {
-            $teacher->teacher_id = 'TEACHER' . date('Y') . str_pad(static::count() + 1, 4, '0', STR_PAD_LEFT);
-        });
-    }
 
     protected $table="teachers";
 }

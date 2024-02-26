@@ -21,13 +21,13 @@ Add Teacher
             <h3>Basic Information</h3>
         </div>
         <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4">
-            <!-- <div class="hidden">
+            <div class="">
                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teacher's
                         Id</label>
-                    <input type="text" value="1" name="teacher_id" id=""
+                    <input type="text" readOnly value="{{$teacherId}}" name=" " id=""
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Teacher's id"  />
-                </div> -->
+                </div>
             <div>
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                 <input type="text" name="name" id="name"
@@ -89,7 +89,7 @@ Add Teacher
             <div>
                 <label for="department" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Department
                 </label>
-                <select id="department" name="department"
+                <select id="department" type="text" name="department"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a department</option>
                     <option>x</option>
@@ -101,7 +101,7 @@ Add Teacher
                 <label for="designation"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Designation
                 </label>
-                <select id="designation" name="designation"
+                <select id="designation" type="text" name="designation"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a designation</option>
                     <option>x</option>
@@ -112,7 +112,7 @@ Add Teacher
             <div>
                 <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender
                 </label>
-                <select id="gender" name="gender"
+                <select id="gender" type="text" name="gender"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a gender</option>
                     <option>male</option>
@@ -170,10 +170,10 @@ Add Teacher
                     placeholder="Enter The Father Name" />
             </div>
             <div>
-                <label for="father_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father's
+                <label for="father_mobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father's
                     Mobile
                 </label>
-                <input type="text" name="father_mobile" id="father_name"
+                <input type="text" name="father_mobile" id="father_mobile"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter The Mobile No" />
             </div>
@@ -228,7 +228,7 @@ Add Teacher
             <div>
                 <label for="blood" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood Group
                 </label>
-                <select id="blood" name="blood"
+                <select id="blood" type="text" name="blood"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose blood</option>
                     <option>A+</option>
@@ -265,7 +265,7 @@ Add Teacher
             <div>
                 <label for="religious" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Religious
                 </label>
-                <select id="religious" name="religious"
+                <select id="religious" type="text" name="religious"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose Religious</option>
                     <option>Islam</option>
@@ -410,7 +410,7 @@ Add Teacher
             <div>
                 <label for="ssc" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SSC
                 </label>
-                <select id="ssc" name="ssc"
+                <select type="text" id="ssc" name="ssc"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>SSC</option>
 
@@ -472,7 +472,7 @@ Add Teacher
 
                 <label for="hsc" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">HSC
                 </label>
-                <select id="hsc" name="hsc" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select type="text" id="hsc" name="hsc" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>HSC</option>
 
                 </select>
@@ -532,7 +532,7 @@ Add Teacher
             <div>
                 <label for="honors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Honors
                 </label>
-                <select id="honors" name="honors"
+                <select type="text" id="honors" name="honors"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Honors</option>
 
@@ -629,7 +629,7 @@ Add Teacher
                 <label for="qua_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name
 
                 </label>
-                <input type="text" id="qua_name" name="qua_name"
+                <input type="text" id="qua_name" name="qua_2_name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter Name" />
             </div>
@@ -709,8 +709,7 @@ Add Teacher
         </div>
 
 
-        <button type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        <button type="submit" class="text-white bg-blue-700  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
     </form>
 
 </div>
