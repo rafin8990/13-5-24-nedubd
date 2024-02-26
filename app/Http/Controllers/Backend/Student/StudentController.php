@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Backend\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\AddAcademicSession;
+use App\Models\AddAcademicYear;
+use App\Models\AddClass;
+use App\Models\AddGroup;
+use App\Models\AddSection;
+use App\Models\AddShift;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +17,14 @@ class StudentController extends Controller
 {
     public function AddStudentForm()
     {
-        return view("Backend.Student.addStudent");
+        $studentId= $this->generateStudentId();
+        $classes=AddClass::all();
+        $sections=AddSection::all();
+        $groups=AddGroup::all();
+        $shifts=AddShift::all();
+        $sessions=AddAcademicSession::all();
+        $years=AddAcademicYear::all();
+        return view("Backend.Student.addStudent",compact("studentId","classes","sections","groups", "shifts","sessions","years"));
     }
 
     public function addStudent(Request $request)
@@ -151,5 +164,18 @@ class StudentController extends Controller
 
 
 
+    }
+
+    private function generateStudentId()
+    {
+        $lastStudent = Student::latest()->first();
+        if ($lastStudent) {
+            $lastId = intval(substr($lastStudent->student_id, -4));
+            $newId = $lastId + 1;
+        } else {
+            $newId = 1;
+        }
+
+        return 'STU' . date('Y') . str_pad($newId, 4, '0', STR_PAD_LEFT);
     }
 }
