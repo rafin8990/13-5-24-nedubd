@@ -13,11 +13,16 @@ class SetShortCode extends Model
 
     protected $fillable = [
         'class_name',
-        'exam_name',
-        'exam_year',
+        'class_exam_name',
+        'academic_year_name',
         'short_code',
         'status',
         'action',
         'school_code',
     ];
+
+    protected $casts = [
+        'short_code' => 'json', // Assuming 'data' field is JSON
+    ];
+
 }
