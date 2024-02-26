@@ -3,7 +3,11 @@
 Excel Import Student Exam data
 @endsection
 @section('Dashboard')
+
+<!-- Message -->
 @include('/Message/message')
+
+
 <div>
     <h1 class="text-4xl font font-bold my-5 mx-5 text-accent">Excel Import Student Exam data</h1>
 </div>
@@ -12,7 +16,15 @@ Excel Import Student Exam data
 <div class=" mb-3 card">
     <div class="card-body min-h-500 border border-primary w-4/6 mx-auto p-5">
         <div class="grid grid-cols-3 gap-10 w-5/6 mx-auto">
-            <div>
+            <div class="mr-5">
+                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled selected>Choose a class</option>
+                    @foreach($classData as $data)
+                    <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <!-- <div>
                 <label for="class" class="text-gray-700 text-xl">Class:</label>
                 <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
                     <option disabled selected value="">Select</option>
@@ -32,7 +44,7 @@ Excel Import Student Exam data
                     <option value="14">all inactive</option>
                     <option value="15">Pre Play</option>
                 </select>
-            </div>
+            </div> -->
 
             <div>
                 <label for="class" class="text-gray-700 text-xl">Group:</label>

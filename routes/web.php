@@ -26,7 +26,6 @@ use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
-use App\Models\AddGradePoint;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,12 +71,14 @@ Route::prefix('dashboard')->group(function () {
 
 
 
-    // exam-Result 
+    // exam-Result -------------------- Mostafizur ------------------
     Route::get('/exam_marks', [ExamResultController::class, 'exam_marks']);
     Route::get('/exam_process', [ExamResultController::class, 'exam_process']);
     Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']);
     Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']);
     Route::get('/exam_sms', [ExamResultController::class, 'exam_sms']);
+
+
 
 
 

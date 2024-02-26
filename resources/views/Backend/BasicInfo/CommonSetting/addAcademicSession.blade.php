@@ -4,6 +4,7 @@ Add Session
 @endsection
 @section('Dashboard')
 
+<!-- Message -->
 @include('Message.message')
 
 <div>
