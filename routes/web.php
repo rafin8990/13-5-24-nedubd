@@ -229,7 +229,7 @@ Route::prefix('dashboard')->group(function () {
     // Set Short Code
     Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
     Route::put('/setShortCode', [SetShortCodeController::class, 'update_set_short_code'])->name('update.set.short.code');
-    Route::delete('/delete_set_short_code/{id}', [SetShortCodeController::class, 'delete_set_short_code'])->name('delete.set.short.code');
+
 
     // Exam Setting End .............................................................................................................
 

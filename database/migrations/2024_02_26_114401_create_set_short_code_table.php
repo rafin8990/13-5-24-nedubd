@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('set_short_code', function (Blueprint $table) {
             $table->id();
             $table->string('class_name');
-            $table->string('exam_name');
-            $table->string('exam_year');
-            $table->string('short_code');
+            $table->string('class_exam_name');
+            $table->string('academic_year_name');
+            $table->json('short_code')->nullable();
             $table->enum('status', ['active', 'in active'])->default('active');
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->default('pending');
             $table->string('school_code');
