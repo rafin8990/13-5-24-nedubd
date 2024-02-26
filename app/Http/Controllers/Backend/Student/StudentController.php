@@ -38,7 +38,7 @@ class StudentController extends Controller
             'group' => 'required|string',
             'section' => 'required|string',
             'shift' => 'required|string',
-            'category' => 'required|string',
+            
             'year' => 'required|string',
             'gender' => 'required|string',
             'religious' => 'required|string',
@@ -108,7 +108,6 @@ class StudentController extends Controller
             $student->group = $request->input('group');
             $student->section = $request->input('section');
             $student->shift = $request->input('shift');
-            $student->category = $request->input('category');
             $student->year = $request->input('year');
             $student->gender = $request->input('gender');
             $student->religious = $request->input('religious');
