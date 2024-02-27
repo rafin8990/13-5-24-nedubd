@@ -49,6 +49,7 @@ class NEDUBDController extends Controller
             $Admin->email = $request->input('email');
             $Admin->password = Hash::make($request->input('password'));
             $Admin->role = $request->input('role');
+            $Admin->phone_number = $request->input('phone_number');
             $Admin->save();
             return redirect('/dashboard/addAdmin')->with('success', 'Admin Sucessfully  created.');
 
