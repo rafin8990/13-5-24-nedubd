@@ -19,7 +19,8 @@ return new class extends Migration {
             $table->string('address');
             $table->string('eiin');
             $table->string('website');
-
+            $table->string('school_code');
+            $table->timestamps();
             });
     }
 
