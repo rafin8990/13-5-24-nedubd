@@ -239,9 +239,11 @@ Route::prefix('dashboard')->group(function () {
     // Route::get('/addShortCode', function () {
     //     return view('Backend/BasicInfo/ExamSetting/addShortCode');
     // });
+
     Route::get('/setExamMarks', function () {
         return view('Backend/BasicInfo/ExamSetting/classSetExamMarks');
     });
+    
     // Route::get('/setShortCode', function () {
     //     return view('Backend/BasicInfo/ExamSetting/getShortCode');
     // });

@@ -40,7 +40,7 @@ Suject Setup
                 </select>
             </div>
             <div>
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
+                <button onclick="submitForm()"  type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
             </div>
 
         </div>
@@ -49,8 +49,10 @@ Suject Setup
                 <div class="grid gap-6 mb-6 py-5 md:grid-cols-3 items-center ps-4 border border-gray-200 rounded dark:border-gray-700 mx-20">
                     @foreach($subjectData as $data)
                     <div>
-                        <input id="subject_{{ $data->subject_name }}" type="checkbox" value="{{ $data->subject_name }}" name="subject_name" class="shift-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="subject_{{ $data->subject_name }}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->subject_name }}</label>
+                        <!-- <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name[]" class="shift-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
+                        <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+                        <label for="subject_name" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->subject_name }}</label>
                     </div>
                     @endforeach
                 </div>
@@ -70,6 +72,38 @@ Suject Setup
             });
         });
     </script>
+  <script>
+    function submitForm() {
+        // Get the selected values
+        var className = document.getElementById('class_name').value;
+        var groupName = document.getElementById('group_name').value;
+        var subjectNames = [];
+
+        var selectedSubjects = document.querySelectorAll('input[name="subject_name[]"]:checked');
+        selectedSubjects.forEach(function(subject) {
+            subjectNames.push(subject.value);
+        });
+
+        // Send data via AJAX
+        var formData = {
+            class_name: className,
+            group_name: groupName,
+            subject_names: subjectNames
+        };
+
+        // Send an AJAX request
+        axios.post('{{ route("add.subject.setup") }}', formData)
+            .then(function(response) {
+                // Handle success response
+                console.log(response.data);
+            })
+            .catch(function(error) {
+                // Handle error
+                console.error(error);
+            });
+    }
+</script>
+
 
 
     <div class="flex justify-center text-lg font-bold">
