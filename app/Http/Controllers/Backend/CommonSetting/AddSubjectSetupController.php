@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend\CommonSetting;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddClass;
-use App\Models\AddClassWiseSection;
 use App\Models\AddClassWiseSubject;
 use App\Models\AddGroup;
 use App\Models\AddSubject;
@@ -15,18 +14,41 @@ class AddSubjectSetupController extends Controller
 {
     public function add_subject_setup(Request $request)
     {
-        
+
         $school_code = '100';
-        if ($request) {
-           dd($request);
+        $selectedClassName = null;
+        $selectedGroupName = null;
+
+        if ($request->has('class_name')) {
+            $selectedClassName = $request->input('class_name');
+            $selectedGroupName = $request->input('group_name');
+            // dd($selectedGroupName);
+            $classWiseSubjectData = AddClassWiseSubject::where('action', 'approved')
+                ->where('school_code', $school_code)
+                ->where('class_name', $selectedClassName)
+                ->where('group_name', $selectedGroupName)
+                ->get();
+        } elseif ($request->session()->get('class_name')) {
+            $selectedClassName = $request->session()->get('class_name');
+            $selectedGroupName = $request->session()->get('group_name');
+            // dd($selectedGroupName, $selectedClassName);
+            $classWiseSubjectData = AddClassWiseSubject::where('action', 'approved')
+                ->where('school_code', $school_code)
+                ->where('class_name', $selectedClassName)
+                ->where('group_name', $selectedGroupName)
+                ->get();
+            // dd($classWiseSubjectData);
+        } else {
+            $classWiseSubjectData = null;
+            // $classWiseSubjectData = AddClassWiseSubject::where('action', 'approved')->where('school_code', $school_code)->get();
         }
 
-        $classWiseShiftData = SubjectSetup::where('action', 'approved')->where('school_code', $school_code)->get();
+
         $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
         $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
         $subjectData = AddSubject::where('action', 'approved')->where('school_code', $school_code)->get();
 
-        return view('Backend/BasicInfo/CommonSetting/addSubjectSetup', compact('classWiseShiftData', 'classData', 'groupData', 'subjectData'));
+        return view('Backend/BasicInfo/CommonSetting/addSubjectSetup', compact('classWiseSubjectData', 'selectedClassName', 'selectedGroupName', 'classData', 'groupData', 'subjectData'));
     }
 
     public function update_add_subject_setup(Request $request)
@@ -36,8 +58,6 @@ class AddSubjectSetupController extends Controller
         $request->validate([
             'class_name' => 'required|string',
             'group_name' => 'required|string',
-            'subject_name' => 'required|array',
-
         ]);
 
         $school_code = '100';
@@ -48,6 +68,8 @@ class AddSubjectSetupController extends Controller
             ->where('group_name', $request->group_name)
             ->get();
 
+
+
         $generateId = AddClassWiseSubject::count() + 1;
         $generatedId = sprintf('%02d', $generateId);
 
@@ -56,14 +78,25 @@ class AddSubjectSetupController extends Controller
         if ($existingData->isNotEmpty()) {
             // Update existing data
             $existingSetShortCode = $existingData->first(); // Assuming you only have one existing data, you can adjust if needed
-
+           
             // Update the short code
-            $existingSetShortCode->subject_name = $request->subject_name;
+            if ($request->subject_name) {
+                // dd($existingSetShortCode);
+                // $existingSetShortCode->subject_name = $request->subject_name;
+                $newData = $request->subject_name;
+                $mergedSubjectNames = array_merge($existingSetShortCode->subject_name, $newData);
+                $existingSetShortCode->subject_name = $mergedSubjectNames;
+                // dd($existingSetShortCode);
+
+                $existingSetShortCode->save();
+            } else {
+                $existingSetShortCode->save();
+            }
 
             // dd($existingSetShortCode);
 
             // Save the changes
-            $existingSetShortCode->save();
+
         } else {
             $addClassSubject = new AddClassWiseSubject();
             $addClassSubject->class_name = $request->class_name;
@@ -81,16 +114,19 @@ class AddSubjectSetupController extends Controller
             $addClassSubject->save();
         }
 
-        // Redirect back with a success message
-        return redirect()->back()->with('success', 'group added successfully!');
 
-        return redirect()->back()->with('success', 'subject setup added successfully!');
+        // return redirect()->back()->with('success', 'subject setup added successfully!');
+        return redirect()->route('add.subject.setup')->with([
+            'success' => 'Subject setup added successfully!',
+            'class_name' => $request->class_name,
+            'group_name' => $request->group_name
+        ]);
     }
+    // public function new_add_subject_setup(Request $request)
+    // {
+    //     dd($request);
+       
+    // }
 
-    public function delete_add_subject_setup($id)
-    {
-        $subjectSetup = SubjectSetup::findOrFail($id);
-        $subjectSetup->delete();
-        return redirect()->back()->with('success', 'subject setup  deleted successfully!');
-    }
+   
 }
