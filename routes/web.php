@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\CommonSetting\AddSubjectSetupController;
 use App\Http\Controllers\Backend\CommonSetting\InstituteInfoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
+use App\Http\Controllers\Backend\NEDUBD\SchoolAdminController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
@@ -258,4 +259,12 @@ Route::prefix('dashboard')->group(function () {
 
     Route::get('/add-teacher', [TeacherController::class, 'addTeacher']);
     Route::post('/create-teacher', [TeacherController::class, 'createTeacher'])->name('teacher.create');
+
+
+
+
+
+    // NEDUBD Add School Admin 
+    Route::get('/addSchoolAdmin', [SchoolAdminController::class,"addSchoolAdmin"]);
+    Route::post('/createSchoolAdmin', [SchoolAdminController::class,"createSchoolAdmin"])->name('schoolAdmin.create');
 });
