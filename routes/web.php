@@ -29,6 +29,7 @@ use App\Http\Controllers\Backend\ExamResult\ExamResultController;
 use App\Http\Controllers\Backend\ExamSetting\AddGradePointController;
 use App\Http\Controllers\Backend\ExamSetting\AddShortCodeController;
 use App\Http\Controllers\Backend\ExamSetting\GradeSetupController;
+use App\Http\Controllers\Backend\ExamSetting\SetExamMarksController;
 use App\Http\Controllers\Backend\ExamSetting\SetShortCodeController;
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
@@ -238,8 +239,12 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/setShortCode', [SetShortCodeController::class, 'update_set_short_code'])->name('update.set.short.code');
 
 
+    // set exam marks
+    Route::get('/setExamMarks', [SetExamMarksController::class, 'set_exam_marks'])->name('set.exam.marks');
+    Route::put('/setExamMarks', [SetExamMarksController::class, 'update_exam_marks'])->name('update.set.exam.marks');
+
     //forth subject
-    Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject']);
+    Route::get('/setForthSubject', [FourthSubjectController::class, 'fourthSubject']);
 
 
 
@@ -253,10 +258,10 @@ Route::prefix('dashboard')->group(function () {
     //     return view('Backend/BasicInfo/ExamSetting/addShortCode');
     // });
 
-    Route::get('/setExamMarks', function () {
-        return view('Backend/BasicInfo/ExamSetting/classSetExamMarks');
-    });
-    
+    // Route::get('/setExamMarks', function () {
+    //     return view('Backend/BasicInfo/ExamSetting/classSetExamMarks');
+    // });
+
     // Route::get('/setShortCode', function () {
     //     return view('Backend/BasicInfo/ExamSetting/getShortCode');
     // });
@@ -276,6 +281,6 @@ Route::prefix('dashboard')->group(function () {
 
 
     // NEDUBD Add School Admin 
-    Route::get('/addSchoolAdmin', [SchoolAdminController::class,"addSchoolAdmin"]);
-    Route::post('/createSchoolAdmin', [SchoolAdminController::class,"createSchoolAdmin"])->name('schoolAdmin.create');
+    Route::get('/addSchoolAdmin', [SchoolAdminController::class, "addSchoolAdmin"]);
+    Route::post('/createSchoolAdmin', [SchoolAdminController::class, "createSchoolAdmin"])->name('schoolAdmin.create');
 });
