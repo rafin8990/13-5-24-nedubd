@@ -204,7 +204,8 @@ Route::prefix('dashboard')->group(function () {
     // Add Subject Setup
     Route::get('/addSubjectSetup', [AddSubjectSetupController::class, 'add_subject_setup'])->name('add.subject.setup');
     Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'update_add_subject_setup'])->name('update.subject.setup');
-    Route::delete('/delete_subject_setup/{id}', [AddSubjectSetupController::class, 'delete_add_subject_setup'])->name('delete.subject.setup');
+    // Route::post('/newSubjectSetup', [AddSubjectSetupController::class, 'new_add_subject_setup'])->name('new.subject.setup');
+    // Route::delete('/delete_subject_setup/{id}', [AddSubjectSetupController::class, 'delete_add_subject_setup'])->name('delete.subject.setup');
 
     // Common Setting End .............................................................................................................
 
@@ -230,7 +231,7 @@ Route::prefix('dashboard')->group(function () {
     // Set Short Code
     Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
     Route::put('/setShortCode', [SetShortCodeController::class, 'update_set_short_code'])->name('update.set.short.code');
-    Route::delete('/delete_set_short_code/{id}', [SetShortCodeController::class, 'delete_set_short_code'])->name('delete.set.short.code');
+
 
     // Exam Setting End .............................................................................................................
 
@@ -240,9 +241,11 @@ Route::prefix('dashboard')->group(function () {
     // Route::get('/addShortCode', function () {
     //     return view('Backend/BasicInfo/ExamSetting/addShortCode');
     // });
+
     Route::get('/setExamMarks', function () {
         return view('Backend/BasicInfo/ExamSetting/classSetExamMarks');
     });
+    
     // Route::get('/setShortCode', function () {
     //     return view('Backend/BasicInfo/ExamSetting/getShortCode');
     // });

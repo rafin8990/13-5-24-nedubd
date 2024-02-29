@@ -5,24 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SetShortCode extends Model
+class AddClassWiseSubject extends Model
 {
     use HasFactory;
 
-    protected $table = 'set_short_code';
+    protected $table = 'add_class_wise_subject';
 
     protected $fillable = [
         'class_name',
-        'class_exam_name',
-        'academic_year_name',
-        'short_code',
+        'subject_name',
+        'subject_type',
+        'group_name',
+        'subject_serial',
         'status',
         'action',
         'school_code',
     ];
 
     protected $casts = [
-        'short_code' => 'json', // Assuming 'data' field is JSON
+        'subject_name' => 'json',
+        'subject_type' => 'json',
     ];
-
 }

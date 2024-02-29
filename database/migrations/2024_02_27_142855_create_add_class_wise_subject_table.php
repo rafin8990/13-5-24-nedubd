@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('set_short_code', function (Blueprint $table) {
+        Schema::create('add_class_wise_subject', function (Blueprint $table) {
             $table->id();
             $table->string('class_name');
-            $table->string('class_exam_name');
-            $table->string('academic_year_name');
-            $table->json('short_code')->nullable();
+            $table->json('subject_name')->nullable();
+            $table->json('subject_type')->nullable();
+            $table->string('group_name');
+            $table->string('subject_serial');
             $table->enum('status', ['active', 'in active'])->default('active');
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->default('pending');
             $table->string('school_code');
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('set_short_code');
+        Schema::dropIfExists('add_class_wise_subject');
     }
 };
