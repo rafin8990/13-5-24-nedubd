@@ -177,4 +177,18 @@ class StudentController extends Controller
 
         return 'STU' . date('Y') . str_pad($newId, 4, '0', STR_PAD_LEFT);
     }
+
+
+    public function updateStudentBasicInfo(){
+        return view('Backend.Student.updateStudentBasicInfo');
+    }
+    public function studentProfileUpdate(){
+        return view('Backend.Student.studentProfileUpdate');
+    }
+    public function uploadExelFile(){
+        return view('Backend.Student.uploadExxelFile');
+    }
+    public function uploadStudentPhoto(){
+        return view('Backend.Student.uploadPhoto');
+    }
 }
