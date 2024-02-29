@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\CommonSetting\AddSubjectSetupController;
 
 use App\Http\Controllers\Backend\CommonSetting\InstituteInfoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Backend\ExamSetting\FourthSubjectController;
 use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
 use App\Http\Controllers\Backend\NEDUBD\SchoolAdminController;
 use App\Http\Controllers\Backend\Student\StudentController;
@@ -67,6 +68,10 @@ Route::prefix('dashboard')->group(function () {
     // student module
     Route::post('/create-student', [StudentController::class, 'addStudent'])->name('student.add');
     Route::get('/add-student', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
+    Route::get('/updateStudentBasicInfo', [StudentController::class, 'updateStudentBasicInfo'])->name('updateStudentBasicInfo');
+    Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
+    Route::get('/uploadExelFile', [StudentController::class, 'uploadExelFile'])->name('uploadExelFile');
+    Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
 
 
 
@@ -219,7 +224,7 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/delete_grade_point/{id}', [AddGradePointController::class, 'delete_add_grade_point'])->name('delete.grade.point');
 
     // Grade Setup
-    Route::get('/setGradeSetup', [GradeSetupController::class, 'set_grade_setup'])->name('set.grade.setup');
+    Route::get('/setGradeSetup', [GradeSetupController::class, 'grade_setup'])->name('set.grade.setup');
     Route::put('/setGradeSetup', [GradeSetupController::class, 'update_set_grade_setup'])->name('update.set.grade.setup');
     Route::delete('/delete_set_grade_setup/{id}', [GradeSetupController::class, 'delete_set_grade_setup'])->name('delete.set.grade.setup');
 
@@ -231,6 +236,12 @@ Route::prefix('dashboard')->group(function () {
     // Set Short Code
     Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
     Route::put('/setShortCode', [SetShortCodeController::class, 'update_set_short_code'])->name('update.set.short.code');
+
+
+    //forth subject
+    Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject']);
+
+
 
 
     // Exam Setting End .............................................................................................................
