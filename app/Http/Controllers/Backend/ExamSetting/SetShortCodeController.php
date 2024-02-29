@@ -71,6 +71,7 @@ class SetShortCodeController extends Controller
             ->where('class_exam_name', $request->class_exam_name)
             ->where('academic_year_name', $request->academic_year_name)
             ->get();
+            
         if ($existingData->isNotEmpty()) {
             // Update existing data
             $existingSetShortCode = $existingData->first(); // Assuming you only have one existing data, you can adjust if needed

@@ -22,7 +22,14 @@ Suject Setup
             </div>
             <div class="mr-5">
                 <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <!-- <option disabled selected>Choose a class</option> -->
+                    @if($selectedClassName=== null)
                     <option disabled selected>Choose a class</option>
+                    @elseif($selectedClassName )
+                    <option value="{{ $selectedClassName }}" selected>{{$selectedClassName}}</option>
+                    @endif
+
+
                     @foreach($classData as $data)
                     <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
                     @endforeach
@@ -33,26 +40,34 @@ Suject Setup
             </div>
             <div class="mr-5">
                 <select id="group_name" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option disabled selected>Choose a Group</option>
+                    @if($selectedGroupName=== null)
+                    <option disabled selected>Choose a class</option>
+                    @elseif($selectedGroupName )
+                    <option value="{{ $selectedGroupName }}" selected>{{$selectedGroupName}}</option>
+                    @endif
                     @foreach($groupData as $data)
                     <option value="{{ $data->group_name }}">{{ $data->group_name }}</option>
                     @endforeach
                 </select>
             </div>
             <div>
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
+                <button onclick="submitForm()" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
             </div>
 
         </div>
         <div>
             <div>
                 <div class="grid gap-6 mb-6 py-5 md:grid-cols-3 items-center ps-4 border border-gray-200 rounded dark:border-gray-700 mx-20">
+
                     @foreach($subjectData as $data)
                     <div>
-                        <input id="subject_{{ $data->subject_name }}" type="checkbox" value="{{ $data->subject_name }}" name="subject_name" class="shift-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="subject_{{ $data->subject_name }}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->subject_name }}</label>
+                        <!-- <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name[]" class="shift-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
+                        <input id="subject_name" type="checkbox" value="{{ json_encode(['name' => $data->subject_name, 'type' => 'select']) }}" name="subject_name[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="subject_name" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->subject_name }}</label>
                     </div>
                     @endforeach
+
+
                 </div>
             </div>
         </div>
@@ -70,6 +85,39 @@ Suject Setup
             });
         });
     </script>
+    <script>
+        function submitForm() {
+            // Get the selected values
+            var className = document.getElementById('class_name').value;
+            var groupName = document.getElementById('group_name').value;
+            var subjectNames = [];
+
+            var selectedSubjects = document.querySelectorAll('input[name="subject_name[]"]:checked');
+            selectedSubjects.forEach(function(subject) {
+                subjectNames.push(subject.value);
+            });
+
+            // Send data via AJAX
+            var formData = {
+                class_name: className,
+                group_name: groupName,
+                subject_names: subjectNames
+            };
+
+            // Send an AJAX request
+            axios.post('{{ route("add.subject.setup") }}', formData)
+                .then(function(response) {
+                    // Handle success response
+                    console.log(response.data);
+                })
+                .catch(function(error) {
+                    // Handle error
+                    console.error(error);
+                });
+        }
+    </script>
+
+
 
 
     <div class="flex justify-center text-lg font-bold">
@@ -101,42 +149,55 @@ Suject Setup
             </tr>
         </thead>
         <tbody>
-            @foreach($classWiseShiftData as $key=> $data)
-            <tr class=" border-b capitalize text-lg">
-                <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
+            @if ($classWiseSubjectData !== null && $selectedClassName !== null && $selectedGroupName !== null)
+            @foreach ($classWiseSubjectData as $data)
+            @php
+            $subjectNames = ($data->subject_name);
+            @endphp
+            @if ($subjectNames !== null)
+            @foreach ($subjectNames as $key => $subject)
+            @php
+            $subjectData = json_decode($subject);
+            @endphp
+            <tr class="border-b capitalize text-lg">
+                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-blue-100">
                     {{$key + 1}}
                 </th>
                 <td class="px-6 py-4">
-                    {{$data->subject_name}}
+                    {{ $subjectData->name }}
                 </td>
                 <td class="px-6 py-4">
-                    subject type
+                    <select name="subject_type[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option class="capitalize" disabled selected>{{ $subjectData->type }}</option>
+                        <option value="select">Select</option>
+                        <option value="closable">Closable</option>
+                        <option value="uncountable">Uncountable</option>
+                    </select>
                 </td>
                 <td class="px-6 py-4">
-                    subject Serial
+                    {{$data->subject_serial}}
                 </td>
                 <td class="px-6 py-4">
-                    subject Marge
+                    0
                 </td>
-
-
-
-                <td class="px-6 py-4  text-xl flex justify-center">
-
+                <td class="px-6 py-4 text-xl flex justify-center">
                     <a href="" class="mr-2"><i class="fa fa-edit" style="color:green;"></i></a>
-
                     <form method="POST" action="{{ url('dashboard/delete_subject_setup', $data->id) }}">
                         @csrf
                         @method('DELETE')
-                        <button class="btn ">
+                        <button class="btn">
                             <a href=""><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
                         </button>
                     </form>
-
                 </td>
             </tr>
-
             @endforeach
+            @endif
+            @endforeach
+            @endif
+
+
+
 
         </tbody>
     </table>
@@ -155,5 +216,6 @@ Suject Setup
         </div>
 
     </div>
+
 </div>
 @endsection
