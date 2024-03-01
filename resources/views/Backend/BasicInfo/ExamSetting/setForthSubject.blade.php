@@ -15,25 +15,19 @@
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class :</label>
             </div>
             <div class="mr-2">
-                <select id="countries" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="classSelect" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a class</option>
-                    
-                    <option value="">Class One</option>
-                    <option value="">Class Two</option>
-                    <option value="">Class Three</option>
-                    <option value="">Class Four</option>
+                    @foreach($classes as $class)
+                    <option value="{{ $class->class_name }}">{{$class->class_name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="mr-2 md:flex justify-end">
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Group :</label>
             </div>
             <div class="mr-2">
-                <select id="countries" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a group</option>
-                    <option value="">One</option>
-                    <option value="">Two</option>
-                    <option value="">Three</option>
-                    <option value="">Four</option>
+                <select id="groupSelect" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="" >Choose a group</option>
                 </select>
             </div>
             <div class="mr-2 md:flex justify-end">
@@ -156,3 +150,21 @@
             }
         });
     </script>
+
+<script>
+    document.getElementById('classSelect').addEventListener('change', function() {
+        var className = this.value;
+        fetch('{{ route("get.groups.by.class") }}?class_name=' + className)
+            .then(response => response.json())
+            .then(groups => {
+                var groupSelect = document.getElementById('groupSelect');
+                groupSelect.innerHTML = '<option value="">Choose a group</option>';
+                groups.forEach(group => {
+                    var option = document.createElement('option');
+                    option.value = group.group_name;
+                    option.text = group.group_name;
+                    groupSelect.appendChild(option);
+                });
+            });
+    });
+</script>

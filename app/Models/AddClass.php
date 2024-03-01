@@ -17,4 +17,9 @@ class AddClass extends Model
         'action',
         'school_code',
     ];
+
+    public function groups()
+    {
+        return $this->hasMany(AddClassWiseGroup::class);
+    }
 }
