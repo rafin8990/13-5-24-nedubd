@@ -212,7 +212,10 @@ Exam Mark
         </div>
 
         <div class="ml-32 md:flex justify-center">
-            <h3>Total = <span class="border border-2"></span>
+            <h3>Total =
+                @if($shortCodeData !== null)
+                {{$shortCodeData->count()}}
+                @endif
             </h3>
         </div>
 

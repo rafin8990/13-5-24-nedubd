@@ -13,7 +13,7 @@ Suject Setup
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
 
-    <form id="dataForm" method="POST" action="{{ route('update.subject.setup') }}">
+    <form id="dataForm" method="POST" action="{{ route('store.subject.setup') }}">
         @csrf
         @method('PUT')
         <div class="grid md:grid-cols-6 gap-4 my-10 ">
@@ -211,7 +211,12 @@ Suject Setup
         </div>
 
         <div class="ml-32">
-            <h3>Total = <div class="border border-2"></div>
+            <h3>Total =
+                @if ($classWiseSubjectData !== null )
+                {{$classWiseSubjectData->count()}}
+                @endif
+                <div class="border border-2"></div>
+
             </h3>
         </div>
 
