@@ -18,4 +18,9 @@ class AddClassWiseGroup extends Model
         'action',
         'school_code',
     ];
+
+    public function class()
+    {
+        return $this->belongsTo(AddClass::class);
+    }
 }

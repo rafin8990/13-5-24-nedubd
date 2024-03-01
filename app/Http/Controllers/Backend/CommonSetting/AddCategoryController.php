@@ -18,7 +18,7 @@ class AddCategoryController extends Controller
     }
     
 
-    public function update_add_category(Request $request)
+    public function store_add_category(Request $request)
     {
 
         // dd($request);

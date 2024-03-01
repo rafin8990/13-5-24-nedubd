@@ -27,7 +27,7 @@ class SetExamMarksController extends Controller
         return view('Backend/BasicInfo/ExamSetting/classSetExamMarks', compact('classData', 'classExamData', 'academicYearData', 'searchClassData', 'searchClassExamName', 'searchAcademicYearName'));
     }
 
-    public function update_exam_marks(Request $request)
+    public function store_exam_marks(Request $request)
     {
         dd($request);
        

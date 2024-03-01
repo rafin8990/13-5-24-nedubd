@@ -17,7 +17,7 @@ class AddClassController extends Controller
         return view('Backend/BasicInfo/CommonSetting/addClass', compact('classData'));
     }
     
-    public function update_add_class(Request $request)
+    public function store_add_class(Request $request)
     {
         // Validate the incoming request data
         $request->validate([

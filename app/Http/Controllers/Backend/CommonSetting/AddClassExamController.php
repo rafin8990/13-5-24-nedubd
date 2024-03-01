@@ -17,7 +17,7 @@ class AddClassExamController extends Controller
         return view('Backend/BasicInfo/CommonSetting/addClassExam', compact('classExamData'));
     }
     
-    public function update_add_class_exam(Request $request)
+    public function store_add_class_exam(Request $request)
     {
         // Validate the incoming request data
         $request->validate([

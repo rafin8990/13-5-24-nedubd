@@ -18,7 +18,7 @@ class AddShiftController extends Controller
     }
     
 
-    public function update_add_shift(Request $request)
+    public function store_add_shift(Request $request)
     {
 
         // dd($request);

@@ -12,7 +12,7 @@ class InstituteInfoController extends Controller
     {
         return view('Backend/BasicInfo/CommonSetting/addInstituteInfo');
     }
-    public function update_add_institute_info(Request $request)
+    public function store_add_institute_info(Request $request)
     {
         dd($request);
         // Validate form data

@@ -17,4 +17,6 @@ class AddGroup extends Model
         'action',
         'school_code',
     ];
+
+    
 }

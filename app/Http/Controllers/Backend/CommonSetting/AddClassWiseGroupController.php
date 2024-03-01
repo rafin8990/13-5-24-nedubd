@@ -44,7 +44,7 @@ class AddClassWiseGroupController extends Controller
         return view('Backend/BasicInfo/CommonSetting/addClassWiseGroup', compact('classData', 'groupData', 'classWiseGroupData', 'selectedClassName'));
     }
 
-    public function update_add_class_wise_group(Request $request)
+    public function store_add_class_wise_group(Request $request)
     {
         // Validate form data
         $request->validate([

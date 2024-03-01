@@ -18,7 +18,6 @@ class Student extends Model
         'group',
         'section',
         'shift',
-     
         'year',
         'gender',
         'religious',

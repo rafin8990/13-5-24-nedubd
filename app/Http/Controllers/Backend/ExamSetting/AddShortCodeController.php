@@ -17,7 +17,7 @@ class AddShortCodeController extends Controller
     }
 
 
-    public function update_add_short_code(Request $request)
+    public function store_add_short_code(Request $request)
     {
 
         // dd($request);

@@ -16,7 +16,7 @@ class AddSubjectController extends Controller
         return view('Backend/BasicInfo/CommonSetting/addSubject', compact('subjectData'));
     }
 
-    public function update_add_subject(Request $request)
+    public function store_add_subject(Request $request)
     {
         // Validate the incoming request data
         $request->validate([

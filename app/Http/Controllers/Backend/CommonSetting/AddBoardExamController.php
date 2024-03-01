@@ -16,7 +16,7 @@ class AddBoardExamController extends Controller
         return view('Backend/BasicInfo/CommonSetting/addBoardExam', compact('boardExamData'));
     }
 
-    public function update_add_board_exam(Request $request)
+    public function store_add_board_exam(Request $request)
     {
         // Validate the incoming request data
         $request->validate([
