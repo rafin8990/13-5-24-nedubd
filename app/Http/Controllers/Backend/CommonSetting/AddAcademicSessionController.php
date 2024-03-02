@@ -17,7 +17,7 @@ class AddAcademicSessionController extends Controller
     }
 
 
-    public function update_add_academic_session(Request $request)
+    public function store_add_academic_session(Request $request)
     {
 
         // dd($request);

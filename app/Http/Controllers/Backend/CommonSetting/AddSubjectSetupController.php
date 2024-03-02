@@ -51,7 +51,7 @@ class AddSubjectSetupController extends Controller
         return view('Backend/BasicInfo/CommonSetting/addSubjectSetup', compact('classWiseSubjectData', 'selectedClassName', 'selectedGroupName', 'classData', 'groupData', 'subjectData'));
     }
 
-    public function update_add_subject_setup(Request $request)
+    public function store_add_subject_setup(Request $request)
     {
         // dd($request);
         // Validate form data

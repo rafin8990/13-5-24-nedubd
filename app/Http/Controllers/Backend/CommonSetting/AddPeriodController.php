@@ -17,7 +17,7 @@ class AddPeriodController extends Controller
         return view('Backend/BasicInfo/CommonSetting/addPeriod', compact('periodData'));
     }
 
-    public function update_add_period(Request $request)
+    public function store_add_period(Request $request)
     {
         // Validate the incoming request data
         $request->validate([

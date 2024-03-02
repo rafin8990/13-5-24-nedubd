@@ -44,7 +44,7 @@ class AddClassWiseShiftController extends Controller
         return view('Backend/BasicInfo/CommonSetting/addClassWiseShift', compact('classData', 'shiftData', 'classWiseShiftData', 'selectedClassName'));
     }
 
-    public function update_add_class_wise_shift(Request $request)
+    public function store_add_class_wise_shift(Request $request)
     {
         // dd($request);
         // Validate form data

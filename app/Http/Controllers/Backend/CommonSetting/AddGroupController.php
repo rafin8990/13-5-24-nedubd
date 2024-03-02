@@ -18,7 +18,7 @@ class AddGroupController extends Controller
     }
     
 
-    public function update_add_group(Request $request)
+    public function store_add_group(Request $request)
     {
 
         // dd($request);
