@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdmitCard\AddAdmitCardController;
 use App\Http\Controllers\Backend\CommonSetting\AddAcademicSessionController;
 use App\Http\Controllers\Backend\CommonSetting\AddAcademicYearController;
 use App\Http\Controllers\Backend\CommonSetting\AddBoardExamController;
@@ -260,31 +261,31 @@ Route::prefix('dashboard')->group(function () {
 
     //forth subject
 
-    Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
-    Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
+    Route::get('/setForthSubject', [FourthSubjectController::class, 'fourthSubject'])->name('set.Forth.Subject');
+    Route::post('/addFourthSubject', [FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
 
 
     //Add Report Name
-    Route::get('/AddReportName',[AddReportNameController::class,'AddReportName']);
+    Route::get('/AddReportName', [AddReportNameController::class, 'AddReportName']);
 
     //Add Signature Name
-    Route::get('/AddSignature',[AddSignatureController::class,'AddSignature']);
+    Route::get('/AddSignature', [AddSignatureController::class, 'AddSignature']);
 
     //Add Exam Publish 
-    Route::get('/ExamPublish',[ExamPublishController::class,'ExamPublish']);
-    Route::get('/ViewExamPublish',[ViewExamPublishController::class,'ViewExamPublish']);
+    Route::get('/ExamPublish', [ExamPublishController::class, 'ExamPublish']);
+    Route::get('/ViewExamPublish', [ViewExamPublishController::class, 'ViewExamPublish']);
 
     //Add Grand Final
-    Route::get('/GrandFinal',[SetGrandFinalController::class,'GrandFinal']);
+    Route::get('/GrandFinal', [SetGrandFinalController::class, 'GrandFinal']);
 
     //sequential wise exam 
-    Route::get('/SequentialExam',[SequentialWiseExamController::class,'SequentialExam']);
+    Route::get('/SequentialExam', [SequentialWiseExamController::class, 'SequentialExam']);
 
     //sequential wise exam 
-    Route::get('/SetExamMarks',[SetExamMarksController::class,'SetExamMarks']);
+    Route::get('/SetExamMarks', [SetExamMarksController::class, 'SetExamMarks']);
 
     //Set signature
-    Route::get('/SetSignature',[SetSignatureController::class,'SetSignature']);
+    Route::get('/SetSignature', [SetSignatureController::class, 'SetSignature']);
 
 
     // Exam Setting End .............................................................................................................
@@ -308,27 +309,31 @@ Route::prefix('dashboard')->group(function () {
 
     //Admit Card .............................................................................................................
     //Set Admit Card
-    Route::get('/setAdmitCard', [SetAdmitCardController::class, "setAdmitCard"]);
+    Route::group(['prefix' => '/', 'namespace' => 'admitCard'], function () {
+        Route::get('/setAdmitCard', [AddAdmitCardController::class, "add_admit_card"])->name('add.admit.card');
+        Route::put('/setAdmitCard', [AddAdmitCardController::class, 'store_add_admit_card'])->name('store.add.admit.card');
+        // Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
+        // Route::put('/setShortCode', [SetShortCodeController::class, 'store_set_short_code'])->name('store.set.short.code');
+    });
+
 
     //Print Admit Card
-    Route::get('/printAdmitCard',[PrintAdmitCardController::class,"printAdmitCard"]);
+    Route::get('/printAdmitCard', [PrintAdmitCardController::class, "printAdmitCard"]);
 
     //Print Seat Plan
-    Route::get('/printSeatPlan',[PrintSeatPlanController::class,"printSeatPlan"]);
+    Route::get('/printSeatPlan', [PrintSeatPlanController::class, "printSeatPlan"]);
 
     //Print Admit Instuction
-    Route::get('/AddAdmitInstruction',[AddAdmitInstructionController::class,"AddAdmitInstruction"]);
+    Route::get('/AddAdmitInstruction', [AddAdmitInstructionController::class, "AddAdmitInstruction"]);
 
     //List Admit Instuction
-    Route::get('/ListAdminInstruction',[ListAdminInstructionController::class,"ListAdminInstruction"]);
+    Route::get('/ListAdminInstruction', [ListAdminInstructionController::class, "ListAdminInstruction"]);
 
     //Exam Blank Sheet
-    Route::get('/ExamBlankSheet',[ExamBlankSheetController::class,"ExamBlankSheet"]);
+    Route::get('/ExamBlankSheet', [ExamBlankSheetController::class, "ExamBlankSheet"]);
 
 
     // NEDUBD Add School Admin 
     Route::get('/addSchoolAdmin', [SchoolAdminController::class, "addSchoolAdmin"]);
     Route::post('/createSchoolAdmin', [SchoolAdminController::class, "createSchoolAdmin"])->name('schoolAdmin.create');
 });
-
-
