@@ -26,10 +26,20 @@ use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
+
 use App\Http\Controllers\Backend\ExamSetting\AddGradePointController;
 use App\Http\Controllers\Backend\ExamSetting\AddShortCodeController;
 use App\Http\Controllers\Backend\ExamSetting\GradeSetupController;
 use App\Http\Controllers\Backend\ExamSetting\SetShortCodeController;
+use App\Http\Controllers\Backend\ExamSetting\AddReportNameController;
+use App\Http\Controllers\Backend\ExamSetting\AddSignatureController;
+use App\Http\Controllers\Backend\ExamSetting\ExamPublishController;
+use App\Http\Controllers\Backend\ExamSetting\SetGrandFinalController;
+use App\Http\Controllers\Backend\ExamSetting\SequentialWiseExamController;
+use App\Http\Controllers\Backend\ExamSetting\SetExamMarksController;
+use App\Http\Controllers\Backend\ExamSetting\SetSignatureController;
+use App\Http\Controllers\Backend\ExamSetting\ViewExamPublishController;
+
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
 use App\Http\Controllers\Backend\AdmitCard\SetAdmitCardController;
@@ -248,25 +258,33 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
     Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
 
+    //Add Report Name
+    Route::get('/AddReportName',[AddReportNameController::class,'AddReportName']);
+
+    //Add Signature Name
+    Route::get('/AddSignature',[AddSignatureController::class,'AddSignature']);
+
+    //Add Exam Publish 
+    Route::get('/ExamPublish',[ExamPublishController::class,'ExamPublish']);
+    Route::get('/ViewExamPublish',[ViewExamPublishController::class,'ViewExamPublish']);
+
+    //Add Grand Final
+    Route::get('/GrandFinal',[SetGrandFinalController::class,'GrandFinal']);
+
+    //sequential wise exam 
+    Route::get('/SequentialExam',[SequentialWiseExamController::class,'SequentialExam']);
+
+    //sequential wise exam 
+    Route::get('/SetExamMarks',[SetExamMarksController::class,'SetExamMarks']);
+
+    //Set signature
+    Route::get('/SetSignature',[SetSignatureController::class,'SetSignature']);
+
 
 
 
     // Exam Setting End .............................................................................................................
 
-
-    //Basic setting
-
-    // Route::get('/addShortCode', function () {
-    //     return view('Backend/BasicInfo/ExamSetting/addShortCode');
-    // });
-
-    Route::get('/setExamMarks', function () {
-        return view('Backend/BasicInfo/ExamSetting/classSetExamMarks');
-    });
-
-    // Route::get('/setShortCode', function () {
-    //     return view('Backend/BasicInfo/ExamSetting/getShortCode');
-    // });
 
 
 

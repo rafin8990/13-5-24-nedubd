@@ -1125,7 +1125,7 @@
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setExamMarks"
+                        <a href="/dashboard/SetExamMarks"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Set
                             Exam Marks</a>
                     </li>
@@ -1135,9 +1135,39 @@
                             4th Subject</a>
                     </li>
                     <li>
+                        <a href="/dashboard/AddReportName"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">
+                            Add Report Name</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/AddSignature"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">
+                           Add Signature</a>
+                    </li>
+                    <li>
                         <a href="/dashboard/setGradeSetup"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Grade
                             Setup</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/GrandFinal"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Grand Final
+                            </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/SetSignature"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Set Signature
+                            </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/ExamPublish"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Exam Publish
+                            </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/SequentialExam"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Sequential Wise Exam
+                            </a>
                     </li>
                 </ul>
             </li>
