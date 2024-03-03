@@ -14,7 +14,8 @@ class SetExamMarksController extends Controller
 
     public function classSetExamMarks(){
         return view ('Backend/BasicInfo/ExamSetting/classSetExamMarks');
-      
+        
+    }
     public function set_exam_marks(Request $request)
     {
         $school_code = '100';

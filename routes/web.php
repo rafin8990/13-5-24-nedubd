@@ -37,7 +37,6 @@ use App\Http\Controllers\Backend\ExamSetting\AddSignatureController;
 use App\Http\Controllers\Backend\ExamSetting\ExamPublishController;
 use App\Http\Controllers\Backend\ExamSetting\SetGrandFinalController;
 use App\Http\Controllers\Backend\ExamSetting\SequentialWiseExamController;
-use App\Http\Controllers\Backend\ExamSetting\SetExamMarksController;
 use App\Http\Controllers\Backend\ExamSetting\SetSignatureController;
 use App\Http\Controllers\Backend\ExamSetting\ViewExamPublishController;
 
