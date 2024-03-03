@@ -239,8 +239,8 @@ Route::prefix('dashboard')->group(function () {
 
 
     //forth subject
-    Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject']);
-    Route::get('/get-groups-by-class', [FourthSubjectController::class, 'getGroupsByClass'])->name('get.groups.by.class');
+    Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
+    Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
 
 
 
