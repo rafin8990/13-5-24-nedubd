@@ -17,7 +17,7 @@ class AddAcademicYearController extends Controller
     }
 
 
-    public function update_add_academic_year(Request $request)
+    public function store_add_academic_year(Request $request)
     {
 
         // dd($request);

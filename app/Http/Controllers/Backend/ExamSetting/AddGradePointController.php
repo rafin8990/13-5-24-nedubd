@@ -17,7 +17,7 @@ class AddGradePointController extends Controller
     }
 
 
-    public function update_add_grade_point(Request $request)
+    public function store_add_grade_point(Request $request)
     {
 
         // dd($request);

@@ -18,7 +18,7 @@ class AddSectionController extends Controller
     }
     
 
-    public function update_add_section(Request $request)
+    public function store_add_section(Request $request)
     {
 
         // dd($request);

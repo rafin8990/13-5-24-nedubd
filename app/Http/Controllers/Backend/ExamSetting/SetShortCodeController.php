@@ -49,7 +49,7 @@ class SetShortCodeController extends Controller
 
 
 
-    public function update_set_short_code(Request $request)
+    public function store_set_short_code(Request $request)
     {
         // dd($request);
         // Validate the incoming request data
