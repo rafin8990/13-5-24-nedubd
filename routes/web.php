@@ -32,6 +32,12 @@ use App\Http\Controllers\Backend\ExamSetting\GradeSetupController;
 use App\Http\Controllers\Backend\ExamSetting\SetShortCodeController;
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
+use App\Http\Controllers\Backend\AdmitCard\SetAdmitCardController;
+use App\Http\Controllers\Backend\AdmitCard\PrintAdmitCardController;
+use App\Http\Controllers\Backend\AdmitCard\PrintSeatPlanController;
+use App\Http\Controllers\Backend\AdmitCard\AddAdmitInstructionController;
+use App\Http\Controllers\Backend\AdmitCard\ListAdminInstructionController;
+use App\Http\Controllers\Backend\AdmitCard\ExamBlankSheetController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -257,7 +263,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/setExamMarks', function () {
         return view('Backend/BasicInfo/ExamSetting/classSetExamMarks');
     });
-    
+
     // Route::get('/setShortCode', function () {
     //     return view('Backend/BasicInfo/ExamSetting/getShortCode');
     // });
@@ -273,10 +279,29 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/create-teacher', [TeacherController::class, 'createTeacher'])->name('teacher.create');
 
 
+    //Admit Card .............................................................................................................
+    //Set Admit Card
+    Route::get('/setAdmitCard', [SetAdmitCardController::class, "setAdmitCard"]);
 
+    //Print Admit Card
+    Route::get('/printAdmitCard',[PrintAdmitCardController::class,"printAdmitCard"]);
+
+    //Print Seat Plan
+    Route::get('/printSeatPlan',[PrintSeatPlanController::class,"printSeatPlan"]);
+
+    //Print Admit Instuction
+    Route::get('/AddAdmitInstruction',[AddAdmitInstructionController::class,"AddAdmitInstruction"]);
+
+    //List Admit Instuction
+    Route::get('/ListAdminInstruction',[ListAdminInstructionController::class,"ListAdminInstruction"]);
+
+    //Exam Blank Sheet
+    Route::get('/ExamBlankSheet',[ExamBlankSheetController::class,"ExamBlankSheet"]);
 
 
     // NEDUBD Add School Admin 
-    Route::get('/addSchoolAdmin', [SchoolAdminController::class,"addSchoolAdmin"]);
-    Route::post('/createSchoolAdmin', [SchoolAdminController::class,"createSchoolAdmin"])->name('schoolAdmin.create');
+    Route::get('/addSchoolAdmin', [SchoolAdminController::class, "addSchoolAdmin"]);
+    Route::post('/createSchoolAdmin', [SchoolAdminController::class, "createSchoolAdmin"])->name('schoolAdmin.create');
 });
+
+

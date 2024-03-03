@@ -47,11 +47,10 @@ class FourthSubjectController extends Controller
         return view('Backend/BasicInfo/ExamSetting/setForthSubject', compact('classes', 'groups', 'sections', 'years', 'students'));
         
     }
+
+
     public function addFourthSubject(Request $request)
     {
-
-        // dd($request->class_name);
-
         return redirect()->route('set.Forth.Subject')->with([
             'class_name' => $request->class_name,
             'group_name' => $request->group_name,
