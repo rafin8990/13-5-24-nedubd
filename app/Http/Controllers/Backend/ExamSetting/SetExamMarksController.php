@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\ExamSetting;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\AddAcademicYear;
 use App\Models\AddClass;
 use App\Models\AddClassExam;
@@ -10,6 +11,10 @@ use Illuminate\Http\Request;
 
 class SetExamMarksController extends Controller
 {
+
+    public function classSetExamMarks(){
+        return view ('Backend/BasicInfo/ExamSetting/classSetExamMarks');
+      
     public function set_exam_marks(Request $request)
     {
         $school_code = '100';
@@ -30,6 +35,6 @@ class SetExamMarksController extends Controller
     public function store_exam_marks(Request $request)
     {
         dd($request);
-       
+
     }
 }

@@ -45,7 +45,7 @@
     <div class="h-full px-3 py-4 overflow-y-auto scrollbar gradient-bg">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="/dashboard" class="flex items-center p-2 text-gray-900 rounded-lg text-white   group">
+                <a href="/dashboard" class="flex items-center p-2 rounded-lg text-white   group">
                     <span class="ms-3 text-white">Dashboard</span>
                 </a>
             </li>
@@ -287,6 +287,83 @@
                 </li>
                 </ul>
             </li>
+
+
+{{-- Admit Card --}}
+
+<li class="dropdown">
+    <button type="button"
+        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+        aria-controls="dropdown-admit-card" data-collapse-toggle="dropdown-admit-card">
+        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 " aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+            <path
+                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+        </svg>
+        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Admit Card
+             </span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 4 4 4-4" />
+        </svg>
+
+    </button>
+    <ul id="dropdown-admit-card" class="hidden py-2 space-y-2">
+        <li>
+            <a href="/dashboard/setAdmitCard"
+                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Set Admit Card
+                </a>
+        </li>
+        <li class="dropdown">
+            <button type="button"
+                class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                aria-controls="dropdown-report-card" data-collapse-toggle="dropdown-report-card">
+                
+                <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Reports(Admit Cards)
+                    </span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" d="m1 1 4 4 4-4" />
+                </svg>
+
+            </button>
+            <ul id="dropdown-report-card" class="hidden py-2 space-y-2">
+                <li>
+                    <a href="/dashboard/printAdmitCard"
+                        class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Print Admit Card
+                        </a>
+                </li>
+                <li>
+                    <a href="/dashboard/printSeatPlan"
+                        class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Print
+                        Seat Plan</a>
+                </li>
+                
+                <li>
+                    <a href="/dashboard/AddAdmitInstruction"
+                        class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
+                        Admit Instruction</a>
+                </li>
+                <li>
+                    <a href="/dashboard/ExamBlankSheet"
+                        class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">
+                        Exam Blank Sheet</a>
+                </li>
+            
+
+
+            </ul>
+        </li>
+
+    </ul>
+
+</li>
+
+
+
+
 
 
             <li class="dropdown">
@@ -1048,7 +1125,7 @@
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setExamMarks"
+                        <a href="/dashboard/SetExamMarks"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Set
                             Exam Marks</a>
                     </li>
@@ -1058,9 +1135,39 @@
                             4th Subject</a>
                     </li>
                     <li>
+                        <a href="/dashboard/AddReportName"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">
+                            Add Report Name</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/AddSignature"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">
+                           Add Signature</a>
+                    </li>
+                    <li>
                         <a href="/dashboard/setGradeSetup"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Grade
                             Setup</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/GrandFinal"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Grand Final
+                            </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/SetSignature"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Set Signature
+                            </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/ExamPublish"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Exam Publish
+                            </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/SequentialExam"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Sequential Wise Exam
+                            </a>
                     </li>
                 </ul>
             </li>
