@@ -9,14 +9,14 @@
     </h3>
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-    <form action="">
+    <form action="{{route('addFourthSubject')}}" method="POST" >
+@csrf
         <div class="grid md:grid-cols-9 gap-4 my-10 ">
             <div class="mr-2 md:flex justify-end">
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class :</label>
             </div>
             <div class="mr-2">
                 <select id="classSelect" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a class</option>
                     @foreach($classes as $class)
                     <option value="{{ $class->class_name }}">{{$class->class_name}}</option>
                     @endforeach
@@ -27,7 +27,9 @@
             </div>
             <div class="mr-2">
                 <select id="groupSelect" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="" >Choose a group</option>
+                    @foreach($groups as $group)
+                    <option >{{$group->group_name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="mr-2 md:flex justify-end">
@@ -35,10 +37,11 @@
             </div>
             <div class="mr-2">
                 <select id="countries" name="section_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a section</option>
-                    <option value="">X</option>
-                    <option value="">Y</option>
-                    <option value="">Z</option>
+                  
+                    @foreach($sections as $section)
+                    <option >{{$section->section_name}}</option>
+                    @endforeach
+                 
 
                 </select>
             </div>
@@ -47,8 +50,11 @@
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year :</label>
             </div>
             <div class="mr-2">
-                <select name="year" id='date-dropdown' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option>Select Year</option>
+                <select name="year" id='' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                @foreach($years as $year)
+                    <option >{{$year->academic_year_name}}</option>
+                    @endforeach
+                 
                 </select>
             </div>
             <div>
@@ -88,6 +94,8 @@
                 </tr>
             </thead>
             <tbody>
+                @if($students)
+                @foreach($students as $student)
                 <tr class=" border-b border-blue-400">
                     <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
 
@@ -96,17 +104,20 @@
 
                     </td>
                     <td class="px-6 py-4">
-
+                        {{$student->student_id}} 
                     </td>
                     <td class="px-6 py-4">
-
+                        {{$student->first_name}} {{$student->last_name}}
                     </td>
                     <td class="px-6 py-4 ">
-
+                        {{$student->roll}}
                     </td>
 
 
                 </tr>
+                @endforeach
+                @endif
+                
 
 
 
