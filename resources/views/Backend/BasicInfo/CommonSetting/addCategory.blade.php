@@ -53,7 +53,7 @@ Add Category
                             </div>
                             <div class="flex justify-center ">
                                 <button type="submit" class=" mr-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
-                                <button data-modal-hide="authentication-modal" class="end-2.5  text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 ">Close</button>
+                                <button type="button" data-modal-hide="authentication-modal" class="end-2.5  text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 ">Close</button>
 
                             </div>
                         </form>
@@ -90,7 +90,7 @@ Add Category
                 <td class="px-6 py-4">
                     {{$data->category_name}}
                 </td>
-            
+
                 <td class="px-6 py-4 ">
                     @if($data->status == 'active')
                     <span class="text-green-500">Active</span>

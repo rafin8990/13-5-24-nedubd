@@ -149,7 +149,7 @@ GroupData
     </table>
 
     <div class="flex justify-end mr-32">
-        <h3>Total = </h3>
+        <h3>Total = {{$classWiseGroupData->count()}} </h3>
     </div>
 </div>
 @endsection

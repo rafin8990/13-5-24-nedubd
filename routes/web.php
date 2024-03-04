@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdmitCard\AddAdmitCardController;
 use App\Http\Controllers\Backend\CommonSetting\AddAcademicSessionController;
 use App\Http\Controllers\Backend\CommonSetting\AddAcademicYearController;
 use App\Http\Controllers\Backend\CommonSetting\AddBoardExamController;
@@ -30,13 +31,13 @@ use App\Http\Controllers\Backend\ExamResult\ExamResultController;
 use App\Http\Controllers\Backend\ExamSetting\AddGradePointController;
 use App\Http\Controllers\Backend\ExamSetting\AddShortCodeController;
 use App\Http\Controllers\Backend\ExamSetting\GradeSetupController;
+use App\Http\Controllers\Backend\ExamSetting\SetExamMarksController;
 use App\Http\Controllers\Backend\ExamSetting\SetShortCodeController;
 use App\Http\Controllers\Backend\ExamSetting\AddReportNameController;
 use App\Http\Controllers\Backend\ExamSetting\AddSignatureController;
 use App\Http\Controllers\Backend\ExamSetting\ExamPublishController;
 use App\Http\Controllers\Backend\ExamSetting\SetGrandFinalController;
 use App\Http\Controllers\Backend\ExamSetting\SequentialWiseExamController;
-use App\Http\Controllers\Backend\ExamSetting\SetExamMarksController;
 use App\Http\Controllers\Backend\ExamSetting\SetSignatureController;
 use App\Http\Controllers\Backend\ExamSetting\ViewExamPublishController;
 
@@ -148,83 +149,83 @@ Route::prefix('dashboard')->group(function () {
 
     // Add Class
     Route::get('/addClass', [AddClassController::class, 'add_class'])->name('add.class');
-    Route::put('/addClass', [AddClassController::class, 'update_add_class'])->name('update.class');
+    Route::put('/addClass', [AddClassController::class, 'store_add_class'])->name('store.class');
     Route::delete('/delete_class/{id}', [AddClassController::class, 'delete_add_class'])->name('delete.class');
 
     // Add Section
     Route::get('/addSection', [AddSectionController::class, 'add_section'])->name('add.section');
-    Route::put('/addSection', [AddSectionController::class, 'update_add_section'])->name('update.section');
+    Route::put('/addSection', [AddSectionController::class, 'store_add_section'])->name('store.section');
     Route::delete('/delete_section/{id}', [AddSectionController::class, 'delete_add_section'])->name('delete.section');
 
     // Add Shift
     Route::get('/addShift', [AddShiftController::class, 'add_shift'])->name('add.shift');
-    Route::put('/addShift', [AddShiftController::class, 'update_add_shift'])->name('update.shift');
+    Route::put('/addShift', [AddShiftController::class, 'store_add_shift'])->name('store.shift');
     Route::delete('/delete_shift/{id}', [AddShiftController::class, 'delete_add_shift'])->name('delete.shift');
 
     // Add Group
     Route::get('/addGroup', [AddGroupController::class, 'add_group'])->name('add.group');
-    Route::put('/addGroup', [AddGroupController::class, 'update_add_group'])->name('update.group');
+    Route::put('/addGroup', [AddGroupController::class, 'store_add_group'])->name('store.group');
     Route::delete('/delete_group/{id}', [AddGroupController::class, 'delete_add_group'])->name('delete.group');
 
     // Add Subject
     Route::get('/addSubject', [AddSubjectController::class, 'add_subject'])->name('add.subject');
-    Route::put('/addSubject', [AddSubjectController::class, 'update_add_subject'])->name('update.subject');
+    Route::put('/addSubject', [AddSubjectController::class, 'store_add_subject'])->name('store.subject');
     Route::delete('/delete_subject/{id}', [AddSubjectController::class, 'delete_add_subject'])->name('delete.subject');
 
 
     // Add academic session
     Route::get('/addAcademicSession', [AddAcademicSessionController::class, 'add_academic_session'])->name('add.academic.session');
-    Route::put('/addAcademicSession', [AddAcademicSessionController::class, 'update_add_academic_session'])->name('update.academic.session');
+    Route::put('/addAcademicSession', [AddAcademicSessionController::class, 'store_add_academic_session'])->name('store.academic.session');
     Route::delete('/delete_academic_session/{id}', [AddAcademicSessionController::class, 'delete_add_academic_session'])->name('delete.academic.session');
 
     // Add academic year
     Route::get('/addAcademicYear', [AddAcademicYearController::class, 'add_academic_year'])->name('add.academic.year');
-    Route::put('/addAcademicYear', [AddAcademicYearController::class, 'update_add_academic_year'])->name('update.academic.year');
+    Route::put('/addAcademicYear', [AddAcademicYearController::class, 'store_add_academic_year'])->name('store.academic.year');
     Route::delete('/delete_academic_Year/{id}', [AddAcademicYearController::class, 'delete_add_academic_year'])->name('delete.academic.year');
 
     // Add board exam
     Route::get('/addBoardExam', [AddBoardExamController::class, 'add_board_exam'])->name('add.board.exam');
-    Route::put('/addBoardExam', [AddBoardExamController::class, 'update_add_board_exam'])->name('update.board.exam');
+    Route::put('/addBoardExam', [AddBoardExamController::class, 'store_add_board_exam'])->name('store.board.exam');
     Route::delete('/delete_board_exam/{id}', [AddBoardExamController::class, 'delete_add_board_exam'])->name('delete.board.exam');
 
     // Add category
     Route::get('/addCategory', [AddCategoryController::class, 'add_category'])->name('add.category');
-    Route::put('/addCategory', [AddCategoryController::class, 'update_add_category'])->name('update.category');
+    Route::put('/addCategory', [AddCategoryController::class, 'store_add_category'])->name('store.category');
     Route::delete('/delete_category/{id}', [AddCategoryController::class, 'delete_add_category'])->name('delete.category');
 
     // Add board exam
     Route::get('/addClassExam', [AddClassExamController::class, 'add_class_exam'])->name('add.class.exam');
-    Route::put('/addClassExam', [AddClassExamController::class, 'update_add_class_exam'])->name('update.class.exam');
+    Route::put('/addClassExam', [AddClassExamController::class, 'store_add_class_exam'])->name('store.class.exam');
     Route::delete('/delete_class_exam/{id}', [AddClassExamController::class, 'delete_add_class_exam'])->name('delete.class.exam');
 
     // Add class wise group
     Route::get('/addClassWiseGroup', [AddClassWiseGroupController::class, 'add_class_wise_group'])->name('add.class.wise.group');
-    Route::post('/addClassWiseGroup', [AddClassWiseGroupController::class, 'update_add_class_wise_group'])->name('add.class.wise.group');
+    Route::post('/addClassWiseGroup', [AddClassWiseGroupController::class, 'store_add_class_wise_group'])->name('store.class.wise.group');
     Route::delete('/delete_class_wise_group/{id}', [AddClassWiseGroupController::class, 'delete_add_class_wise_group'])->name('delete.class.wise.group');
 
     // Add class wise section
     Route::get('/addClassWiseSection', [AddClassWiseSectionController::class, 'add_class_wise_section'])->name('add.class.wise.section');
-    Route::post('/addClassWiseSection', [AddClassWiseSectionController::class, 'update_add_class_wise_section'])->name('add.class.wise.section');
+    Route::post('/addClassWiseSection', [AddClassWiseSectionController::class, 'store_add_class_wise_section'])->name('store.class.wise.section');
     Route::delete('/delete_class_wise_section/{id}', [AddClassWiseSectionController::class, 'delete_add_class_wise_section'])->name('delete.class.wise.section');
 
     // Add class wise shift
     Route::get('/addClassWiseShift', [AddClassWiseShiftController::class, 'add_class_wise_shift'])->name('add.class.wise.shift');
-    Route::post('/addClassWiseShift', [AddClassWiseShiftController::class, 'update_add_class_wise_shift'])->name('add.class.wise.shift');
+    Route::post('/addClassWiseShift', [AddClassWiseShiftController::class, 'store_add_class_wise_shift'])->name('store.class.wise.shift');
     Route::delete('/delete_class_wise_shift/{id}', [AddClassWiseShiftController::class, 'delete_add_class_wise_shift'])->name('delete.class.wise.shift');
 
     // Add category
     Route::get('/addPeriod', [AddPeriodController::class, 'add_period'])->name('add.period');
-    Route::put('/addPeriod', [AddPeriodController::class, 'update_add_period'])->name('update.period');
+    Route::put('/addPeriod', [AddPeriodController::class, 'store_add_period'])->name('store.period');
     Route::delete('/delete_period/{id}', [AddPeriodController::class, 'delete_add_period'])->name('delete.period');
 
     // Add Institute Info
     Route::get('/addInstituteInfo', [InstituteInfoController::class, 'add_institute_info'])->name('add.institute.info');
-    Route::put('/addInstituteInfo', [InstituteInfoController::class, 'update_add_institute_info'])->name('update.institute.info');
+    Route::put('/addInstituteInfo', [InstituteInfoController::class, 'store_add_institute_info'])->name('store.institute.info');
 
 
     // Add Subject Setup
     Route::get('/addSubjectSetup', [AddSubjectSetupController::class, 'add_subject_setup'])->name('add.subject.setup');
-    Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'update_add_subject_setup'])->name('update.subject.setup');
+    Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'store_add_subject_setup'])->name('store.subject.setup');
     // Route::post('/newSubjectSetup', [AddSubjectSetupController::class, 'new_add_subject_setup'])->name('new.subject.setup');
     // Route::delete('/delete_subject_setup/{id}', [AddSubjectSetupController::class, 'delete_add_subject_setup'])->name('delete.subject.setup');
 
@@ -236,50 +237,61 @@ Route::prefix('dashboard')->group(function () {
 
     // Add Grade Point
     Route::get('/addGradePoint', [AddGradePointController::class, 'add_grade_point'])->name('add.grade.point');
-    Route::put('/addGradePoint', [AddGradePointController::class, 'update_add_grade_point'])->name('update.grade.point');
+    Route::put('/addGradePoint', [AddGradePointController::class, 'store_add_grade_point'])->name('store.grade.point');
     Route::delete('/delete_grade_point/{id}', [AddGradePointController::class, 'delete_add_grade_point'])->name('delete.grade.point');
 
     // Grade Setup
     Route::get('/setGradeSetup', [GradeSetupController::class, 'grade_setup'])->name('set.grade.setup');
-    Route::put('/setGradeSetup', [GradeSetupController::class, 'update_set_grade_setup'])->name('update.set.grade.setup');
+    Route::put('/setGradeSetup', [GradeSetupController::class, 'store_set_grade_setup'])->name('store.set.grade.setup');
     Route::delete('/delete_set_grade_setup/{id}', [GradeSetupController::class, 'delete_set_grade_setup'])->name('delete.set.grade.setup');
 
     // Add Short Code
     Route::get('/addShortCode', [AddShortCodeController::class, 'add_short_code'])->name('add.short.code');
-    Route::put('/addShortCode', [AddShortCodeController::class, 'update_add_short_code'])->name('update.short.code');
+    Route::put('/addShortCode', [AddShortCodeController::class, 'store_add_short_code'])->name('store.short.code');
     Route::delete('/delete_short_code/{id}', [AddShortCodeController::class, 'delete_add_short_code'])->name('delete.short.code');
 
     // Set Short Code
     Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
-    Route::put('/setShortCode', [SetShortCodeController::class, 'update_set_short_code'])->name('update.set.short.code');
+    Route::put('/setShortCode', [SetShortCodeController::class, 'store_set_short_code'])->name('store.set.short.code');
 
+
+    // set exam marks
+    Route::get('/setExamMarks', [SetExamMarksController::class, 'set_exam_marks'])->name('set.exam.marks');
+    Route::put('/setExamMarks', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
 
     //forth subject
-    Route::get('/setForthSubject', [FourthSubjectController::class, 'fourthSubject']);
-    Route::get('/get-groups-by-class', [FourthSubjectController::class, 'getGroupsByClass'])->name('get.groups.by.class');
-    Route::post('/addFourthSubject', [FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
+
+
+    Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
+    Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
+    Route::post('/saveFourthSubject', [FourthSubjectController::class,'saveFourthSubject'])->name('saveFourthSubject');
+
+
 
     //Add Report Name
-    Route::get('/AddReportName',[AddReportNameController::class,'AddReportName']);
+    Route::get('/AddReportName', [AddReportNameController::class, 'AddReportName']);
 
     //Add Signature Name
-    Route::get('/AddSignature',[AddSignatureController::class,'AddSignature']);
+    Route::get('/AddSignature', [AddSignatureController::class, 'AddSignature']);
 
     //Add Exam Publish 
-    Route::get('/ExamPublish',[ExamPublishController::class,'ExamPublish']);
-    Route::get('/ViewExamPublish',[ViewExamPublishController::class,'ViewExamPublish']);
+    Route::get('/ExamPublish', [ExamPublishController::class, 'ExamPublish']);
+    Route::get('/ViewExamPublish', [ViewExamPublishController::class, 'ViewExamPublish']);
 
     //Add Grand Final
-    Route::get('/GrandFinal',[SetGrandFinalController::class,'GrandFinal']);
+    Route::get('/GrandFinal', [SetGrandFinalController::class, 'GrandFinal']);
 
     //sequential wise exam 
-    Route::get('/SequentialExam',[SequentialWiseExamController::class,'SequentialExam']);
+    Route::get('/SequentialExam', [SequentialWiseExamController::class, 'SequentialExam']);
 
     //sequential wise exam 
-    Route::get('/SetExamMarks',[SetExamMarksController::class,'SetExamMarks']);
+    Route::get('/SetExamMarks', [SetExamMarksController::class, 'SetExamMarks']);
 
     //Set signature
-    Route::get('/SetSignature',[SetSignatureController::class,'SetSignature']);
+    Route::get('/SetSignature', [SetSignatureController::class, 'SetSignature']);
+
+
+    // Exam Setting End .............................................................................................................
 
 
 
@@ -300,27 +312,31 @@ Route::prefix('dashboard')->group(function () {
 
     //Admit Card .............................................................................................................
     //Set Admit Card
-    Route::get('/setAdmitCard', [SetAdmitCardController::class, "setAdmitCard"]);
+    Route::group(['prefix' => '/', 'namespace' => 'admitCard'], function () {
+        Route::get('/setAdmitCard', [AddAdmitCardController::class, "add_admit_card"])->name('add.admit.card');
+        Route::put('/setAdmitCard', [AddAdmitCardController::class, 'store_add_admit_card'])->name('store.add.admit.card');
+        // Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
+        // Route::put('/setShortCode', [SetShortCodeController::class, 'store_set_short_code'])->name('store.set.short.code');
+    });
+
 
     //Print Admit Card
-    Route::get('/printAdmitCard',[PrintAdmitCardController::class,"printAdmitCard"]);
+    Route::get('/printAdmitCard', [PrintAdmitCardController::class, "printAdmitCard"]);
 
     //Print Seat Plan
-    Route::get('/printSeatPlan',[PrintSeatPlanController::class,"printSeatPlan"]);
+    Route::get('/printSeatPlan', [PrintSeatPlanController::class, "printSeatPlan"]);
 
     //Print Admit Instuction
-    Route::get('/AddAdmitInstruction',[AddAdmitInstructionController::class,"AddAdmitInstruction"]);
+    Route::get('/AddAdmitInstruction', [AddAdmitInstructionController::class, "AddAdmitInstruction"]);
 
     //List Admit Instuction
-    Route::get('/ListAdminInstruction',[ListAdminInstructionController::class,"ListAdminInstruction"]);
+    Route::get('/ListAdminInstruction', [ListAdminInstructionController::class, "ListAdminInstruction"]);
 
     //Exam Blank Sheet
-    Route::get('/ExamBlankSheet',[ExamBlankSheetController::class,"ExamBlankSheet"]);
+    Route::get('/ExamBlankSheet', [ExamBlankSheetController::class, "ExamBlankSheet"]);
 
 
     // NEDUBD Add School Admin 
     Route::get('/addSchoolAdmin', [SchoolAdminController::class, "addSchoolAdmin"]);
     Route::post('/createSchoolAdmin', [SchoolAdminController::class, "createSchoolAdmin"])->name('schoolAdmin.create');
 });
-
-

@@ -48,7 +48,7 @@ class AddClassWiseSectionController extends Controller
     }
 
 
-    public function update_add_class_wise_section(Request $request)
+    public function store_add_class_wise_section(Request $request)
     {
         // dd($request);
         // Validate form data

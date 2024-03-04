@@ -13,33 +13,56 @@ use Illuminate\Http\Request;
 
 class FourthSubjectController extends Controller
 {
-    public function fourthSubject()
+    public function fourthSubject(Request $request)
     {
-        $classes = AddClass::all();
-        $groups = AddGroup::all();
-        $sections = AddSection::all();
-        $years = AddAcademicYear::all();
-
-
-        return view('Backend.BasicInfo.ExamSetting.setForthSubject', compact('classes', 'groups', 'sections', 'years'));
+        $school_code = '100';
+        $class = null;
+        $section = null;
+        $group = null;
+        $year = null;
+    
+        $classes = AddClass::where('school_code', $school_code)->get();
+        $groups = AddGroup::where('school_code', $school_code)->get();
+        $sections = AddSection::where('school_code', $school_code)->get();
+        $years = AddAcademicYear::where('school_code', $school_code)->get();
+    
+        $students = []; // Initialize $students
+    
+        if ($request->session()->get('class_name')) {
+            
+            $class = $request->session()->get('class_name');
+            $section = $request->session()->get('section_name');
+            $group = $request->session()->get('group_name');
+            $year = $request->session()->get('year');
+    
+            $students = Student::where('action', 'approved')
+            ->where('school_code', $school_code)
+                ->where('class_name', $class)
+                ->where('section', $section)
+                ->where('group', $group)
+                ->where('year', $year)
+                ->get();
+        } 
+           
+        return view('Backend/BasicInfo/ExamSetting/setForthSubject', compact('classes', 'groups', 'sections', 'years', 'students'));
+        
     }
+
 
     public function addFourthSubject(Request $request)
     {
-        $class = $request->class_name;
-        $group = $request->group_name;
-        $section = $request->section_name;
-        $year = $request->year;
-        $students = Student::where('class_name', $class)->where('section', $section)->where('group', $group)->where('year', $year)->get();
-
-        return view('Backend.BasicInfo.ExamSetting.setForthSubject', compact('students'));
+        return redirect()->route('set.Forth.Subject')->with([
+            'class_name' => $request->class_name,
+            'group_name' => $request->group_name,
+            'section_name' => $request->section_name,
+            'year' => $request->year
+        ]);
 
     }
 
-    public function getGroupsByClass(Request $request)
-    {
-        $className = $request->input('class_name');
-        $groups = AddClassWiseGroup::where('class_name', $className)->get();
-        return response()->json($groups);
+    public function saveFourthSubject(Request $request){
+        dd($request);
     }
+
+
 }
