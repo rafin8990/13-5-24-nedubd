@@ -60,5 +60,9 @@ class FourthSubjectController extends Controller
 
     }
 
+    public function saveFourthSubject(Request $request){
+        dd($request);
+    }
+
 
 }

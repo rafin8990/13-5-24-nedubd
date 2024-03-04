@@ -48,10 +48,7 @@
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year :</label>
             </div>
             <div class="mr-2">
-                <select name="year" id='' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                @foreach($years as $year)
-                    <option >{{$year->academic_year_name}}</option>
-                    @endforeach
+              
                  
                 <select name="year" id='' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 @foreach($years as $year)
@@ -74,6 +71,94 @@
                 FOURTH SUBJECT SETTING
             </h3>
         </div>
+
+
+        <!-- optional subject part  -->
+<form action="{{route('saveFourthSubject')}}" method="POST">
+    @csrf
+
+       @if($students)
+
+       @php
+    $data = [
+        [
+            'id' => 'linked-checkbox',
+            'value' => 'Home Science',
+            'label' => 'Home Science'
+        ],
+        [
+            'id' => 'checkbox',
+            'value' => 'Agriculture',
+            'label' => 'Agriculture'
+        ],
+        [
+            'id' => 'link-checkbox',
+            'value' => 'Higher Math',
+            'label' => 'Higher Math'
+        ],
+        [
+            'id' => '-checkbox',
+            'value' => 'Biology',
+            'label' => 'Biology'
+        ]
+    ];
+@endphp
+
+        <div class="lg:w-[700px] mx-auto mt-5 border p-5 mb-5">
+            <h1 class="text-xl mx-5 mb-5">Select optional Subject</h1>
+            <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
+                @foreach($data as $item)
+                    <div class="flex items-center optional-subject">
+                        <input id="{{ $item['id'] }}" type="checkbox" value="{{ $item['value'] }}" name="optional_subject" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $item['label'] }}</label>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="lg:w-[700px] mx-auto mt-5 border p-5 mb-5">
+            <h1 class="text-xl mx-5 mb-5">Select Compulsory Subject</h1>
+            <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ">
+                @foreach($data as $item)
+                    <div class="flex items-center optional-subject">
+                        <input id="{{ $item['id'] }}" type="checkbox" name="compulsory_subject" value="{{ $item['value'] }}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $item['label'] }}</label>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+       @endif
+
+
+
+        <!-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const optionalCheckboxes = document.querySelectorAll('.optional-subject input[type="checkbox"]');
+            const compulsoryCheckboxes = document.querySelectorAll('.compulsory-subject input[type="checkbox"]');
+
+            optionalCheckboxes.forEach(function (checkbox) {
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        disableCompulsorySubjects();
+                    } else {
+                        enableCompulsorySubjects();
+                    }
+                });
+            });
+
+            function disableCompulsorySubjects() {
+                compulsoryCheckboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                    checkbox.disabled = true;
+                });
+            }
+
+            function enableCompulsorySubjects() {
+                compulsoryCheckboxes.forEach(function (checkbox) {
+                    checkbox.disabled = false;
+                });
+            }
+        });
+    </script> -->
 
         <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
             <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
@@ -102,7 +187,7 @@
                 @foreach($students as $index => $student)
                 <tr class=" border-b border-blue-400">
                     <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
-                    <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="bordered-checkbox-1" type="checkbox" value="{{ $student->student_id }}" name="selected_students[]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     </th>
                     <td class="px-6 py-4">
                         {{$index + 1}}
@@ -139,6 +224,8 @@
             </tbody>
         </table>
     </div>
+
+  
     <br><br>
     <div class="md:flex justify-center">
         <div class="mr-10">
@@ -148,7 +235,9 @@
             <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
         </div>
         <div class="mr-10">
+            <a href="/dashboard">
             <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
+            </a>
         </div>
 
         <div class="ml-32">
@@ -157,6 +246,7 @@
         </div>
 
     </div>
+    </form>
     @endsection
 
 
