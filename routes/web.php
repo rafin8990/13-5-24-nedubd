@@ -261,8 +261,11 @@ Route::prefix('dashboard')->group(function () {
 
     //forth subject
 
-    Route::get('/setForthSubject', [FourthSubjectController::class, 'fourthSubject'])->name('set.Forth.Subject');
-    Route::post('/addFourthSubject', [FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
+
+    Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
+    Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
+    Route::post('/saveFourthSubject', [FourthSubjectController::class,'saveFourthSubject'])->name('saveFourthSubject');
+
 
 
     //Add Report Name
