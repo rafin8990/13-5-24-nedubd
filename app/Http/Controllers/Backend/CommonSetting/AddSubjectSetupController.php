@@ -18,6 +18,7 @@ class AddSubjectSetupController extends Controller
         $school_code = '100';
         $selectedClassName = null;
         $selectedGroupName = null;
+        $classWiseSubjectData = null;
 
         if ($request->has('class_name')) {
             $selectedClassName = $request->input('class_name');
@@ -43,7 +44,7 @@ class AddSubjectSetupController extends Controller
             // $classWiseSubjectData = AddClassWiseSubject::where('action', 'approved')->where('school_code', $school_code)->get();
         }
 
-
+        // dd($classWiseSubjectData);
         $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
         $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
         $subjectData = AddSubject::where('action', 'approved')->where('school_code', $school_code)->get();
@@ -61,72 +62,72 @@ class AddSubjectSetupController extends Controller
         ]);
 
         $school_code = '100';
+        $generateId = AddClassWiseSubject::count() + 1;
+        $generatedId = sprintf('%02d', $generateId);
 
+        $subjectNames = $request->subject_name;
+
+
+
+        if ($subjectNames === null) {
+            return redirect()->route('add.subject.setup')->with([
+                'error' => 'Please select subject name!',
+                'class_name' => $request->class_name,
+                'group_name' => $request->group_name
+            ]);
+        }
+        // dd($subjectNames);
         $existingData = AddClassWiseSubject::where('action', 'approved')
             ->where('school_code', $school_code)
             ->where('class_name', $request->class_name)
             ->where('group_name', $request->group_name)
+            ->where('subject_name', $request->subject_name)
             ->get();
 
+        if ($existingData->isNotEmpty()) {
+            return redirect()->route('add.subject.setup')->with([
+                'error' => 'All Ready Added',
+                'class_name' => $request->class_name,
+                'group_name' => $request->group_name
+            ]);
+        }
 
-
-        $generateId = AddClassWiseSubject::count() + 1;
-        $generatedId = sprintf('%02d', $generateId);
 
         // dd($existingData);
+        if (is_array($subjectNames)) {
 
-        if ($existingData->isNotEmpty()) {
-            // Update existing data
-            $existingSetShortCode = $existingData->first(); // Assuming you only have one existing data, you can adjust if needed
-           
-            // Update the short code
-            if ($request->subject_name) {
-                // dd($existingSetShortCode);
-                // $existingSetShortCode->subject_name = $request->subject_name;
-                $newData = $request->subject_name;
-                $mergedSubjectNames = array_merge($existingSetShortCode->subject_name, $newData);
-                $existingSetShortCode->subject_name = $mergedSubjectNames;
-                // dd($existingSetShortCode);
+            foreach ($subjectNames as $subject) {
+                $addClassSubject = new AddClassWiseSubject();
+                $addClassSubject->class_name = $request->class_name;
+                $addClassSubject->subject_name = $subject;
+                $addClassSubject->subject_type = 'select';
+                $addClassSubject->group_name = $request->group_name;
+                $addClassSubject->subject_serial = $generatedId;
+                $addClassSubject->status = 'active';
+                $addClassSubject->action = 'approved';
+                $addClassSubject->school_code = $school_code;
 
-                $existingSetShortCode->save();
-            } else {
-                $existingSetShortCode->save();
+                $addClassSubject->save();
             }
-
-            // dd($existingSetShortCode);
-
-            // Save the changes
-
         } else {
+            // Handle the case when only a single subject is received
             $addClassSubject = new AddClassWiseSubject();
             $addClassSubject->class_name = $request->class_name;
-            $addClassSubject->subject_name = $request->subject_name;
+            $addClassSubject->subject_name = $subjectNames;
+            $addClassSubject->subject_type = 'select';
             $addClassSubject->group_name = $request->group_name;
-
             $addClassSubject->subject_serial = $generatedId;
-
             $addClassSubject->status = 'active';
             $addClassSubject->action = 'approved';
             $addClassSubject->school_code = $school_code;
 
-            // dd($addClassSubject);
-
             $addClassSubject->save();
         }
 
-
-        // return redirect()->back()->with('success', 'subject setup added successfully!');
         return redirect()->route('add.subject.setup')->with([
             'success' => 'Subject setup added successfully!',
             'class_name' => $request->class_name,
             'group_name' => $request->group_name
         ]);
     }
-    // public function new_add_subject_setup(Request $request)
-    // {
-    //     dd($request);
-       
-    // }
-
-   
 }
