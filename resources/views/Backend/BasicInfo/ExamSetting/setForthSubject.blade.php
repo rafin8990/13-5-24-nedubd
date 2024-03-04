@@ -137,7 +137,7 @@
         </div>
 
         <div class="ml-32">
-            <h3>Total = <div class="border border-2"></div>
+            <h3>Total = <div class=" border-2"></div>
             </h3>
         </div>
 
