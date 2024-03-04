@@ -201,6 +201,12 @@
                     <td class="px-6 py-4 ">
                         {{$student->student_roll}}
                     </td>
+
+                    <input class="hidden" name="class_name" value="{{$student->Class_name}}" type="text">
+                    <input class="hidden" name="section_name" value="{{$student->section}}" type="text">
+                    <input class="hidden" name="group" value="{{$student->group}}" type="text">
+                    <input class="hidden" name="shift" value="{{$student->shift}}" type="text">
+                    <input class="hidden" name="year" value="{{$student->year}}" type="text">
                 </tr>
                 @endforeach
                 @else
@@ -225,6 +231,12 @@
         </table>
     </div>
 
+    <div>
+        <input class="hidden" name="school_code" value="100" type="text">
+        <input class="hidden" name="action" value="approved" type="text">
+        <input class="hidden" name="type" value="active" type="text">
+        
+    </div>
   
     <br><br>
     <div class="md:flex justify-center">

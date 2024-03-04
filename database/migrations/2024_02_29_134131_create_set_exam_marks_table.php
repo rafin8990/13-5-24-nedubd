@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('class_name');
             $table->string('exam_name');
             $table->string('exam_year');
-            $table->string('exam_year');
 
             $table->timestamps();
         });

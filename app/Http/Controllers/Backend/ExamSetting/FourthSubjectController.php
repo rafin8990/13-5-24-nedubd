@@ -8,6 +8,7 @@ use App\Models\AddClass;
 use App\Models\AddClassWiseGroup;
 use App\Models\AddGroup;
 use App\Models\AddSection;
+use App\Models\FourthSubject;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -61,7 +62,34 @@ class FourthSubjectController extends Controller
     }
 
     public function saveFourthSubject(Request $request){
-        dd($request);
+       if($request->has('selected_students')){
+        $students=$request->input('selected_students');
+        // dd($students);
+        
+
+     foreach($students as $student){
+      
+        $fouthSubject=new FourthSubject();
+        $fouthSubject->optional_subject = $request->optional_subject;
+        $fouthSubject->compulsory_subject = $request->compulsory_subject;
+        $fouthSubject->class_name = $request->class_name;
+        $fouthSubject->section = $request->section_name;
+        $fouthSubject->group = $request->group;
+        $fouthSubject->shift = $request->shift;
+        $fouthSubject->year = $request->year;
+        $fouthSubject->action = $request->action;
+        $fouthSubject->type = $request->type;
+        $fouthSubject->school_code = $request->school_code;
+        $fouthSubject->student_id = $student;
+        $fouthSubject->save();
+
+      
+
+     }
+    
+     return redirect()->back()->with('success','Fourth Subject Successfully Added');
+
+       }
     }
 
 
