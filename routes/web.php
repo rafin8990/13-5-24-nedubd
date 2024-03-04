@@ -226,9 +226,9 @@ Route::prefix('dashboard')->group(function () {
     // Add Subject Setup
     Route::get('/addSubjectSetup', [AddSubjectSetupController::class, 'add_subject_setup'])->name('add.subject.setup');
     Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'store_add_subject_setup'])->name('store.subject.setup');
-    // Route::post('/newSubjectSetup', [AddSubjectSetupController::class, 'new_add_subject_setup'])->name('new.subject.setup');
-    // Route::delete('/delete_subject_setup/{id}', [AddSubjectSetupController::class, 'delete_add_subject_setup'])->name('delete.subject.setup');
+    Route::put('/updateSubjectSetup', [AddSubjectSetupController::class, 'updateSubjectSetup'])->name('update.setSubject');
 
+  
     // Common Setting End .............................................................................................................
 
 

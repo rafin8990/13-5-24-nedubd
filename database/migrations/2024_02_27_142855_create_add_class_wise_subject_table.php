@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,10 +13,11 @@ return new class extends Migration
         Schema::create('add_class_wise_subject', function (Blueprint $table) {
             $table->id();
             $table->string('class_name');
-            $table->json('subject_name')->nullable();
-            $table->json('subject_type')->nullable();
+            $table->string('subject_name')->nullable();
+            $table->string('subject_type')->nullable();
             $table->string('group_name');
             $table->string('subject_serial');
+            $table->string('subject_marge');
             $table->enum('status', ['active', 'in active'])->default('active');
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->default('pending');
             $table->string('school_code');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\CommonSetting;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\AddClass;
 use App\Models\AddClassWiseSubject;
@@ -104,6 +105,7 @@ class AddSubjectSetupController extends Controller
                 $addClassSubject->group_name = $request->group_name;
                 $addClassSubject->subject_serial = $generatedId;
                 $addClassSubject->status = 'active';
+                $addClassSubject->subject_marge = '0';
                 $addClassSubject->action = 'approved';
                 $addClassSubject->school_code = $school_code;
 
@@ -118,6 +120,7 @@ class AddSubjectSetupController extends Controller
             $addClassSubject->group_name = $request->group_name;
             $addClassSubject->subject_serial = $generatedId;
             $addClassSubject->status = 'active';
+            $addClassSubject->subject_marge = '0';
             $addClassSubject->action = 'approved';
             $addClassSubject->school_code = $school_code;
 
@@ -130,4 +133,32 @@ class AddSubjectSetupController extends Controller
             'group_name' => $request->group_name
         ]);
     }
+
+    public function updateSubjectSetup(Request $request)
+    {
+        // dd($request);
+        foreach ($request->id as $id) {
+            $resulf = AddClassWiseSubject::
+                where('id', $id)
+                ->update([
+                    'subject_type' => $request->subject_type[$id],
+                    'subject_marge' => $request->subject_marge[$id],
+                ]);
+        }
+
+        // dd($resulf);
+
+        if ($resulf) {
+            return redirect()->route('add.subject.setup')->with([
+                'success' => 'Subject update added successfully!',
+                'class_name' => $request->class_name,
+                'group_name' => $request->group_name
+            ]);
+        }
+
+
+
+
+    }
+
 }
