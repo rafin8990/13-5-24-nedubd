@@ -265,6 +265,9 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
     Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
     Route::post('/saveFourthSubject', [FourthSubjectController::class,'saveFourthSubject'])->name('saveFourthSubject');
+    Route::get('/viewFourthSubject', [FourthSubjectController::class,'viewFourthSubject'])->name('viewFourthSubject');
+    Route::post('/getFourthSubject', [FourthSubjectController::class,'getFourthSubject'])->name('getFourthSubject');
+    Route::delete('/deleteFourthSubject/{id}',[FourthSubjectController::class,'deleteFourthSubject'])->name('deleteFourthSubject');
 
 
 

@@ -1084,7 +1084,7 @@
             </li>
 
             <!-- Exam Setting -->
-            <li class="dropdown">
+            <li class="dropdown-exam-setting">
                 <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
                     aria-controls="dropdown-exam-setting" data-collapse-toggle="dropdown-exam-setting">
                     <svg class="w-5 h-5 text-white transition duration-75 " xmlns="http://www.w3.org/2000/svg"
