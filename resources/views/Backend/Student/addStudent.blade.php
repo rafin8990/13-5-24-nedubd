@@ -20,7 +20,7 @@ Add Student
     <div class="font-bold">
                 <h3>Student Information</h3>
             </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4">
+            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4">
                 <div>
                     <label for="student_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Student ID</label>
                     <input type="text" value="{{$studentId}}" name="student_id" id="student_id"
@@ -225,7 +225,7 @@ Add Student
             <div class="font-bold">
                 <h3>Parents Information</h3>
             </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4">
+            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4">
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Father's
                         name</label>
@@ -343,7 +343,7 @@ Add Student
             <div class="font-bold">
                 <h3>Present Address</h3>
             </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4">
+            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4">
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Present
                         Village</label>
@@ -399,7 +399,7 @@ Add Student
                     )
                 </h3>
             </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4">
+            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4">
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Parmanent
                         Village</label>
@@ -453,7 +453,7 @@ Add Student
                     If Parent's not available
                 </h3>
             </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-2 p-5 border border-4">
+            <div class="grid gap-6 mb-6 md:grid-cols-2 p-5  border-4">
                 <div>
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Guardian
                         Name
@@ -477,7 +477,7 @@ Add Student
                     Last Education History
                 </h3>
             </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4">
+            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4">
                 <div>
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last
                         School Name
@@ -519,7 +519,7 @@ Add Student
                     Authentication
                 </h3>
             </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-2 p-5 border border-4">
+            <div class="grid gap-6 mb-6 md:grid-cols-2 p-5  border-4">
                 <div>
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
 
@@ -537,7 +537,7 @@ Add Student
                 </div>
             </div>
          
-            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5 border border-4 hidden">
+            <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4 hidden">
                 <div class="hidden">
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role
                     </label>
