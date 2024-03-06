@@ -244,6 +244,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/setGradeSetup', [GradeSetupController::class, 'grade_setup'])->name('set.grade.setup');
     Route::put('/setGradeSetup', [GradeSetupController::class, 'store_set_grade_setup'])->name('store.set.grade.setup');
     Route::delete('/delete_set_grade_setup/{id}', [GradeSetupController::class, 'delete_set_grade_setup'])->name('delete.set.grade.setup');
+    Route::post('/addGradeSetup',[GradeSetupController::class,'addGradeSetup'])->name('addGradeSetup');
+    Route::post('/saveGradeSetup',[GradeSetupController::class,'saveGradeSetup'])->name('saveGradeSetup');
 
     // Add Short Code
     Route::get('/addShortCode', [AddShortCodeController::class, 'add_short_code'])->name('add.short.code');

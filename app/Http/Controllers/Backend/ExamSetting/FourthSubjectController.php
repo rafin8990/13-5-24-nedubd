@@ -45,7 +45,9 @@ class FourthSubjectController extends Controller
                 ->get();
         }
 
-        return view('Backend/BasicInfo/ExamSetting/setForthSubject', compact('classes', 'groups', 'sections', 'years', 'students'));
+        $fourthSubjectStudents=FourthSubject::all();
+
+        return view('Backend/BasicInfo/ExamSetting/setForthSubject', compact('classes', 'groups', 'sections', 'years', 'students','fourthSubjectStudents'));
 
     }
 
