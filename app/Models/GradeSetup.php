@@ -13,13 +13,13 @@ class GradeSetup extends Model
     protected $table = 'grade_setup';
 
     protected $fillable = [
+        'class_exam_name',
+        'academic_year_name',
         'class_name',
-        'exam_name',
-        'year_name',
-        'letter',
-        'grade',
-        '1st_range',
-        '2nd_range',
+        'latter_grade',
+        'grade_point',
+        'mark_point_1st',
+        'mark_point_2nd',
         'status',
         'action',
         'school_code',

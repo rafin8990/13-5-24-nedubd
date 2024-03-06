@@ -244,6 +244,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/setGradeSetup', [GradeSetupController::class, 'grade_setup'])->name('set.grade.setup');
     Route::put('/setGradeSetup', [GradeSetupController::class, 'store_set_grade_setup'])->name('store.set.grade.setup');
     Route::delete('/delete_set_grade_setup/{id}', [GradeSetupController::class, 'delete_set_grade_setup'])->name('delete.set.grade.setup');
+    Route::post('/addGradeSetup',[GradeSetupController::class,'addGradeSetup'])->name('addGradeSetup');
+    Route::post('/saveGradeSetup',[GradeSetupController::class,'saveGradeSetup'])->name('saveGradeSetup');
 
     // Add Short Code
     Route::get('/addShortCode', [AddShortCodeController::class, 'add_short_code'])->name('add.short.code');
@@ -272,13 +274,22 @@ Route::prefix('dashboard')->group(function () {
 
 
     //Add Report Name
-    Route::get('/AddReportName', [AddReportNameController::class, 'AddReportName']);
-
+    Route::get('/AddReportName', [AddReportNameController::class, 'add_report'])->name('add.report');
+    Route::put('/AddReportName', [AddReportNameController::class, 'store_add_report'])->name('store.report');
+    Route::delete('/delete_report/{id}', [AddReportNameController::class, 'delete_add_report'])->name('delete.report');
+    
+    
     //Add Signature Name
     Route::get('/AddSignature', [AddSignatureController::class, 'AddSignature']);
-
+    Route::put('/AddSignature', [AddSignatureController::class, 'store_add_sign'])->name('store.sign');
+    Route::delete('/delete_sign/{id}', [AddSignatureController::class, 'delete_add_sign'])->name('delete.sign');
+    
+    Route::get('/listSignature', [AddSignatureController::class, 'listSignature']);
+    
     //Add Exam Publish 
     Route::get('/ExamPublish', [ExamPublishController::class, 'ExamPublish']);
+    Route::post('/addExamPublish', [ExamPublishController::class, 'store_add_exam_publish'])->name('store.exampublish');
+    Route::delete('/delete_exam/{id}', [ViewExamPublishController::class, 'delete_add_exam'])->name('delete.report');
     Route::get('/ViewExamPublish', [ViewExamPublishController::class, 'ViewExamPublish']);
 
     //Add Grand Final

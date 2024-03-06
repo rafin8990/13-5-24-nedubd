@@ -17,32 +17,37 @@
             <div class="mr-10">
                 <select id="countries" name="Class_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose Class</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
-                        <option value="">z</option>
+                        <option selected>Choose a class</option>
+                        @foreach($classes as $class)
+                        <option >{{$class->class_name}}</option>
+                        @endforeach
+                        
                     </select>
             </div>
             <div class="mr-5">
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Exam Name :</label>
             </div>
             <div class="mr-10">
-                <select id="countries" name="Exam_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose Exam</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
-                        <option value="">z</option>
-                    </select>
+                <select id="countries" name="exam_name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>Choose Exam Name</option>
+                @foreach($exam as $exam)
+            <option >{{$exam->class_exam_name}}</option>
+            @endforeach
+            </select>
             </div>
             <div class="mr-5">
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year :</label>
             </div>
             <div class="mr-5">
-                <select name="year" id='date-dropdown'
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>Select Year</option>
-                    </select>
+                <select name="year" 
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option>Select Year</option>
+                @foreach($years as $year)
+                <option >{{$year->academic_year_name}}</option>
+                @endforeach
+                
+            </select>
             </div>
             <div>
                 <button type="submit"
@@ -62,52 +67,66 @@
            </div>
          
         <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
+
             <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
                 <tr>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
-                        {{-- SL --}}
+                        SL
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        {{-- Letter --}}
+                        Class Name
                     </th>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
-                        {{-- Grade --}}
+                        Exam Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        {{-- 1st Range --}}
+                        Year
                     </th>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
-                        {{-- 2nd Range --}}
+                       Status
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        {{-- STATUS --}}
+                        Action
                     </th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($Data as $key=> $data)
                 <tr class=" border-b border-blue-400">
                     <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
-
+                        {{$key + 1}}
                     </th>
                     <td class="px-6 py-4">
-
+                        {{$data->Class_name}}
                     </td>
                     <td class="px-6 py-4">
-
+                        {{$data->exam_name}}
                     </td>
                     <td class="px-6 py-4">
-
+                        {{$data->year}}
                     </td>
                     <td class="px-6 py-4 ">
-
+                        @if($data->status == 'active')
+                        <span class="text-green-500">Active</span>
+                        @else
+                        <span class="text-red-500">Inactive</span>
+                        @endif
                     </td>
 
                     <td class="px-6 py-4 ">
-                        {{-- <div class="flex justify-center">
-                            <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        </div> --}}
+                        <div class="flex justify-center">
+                            <a href="" class="mr-2"><i class="fa fa-edit" style="color:green;"></i></a>
+                            <form method="POST" action="{{ url('dashboard/delete_exam', $data->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn ">
+                                    <a href=""><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
+               @endforeach
 
 
 

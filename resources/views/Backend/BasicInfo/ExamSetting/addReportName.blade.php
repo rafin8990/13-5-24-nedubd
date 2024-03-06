@@ -3,6 +3,7 @@
 Report Name
 @endsection
 @section('Dashboard')
+@include('Message.message')
     <div>
         <h3>
             Report Name
@@ -36,25 +37,25 @@ Report Name
                         </div>
                         <!-- Modal body -->
                         <div class="p-4 md:p-5">
-                            <form class="space-y-4" action="#">
+                            <form action="{{url('dashboard/AddReportName')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div>
                                     <label for="session"
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Report Name :
                                         :</label>
                                     <input type="text" name="report_name" id="session"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                                        placeholder="enter Report Name" required />
+                                        placeholder="Enter Report Name" required />
                                 </div>
                                
                               
                                 <div class="flex justify-between">
-                                    <div class="flex items-start">
-                                        <select id="status"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                            <option selected="">Publish status</option>
-                                            <option value="Yes">Yes</option>
-                                            <option value="No">No</option>
-
+                                    <div class="flex items-start mt-2">
+                                        <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                            <option value="active">Active</option>
+                                            <option value="in active">In active</option>
+    
                                         </select>
                                     </div>
 
@@ -95,27 +96,38 @@ Report Name
                 </tr>
             </thead>
             <tbody>
+                @foreach($reportData as $key=> $data)
                 <tr class=" border-b border-blue-400">
                     <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
-
+                        {{$key + 1}}
                     </th>
                     <td class="px-6 py-4">
-
+                        {{$data->report_name}}
                     </td>
                     <td class="px-6 py-4 ">
-
+                        @if($data->status == 'active')
+                        <span class="text-green-500">Active</span>
+                        @else
+                        <span class="text-red-500">Inactive</span>
+                        @endif
                     </td>
                     
 
                     <td class="px-6 py-4 ">
                         <div class="flex justify-center">
                             <a href="" class="mr-2"><i class="fa fa-edit" style="color:green;"></i></a>
-                            <a href=""><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
+                            <form method="POST" action="{{ url('dashboard/delete_report', $data->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn ">
+                                    <a href=""><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
+                                </button>
+                            </form>
                         </div>
                     </td>
                 </tr>
 
-
+             @endforeach
 
             </tbody>
         </table>
