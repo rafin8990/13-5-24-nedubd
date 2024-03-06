@@ -263,7 +263,6 @@ Route::prefix('dashboard')->group(function () {
 
     //forth subject
 
-
     Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
     Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
     Route::post('/saveFourthSubject', [FourthSubjectController::class,'saveFourthSubject'])->name('saveFourthSubject');
@@ -325,10 +324,16 @@ Route::prefix('dashboard')->group(function () {
 
 
     //Admit Card .............................................................................................................
+    // Route::get('/addSubjectSetup', [AddSubjectSetupController::class, 'add_subject_setup'])->name('add.subject.setup');
+    // Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'store_add_subject_setup'])->name('store.subject.setup');
+    // Route::put('/updateSubjectSetup', [AddSubjectSetupController::class, 'updateSubjectSetup'])->name('update.setSubject');
+
+  
     //Set Admit Card
     Route::group(['prefix' => '/', 'namespace' => 'admitCard'], function () {
         Route::get('/setAdmitCard', [AddAdmitCardController::class, "add_admit_card"])->name('add.admit.card');
         Route::put('/setAdmitCard', [AddAdmitCardController::class, 'store_add_admit_card'])->name('store.add.admit.card');
+        Route::put('/updateAdmitCard', [AddAdmitCardController::class, 'update_add_admit_card'])->name('update.add.admit.card');
         // Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
         // Route::put('/setShortCode', [SetShortCodeController::class, 'store_set_short_code'])->name('store.set.short.code');
     });
