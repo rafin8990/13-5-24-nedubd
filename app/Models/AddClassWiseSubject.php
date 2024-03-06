@@ -17,13 +17,11 @@ class AddClassWiseSubject extends Model
         'subject_type',
         'group_name',
         'subject_serial',
+        'subject_marge',
         'status',
         'action',
         'school_code',
     ];
 
-    protected $casts = [
-        'subject_name' => 'json',
-        'subject_type' => 'json',
-    ];
+
 }
