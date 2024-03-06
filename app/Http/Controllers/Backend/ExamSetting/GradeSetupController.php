@@ -56,21 +56,31 @@ class GradeSetupController extends Controller
         $action = $request->input('action');
         $school_code = "100";
 
+        
+
 
         foreach ($classNames as $class) {
-            $gradeSetup = new GradeSetup();
-            $gradeSetup->class_exam_name = $classExamName;
-            $gradeSetup->academic_year_name = $academicYearName;
-            $gradeSetup->class_name = $class;
-            $gradeSetup->latter_grade = $letterGrade;
-            $gradeSetup->grade_point = $gradePoint;
-            $gradeSetup->mark_point_1st = $markPoint1st;
-            $gradeSetup->mark_point_2nd = $markPoint2nd;
-            $gradeSetup->status = $status;
-            $gradeSetup->action = $action;
-            $gradeSetup->school_code = $school_code;
-            // dd($gradeSetup);
-            $gradeSetup->save();
+
+            $alreadySaveDGrade=GradeSetup::where("school_code", $school_code)->where("action", "approved")->where("class_exam_name", $classExamName)->where("academic_year_name", $academicYearName)->where("class_name",$class )->first();
+
+            if($alreadySaveDGrade){
+                return redirect()->back()->with('error', "grade setup for this year this class this exam already exist");
+            }else{
+                $gradeSetup = new GradeSetup();
+                $gradeSetup->class_exam_name = $classExamName;
+                $gradeSetup->academic_year_name = $academicYearName;
+                $gradeSetup->class_name = $class;
+                $gradeSetup->latter_grade = $letterGrade;
+                $gradeSetup->grade_point = $gradePoint;
+                $gradeSetup->mark_point_1st = $markPoint1st;
+                $gradeSetup->mark_point_2nd = $markPoint2nd;
+                $gradeSetup->status = $status;
+                $gradeSetup->action = $action;
+                $gradeSetup->school_code = $school_code;
+                // dd($gradeSetup);
+                $gradeSetup->save();
+            }
+            
         }
 
         return redirect()->back()->with('success', 'Grade Setup added successfully!');
