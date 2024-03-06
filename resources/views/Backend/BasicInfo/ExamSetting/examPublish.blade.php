@@ -3,6 +3,7 @@
 Exam Publish and Close
 @endsection
 @section('Dashboard')
+@include('Message.message')
     <div>
         <h3>
             Exam Publish and Close
@@ -16,20 +17,22 @@ Exam Publish and Close
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <a href="{{url('/dashboard/ViewExamPublish')}}">View</a></button>
             </div>
-            <form action="">
+            <form action="{{url('dashboard/addExamPublish')}}" method="POST" enctype="multipart/form-data">
+                @csrf
             <div class="grid md:grid-cols-3 mb-5">
                 <div class=" ">
                     <label for="last_name" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white ">CLASS :
                     </label>
                 </div>
                 <div class="">
-                    <select id="countries" name="class"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose Class</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
-                </select>
+                    <select id="countries" name="Class_name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Choose a class</option>
+                        @foreach($classes as $class)
+                        <option >{{$class->class_name}}</option>
+                        @endforeach
+                        
+                    </select>
                 </div>
             </div>
             <div class="grid md:grid-cols-3 mb-5">
@@ -41,9 +44,9 @@ Exam Publish and Close
                     <select id="countries" name="exam_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Exam Name</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
-                        <option value="">z</option>
+                        @foreach($exam as $exam)
+                    <option >{{$exam->class_exam_name}}</option>
+                    @endforeach
                     </select>
                 </div>
             </div>
@@ -54,12 +57,13 @@ Exam Publish and Close
                     </label>
                 </div>
                 <div class="">
-                    <select id="countries" name="year"
+                    <select name="year" 
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose year</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option>Select Year</option>
+                    @foreach($years as $year)
+                    <option >{{$year->academic_year_name}}</option>
+                    @endforeach
+                    
                 </select>
                 </div>
             </div>
@@ -69,13 +73,11 @@ Exam Publish and Close
                     </label>
                 </div>
                 <div>
-                    <select id="countries" name="status"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose status</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
-                </select>
+                    <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <option value="active">Active</option>
+                        <option value="in active">In active</option>
+
+                    </select>
                 </div>
             </div>
 
