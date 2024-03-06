@@ -17,9 +17,11 @@
         background: white;
     }
 
+
+
     .clicked {
-    --b: 0.1em; /* the thickness of the line */
-    --c: #ffffff; /* the color */
+    --b: 0.1em; 
+    --c: #ffffff;
     color: #ffffff;
     padding-block: var(--b);
     background:
@@ -27,8 +29,8 @@
         linear-gradient(var(--c) 0 0) 0% var(--_p, 0%)/var(--_p, 0%) var(--b) no-repeat;
     -webkit-background-clip: text, padding-box;
     background-clip: text, padding-box;
-    transition: .3s var(--_s, 0s) linear, background-size .3s calc(.3s - var(--_s, 0s));
-      --_p: 100%; /* Set underline width to 100% */
+   transition: .3s var(--_s, 0s) linear, background-size .3s calc(.3s - var(--_s, 0s));
+      --_p: 100%;
     --_s: .3s;
 }
 
@@ -54,7 +56,7 @@
             <li>
                 <a href="/dashboard" class="flex items-center p-2 text-white  group">
                     <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 " aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                        xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 22 21">
                         <path
                             d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
                         <path
@@ -68,7 +70,7 @@
             <!-- online Application  -->
             <li class="dropdown">
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group "
                     aria-controls="dropdown-nedubd" data-collapse-toggle="dropdown-nedubd">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
@@ -77,7 +79,7 @@
                     <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">NEDUBD</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
@@ -98,8 +100,6 @@
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                             School Admin</a>
                     </li>
-
-
                 </ul>
             </li>
 
@@ -118,7 +118,7 @@
                         Application </span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
@@ -151,7 +151,7 @@
 
                         <svg class="w-3 h-3 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 4 4 4-4" />
                         </svg>
                     </p>
@@ -195,20 +195,20 @@
                             <svg class="w-5 h-5 text-white transition duration-75 " xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 256 256">
                                 <rect fill="none" />
-                                <line x1="32" y1="64" x2="32" y2="144" fill="none" stroke="currentColor" stroke-linecap="round"
+                                <line x1="32" y1="64" x2="32" y2="144" fill="none" stroke="#ffffff" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="8" />
-                                <path d="M54.2,216a88.1,88.1,0,0,1,147.6,0" fill="none" stroke="currentColor"
+                                <path d="M54.2,216a88.1,88.1,0,0,1,147.6,0" fill="none" stroke="#ffffff"
                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
-                                <polygon points="224 64 128 96 32 64 128 32 224 64" fill="none" stroke="currentColor"
+                                <polygon points="224 64 128 96 32 64 128 32 224 64" fill="none" stroke="#ffffff"
                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
-                                <path d="M169.3,82.2a56,56,0,1,1-82.6,0" fill="none" stroke="currentColor"
+                                <path d="M169.3,82.2a56,56,0,1,1-82.6,0" fill="none" stroke="#ffffff"
                                     stroke-linecap="round" stroke-linejoin="round" stroke-width="8" />
                             </svg>
                             <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Reports Students</span>
 
                             <svg class="w-3 h-3 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="m1 1 4 4 4-4" />
                             </svg>
 
@@ -293,7 +293,7 @@
              </span>
         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 10 6">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="m1 1 4 4 4-4" />
         </svg>
 
@@ -313,7 +313,7 @@
                     </span>
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 10 6">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="2" d="m1 1 4 4 4-4" />
                 </svg>
 
@@ -364,7 +364,7 @@
 
                     <svg class="w-3 h-3 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
@@ -419,7 +419,7 @@
                         Accounts</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
@@ -482,7 +482,7 @@
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
                             aria-controls="dropdown-student-others" data-collapse-toggle="dropdown-student-others">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 " aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 18 21">
                                 <path
                                     d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                             </svg>
@@ -490,7 +490,7 @@
                             </span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
@@ -526,7 +526,7 @@
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
                             aria-controls="dropdown-student-reports" data-collapse-toggle="dropdown-student-reports">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 " aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 18 21">
                                 <path
                                     d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                             </svg>
@@ -534,7 +534,7 @@
                                 (STD FEES) </span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
@@ -631,7 +631,7 @@
                         Attendence </span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
@@ -660,7 +660,7 @@
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
                             aria-controls="dropdown-student-Reports" data-collapse-toggle="dropdown-student-Reports">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 " aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 18 21">
                                 <path
                                     d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                             </svg>
@@ -668,7 +668,7 @@
                                 (STD Attendence) </span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
@@ -714,7 +714,7 @@
                         Final</span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
@@ -762,7 +762,7 @@
 
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
                 </p>
@@ -838,7 +838,7 @@
 
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
                 </p>
@@ -915,7 +915,7 @@
                         Setting </span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
 
@@ -926,7 +926,7 @@
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
                             aria-controls="dropdown-common-setting" data-collapse-toggle="dropdown-common-setting">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 " aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 18 21">
                                 <path
                                     d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
                             </svg>
@@ -934,7 +934,7 @@
                                 Settings</span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
 
@@ -1042,7 +1042,7 @@
                             <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Exam Setting</span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
 
