@@ -31,6 +31,7 @@ class AddSubjectSetupController extends Controller
                 ->where('group_name', $selectedGroupName)
                 ->get();
         } elseif ($request->session()->get('class_name')) {
+                    //  dd($request);
             $selectedClassName = $request->session()->get('class_name');
             $selectedGroupName = $request->session()->get('group_name');
             // dd($selectedGroupName, $selectedClassName);
@@ -138,8 +139,7 @@ class AddSubjectSetupController extends Controller
     {
         // dd($request);
         foreach ($request->id as $id) {
-            $resulf = AddClassWiseSubject::
-                where('id', $id)
+            $resulf = AddClassWiseSubject::where('id', $id)
                 ->update([
                     'subject_type' => $request->subject_type[$id],
                     'subject_marge' => $request->subject_marge[$id],
@@ -155,10 +155,5 @@ class AddSubjectSetupController extends Controller
                 'group_name' => $request->group_name
             ]);
         }
-
-
-
-
     }
-
 }

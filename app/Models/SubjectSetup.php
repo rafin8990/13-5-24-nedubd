@@ -12,15 +12,18 @@ class SubjectSetup extends Model
     protected $table = 'subject_setup';
 
     protected $fillable = [
-        'class_name',
-        'group_name',
-        'subject_name',
-        'subject_type',
-        'subject_serial',
-        'subject_marge',
-        'status',
-        'action',
-        'school_code',
+        // 'class_name',
+        // 'group_name',
+        // 'subject_name',
+        // 'subject_type',
+        // 'subject_serial',
+        // 'subject_marge',
+        // 'status',
+        // 'action',
+        // 'school_code',
+
+
+        // This section delete
     ];
 }
 

@@ -9,7 +9,7 @@ Admit Setup
     </h3>
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-    <form action="{{ url('dashboard/setShortCode') }}" method="POST" enctype="multipart/form-data" class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
+    <form id="dataForm" method="POST" action="{{ route('store.add.admit.card') }}">
         @csrf
         @method('PUT')
         <div class="grid md:grid-cols-9 gap-4 my-10 ">
@@ -18,7 +18,12 @@ Admit Setup
             </div>
             <div class="">
                 <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a class</option>
+                    @if ($selectClassData === null)
+                    <option disabled selected>Choose a class</option>
+                    @elseif($selectClassData)
+                    <option value="{{ $selectClassData }}" selected>{{ $selectClassData }}</option>
+                    @endif
+
                     @foreach($classData as $data)
                     <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
                     @endforeach
@@ -29,7 +34,13 @@ Admit Setup
             </div>
             <div class="">
                 <select id="group_name" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a group</option>
+                    @if ($selectGroupData === null)
+                    <option disabled selected>Choose a group</option>
+                    @elseif($selectGroupData)
+                    <option value="{{ $selectGroupData }}" selected>{{ $selectGroupData }}</option>
+                    @endif
+
+
                     @foreach($groupData as $data)
                     <option value="{{ $data->group_name }}">{{ $data->group_name }}</option>
                     @endforeach
@@ -40,7 +51,13 @@ Admit Setup
             </div>
             <div class="">
                 <select id="class_exam_name" name="class_exam_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a exam</option>
+
+                    @if ($selectClassExamName === null)
+                    <option disabled selected>Choose a exam</option>
+                    @elseif($selectClassExamName)
+                    <option value="{{ $selectClassExamName }}" selected>{{ $selectClassExamName }}</option>
+                    @endif
+
                     @foreach($classExamData as $data)
                     <option value="{{ $data->class_exam_name }}">{{ $data->class_exam_name }}</option>
                     @endforeach
@@ -52,31 +69,203 @@ Admit Setup
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year :</label>
             </div>
             <div class="">
-                <select id="academic_year_name" name="academic_year_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option>Select Year</option>
+                <select id="year" name="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
+                    @if ($selectYear === null)
+                    <option disabled selected>Select Year</option>
+                    @elseif($selectYear)
+                    <option value="{{ $selectYear }}" selected>{{ $selectYear }}</option>
+                    @endif
+
                     @foreach($yearData as $data)
                     <option value="{{ $data->academic_year_name }}">{{ $data->academic_year_name }}</option>
                     @endforeach
                 </select>
             </div>
             <div>
-                <button type="submit" onclick="submitForm()"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
+                <button type="submit" onclick="submitForm()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
             </div>
         </div>
     </form>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.shift-checkbox');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    document.getElementById('dataForm').submit();
+                });
+            });
+        });
+    </script>
+    <script>
         function submitForm() {
             // Get the selected values
             var className = document.getElementById('class_name').value;
+            var groupName = document.getElementById('group_name').value; // Corrected id
             var classExamName = document.getElementById('class_exam_name').value;
-            var academicYearName = document.getElementById('academic_year_name').value;
-            // var shortCodes = document.querySelectorAll('input[name="short_code[]"]:checked');
+            var academicYearName = document.getElementById('year').value;
+
+            // Send data via AJAX
+            var formData = {
+                class_name: className,
+                group_name: groupName,
+                class_exam_name: classExamName,
+                year: academicYearName
+            };
+
+            console.log('admit', formData)
+            // Send an AJAX request
+            axios.post(`{{ route('add.admit.card')}}`, formData)
+                .then(function(response) {
+                    // Handle success response
+                    console.log(response.data);
+                })
+                .catch(function(error) {
+                    // Handle error
+                    console.error(error);
+                });
+        }
+    </script>
+
+
+
+
+    <div class="flex justify-center text-lg font-bold">
+        <h3>
+            ADMIT SETTING
+        </h3>
+    </div>
+
+
+    <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
+        <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+            <tr>
+                <th scope="col" class="px-6 py-3 bg-blue-500">
+                    SL
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    SUBJECT NAME
+                </th>
+                <th scope="col" class="px-6 py-3 bg-blue-500">
+                    Date
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Time
+                </th>
+                <th scope="col" class="px-6 py-3 bg-blue-500">
+                    STATUS
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if ($classWiseSubjectData !== null)
+            @foreach ($classWiseSubjectData as $key => $data)
+            <tr class=" border-b border-blue-400">
+                <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
+                    {{ $key + 1 }}
+                </th>
+                <td class="px-6 py-4">
+                    {{ $data->subject_name }}
+                </td>
+                <td class="px-6 py-4">
+                    <div class="relative max-w-sm">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                            </svg>
+                        </div>
+
+                        <input type="date" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    <input type="time" name="time" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg form-control" style="text-align:center;" value="0">
+                </td>
+
+                <td class="px-6 py-4 ">
+                    <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+                </td>
+            </tr>
+            @endforeach
+            @endif
+
+
+        </tbody>
+    </table>
+
+
+    <br><br>
+    <div class="md:flex justify-center">
+
+        <div class="mr-10">
+            <button type="button" onclick="submitForm()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+
+        </div>
+        <div class="mr-10">
+            <button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
+        </div>
+
+        <div class="ml-32">
+            <h3>Total = <div class="border-2"></div>
+            </h3>
+        </div>
+
+    </div>
+
+    <script>
+        function submitForm() {
+            // Get all checkboxes
+            var checkboxes = document.getElementsByName('subject_name');
+            var selectedSubjects = [];
+
+            // Loop through each checkbox
+            checkboxes.forEach(function(checkbox) {
+                // Check if the checkbox is checked
+                if (checkbox.checked) {
+                    // Get the corresponding date and time inputs
+                    var dateInput = checkbox.closest('tr').querySelector('input[name="date"]');
+                    var timeInput = checkbox.closest('tr').querySelector('input[name="time"]');
+
+                    // Parse date and time strings into JavaScript Date objects
+                    var date = new Date(dateInput.value);
+                    var time = new Date('1970-01-01T' + timeInput.value);
+
+                    // Calculate the difference in milliseconds
+                    var dateTime = date.getTime() + time.getTime();
+                    var now = new Date();
+                    var difference = now.getTime() - dateTime;
+
+                    // Convert difference to hours and minutes
+                    var hours = Math.floor(difference / (1000 * 60 * 60));
+                    var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+                    // Store the difference and subject name in an object
+                    var selectedSubject = {
+                        subject: checkbox.value,
+                        hours: hours,
+                        minutes: minutes
+                    };
+
+                    // Push the selected subject data to the array
+                    selectedSubjects.push(selectedSubject);
+                }
+            });
 
             // Create a form element
             var form = document.createElement('form');
             form.setAttribute('method', 'POST');
-            form.setAttribute('action', '{{ route("add.admit.card") }}');
+            form.setAttribute('action', '{{ route("update.add.admit.card") }}');
             form.setAttribute('enctype', 'multipart/form-data');
+
+            // Add method spoofing input for PUT request
+            var methodInput = document.createElement('input');
+            methodInput.setAttribute('type', 'hidden');
+            methodInput.setAttribute('name', '_method');
+            methodInput.setAttribute('value', 'PUT');
+            form.appendChild(methodInput);
 
             // Add CSRF token input
             var csrfTokenInput = document.createElement('input');
@@ -85,24 +274,14 @@ Admit Setup
             csrfTokenInput.setAttribute('value', '{{ csrf_token() }}');
             form.appendChild(csrfTokenInput);
 
-            // Add other inputs
-            var classNameInput = document.createElement('input');
-            classNameInput.setAttribute('type', 'hidden');
-            classNameInput.setAttribute('name', 'class_name');
-            classNameInput.setAttribute('value', className);
-            form.appendChild(classNameInput);
-
-            var classExamNameInput = document.createElement('input');
-            classExamNameInput.setAttribute('type', 'hidden');
-            classExamNameInput.setAttribute('name', 'class_exam_name');
-            classExamNameInput.setAttribute('value', classExamName);
-            form.appendChild(classExamNameInput);
-
-            var academicYearNameInput = document.createElement('input');
-            academicYearNameInput.setAttribute('type', 'hidden');
-            academicYearNameInput.setAttribute('name', 'academic_year_name');
-            academicYearNameInput.setAttribute('value', academicYearName);
-            form.appendChild(academicYearNameInput);
+            // Add other inputs for selected subjects
+            selectedSubjects.forEach(function(selectedSubject) {
+                var subjectInput = document.createElement('input');
+                subjectInput.setAttribute('type', 'hidden');
+                subjectInput.setAttribute('name', 'selected_subjects[]');
+                subjectInput.setAttribute('value', JSON.stringify(selectedSubject));
+                form.appendChild(subjectInput);
+            });
 
             // Append the form to the document body and submit it
             document.body.appendChild(form);
@@ -112,77 +291,9 @@ Admit Setup
 
 
 
-    <div class=" text-lg font-bold">
-        <div class="flex justify-center">
-            <h3>
-                ADMIT SETTING
-            </h3>
-        </div>
-
-        <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
-                <tr>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        SL
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        SUBJECT NAME
-                    </th>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        Date
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Time
-                    </th>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        STATUS
-                    </th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr class=" border-b border-blue-400">
-                    <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
-
-                    </th>
-                    <td class="px-6 py-4">
-
-                    </td>
-                    <td class="px-6 py-4">
-
-                    </td>
-                    <td class="px-6 py-4">
-
-                    </td>
-                    <td class="px-6 py-4 ">
-
-                    </td>
-
-
-                </tr>
-
-
-
-            </tbody>
-        </table>
-    </div>
-    <br><br>
-    <div class="md:flex justify-center">
-
-        <div class="mr-10">
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
-        </div>
-        <div class="mr-10">
-            <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
-        </div>
-
-        <div class="ml-32">
-            <h3>Total = <div class="border-2"></div>
-            </h3>
-        </div>
-
-    </div>
     @endsection
+
+
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
