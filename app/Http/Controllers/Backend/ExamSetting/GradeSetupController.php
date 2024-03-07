@@ -27,8 +27,12 @@ class GradeSetupController extends Controller
         $academic_year_name = $request->session()->get('academic_year_name');
         // dd($classExamName);
 
+        $gradesetup=GradeSetup::where("school_code",$school_code)->get();
 
-        return view('Backend/BasicInfo/ExamSetting/gradeSetup', compact('gradePointData', 'classData', 'academicYearData', 'classExamData', 'classExamName', 'academic_year_name'));
+        // dd($gradesetup);
+
+
+        return view('Backend/BasicInfo/ExamSetting/gradeSetup', compact('gradePointData', 'classData', 'academicYearData', 'classExamData', 'classExamName', 'academic_year_name','gradesetup'));
     }
 
     public function addGradeSetup(Request $request)

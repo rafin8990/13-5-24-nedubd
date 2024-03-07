@@ -63,7 +63,13 @@ Grade
                 </h3>
                 @foreach($classData as $data)
                 <div>
-                    <input id="group_{{ $data->class_name }}" type="checkbox" value="{{ $data->class_name }}" name="class_name[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    
+                    <input id="group_{{ $data->class_name }}" type="checkbox" value="{{ $data->class_name }}" name="class_name[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+                    @if($gradesetup->pluck('class_name')->contains($data->class_name) && $gradesetup->pluck('academic_year_name')->contains($academic_year_name) && $gradesetup->pluck('class_exam_name')->contains($classExamName) )
+
+                    checked
+                    @endif
+                    >
                     <label for="group_{{ $data->class_name }}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->class_name }}</label>
                 </div>
                 @endforeach
