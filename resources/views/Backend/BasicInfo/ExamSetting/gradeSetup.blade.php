@@ -54,16 +54,30 @@ Grade
 <input class="hidden" value="{{$classExamName}}" name="class_exam_name" type="text">
 <input class="hidden" value="{{$academic_year_name}}" name="academic_year_name" type="text">
 
-    <div class="flex">
+    <div class="flex ">
 
-        <div class="mr-20">
-            <div class="grid gap-6 mb-6  md:grid-cols-1 items-center ps-4 border border-blue-200 rounded dark:border-gray-700 mx-20 px-20 py-10">
+        <div class="">
+            <div class="grid gap-5 mb-6  md:grid-cols-1 items-center ps-4 border border-blue-200 rounded dark:border-gray-700  mx-5 px-20 py-10">
                 <h3>
                     Select Class
                 </h3>
                 @foreach($classData as $data)
                 <div>
-                    <input id="group_{{ $data->class_name }}" type="checkbox" value="{{ $data->class_name }}" name="class_name[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    
+                @php
+        $classChecked = $gradesetup->pluck('class_name')->contains($data->class_name) &&
+            $gradesetup->pluck('academic_year_name')->contains($academic_year_name) &&
+            $gradesetup->pluck('class_exam_name')->contains($classExamName);
+    @endphp
+    @unless($classChecked)
+        <input id="group_{{ $data->class_name }}" 
+               type="checkbox" 
+               value="{{ $data->class_name }}" 
+               name="class_name[]" 
+               class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+               @if($classChecked) checked @endif
+        >
+    @endunless
                     <label for="group_{{ $data->class_name }}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->class_name }}</label>
                 </div>
                 @endforeach
@@ -78,7 +92,7 @@ Grade
                 </h3>
             </div>
 
-            <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
+            <table class=" text-sm text-left rtl:text-right text-black dark:text-blue-100">
                 <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
                     <tr>
                         <th scope="col" class="px-6 py-3 bg-blue-500">
@@ -102,7 +116,7 @@ Grade
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($gradePointData as $key=> $data)
+                    @foreach($gradePointData as $key => $data)
                     <tr class=" border-b capitalize text-lg">
                         <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
                             {{$key + 1}}
@@ -112,16 +126,16 @@ Grade
                             <input class="hidden" value="{{$data->letter_grade}}" name="latter_grade[]" type="text">
                         </td>
                         <td class="px-6 py-4">
-                            {{$data->grade_point}}
-                            <input class="hidden" value="{{$data->grade_point}}" name="grade_point[]" type="text">
+                            <!-- {{$data->grade_point}} -->
+                            <input class="border-0 w-[80px]" value="{{$data->grade_point}}" name="grade_point[]" type="text">
                         </td>
                         <td class="px-6 py-4">
-                            {{$data->mark_point_1st}}
-                            <input class="hidden" value="{{$data->mark_point_1st}}" name="mark_point_1st[]" type="text">
+                            <!-- {{$data->mark_point_1st}} -->
+                            <input class="border-0 w-[80px]" value="{{$data->mark_point_1st}}" name="mark_point_1st[]" type="text">
                         </td>
                         <td class="px-6 py-4 ">
-                            {{$data->mark_point_2nd}}
-                            <input class="hidden" value="{{$data->mark_point_2nd}}" name="mark_point_2nd[]" type="text">
+                            <!-- {{$data->mark_point_2nd}} -->
+                            <input class="border-0 w-[80px]" value="{{$data->mark_point_2nd}}" name="mark_point_2nd[]" type="text">
                         </td>
                         <td class="px-6 py-4 ">
                             <div>
@@ -141,7 +155,7 @@ Grade
 
     <div class="md:flex justify-center">
     <div class="mr-10">
-            <button class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET Config View</button>
+            <a href="/dashboard/viewGradeSetup" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET Config View</a>
         </div>
         <div class="mr-10">
             <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
@@ -161,7 +175,7 @@ Grade
 @else
 <div class="md:flex justify-center">
         <div class="mr-10">
-            <button class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET Config View</button>
+            <a href="/dashboard/viewGradeSetup" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET Config View</a>
         </div>
        
         <div class="mr-10">
