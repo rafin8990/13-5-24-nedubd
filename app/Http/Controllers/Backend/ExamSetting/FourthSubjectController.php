@@ -45,7 +45,9 @@ class FourthSubjectController extends Controller
                 ->get();
         }
 
-        return view('Backend/BasicInfo/ExamSetting/setForthSubject', compact('classes', 'groups', 'sections', 'years', 'students'));
+        $fourthSubjectStudents=FourthSubject::all();
+
+        return view('Backend/BasicInfo/ExamSetting/setForthSubject', compact('classes', 'groups', 'sections', 'years', 'students','fourthSubjectStudents'));
 
     }
 
@@ -70,33 +72,37 @@ class FourthSubjectController extends Controller
 
 
 
-            // $existingData = FourthSubject::where('action', 'approved')
-            // ->where('school_code', $request->input('school_code'))
-            // ->where('class_name', $request->class_name)
-            // ->where('group', $request->group)
-            // ->where('section', $request->section)
-            // ->where('year', $request->year)
-            // ->where('shift', $request->shift)
-            // ->where('student_id', $student)
-            // ->get();
+           
 
             foreach ($students as $student) {
-                $fouthSubject = new FourthSubject();
-                $fouthSubject->optional_subject = $request->optional_subject;
-                $fouthSubject->compulsory_subject = $request->compulsory_subject;
-                $fouthSubject->class_name = $request->class_name;
-                $fouthSubject->section = $request->section_name;
-                $fouthSubject->group = $request->group;
-                $fouthSubject->shift = $request->shift;
-                $fouthSubject->year = $request->year;
-                $fouthSubject->action = $request->action;
-                $fouthSubject->type = $request->type;
-                $fouthSubject->school_code = $request->school_code;
-                $fouthSubject->student_id = $student;
-                $fouthSubject->save();
+                $existingData = FourthSubject::where('action', 'approved')
+                ->where('school_code', $request->input('school_code'))
+                ->where('class_name', $request->class_name)
+                ->where('group', $request->group)
+                ->where('section', $request->section)
+                ->where('year', $request->year)
+                ->where('shift', $request->shift)
+                ->where('student_id', $student)
+                ->get();
 
+                if($existingData){
+                    return redirect()->back()->with('error', 'fouth Subject have already added!');
+                }else{
+                    $fouthSubject = new FourthSubject();
+                    $fouthSubject->optional_subject = $request->optional_subject;
+                    $fouthSubject->compulsory_subject = $request->compulsory_subject;
+                    $fouthSubject->class_name = $request->class_name;
+                    $fouthSubject->section = $request->section_name;
+                    $fouthSubject->group = $request->group;
+                    $fouthSubject->shift = $request->shift;
+                    $fouthSubject->year = $request->year;
+                    $fouthSubject->action = $request->action;
+                    $fouthSubject->type = $request->type;
+                    $fouthSubject->school_code = $request->school_code;
+                    $fouthSubject->student_id = $student;
+                    $fouthSubject->save();
+                }
             }
-
             return redirect()->back()->with('success', 'fouth Subject added successfully!');
 
         }

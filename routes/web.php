@@ -250,8 +250,11 @@ Route::prefix('dashboard')->group(function () {
 
     // Grade Setup
     Route::get('/setGradeSetup', [GradeSetupController::class, 'grade_setup'])->name('set.grade.setup');
-    Route::put('/setGradeSetup', [GradeSetupController::class, 'store_set_grade_setup'])->name('store.set.grade.setup');
-    Route::delete('/delete_set_grade_setup/{id}', [GradeSetupController::class, 'delete_set_grade_setup'])->name('delete.set.grade.setup');
+    // Route::delete('/delete_set_grade_setup/{id}', [GradeSetupController::class, 'delete_set_grade_setup'])->name('delete.set.grade.setup');
+    Route::post('/addGradeSetup',[GradeSetupController::class,'addGradeSetup'])->name('addGradeSetup');
+    Route::post('/saveGradeSetup',[GradeSetupController::class,'saveGradeSetup'])->name('saveGradeSetup');
+
+    Route::get('/viewGradeSetup',[GradeSetupController::class,'viewGradeSetup'])->name('viewGradeSetup');
 
     // Add Short Code
     Route::get('/addShortCode', [AddShortCodeController::class, 'add_short_code'])->name('add.short.code');
@@ -268,7 +271,6 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/setExamMarks', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
 
     //forth subject
-
 
     Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
     Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
@@ -331,10 +333,16 @@ Route::prefix('dashboard')->group(function () {
 
 
     //Admit Card .............................................................................................................
+    // Route::get('/addSubjectSetup', [AddSubjectSetupController::class, 'add_subject_setup'])->name('add.subject.setup');
+    // Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'store_add_subject_setup'])->name('store.subject.setup');
+    // Route::put('/updateSubjectSetup', [AddSubjectSetupController::class, 'updateSubjectSetup'])->name('update.setSubject');
+
+  
     //Set Admit Card
     Route::group(['prefix' => '/', 'namespace' => 'admitCard'], function () {
         Route::get('/setAdmitCard', [AddAdmitCardController::class, "add_admit_card"])->name('add.admit.card');
         Route::put('/setAdmitCard', [AddAdmitCardController::class, 'store_add_admit_card'])->name('store.add.admit.card');
+        Route::put('/updateAdmitCard', [AddAdmitCardController::class, 'update_add_admit_card'])->name('update.add.admit.card');
         // Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
         // Route::put('/setShortCode', [SetShortCodeController::class, 'store_set_short_code'])->name('store.set.short.code');
     });
