@@ -24,6 +24,10 @@ use App\Http\Controllers\Backend\ExamSetting\FourthSubjectController;
 use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
 use App\Http\Controllers\Backend\NEDUBD\SchoolAdminController;
 use App\Http\Controllers\Backend\Student\StudentController;
+use App\Http\Controllers\Backend\Student\studentReports\StudentDetailsController;
+use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
+use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
+use App\Http\Controllers\Backend\Student\studentReports\EsifListController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
@@ -90,7 +94,11 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/uploadExelFile', [StudentController::class, 'uploadExelFile'])->name('uploadExelFile');
     Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
 
-
+    // Student Report
+    Route::get('studentDetails',[StudentDetailsController::class,'studentDetails']);
+    Route::get('studentShortList',[addShortListController::class,'studentShortList']);
+    Route::get('studentListWithPhoto',[StudentListWithPhotoController::class,'studentListWithPhoto']);
+    Route::get('e_sifLists',[EsifListController::class,'e_sifList']);
 
 
 
