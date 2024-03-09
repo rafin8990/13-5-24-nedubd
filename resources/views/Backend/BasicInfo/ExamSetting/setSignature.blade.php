@@ -112,10 +112,8 @@
 <script>
     $(document).ready(function() {
         let $dateDropdown = $('#date-dropdown');
-
         let currentYear = new Date().getFullYear();
         let earliestYear = 1970;
-
         while (currentYear >= earliestYear) {
             let $dateOption = $('<option>');
             $dateOption.text(currentYear);
