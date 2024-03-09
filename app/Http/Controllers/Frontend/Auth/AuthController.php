@@ -28,7 +28,6 @@ class AuthController extends Controller
 
 
         $admin = Admin::where('email', $request->name)->orWhere('phone_number', $request->name)->first();
-
         $student = Student::where('student_id', $request->name)->orWhere('email', $request->name)->orWhere('father_mobile', $request->name)->first();
         $teacher = Teacher::where('teacher_id', $request->name)->orWhere('mobile', $request->name)->first();
 

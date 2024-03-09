@@ -21,4 +21,8 @@ class AddGradePoint extends Model
         'action',
         'school_code',
     ];
+
+    public function add_class_exam(){
+        return $this->belongsToMany(AddClassExam::class);   
+     }
 }
