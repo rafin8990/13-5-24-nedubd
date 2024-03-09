@@ -91,8 +91,30 @@ class GradeSetupController extends Controller
     }
 
 
-    public function viewGradeSetup(){
-        return view('Backend.BasicInfo.ExamSetting.viewGradeSetup');
+    public function viewGradeSetup(Request $request){
+        $school_code = '100';
+
+        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
+        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $school_code)->get();
+
+        $classExamName = $request->session()->get('class_exam_name');
+        $academic_year_name = $request->session()->get('academic_year_name');
+
+        $gradeSetupData=GradeSetup::where('action', 'approved')->where('school_code',$school_code)->where('class_exam_name', $classExamName)->where('academic_year_name', $academic_year_name)->get();
+
+        
+
+        return view('Backend.BasicInfo.ExamSetting.viewGradeSetup', compact('academicYearData', 'classExamData', 'gradeSetupData'));
+    }
+
+
+    public function viewGradeSetupData(Request $request){
+        // dd($request);
+        return redirect()->route('viewGradeSetup')->with([
+            'class_exam_name' => $request->class_exam_name,
+            'academic_year_name' => $request->academic_year_name,
+
+        ]);
     }
 
 }
