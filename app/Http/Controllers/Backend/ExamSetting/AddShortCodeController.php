@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class AddShortCodeController extends Controller
 {
-    public function add_short_code()
+    public function add_short_code($schoolCode)
     {
-        $school_code = '100';
-        $shortCodeData = AddShortCode::where('action', 'approved')->where('school_code', $school_code)->get();
+       // $school_code = '100';
+        $shortCodeData = AddShortCode::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
         return view('Backend/BasicInfo/ExamSetting/addShortCode', compact('shortCodeData'));
     }
 
 
-    public function store_add_short_code(Request $request)
+    public function store_add_short_code(Request $request,$schoolCode)
     {
 
         // dd($request);
@@ -30,7 +30,7 @@ class AddShortCodeController extends Controller
         // dd($validatedData);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
 
         // If no duplicate record is found, proceed to create a new record
@@ -39,7 +39,7 @@ class AddShortCodeController extends Controller
         $shortCode->position = $request->position;
         $shortCode->status = $request->status;
         $shortCode->action = 'approved';
-        $shortCode->school_code = $school_code;
+        $shortCode->school_code = $schoolCode;
 
         // dd($shortCode);
 

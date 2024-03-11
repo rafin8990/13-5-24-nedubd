@@ -16,18 +16,18 @@ class SetExamMarksController extends Controller
         return view ('Backend/BasicInfo/ExamSetting/classSetExamMarks');
         
     }
-    public function set_exam_marks(Request $request)
+    public function set_exam_marks(Request $request,$schoolCode)
     {
-        $school_code = '100';
+        //$school_code = '100';
         $searchClassData = null;
         $searchClassExamName = null;
         $searchAcademicYearName = null;
         $setCodeData = null;
         $shortCodeData = null;
 
-        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
-        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $school_code)->get();
-        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
+        $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
 
         return view('Backend/BasicInfo/ExamSetting/classSetExamMarks', compact('classData', 'classExamData', 'academicYearData', 'searchClassData', 'searchClassExamName', 'searchAcademicYearName'));

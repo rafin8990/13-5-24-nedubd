@@ -946,77 +946,77 @@
                                     Institute Info</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSubjectSetup"
+                                <a href="/dashboard/addSubjectSetup/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Class Subject Setting</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClass"
+                                <a href="/dashboard/addClass/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Class</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSection"
+                                <a href="/dashboard/addSection/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Section</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addShift"
+                                <a href="/dashboard/addShift/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     shift</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addGroup"
+                                <a href="/dashboard/addGroup/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Group</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSubject"
+                                <a href="/dashboard/addSubject/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Subject</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addAcademicSession"
+                                <a href="/dashboard/addAcademicSession/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Academic Session</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addAcademicYear"
+                                <a href="/dashboard/addAcademicYear/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Academic Year</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addBoardExam"
+                                <a href="/dashboard/addBoardExam/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Board Exam</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addCategory"
+                                <a href="/dashboard/addCategory/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Category</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassExam"
+                                <a href="/dashboard/addClassExam/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Class Exam</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseGroup"
+                                <a href="/dashboard/addClassWiseGroup/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Class wise Group</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseSection"
+                                <a href="/dashboard/addClassWiseSection/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Class wise Section</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseShift"
+                                <a href="/dashboard/addClassWiseShift/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Class wise Shift</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addPeriod"
+                                <a href="/dashboard/addPeriod/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                                     Period</a>
                             </li>
@@ -1050,22 +1050,22 @@
                         <ul id="dropdown-exam-setting" class="hidden py-2 space-y-2">
                             
                         <li>
-                        <a href="/dashboard/addGradePoint"
+                        <a href="/dashboard/addGradePoint/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                             Grade Point</a>
                     </li>
                     <li>
-                        <a href="/dashboard/addShortCode"
+                        <a href="/dashboard/addShortCode/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Add
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setShortCode"
+                        <a href="/dashboard/setShortCode/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Set
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="/dashboard/SetExamMarks"
+                        <a href="/dashboard/setExamMarks/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Set
                             Exam Marks</a>
                     </li>
@@ -1075,12 +1075,12 @@
                             4th Subject</a>
                     </li>
                     <li>
-                        <a href="/dashboard/AddReportName"
+                        <a href="/dashboard/AddReportName/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">
                             Add Report Name</a>
                     </li>
                     <li>
-                        <a href="/dashboard/AddSignature"
+                        <a href="/dashboard/AddSignature/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">
                            Add Signature</a>
                     </li>
@@ -1100,7 +1100,7 @@
                             </a>
                     </li>
                     <li>
-                        <a href="/dashboard/ExamPublish"
+                        <a href="/dashboard/ExamPublish/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group ">Exam Publish
                             </a>
                     </li>

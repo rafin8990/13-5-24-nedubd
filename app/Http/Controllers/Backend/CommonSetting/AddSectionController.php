@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class AddSectionController extends Controller
 {
-    public function add_section()
+    public function add_section($schoolCode)
     {
         
-        $school_code = '100';
-        $sectionData = AddSection::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $sectionData = AddSection::where('action', 'approved')->where('school_code', $schoolCode)->get();
        
         return view('Backend/BasicInfo/CommonSetting/addSection', compact('sectionData'));
     }
     
 
-    public function store_add_section(Request $request)
+    public function store_add_section(Request $request,$schoolCode)
     {
 
         // dd($request);
@@ -31,10 +31,10 @@ class AddSectionController extends Controller
        
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+        //$school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, section_name, or position already exists
-        $existingRecord = AddSection::where('school_code', $school_code)
+        $existingRecord = AddSection::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('section_name', $request->section_name);                   
             })
@@ -52,7 +52,7 @@ class AddSectionController extends Controller
         $section->status = $request->status;
         // dd($section);
         $section->action = 'approved';
-        $section->school_code = $school_code;
+        $section->school_code = $schoolCode;
 
         // Save the new record
         $section->save();

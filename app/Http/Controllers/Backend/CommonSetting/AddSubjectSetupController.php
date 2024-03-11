@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 
 class AddSubjectSetupController extends Controller
 {
-    public function add_subject_setup(Request $request)
+    public function add_subject_setup(Request $request,$schoolCode)
     {
 
-        $school_code = '100';
+        //$school_code = '100';
         $selectedClassName = null;
         $selectedGroupName = null;
         $classWiseSubjectData = null;
@@ -26,7 +26,7 @@ class AddSubjectSetupController extends Controller
             $selectedGroupName = $request->input('group_name');
             // dd($selectedGroupName);
             $classWiseSubjectData = AddClassWiseSubject::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code', $schoolCode)
                 ->where('class_name', $selectedClassName)
                 ->where('group_name', $selectedGroupName)
                 ->get();
@@ -36,7 +36,7 @@ class AddSubjectSetupController extends Controller
             $selectedGroupName = $request->session()->get('group_name');
             // dd($selectedGroupName, $selectedClassName);
             $classWiseSubjectData = AddClassWiseSubject::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code', $schoolCode)
                 ->where('class_name', $selectedClassName)
                 ->where('group_name', $selectedGroupName)
                 ->get();
@@ -47,14 +47,14 @@ class AddSubjectSetupController extends Controller
         }
 
         // dd($classWiseSubjectData);
-        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
-        $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
-        $subjectData = AddSubject::where('action', 'approved')->where('school_code', $school_code)->get();
+        $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $groupData = AddGroup::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $subjectData = AddSubject::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
         return view('Backend/BasicInfo/CommonSetting/addSubjectSetup', compact('classWiseSubjectData', 'selectedClassName', 'selectedGroupName', 'classData', 'groupData', 'subjectData'));
     }
 
-    public function store_add_subject_setup(Request $request)
+    public function store_add_subject_setup(Request $request,$schoolCode)
     {
         // dd($request);
         // Validate form data
@@ -63,7 +63,7 @@ class AddSubjectSetupController extends Controller
             'group_name' => 'required|string',
         ]);
 
-        $school_code = '100';
+        //$school_code = '100';
         $generateId = AddClassWiseSubject::count() + 1;
         $generatedId = sprintf('%02d', $generateId);
 
@@ -72,7 +72,7 @@ class AddSubjectSetupController extends Controller
 
 
         if ($subjectNames === null) {
-            return redirect()->route('add.subject.setup')->with([
+            return redirect()->route('add.subject.setup',$schoolCode)->with([
                 'error' => 'Please select subject name!',
                 'class_name' => $request->class_name,
                 'group_name' => $request->group_name
@@ -80,14 +80,14 @@ class AddSubjectSetupController extends Controller
         }
         // dd($subjectNames);
         $existingData = AddClassWiseSubject::where('action', 'approved')
-            ->where('school_code', $school_code)
+            ->where('school_code', $schoolCode)
             ->where('class_name', $request->class_name)
             ->where('group_name', $request->group_name)
             ->where('subject_name', $request->subject_name)
             ->get();
 
         if ($existingData->isNotEmpty()) {
-            return redirect()->route('add.subject.setup')->with([
+            return redirect()->route('add.subject.setup',$schoolCode)->with([
                 'error' => 'All Ready Added',
                 'class_name' => $request->class_name,
                 'group_name' => $request->group_name
@@ -97,8 +97,9 @@ class AddSubjectSetupController extends Controller
 
         // dd($existingData);
         if (is_array($subjectNames)) {
-
+            
             foreach ($subjectNames as $subject) {
+                
                 $addClassSubject = new AddClassWiseSubject();
                 $addClassSubject->class_name = $request->class_name;
                 $addClassSubject->subject_name = $subject;
@@ -108,10 +109,11 @@ class AddSubjectSetupController extends Controller
                 $addClassSubject->status = 'active';
                 $addClassSubject->subject_marge = '0';
                 $addClassSubject->action = 'approved';
-                $addClassSubject->school_code = $school_code;
+                $addClassSubject->school_code = $schoolCode;
 
                 $addClassSubject->save();
             }
+          
         } else {
             // Handle the case when only a single subject is received
             $addClassSubject = new AddClassWiseSubject();
@@ -123,19 +125,19 @@ class AddSubjectSetupController extends Controller
             $addClassSubject->status = 'active';
             $addClassSubject->subject_marge = '0';
             $addClassSubject->action = 'approved';
-            $addClassSubject->school_code = $school_code;
+            $addClassSubject->school_code = $schoolCode;
 
             $addClassSubject->save();
         }
 
-        return redirect()->route('add.subject.setup')->with([
+        return redirect()->route('add.subject.setup',$schoolCode)->with([
             'success' => 'Subject setup added successfully!',
             'class_name' => $request->class_name,
             'group_name' => $request->group_name
         ]);
     }
 
-    public function updateSubjectSetup(Request $request)
+    public function updateSubjectSetup(Request $request,$schoolCode)
     {
         // dd($request);
         foreach ($request->id as $id) {
@@ -149,7 +151,7 @@ class AddSubjectSetupController extends Controller
         // dd($resulf);
 
         if ($resulf) {
-            return redirect()->route('add.subject.setup')->with([
+            return redirect()->route('add.subject.setup',$schoolCode)->with([
                 'success' => 'Subject update added successfully!',
                 'class_name' => $request->class_name,
                 'group_name' => $request->group_name

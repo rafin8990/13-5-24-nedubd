@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class AddReportNameController extends Controller
 {
-    public function add_report()
+    public function add_report($schoolCode)
     {
         
-        $school_code = '100';
-        $reportData = AddReportName::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $reportData = AddReportName::where('action', 'approved')->where('school_code', $schoolCode)->get();
        
         return view('Backend/BasicInfo/ExamSetting/addReportName', compact('reportData'));
     }
     
-    public function store_add_report(Request $request)
+    public function store_add_report(Request $request,$schoolCode)
     {
         // Validate the incoming request data
         $request->validate([
@@ -26,10 +26,10 @@ class AddReportNameController extends Controller
         ]);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+        //$school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, class_name, or position already exists
-        $existingRecord = AddReportName::where('school_code', $school_code)
+        $existingRecord = AddReportName::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('report_name', $request->report_name);
             })
@@ -46,7 +46,7 @@ class AddReportNameController extends Controller
         $report->status = $request->status;
         // dd($class);
         $report->action = 'approved';
-        $report->school_code = $school_code;
+        $report->school_code = $schoolCode;
 
         // Save the new record
         $report->save();

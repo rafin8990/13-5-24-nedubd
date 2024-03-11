@@ -8,15 +8,15 @@ use Illuminate\Http\Request;
 
 class AddBoardExamController extends Controller
 {
-    public function add_board_exam()
+    public function add_board_exam($schoolCode)
     {
-        $school_code = '100';
-        $boardExamData = AddBoardExam::where('action', 'approved')->where('school_code', $school_code)->get();
+       // $school_code = '100';
+        $boardExamData = AddBoardExam::where('action', 'approved')->where('school_code', $schoolCode)->get();
        
         return view('Backend/BasicInfo/CommonSetting/addBoardExam', compact('boardExamData'));
     }
 
-    public function store_add_board_exam(Request $request)
+    public function store_add_board_exam(Request $request,$schoolCode)
     {
         // Validate the incoming request data
         $request->validate([
@@ -26,10 +26,10 @@ class AddBoardExamController extends Controller
         ]);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+        //$school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, board_exam_name, or position already exists
-        $existingRecord = AddBoardExam::where('school_code', $school_code)
+        $existingRecord = AddBoardExam::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('board_exam_name', $request->board_exam_name)
                     ->orWhere('position', $request->position);
@@ -48,7 +48,7 @@ class AddBoardExamController extends Controller
         $boardExam->status = $request->status;
         // dd($boardExam);
         $boardExam->action = 'approved';
-        $boardExam->school_code = $school_code;
+        $boardExam->school_code = $schoolCode;
 
         // Save the new record
         $boardExam->save();

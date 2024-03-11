@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class AddClassController extends Controller
 {
-    public function add_class()
+    public function add_class($schoolCode)
     {
         
-        $school_code = '100';
-        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
+       // $school_code = '100';
+        $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
        
         return view('Backend/BasicInfo/CommonSetting/addClass', compact('classData'));
     }
     
-    public function store_add_class(Request $request)
+    public function store_add_class(Request $request,$schoolCode)
     {
         // Validate the incoming request data
         $request->validate([
@@ -27,10 +27,10 @@ class AddClassController extends Controller
         ]);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, class_name, or position already exists
-        $existingRecord = AddClass::where('school_code', $school_code)
+        $existingRecord = AddClass::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('class_name', $request->class_name)
                     ->orWhere('position', $request->position);
@@ -49,7 +49,7 @@ class AddClassController extends Controller
         $class->status = $request->status;
         // dd($class);
         $class->action = 'approved';
-        $class->school_code = $school_code;
+        $class->school_code = $schoolCode;
 
         // Save the new record
         $class->save();

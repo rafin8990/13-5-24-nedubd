@@ -1,6 +1,6 @@
 @extends('Backend.app')
 @section('title')
-Exam Mark
+Short Code
 
 @endsection
 @section('Dashboard')
@@ -9,11 +9,11 @@ Exam Mark
 
 <div>
     <h3>
-        Exam Mark Setup
+        Set Short Code
 
     </h3>
 </div>
-<form action="{{ url('dashboard/setShortCode') }}" method="POST" enctype="multipart/form-data" class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
+<form action="{{ url('dashboard/setShortCode',$school_code) }}" method="POST" enctype="multipart/form-data" class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
     @csrf
     @method('PUT')
     <div>
@@ -39,7 +39,7 @@ Exam Mark
 
             <div>
                 <div class="mr-5">
-                    <label for="class_exam_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class Name:</label>
+                    <label for="class_exam_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Exam Name:</label>
                 </div>
                 <select id="class_exam_name" name="class_exam_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @if($searchClassExamName=== null)
@@ -55,7 +55,7 @@ Exam Mark
             </div>
             <div>
                 <div class="mr-5">
-                    <label for="academic_year_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class Name:</label>
+                    <label for="academic_year_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year:</label>
                 </div>
                 <select name="academic_year_name" id='date-academic_year_name' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @if($searchAcademicYearName=== null)
@@ -68,6 +68,14 @@ Exam Mark
                     <option value="{{ $data->academic_year_name }}">{{ $data->academic_year_name }}</option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="hidden">
+                <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Code 
+                </label>
+                <input type="text" value="{{$school_code}}" name="school_code" id="last_name"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter The Police Station Name" />
             </div>
 
 
@@ -90,7 +98,7 @@ Exam Mark
             // Create a form element
             var form = document.createElement('form');
             form.setAttribute('method', 'GET');
-            form.setAttribute('action', '{{ route("set.short.code") }}');
+            form.setAttribute('action', '{{ route("set.short.code",$school_code) }}');
             form.setAttribute('enctype', 'multipart/form-data');
 
             // Add CSRF token input

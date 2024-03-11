@@ -8,15 +8,15 @@ use Illuminate\Http\Request;
 
 class AddSubjectController extends Controller
 {
-    public function add_subject()
+    public function add_subject($schoolCode)
     {
-        $school_code = '100';
-        $subjectData = AddSubject::where('action', 'approved')->where('school_code', $school_code)->get();
+       // $school_code = '100';
+        $subjectData = AddSubject::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
         return view('Backend/BasicInfo/CommonSetting/addSubject', compact('subjectData'));
     }
 
-    public function store_add_subject(Request $request)
+    public function store_add_subject(Request $request,$schoolCode)
     {
         // Validate the incoming request data
         $request->validate([
@@ -26,10 +26,10 @@ class AddSubjectController extends Controller
         ]);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, subject_name, or position already exists
-        $existingRecord = AddSubject::where('school_code', $school_code)
+        $existingRecord = AddSubject::where('school_code',$schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('subject_name', $request->subject_name)
                     ->orWhere('position', $request->position);
@@ -49,7 +49,7 @@ class AddSubjectController extends Controller
         $subject->status = $request->status;
         // dd($subject);
         $subject->action = 'approved';
-        $subject->school_code = $school_code;
+        $subject->school_code = $schoolCode;
 
         // Save the new record
         $subject->save();

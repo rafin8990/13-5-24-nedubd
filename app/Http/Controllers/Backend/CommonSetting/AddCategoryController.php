@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class AddCategoryController extends Controller
 {
-    public function add_category()
+    public function add_category($schoolCode)
     {
-        $school_code = '100';
-        $categoryData = AddCategory::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $categoryData = AddCategory::where('action', 'approved')->where('school_code', $schoolCode)->get();
        
         
         return view('Backend/BasicInfo/CommonSetting/addCategory', compact('categoryData'));
     }
     
 
-    public function store_add_category(Request $request)
+    public function store_add_category(Request $request,$schoolCode)
     {
 
         // dd($request);
@@ -31,10 +31,10 @@ class AddCategoryController extends Controller
        
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+        //$school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, category_name, or position already exists
-        $existingRecord = AddCategory::where('school_code', $school_code)
+        $existingRecord = AddCategory::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('category_name', $request->category_name);                   
             })
@@ -52,7 +52,7 @@ class AddCategoryController extends Controller
         $category->status = $request->status;
         // dd($category);
         $category->action = 'approved';
-        $category->school_code = $school_code;
+        $category->school_code = $schoolCode;
 
         // Save the new record
         $category->save();

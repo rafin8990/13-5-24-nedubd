@@ -12,9 +12,9 @@ use Illuminate\Http\Request;
 
 class SetShortCodeController extends Controller
 {
-    public function set_short_code(Request $request)
+    public function set_short_code(Request $request,$schoolCode)
     {
-        $school_code = '100';
+        //$school_code = '100';
         $searchClassData = null;
         $searchClassExamName = null;
         $searchAcademicYearName = null;
@@ -27,7 +27,7 @@ class SetShortCodeController extends Controller
             $searchAcademicYearName = $request->input('academic_year_name');
 
             $setCode = SetShortCode::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code', $schoolCode)
                 ->where('class_name', $searchClassData)
                 ->where('class_exam_name', $searchClassExamName)
                 ->where('academic_year_name', $searchAcademicYearName)
@@ -36,12 +36,12 @@ class SetShortCodeController extends Controller
             foreach ($setCode as $codeData) {
                 $setCodeData = $codeData; // Assign the current set code data to the $setCodeData variable
             }
-            $shortCodeData = AddShortCode::where('action', 'approved')->where('school_code', $school_code)->get();
+            $shortCodeData = AddShortCode::where('action', 'approved')->where('school_code', $schoolCode)->get();
         }
 
-        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
-        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $school_code)->get();
-        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
+        $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
 
         return view('Backend/BasicInfo/ExamSetting/getShortCode', compact('setCodeData', 'classData', 'classExamData', 'academicYearData', 'shortCodeData', 'searchClassData', 'searchClassExamName', 'searchAcademicYearName'));
@@ -49,7 +49,7 @@ class SetShortCodeController extends Controller
 
 
 
-    public function store_set_short_code(Request $request)
+    public function store_set_short_code(Request $request,$schoolCode)
     {
         // dd($request);
         // Validate the incoming request data
@@ -63,10 +63,10 @@ class SetShortCodeController extends Controller
         // dd($validatedData);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+        //$school_code = '100'; // Your school code here
 
         $existingData = SetShortCode::where('action', 'approved')
-            ->where('school_code', $school_code)
+            ->where('school_code', $schoolCode)
             ->where('class_name', $request->class_name)
             ->where('class_exam_name', $request->class_exam_name)
             ->where('academic_year_name', $request->academic_year_name)
@@ -89,7 +89,7 @@ class SetShortCodeController extends Controller
             $setShortCode->short_code = $request->short_code;
             $setShortCode->status = 'active';
             $setShortCode->action = 'approved';
-            $setShortCode->school_code = $school_code;
+            $setShortCode->school_code =$schoolCode;
             $setShortCode->save();
         }
 

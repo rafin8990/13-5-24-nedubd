@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\NEDUBD;
 
 use App\Http\Controllers\Controller;
 use App\Models\SchoolAdmin;
+use Illuminate\Support\Facades\Hash;
 use App\Models\SchoolInfo;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,7 @@ class SchoolAdminController extends Controller
             $admin = new SchoolAdmin();
             $admin->name = $request->input('name');
             $admin->email = $request->input('email');
-            $admin->password = $request->input('password');
+            $admin->password = Hash::make($request->input('password'));
             $admin->school_name = $request->input('school_name');
             $admin->school_code = $request->input('school_code');
             $admin->mobile_number = $request->input('mobile_number');

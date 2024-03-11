@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class AddAcademicYearController extends Controller
 {
-    public function add_academic_year()
+    public function add_academic_year($schoolCode)
     {
-        $school_code = '100';
-        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
         // dd($academicYearData);
         return view('Backend/BasicInfo/CommonSetting/addAcademicYear', compact('academicYearData'));
     }
 
 
-    public function store_add_academic_year(Request $request)
+    public function store_add_academic_year(Request $request,$schoolCode)
     {
 
         // dd($request);
@@ -30,10 +30,10 @@ class AddAcademicYearController extends Controller
 
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, academic_year_name, or position already exists
-        $existingRecord = AddAcademicYear::where('school_code', $school_code)
+        $existingRecord = AddAcademicYear::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('academic_year_name', $request->academic_year_name);
             })
@@ -51,7 +51,7 @@ class AddAcademicYearController extends Controller
         $academicYear->status = $request->status;
         // dd($academicYear);
         $academicYear->action = 'approved';
-        $academicYear->school_code = $school_code;
+        $academicYear->school_code = $schoolCode;
 
         // Save the new record
         $academicYear->save();

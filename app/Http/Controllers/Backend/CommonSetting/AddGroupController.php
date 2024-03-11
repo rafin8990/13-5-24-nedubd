@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class AddGroupController extends Controller
 {
-    public function add_group()
+    public function add_group($schoolCode)
     {
         
-        $school_code = '100';
-        $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $groupData = AddGroup::where('action', 'approved')->where('school_code', $schoolCode)->get();
        
         return view('Backend/BasicInfo/CommonSetting/addGroup', compact('groupData'));
     }
     
 
-    public function store_add_group(Request $request)
+    public function store_add_group(Request $request,$schoolCode)
     {
 
         // dd($request);
@@ -31,10 +31,10 @@ class AddGroupController extends Controller
        
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, group_name, or position already exists
-        $existingRecord = AddGroup::where('school_code', $school_code)
+        $existingRecord = AddGroup::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('group_name', $request->group_name);                   
             })
@@ -52,7 +52,7 @@ class AddGroupController extends Controller
         $group->status = $request->status;
         // dd($group);
         $group->action = 'approved';
-        $group->school_code = $school_code;
+        $group->school_code = $schoolCode;
 
         // Save the new record
         $group->save();

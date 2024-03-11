@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class AddClassWiseGroupController extends Controller
 {
-    public function add_class_wise_group(Request $request)
+    public function add_class_wise_group(Request $request,$schoolCode)
     {
-        $school_code = '100';
+        //$school_code = '100';
 
         // $classWiseGroupData = AddClassWiseGroup::where('action', 'approved')->where('school_code', $school_code)->get();
         if ($request->has('class_name')) {
@@ -20,31 +20,31 @@ class AddClassWiseGroupController extends Controller
             $selectedClassName = $request->input('class_name');
             // dd($selectedClassName);
             $classWiseGroupData = AddClassWiseGroup::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code', $schoolCode)
                 ->where('class_name', $selectedClassName)
                 ->get();
         } elseif ($request->session()->get('class_name')) {
             $selectedClassName = $request->session()->get('class_name');
             // dd($selectedClassName);
             $classWiseGroupData = AddClassWiseGroup::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code',$schoolCode)
                 ->where('class_name', $selectedClassName)
                 ->get();
         } else {
             // If no class name is provided, retrieve all class-wise group data
             $selectedClassName = null;
             $classWiseGroupData = AddClassWiseGroup::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code', $schoolCode)
                 ->get();
         }
 
-        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
-        $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
+        $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $groupData = AddGroup::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
         return view('Backend/BasicInfo/CommonSetting/addClassWiseGroup', compact('classData', 'groupData', 'classWiseGroupData', 'selectedClassName'));
     }
 
-    public function store_add_class_wise_group(Request $request)
+    public function store_add_class_wise_group(Request $request,$schoolCode)
     {
         // Validate form data
         $request->validate([
@@ -52,10 +52,10 @@ class AddClassWiseGroupController extends Controller
             'group_name' => 'required|string'
         ]);
 
-        $school_code = '100';
+       // $school_code = '100';
 
         // Check if the combination of class name and group name already exists for this school
-        $existingRecord = AddClassWiseGroup::where('school_code', $school_code)
+        $existingRecord = AddClassWiseGroup::where('school_code', $schoolCode)
             ->where('class_name', $request->class_name)
             ->where('group_name', $request->group_name)
             ->exists();
@@ -67,7 +67,7 @@ class AddClassWiseGroupController extends Controller
 
         // Create a new record for the selected group and class combination
         $newRecord = new AddClassWiseGroup();
-        $newRecord->school_code = $school_code;
+        $newRecord->school_code = $schoolCode;
         $newRecord->class_name = $request->class_name;
         $newRecord->group_name = $request->group_name;
         $newRecord->status = 'active';
@@ -75,7 +75,7 @@ class AddClassWiseGroupController extends Controller
         $newRecord->save();
 
         // return redirect()->back()->with('success', 'Class wise group added successfully!');
-        return redirect()->route('add.class.wise.group')->with('success', 'Class wise group added successfully!')->with('class_name', $request->class_name);
+        return redirect()->route('add.class.wise.group',$schoolCode)->with('success', 'Class wise group added successfully!')->with('class_name', $request->class_name);
     }
 
 

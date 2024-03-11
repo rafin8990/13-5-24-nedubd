@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Student;
 use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\View;
-
+use App\Models\SchoolAdmin;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,8 +26,22 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function ($view) {
 
-            $schoolCodeProvider = "100";
-            $view->with('schoolCodeProvider', $schoolCodeProvider);
+            
+            $schoolAdminData=null;
+            $studentData=null;
+            
+            $schoolAdminId=Session::get('schoolAdminId');
+            $studentId=Session::get('studentId');
+            $school_code=Session::get('school_code');
+            if($schoolAdminId){
+                $schoolAdminData=SchoolAdmin::find($schoolAdminId);
+            }
+            else if($studentId)
+            $studentData=Student::find($studentId);
+          
+            $view->with('schoolAdminData',$schoolAdminData)
+                 ->with('studentData',$studentData)
+                 ->with('school_code',$school_code);
 
         });
     }

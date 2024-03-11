@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class AddPeriodController extends Controller
 {
-    public function add_period()
+    public function add_period($schoolCode)
     {
 
-        $school_code = '100';
-        $periodData = AddPeriod::where('action', 'approved')->where('school_code', $school_code)->get();
+       //$school_code = '100';
+        $periodData = AddPeriod::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
         return view('Backend/BasicInfo/CommonSetting/addPeriod', compact('periodData'));
     }
 
-    public function store_add_period(Request $request)
+    public function store_add_period(Request $request,$schoolCode)
     {
         // Validate the incoming request data
         $request->validate([
@@ -27,10 +27,10 @@ class AddPeriodController extends Controller
         ]);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, class_period, or position already exists
-        $existingRecord = AddPeriod::where('school_code', $school_code)
+        $existingRecord = AddPeriod::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('class_period', $request->class_period)
                     ->orWhere('position', $request->position);
@@ -49,7 +49,7 @@ class AddPeriodController extends Controller
         $period->status = $request->status;
         // dd($period);
         $period->action = 'approved';
-        $period->school_code = $school_code;
+        $period->school_code = $schoolCode;
 
         // Save the new record
         $period->save();
