@@ -81,7 +81,6 @@ class GradeSetupController extends Controller
                 $gradeSetup->status = $status;
                 $gradeSetup->action = $action;
                 $gradeSetup->school_code = $school_code;
-                // dd($gradeSetup);
                 $gradeSetup->save();
             }
             
@@ -93,6 +92,8 @@ class GradeSetupController extends Controller
 
     public function viewGradeSetup(Request $request){
         $school_code = '100';
+        // $grade=GradeSetup::all();
+        // dd($grade->toArray());
 
         $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
         $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $school_code)->get();

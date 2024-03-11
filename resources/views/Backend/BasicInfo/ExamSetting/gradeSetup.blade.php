@@ -65,9 +65,10 @@ Grade
                 <div>
                     
                 @php
-        $classChecked = $gradesetup->pluck('class_name')->contains($data->class_name) &&
-            $gradesetup->pluck('academic_year_name')->contains($academic_year_name) &&
-            $gradesetup->pluck('class_exam_name')->contains($classExamName);
+             $classChecked = $gradesetup->where('class_name', $data->class_name)
+                                        ->where('academic_year_name', $academic_year_name)
+                                        ->where('class_exam_name', $classExamName)
+                                        ->isNotEmpty();
     @endphp
     @unless($classChecked)
         <input id="group_{{ $data->class_name }}" 
