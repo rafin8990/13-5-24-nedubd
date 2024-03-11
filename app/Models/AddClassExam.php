@@ -18,4 +18,8 @@ class AddClassExam extends Model
         'action',
         'school_code',
     ];
+
+    public function add_class(){
+       return $this->belongsToMany(AddClass::class);
+    }
 }

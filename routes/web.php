@@ -256,6 +256,7 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/saveGradeSetup',[GradeSetupController::class,'saveGradeSetup'])->name('saveGradeSetup');
 
     Route::get('/viewGradeSetup',[GradeSetupController::class,'viewGradeSetup'])->name('viewGradeSetup');
+    Route::post('/getGradeSetup',[GradeSetupController::class,'viewGradeSetupData'])->name('getGradeSetup');
 
     // Add Short Code
     Route::get('/addShortCode/{schoolCode}', [AddShortCodeController::class, 'add_short_code'])->name('add.short.code');
