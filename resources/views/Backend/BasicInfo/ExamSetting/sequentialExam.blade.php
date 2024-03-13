@@ -19,6 +19,7 @@ Exam Mark Setup
             <div class="mr-10">
                 <select id="countries" name="class_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
                         @if ($searchClassData === null)
                         <option disabled selected>Choose a class</option>
                     @elseif($searchClassData)
@@ -28,6 +29,7 @@ Exam Mark Setup
                     @foreach ($classData as $data)
                         <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
                     @endforeach
+
                     </select>
             </div>
             <div class="mr-5">
@@ -36,6 +38,7 @@ Exam Mark Setup
             <div class="mr-10">
                 <select id="countries" name="exam_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
                         @if ($searchClassExamName === null)
                                 <option selected>Choose a exam</option>
                             @elseif($searchClassExamName)
@@ -45,6 +48,7 @@ Exam Mark Setup
                             @foreach ($classExamData as $data)
                                 <option value="{{ $data->class_exam_name }}">{{ $data->class_exam_name }}</option>
                             @endforeach
+
                     </select>
             </div>
             <div class="mr-5">
@@ -86,6 +90,7 @@ Exam Mark Setup
                 </h3>
                 
                 <div>
+
                     <input id="sequential_exam" type="checkbox" value="Grade-TotalMark-Roll"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grade-TotalMark-Roll</label>
                 </div>
@@ -100,6 +105,7 @@ Exam Mark Setup
                 <div>
                     <input id="sequential_exam" type="checkbox" value="Roll-TotalMark-Grade"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Roll-TotalMark-Grade</label>
+
                 </div>
                
                
@@ -162,7 +168,9 @@ Exam Mark Setup
 
                     </td>
                     <td class="px-6 py-4">
+
                     {{$data->sequential_exam}}
+
                     </td>
                     
                 </tr>

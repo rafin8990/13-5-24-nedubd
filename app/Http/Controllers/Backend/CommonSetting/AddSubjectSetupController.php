@@ -96,8 +96,10 @@ class AddSubjectSetupController extends Controller
 
 
         // dd($existingData);
+
         if (is_array($subjectNames)) {
             
+
             foreach ($subjectNames as $subject) {
                 
                 $addClassSubject = new AddClassWiseSubject();
@@ -109,7 +111,9 @@ class AddSubjectSetupController extends Controller
                 $addClassSubject->status = 'active';
                 $addClassSubject->subject_marge = '0';
                 $addClassSubject->action = 'approved';
+
                 $addClassSubject->school_code = $schoolCode;
+
                 $addClassSubject->save();
             }
           
@@ -124,7 +128,9 @@ class AddSubjectSetupController extends Controller
             $addClassSubject->status = 'active';
             $addClassSubject->subject_marge = '0';
             $addClassSubject->action = 'approved';
+
             $addClassSubject->school_code = $schoolCode;
+
 
             $addClassSubject->save();
         }

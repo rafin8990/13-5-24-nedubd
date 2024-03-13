@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\AddAcademicYear;
 use App\Models\AddClass;
 use App\Models\AddClassExam;
+
 use App\Models\SequentialExam;
+
 use Illuminate\Http\Request;
 
 class SequentialWiseExamController extends Controller
@@ -91,5 +93,6 @@ class SequentialWiseExamController extends Controller
             'exam_name' => $request->exam_name,
             'year' => $request->year
         ]);
+
     }
 }
