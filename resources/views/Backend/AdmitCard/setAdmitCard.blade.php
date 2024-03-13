@@ -9,7 +9,7 @@ Admit Setup
     </h3>
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-    <form id="dataForm" method="POST" action="{{ route('store.add.admit.card') }}">
+    <form id="dataForm" method="POST" action="{{ route('store.add.admit.card',$school_code) }}">
         @csrf
         @method('PUT')
         <div class="grid md:grid-cols-9 gap-4 my-10 ">
@@ -116,7 +116,7 @@ Admit Setup
 
             console.log('admit', formData)
             // Send an AJAX request
-            axios.post(`{{ route('add.admit.card')}}`, formData)
+            axios.post(`{{ route('add.admit.card',$school_code)}}`, formData)
                 .then(function(response) {
                     // Handle success response
                     console.log(response.data);
@@ -245,8 +245,8 @@ Admit Setup
                     // Store the difference and subject name in an object
                     var selectedSubject = {
                         subject: checkbox.value,
-                        hours: hours,
-                        minutes: minutes
+                        date: date,
+                        time: time
                     };
 
                     // Push the selected subject data to the array
@@ -257,7 +257,7 @@ Admit Setup
             // Create a form element
             var form = document.createElement('form');
             form.setAttribute('method', 'POST');
-            form.setAttribute('action', '{{ route("update.add.admit.card") }}');
+            form.setAttribute('action', '{{ route("update.add.admit.card",$school_code) }}');
             form.setAttribute('enctype', 'multipart/form-data');
 
             // Add method spoofing input for PUT request

@@ -9,15 +9,16 @@ use App\Models\AddClass;
 use App\Models\AddClassExam;
 use App\Models\AddClassWiseSubject;
 use App\Models\AddGroup;
+use DateTime;
 
 use Illuminate\Http\Request;
 
 class AddAdmitCardController extends Controller
 {
-    public function add_admit_card(Request $request)
+    public function add_admit_card(Request $request, $schoolCode)
     {
 
-        $school_code = '100';
+        // $school_code = '100';
         $selectClassData = null;
         $selectGroupData = null;
         $selectClassExamName = null;
@@ -34,7 +35,7 @@ class AddAdmitCardController extends Controller
             // dd($selectClassData, $selectGroupData);
 
             $classWiseSubjectData = AddClassWiseSubject::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code', $schoolCode)
                 ->where('class_name', $selectClassData)
                 ->where('group_name', $selectGroupData)
                 ->get();
@@ -46,26 +47,29 @@ class AddAdmitCardController extends Controller
         }
 
 
-        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
-        $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
-        $yearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
-        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $school_code)->get();
+        $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $groupData = AddGroup::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $yearData = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $schoolCode)->get();
         // $classWiseSubjectData = AddClassWiseSubject::where('action', 'approved')->where('school_code', $school_code)->get();
 
-        return view('Backend/AdmitCard/setAdmitCard', compact(
-            'selectClassData',
-            'selectGroupData',
-            'selectClassExamName',
-            'selectYear',
-            'classData',
-            'groupData',
-            'yearData',
-            'classExamData',
-            'classWiseSubjectData'
-        ));
+        return view(
+            'Backend/AdmitCard/setAdmitCard',
+            compact(
+                'selectClassData',
+                'selectGroupData',
+                'selectClassExamName',
+                'selectYear',
+                'classData',
+                'groupData',
+                'yearData',
+                'classExamData',
+                'classWiseSubjectData'
+            )
+        );
     }
 
-    public function store_add_admit_card(Request $request)
+    public function store_add_admit_card(Request $request, $schoolCode)
     {
         // dd($request);
         // Validate form data
@@ -77,7 +81,7 @@ class AddAdmitCardController extends Controller
         ]);
 
 
-        return redirect()->route('add.admit.card')->with([
+        return redirect()->route('add.admit.card', $schoolCode)->with([
             // 'success' => 'Subject setup added successfully!',
             'class_name' => $request->class_name,
             'group_name' => $request->group_name,
@@ -85,9 +89,20 @@ class AddAdmitCardController extends Controller
             'year' => $request->year
         ]);
     }
-    public function update_add_admit_card(Request $request)
+    public function update_add_admit_card(Request $request, $schoolCode)
     {
-        dd($request);
+        $data = $request->all();
+        dd($data);
+
+        foreach ($data['selected_subjects'] as $selectedSubject) {
+            $decodedData = json_decode($selectedSubject, true);
+
+            // Access time and date
+            $time = $decodedData['time'];
+            $date = $decodedData['date'];
+            dd($time);
+        }
+
         // Validate form data
         $request->validate([
             'class_name' => 'required|string',
@@ -97,7 +112,7 @@ class AddAdmitCardController extends Controller
         ]);
 
 
-        return redirect()->route('add.admit.card')->with([
+        return redirect()->route('add.admit.card', $schoolCode)->with([
             // 'success' => 'Subject setup added successfully!',
             'class_name' => $request->class_name,
             'group_name' => $request->group_name,

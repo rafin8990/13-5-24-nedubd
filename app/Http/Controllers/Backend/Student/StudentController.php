@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Student;
 use App\Http\Controllers\Controller;
 use App\Models\AddAcademicSession;
 use App\Models\AddAcademicYear;
+use App\Models\AddCategory;
 use App\Models\AddClass;
 use App\Models\AddGroup;
 use App\Models\AddSection;
@@ -15,16 +16,18 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
-    public function AddStudentForm()
+    public function AddStudentForm($schoolCode)
     {
+        // $school_code=100;
         $studentId= $this->generateStudentId();
-        $classes=AddClass::all();
-        $sections=AddSection::all();
-        $groups=AddGroup::all();
-        $shifts=AddShift::all();
-        $sessions=AddAcademicSession::all();
-        $years=AddAcademicYear::all();
-        return view("Backend.Student.addStudent",compact("studentId","classes","sections","groups", "shifts","sessions","years"));
+        $classes=AddClass::where("action", "approved")->where("school_code",$schoolCode)->get();
+        $sections=AddSection::where("action", "approved")->where("school_code",$schoolCode)->get();
+        $groups=AddGroup::where("action", "approved")->where("school_code",$schoolCode)->get();
+        $shifts=AddShift::where("action", "approved")->where("school_code",$schoolCode)->get();
+        $sessions=AddAcademicSession::where("action", "approved")->where("school_code",$schoolCode)->get();
+        $years=AddAcademicYear::where("action", "approved")->where("school_code",$schoolCode)->get();
+        $categories=AddCategory::where("action", "approved")->where("school_code",$schoolCode)->get();
+        return view("Backend.Student.addStudent",compact("studentId","classes","sections","groups", "shifts","sessions","years","categories"));
     }
 
     public function addStudent(Request $request)
@@ -38,6 +41,7 @@ class StudentController extends Controller
             'group' => 'required|string',
             'section' => 'required|string',
             'shift' => 'required|string',
+            'category' => 'required|string',
             
             'year' => 'required|string',
             'gender' => 'required|string',
@@ -94,7 +98,8 @@ class StudentController extends Controller
                 ->exists();
 
             if ($isExist) {
-                return back()->with('error', 'Failed. This Student already exists');
+                // return back()->with('error', 'Failed. This Student already exists');
+                return redirect()->back()->with('error', 'This Student already exists.');
             }
 
 
@@ -108,6 +113,7 @@ class StudentController extends Controller
             $student->group = $request->input('group');
             $student->section = $request->input('section');
             $student->shift = $request->input('shift');
+            $student->category = $request->input('category');
             $student->year = $request->input('year');
             $student->gender = $request->input('gender');
             $student->religious = $request->input('religious');
@@ -151,7 +157,8 @@ class StudentController extends Controller
             $student->school_code = $request->input('school_code');
             $student->action = $request->input('action');
             $student->save();
-            return redirect('/dashboard/add-student')->with('success', 'Student Sucessfully  created.');
+            // return redirect('/dashboard/add-student/{schoolCode}')->with('success', 'Student Sucessfully  created.');
+            return redirect()->back()->with('success', 'student added successfully!');
 
 
         }

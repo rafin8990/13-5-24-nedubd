@@ -3,7 +3,7 @@
 Add Student
 @endsection
 @section('Dashboard')
-@include('/Message/message')
+@include('Message.message')
 <div class="">
     <h3>Add New Student </h3>
 </div>
@@ -116,16 +116,18 @@ Add Student
                         
                     </select>
                 </div>
-                <!-- <div class="mb-6">
+                <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">category (Day
                         care & general)</label>
                     <select id="countries" name="category"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose a Category</option>
-                        <option >Day</option>
-                        <option >General</option>
+                        <option disabled selected>Choose a Category</option>
+                        @foreach($categories as $category)
+                        <option >{{$category->category_name}}</option>
+                        @endforeach
+                        
                     </select>
-                </div> -->
+                </div>
                 <div class="mb-6">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Academic
                         Year</label>

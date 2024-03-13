@@ -90,7 +90,7 @@ Route::prefix('dashboard')->group(function () {
 
     // student module
     Route::post('/create-student', [StudentController::class, 'addStudent'])->name('student.add');
-    Route::get('/add-student', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
+    Route::get('/add-student/{schoolCode}', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
     Route::get('/updateStudentBasicInfo', [StudentController::class, 'updateStudentBasicInfo'])->name('updateStudentBasicInfo');
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/uploadExelFile', [StudentController::class, 'uploadExelFile'])->name('uploadExelFile');
@@ -345,9 +345,9 @@ Route::prefix('dashboard')->group(function () {
   
     //Set Admit Card
     Route::group(['prefix' => '/', 'namespace' => 'admitCard'], function () {
-        Route::get('/setAdmitCard', [AddAdmitCardController::class, "add_admit_card"])->name('add.admit.card');
-        Route::put('/setAdmitCard', [AddAdmitCardController::class, 'store_add_admit_card'])->name('store.add.admit.card');
-        Route::put('/updateAdmitCard', [AddAdmitCardController::class, 'update_add_admit_card'])->name('update.add.admit.card');
+        Route::get('/setAdmitCard/{schoolCode}', [AddAdmitCardController::class, "add_admit_card"])->name('add.admit.card');
+        Route::put('/setAdmitCard/{schoolCode}', [AddAdmitCardController::class, 'store_add_admit_card'])->name('store.add.admit.card');
+        Route::put('/updateAdmitCard/{schoolCode}', [AddAdmitCardController::class, 'update_add_admit_card'])->name('update.add.admit.card');
         // Route::get('/setShortCode', [SetShortCodeController::class, 'set_short_code'])->name('set.short.code');
         // Route::put('/setShortCode', [SetShortCodeController::class, 'store_set_short_code'])->name('store.set.short.code');
     });

@@ -87,8 +87,9 @@
                 </a>
             </li>
 
-            <!-- NeduBd Member Add complete nedubd -->
-            <li class="dropdown">
+            @if($admin)
+ <!-- NeduBd Member Add complete nedubd -->
+ <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-nedubd" data-collapse-toggle="dropdown-nedubd">
@@ -126,6 +127,8 @@
             </li>
 
             
+            @endif
+           
  
 
             <!-- online Application  -->
@@ -186,7 +189,7 @@
 
                 <ul id="dropdown-student" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="{{ route('AddStudentForm') }}"
+                        <a href="{{ route('AddStudentForm', $school_code) }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                             New Student </a>
                     </li>
@@ -336,7 +339,7 @@
                 </button>
                 <ul id="dropdown-admit-card" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="/dashboard/setAdmitCard"
+                        <a href="/dashboard/setAdmitCard/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Admit Card
                         </a>
