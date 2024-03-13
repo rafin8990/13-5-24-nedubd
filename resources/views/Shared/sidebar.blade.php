@@ -17,9 +17,7 @@
         background: #0766AD;
     }
 
-    <style>
-
-    /* Style for accordion */
+/*     
     .accordion {
         list-style-type: none;
         padding: 0;
@@ -48,15 +46,17 @@
 
     .accordion li.active .content {
         max-height: 200px;
-    }
+    } */
 
     .clicked {
         background: rgb(255, 255, 255, 0.2) !important;
         padding: 10px auto;
     }
-</style>
-
-.clicked:hover {}
+       
+    .dropdown ul {
+            overflow: hidden;
+            transition: all 1s ease; 
+        }
 </style>
 
 <aside id="logo-sidebar"
@@ -87,52 +87,10 @@
                 </a>
             </li>
 
-
-            <!-- customized NeduBd Member Add complete nedubd -->
-            <ul class="accordion">
-                <li>
-                    <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20"
-                        aria-controls="dropdown-nedubd" data-collapse-toggle="dropdown-nedubd">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="#FFFFFF" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                        </svg>
-
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">NEDUBD</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-
-                    </button>
-                    <div class="content">
-                        <ul class="py-2 space-y-2">
-                            <li>
-                                <a href="/dashboard/addAdmin"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Create
-                                    New Member</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/addSchoolInfo"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                                    School Info</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/addSchoolAdmin"
-                                    class="flex items-center w-full p-2 text-white  transition  rounded-lg pl-11 group  hover:bg-slate-100/20">Add
-                                    School Admin</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
             <!-- NeduBd Member Add complete nedubd -->
-            {{-- <li class="dropdown">
+            <li class="dropdown">
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-nedubd" data-collapse-toggle="dropdown-nedubd">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="#FFFFFF" class="w-6 h-6">
@@ -165,12 +123,15 @@
                             School Admin</a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
+
+            
+ 
 
             <!-- online Application  -->
-            {{-- <li class="dropdown">
+            <li class="dropdown">
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-online-examination" data-collapse-toggle="dropdown-online-examination">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="#ffffff" class="w-6 h-6">
@@ -200,50 +161,12 @@
                     </li>
 
                 </ul>
-            </li> --}}
+            </li>
 
-            {{-- customized online application --}}
-            <ul class="accordion">
-                <li>
-                    <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="#ffffff" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                        </svg>
-
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">
-                            Online Application
-                        </span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-
-                    </button>
-                    <div class="content">
-                        <ul class="py-2 space-y-2">
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
-                                    Of Application</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Report
-                                    Applicant</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-            {{-- customized student routes --}}
             <!-- Student route  -->
             <li class="dropdown">
                 <button
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer"
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
                     aria-controls="dropdown-student" data-collapse-toggle="dropdown-student">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="#ffffff" class="w-6 h-6">
@@ -391,13 +314,10 @@
                     </li>
                 </ul>
             </li>
-
-
-
             {{-- Admit Card --}}
             <li class="dropdown">
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-admit-card" data-collapse-toggle="dropdown-admit-card">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="#ffffff" class="w-6 h-6">
@@ -423,7 +343,7 @@
                     </li>
                     <li class="dropdown">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                             aria-controls="dropdown-report-card" data-collapse-toggle="dropdown-report-card">
 
                             <span
@@ -471,8 +391,8 @@
             </li>
 
             {{-- exam and Result --}}
-            {{-- <li class="dropdown">
-                <button class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group cursor-pointer "
+       <li class="dropdown">
+                <button class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group cursor-pointer hover:bg-slate-100/20"
                     aria-controls="dropdown-exam" data-collapse-toggle="dropdown-exam">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
                         <path d="M12 3V5H3V3H12ZM16 19V21H3V19H16ZM22 11V13H3V11H22Z"></path>
@@ -523,86 +443,12 @@
                             Exam SMS</a>
                     </li>
                 </ul>
-            </li> --}}
-
-            {{-- customized exam and Result --}}
-            <ul class="accordion">
-                <li>
-                    <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
-                            <path d="M12 3V5H3V3H12ZM16 19V21H3V19H16ZM22 11V13H3V11H22Z"></path>
-                        </svg>
-
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">
-                            Exam & Result
-                        </span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-
-                    </button>
-                    <div class="content">
-                        <ul class="py-2 space-y-2">
-                            <li>
-                                <a href="/dashboard/exam_marks"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
-                                    Marks Input </a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/exam_process"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
-                                    Exam Process </a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/exam_excel"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
-                                    Exam Excel </a>
-                            </li>
-                            <li>
-                                {{-- hover:bg-slate-100/20 --}}
-                                <a href="/dashboard/update_exam_process"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Update
-                                    Exam Process</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/student_exam_excel"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
-                                    Exam Excel</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/exam_marks_delete"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
-                                    exam Marks Delete</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/exam_sms"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Exam SMS</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-
-
-
-
-
-
-
-
-
-
-
+            </li>
             <!-- student accounts  -->
 
             <li class="dropdown">
-
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-student-Accounts" data-collapse-toggle="dropdown-student-Accounts">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
                         <path
@@ -670,12 +516,10 @@
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Generate
                             Multiple Payslip</a>
                     </li>
-
-
                     <!-- others  -->
                     <li class="dropdown">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                             aria-controls="dropdown-student-others" data-collapse-toggle="dropdown-student-others">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 "
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"
@@ -714,15 +558,10 @@
                             </li>
                         </ul>
                     </li>
-
-                    {{-- others --}}
-
-
                     <!-- reports student fees  -->
-
                     <li class="dropdown">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                             aria-controls="dropdown-student-reports" data-collapse-toggle="dropdown-student-reports">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 "
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"
@@ -816,15 +655,13 @@
                             </li>
                         </ul>
                     </li>
-
-
                 </ul>
             </li>
 
             <!-- Student Attendence  -->
             <li class="dropdown">
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-student-Attendence" data-collapse-toggle="dropdown-student-Attendence">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
                         <path
@@ -910,9 +747,9 @@
             </li>
 
             <!-- grand final  -->
-            {{-- <li class="dropdown">
+            <li class="dropdown">
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-grand" data-collapse-toggle="dropdown-grand">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
                         <path
@@ -960,69 +797,13 @@
                             Grand Pass/Fail Percentage</a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
 
-            {{-- grand final customized --}}
-            <ul class="accordion">
-                <li>
-                    <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20"
-                        aria-controls="dropdown-nedubd" data-collapse-toggle="dropdown-nedubd">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
-                            <path
-                                d="M20.0834 15.1999L21.2855 15.9212C21.5223 16.0633 21.599 16.3704 21.457 16.6072C21.4147 16.6776 21.3559 16.7365 21.2855 16.7787L12.5145 22.0412C12.1979 22.2313 11.8022 22.2313 11.4856 22.0412L2.71463 16.7787C2.47784 16.6366 2.40106 16.3295 2.54313 16.0927C2.58536 16.0223 2.64425 15.9634 2.71463 15.9212L3.91672 15.1999L12.0001 20.0499L20.0834 15.1999ZM20.0834 10.4999L21.2855 11.2212C21.5223 11.3633 21.599 11.6704 21.457 11.9072C21.4147 11.9776 21.3559 12.0365 21.2855 12.0787L12.0001 17.6499L2.71463 12.0787C2.47784 11.9366 2.40106 11.6295 2.54313 11.3927C2.58536 11.3223 2.64425 11.2634 2.71463 11.2212L3.91672 10.4999L12.0001 15.3499L20.0834 10.4999ZM12.5145 1.30864L21.2855 6.5712C21.5223 6.71327 21.599 7.0204 21.457 7.25719C21.4147 7.32757 21.3559 7.38647 21.2855 7.42869L12.0001 12.9999L2.71463 7.42869C2.47784 7.28662 2.40106 6.97949 2.54313 6.7427C2.58536 6.67232 2.64425 6.61343 2.71463 6.5712L11.4856 1.30864C11.8022 1.11864 12.1979 1.11864 12.5145 1.30864ZM12.0001 3.33233L5.88735 6.99995L12.0001 10.6676L18.1128 6.99995L12.0001 3.33233Z">
-                            </path>
-                        </svg>
 
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Grand
-                            Final</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-
-                    </button>
-                    <div class="content">
-                        <ul class="py-2 space-y-2">
-                            <li>
-                                <a href="/dashboard/grand_exam_setup"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                                    Setup Grand </a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/grand_exam_final_process"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Update
-                                    Grand Final Process</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/grand_exam_progress_report"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
-                                    Grand Progress Report</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/grand_merit_list"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Grand Merit List</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/grand_fail_list"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Grand Fail List</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/grand_result_pass_fail_percentage"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Grand Pass/Fail Percentage</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
 
             {{-- Report exam and result  --}}
-            {{-- <li class="dropdown">
-                <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer "
+            <li class="dropdown">
+                <button class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
                     aria-controls="dropdown-report" data-collapse-toggle="dropdown-report">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
                         <path
@@ -1037,7 +818,7 @@
                         <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
-                </p>
+                </button>
 
                 <ul id="dropdown-report" class="hidden py-2 space-y-2">
                     <li>
@@ -1096,104 +877,12 @@
                             List of Grade Info</a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
 
-            {{-- Customized Report exam and result --}}
-            <ul class="accordion">
-                <li>
-                    <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20"
-                        aria-controls="dropdown-nedubd" data-collapse-toggle="dropdown-nedubd">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
-                            <path
-                                d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
-                            </path>
-                        </svg>
-
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Reports(Exams
-                            & Result) </span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-
-                    </button>
-                    <div class="content">
-                        <ul class="py-2 space-y-2">
-                            <li>
-                                <a href="/dashboard/progressReport"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                                    Single Mark Sheet </a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/grandFinal"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Update
-                                    Grand Final</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/tebular-format1"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
-                                    Tabulation [Format-1]</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/tebular-format2"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Tabulation [Format-2]</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/tebular-format3"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Tabulation [Format-3]</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/meritList"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Merit List</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/meritClass"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Merit List</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/exam-failList"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    Fail List Summary</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/unassignedSubject"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    List of Unassigned Subject</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/passFailPercentage"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    List of Pass/Fail Percentage</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/gradeInfo"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                                    List of Grade Info</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-
-
-
-
-
-
-
-
-
-            {{-- Teachers --}}
-
+            {{-- teacher --}}
 
             <li class="dropdown">
-                <p class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer "
+                <button class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
                     aria-controls="dropdown-teacher" data-collapse-toggle="dropdown-teacher">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="#ffffff" class="w-6 h-6">
@@ -1208,7 +897,7 @@
                         <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 1 4 4 4-4" />
                     </svg>
-                </p>
+                </button>
 
                 <ul id="dropdown-teacher" class="hidden py-2 space-y-2">
                     <li>
@@ -1274,7 +963,7 @@
             <!-- Basic Setting -->
             <li class="dropdown">
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-basic-setting" data-collapse-toggle="dropdown-basic-setting">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="#ffffff" class="w-6 h-6">
@@ -1282,7 +971,8 @@
                             d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z" />
                     </svg>
 
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Basic Setting </span>
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Basic Setting
+                    </span>
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -1317,77 +1007,77 @@
                                     Institute Info</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSubjectSetup"
+                                <a href="/dashboard/addSubjectSetup/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class Subject Setting</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClass"
+                                <a href="/dashboard/addClass/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSection"
+                                <a href="/dashboard/addSection/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Section</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addShift"
+                                <a href="/dashboard/addShift/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     shift</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addGroup"
+                                <a href="/dashboard/addGroup/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Group</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSubject"
+                                <a href="/dashboard/addSubject/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Subject</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addAcademicSession"
+                                <a href="/dashboard/addAcademicSession/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Academic Session</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addAcademicYear"
+                                <a href="/dashboard/addAcademicYear/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Academic Year</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addBoardExam"
+                                <a href="/dashboard/addBoardExam/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Board Exam</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addCategory"
+                                <a href="/dashboard/addCategory/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Category</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassExam"
+                                <a href="/dashboard/addClassExam/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class Exam</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseGroup"
+                                <a href="/dashboard/addClassWiseGroup/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class wise Group</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseSection"
+                                <a href="/dashboard/addClassWiseSection/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class wise Section</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseShift"
+                                <a href="/dashboard/addClassWiseShift/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class wise Shift</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addPeriod"
+                                <a href="/dashboard/addPeriod/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Period</a>
                             </li>
@@ -1403,7 +1093,7 @@
             <!-- Exam Setting -->
             <li class="dropdown">
                 <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                     aria-controls="dropdown-exam-setting" data-collapse-toggle="dropdown-exam-setting">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="#ffffff" class="w-6 h-6">
@@ -1425,22 +1115,22 @@
                 <ul id="dropdown-exam-setting" class="hidden py-2 space-y-2">
 
                     <li>
-                        <a href="/dashboard/addGradePoint"
+                        <a href="/dashboard/addGradePoint/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                             Grade Point</a>
                     </li>
                     <li>
-                        <a href="/dashboard/addShortCode"
+                        <a href="/dashboard/addShortCode/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setShortCode"
+                        <a href="/dashboard/setShortCode/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="/dashboard/SetExamMarks"
+                        <a href="/dashboard/setExamMarks/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Exam Marks</a>
                     </li>
@@ -1450,12 +1140,12 @@
                             4th Subject</a>
                     </li>
                     <li>
-                        <a href="/dashboard/AddReportName"
+                        <a href="/dashboard/AddReportName/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Add Report Name</a>
                     </li>
                     <li>
-                        <a href="/dashboard/AddSignature"
+                        <a href="/dashboard/AddSignature/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Add Signature</a>
                     </li>
@@ -1465,7 +1155,7 @@
                             Setup</a>
                     </li>
                     <li>
-                        <a href="/dashboard/GrandFinal"
+                        <a href="/dashboard/GrandFinal/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grand
                             Final
                         </a>
@@ -1477,13 +1167,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/dashboard/ExamPublish"
+                        <a href="/dashboard/ExamPublish/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Exam
                             Publish
                         </a>
                     </li>
                     <li>
-                        <a href="/dashboard/SequentialExam"
+                        <a href="/dashboard/SequentialExam/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Sequential
                             Wise Exam
                         </a>
@@ -1493,55 +1183,10 @@
 
             </li>
             <!-- collapsible submenus -->
-
-
         </ul>
 </aside>
 
 
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const clickedLink = localStorage.getItem("clickedLink");
-        if (clickedLink) {
-            const clickedElement = document.querySelector(`a[href="${clickedLink}"]`);
-            if (clickedElement) {
-                clickedElement.classList.add("clicked");
-                const parentDropdown = clickedElement.closest(".dropdown");
-                if (parentDropdown) {
-                    parentDropdown.querySelector("ul").classList.remove("hidden");
-                }
-            }
-        }
-
-        const dropdownLinks = document.querySelectorAll(".accordion a");
-        dropdownLinks.forEach(function(link) {
-            link.addEventListener("click", function(event) {
-                dropdownLinks.forEach(function(link) {
-                    link.classList.remove("clicked");
-                });
-                event.target.classList.add("clicked");
-                localStorage.setItem("clickedLink", event.target.getAttribute("href"));
-            });
-        });
-    });
-</script>
-<script>
-    document.querySelectorAll('.accordion li button').forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            const isActive = button.parentElement.classList.contains('active');
-            button.parentElement.classList.toggle('active');
-            if (isActive) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + 'px';
-            }
-        });
-    });
-</script>
-
-{{-- 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const clickedLink = localStorage.getItem("clickedLink");
@@ -1575,4 +1220,6 @@
         button.setAttribute("aria-expanded", button.getAttribute("aria-expanded") === "false" ? "true" : "false");
         content.style.maxHeight = button.getAttribute("aria-expanded") === "true" ? content.scrollHeight + "px" : "0";
     }
-</script> --}}
+</script>
+
+

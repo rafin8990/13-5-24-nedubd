@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class AddShiftController extends Controller
 {
-    public function add_shift()
+    public function add_shift($schoolCode)
     {
         
-        $school_code = '100';
-        $shiftData = AddShift::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $shiftData = AddShift::where('action', 'approved')->where('school_code', $schoolCode)->get();
        
         return view('Backend/BasicInfo/CommonSetting/addShift', compact('shiftData'));
     }
     
 
-    public function store_add_shift(Request $request)
+    public function store_add_shift(Request $request,$schoolCode)
     {
 
         // dd($request);
@@ -31,10 +31,10 @@ class AddShiftController extends Controller
        
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+        //$school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, shift_name, or position already exists
-        $existingRecord = AddShift::where('school_code', $school_code)
+        $existingRecord = AddShift::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('shift_name', $request->shift_name);                   
             })
@@ -52,7 +52,7 @@ class AddShiftController extends Controller
         $shift->status = $request->status;
         // dd($shift);
         $shift->action = 'approved';
-        $shift->school_code = $school_code;
+        $shift->school_code = $schoolCode;
 
         // Save the new record
         $shift->save();

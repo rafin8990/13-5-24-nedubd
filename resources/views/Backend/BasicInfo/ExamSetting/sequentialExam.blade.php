@@ -9,39 +9,64 @@ Exam Mark Setup
         </h3>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-        <form action="">
+        <form id="dataForm" method="POST" action="{{ route('store.sequentialExam',$school_code) }}">
+            @csrf
+            @method('PUT')
         <div class="md:flex my-10 ">
             <div class="mr-5">
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class Name :</label>
             </div>
             <div class="mr-10">
-                <select id="countries" name="Class_name"
+                <select id="countries" name="class_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose Class</option>
-                        <option >x</option>
-                        <option >y</option>
-                        <option >z</option>
+
+                        @if ($searchClassData === null)
+                        <option disabled selected>Choose a class</option>
+                    @elseif($searchClassData)
+                        <option value="{{ $searchClassData }}" selected>{{ $searchClassData }}</option>
+                    @endif
+
+                    @foreach ($classData as $data)
+                        <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
+                    @endforeach
+
                     </select>
             </div>
             <div class="mr-5">
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Exam Name :</label>
             </div>
             <div class="mr-10">
-                <select id="countries" name="Exam_name"
+                <select id="countries" name="exam_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose Exam</option>
-                        <option >x</option>
-                        <option >y</option>
-                        <option >z</option>
+
+                        @if ($searchClassExamName === null)
+                                <option selected>Choose a exam</option>
+                            @elseif($searchClassExamName)
+                                <option value="{{ $searchClassExamName }}" selected>{{ $searchClassExamName }}</option>
+                            @endif
+
+                            @foreach ($classExamData as $data)
+                                <option value="{{ $data->class_exam_name }}">{{ $data->class_exam_name }}</option>
+                            @endforeach
+
                     </select>
             </div>
             <div class="mr-5">
                 <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year :</label>
             </div>
             <div class="mr-5">
-                <select name="year" id='date-dropdown'
+                <select name="year" id=''
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option>Select Year</option>
+                        @if ($searchAcademicYearName === null)
+                        <option selected>Select Year</option>
+                    @elseif($searchAcademicYearName)
+                        <option value="{{ $searchAcademicYearName }}" selected>{{ $searchAcademicYearName }}
+                        </option>
+                    @endif
+
+                    @foreach ($academicYearData as $data)
+                        <option value="{{ $data->academic_year_name }}">{{ $data->academic_year_name }}</option>
+                    @endforeach
                     </select>
             </div>
             <div>
@@ -51,35 +76,56 @@ Exam Mark Setup
 
         </div>
 
-    </form>
+
+
     <div class="flex">
 
         <div class="mr-20" >
             <div class="grid gap-6 mb-6  md:grid-cols-1 items-center ps-4 border border-blue-200 rounded dark:border-gray-700 mx-20 px-20 py-10">
                 <h3>
-                    Select SEQUENTIAL
+                    Select SEQUENTIAL 
+                    <h3 class="text-rose-700">
+                        (Please Select one)
+                    </h3>
                 </h3>
+                
                 <div>
-                    <input id="bordered-checkbox-1" type="checkbox"  name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grade-TotalMark-Roll</label>
+
+                    <input id="sequential_exam" type="checkbox" value="Grade-TotalMark-Roll"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grade-TotalMark-Roll</label>
                 </div>
                 <div>
-                    <input id="bordered-checkbox-2" type="checkbox"  name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="bordered-checkbox-2" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">TotalMark-Grade-Roll</label>
+                    <input id="sequential_exam" type="checkbox" value="TotalMark-Grade-Roll" name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">TotalMark-Grade-Roll</label>
                 </div>
                 <div>
-                    <input id="bordered-checkbox-3" type="checkbox"  name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="bordered-checkbox-3" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">TotalMark-Roll-Grade</label>
+                    <input id="sequential_exam" type="checkbox" value="TotalMark-Roll-Grade"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">TotalMark-Roll-Grade</label>
                 </div>
                 <div>
-                    <input id="bordered-checkbox-4" type="checkbox"  name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="bordered-checkbox-4" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Roll-TotalMark-Grade</label>
+                    <input id="sequential_exam" type="checkbox" value="Roll-TotalMark-Grade"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Roll-TotalMark-Grade</label>
+
                 </div>
                
                
                 
             </div>
         </div>
+    </form>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.shift-checkbox');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    document.getElementById('dataForm').submit();
+                });
+            });
+        });
+    </script>
 
         <div class=" text-lg font-bold">
            <div class="flex justify-center">
@@ -92,49 +138,43 @@ Exam Mark Setup
             <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
                 <tr>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
-                        {{-- SL --}}
+                        SL
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        {{-- Letter --}}
+                        CLASS
                     </th>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
-                        {{-- Grade --}}
+                        EXAM
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        {{-- 1st Range --}}
+                        SEQUENTIAL
                     </th>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        {{-- 2nd Range --}}
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        {{-- STATUS --}}
-                    </th>
+                    
                 </tr>
             </thead>
             <tbody>
+                @foreach ($sequentialExamData as $key =>$data )
+                    
+                
                 <tr class=" border-b border-blue-400">
                     <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
-
+                        {{ $key + 1 }}
                     </th>
                     <td class="px-6 py-4">
+                    {{$data->class_name}}
+                    </td>
+                    <td class="px-6 py-4">
+                    {{$data->exam_name}}
 
                     </td>
                     <td class="px-6 py-4">
 
-                    </td>
-                    <td class="px-6 py-4">
+                    {{$data->sequential_exam}}
 
                     </td>
-                    <td class="px-6 py-4 ">
-
-                    </td>
-
-                    <td class="px-6 py-4 ">
-                        {{-- <div class="flex justify-center">
-                            <input id="bordered-checkbox-1" type="checkbox"  name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        </div> --}}
-                    </td>
+                    
                 </tr>
+                @endforeach
 
 
 

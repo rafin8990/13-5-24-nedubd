@@ -11,15 +11,16 @@ use Illuminate\Http\Request;
 
 class ExamPublishController extends Controller
 {
-    public function ExamPublish(){
+    public function ExamPublish($schoolCode){
+        $Data = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $classes=AddClass::all();
         $years=AddAcademicYear::all();
         $exam=AddClassExam::all();
 
-        return view ('Backend/BasicInfo/ExamSetting/examPublish',compact("classes","years","exam"));
+        return view ('Backend/BasicInfo/ExamSetting/examPublish',compact("classes","years","exam","Data"));
     }
 
-    public function store_add_exam_publish(Request $request)
+    public function store_add_exam_publish(Request $request,$schoolCode)
     {
         // Validate the incoming request data
         $request->validate([
@@ -30,10 +31,10 @@ class ExamPublishController extends Controller
         ]);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, class_name, or position already exists
-        $existingRecord = ExamPublish::where('school_code', $school_code)
+        $existingRecord = ExamPublish::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('Class_name', $request->Class_name)
                 ->Where('exam_name', $request->exam_name)
@@ -55,7 +56,7 @@ class ExamPublishController extends Controller
         $exam->status = $request->status;
         // dd($class);
         $exam->action = 'approved';
-        $exam->school_code = $school_code;
+        $exam->school_code = $schoolCode;
 
         // Save the new record
         $exam->save();

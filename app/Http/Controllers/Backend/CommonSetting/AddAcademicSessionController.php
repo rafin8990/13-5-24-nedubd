@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class AddAcademicSessionController extends Controller
 {
-    public function add_academic_session()
+    public function add_academic_session($schoolCode)
     {
-        $school_code = '100';
-        $academicSessionData = AddAcademicSession::where('action', 'approved')->where('school_code', $school_code)->get();
+       // $school_code = '100';
+        $academicSessionData = AddAcademicSession::where('action', 'approved')->where('school_code', $schoolCode)->get();
         // dd($academicSessionData);
         return view('Backend/BasicInfo/CommonSetting/addAcademicSession', compact('academicSessionData'));
     }
 
 
-    public function store_add_academic_session(Request $request)
+    public function store_add_academic_session(Request $request,$schoolCode)
     {
 
         // dd($request);
@@ -30,10 +30,10 @@ class AddAcademicSessionController extends Controller
 
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+        //$school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, academic_session_name, or position already exists
-        $existingRecord = AddAcademicSession::where('school_code', $school_code)
+        $existingRecord = AddAcademicSession::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('academic_session_name', $request->academic_session_name);
             })
@@ -51,7 +51,7 @@ class AddAcademicSessionController extends Controller
         $academicSession->status = $request->status;
         // dd($academicSession);
         $academicSession->action = 'approved';
-        $academicSession->school_code = $school_code;
+        $academicSession->school_code = $schoolCode;
 
         // Save the new record
         $academicSession->save();

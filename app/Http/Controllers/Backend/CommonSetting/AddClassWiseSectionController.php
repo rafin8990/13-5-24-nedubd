@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 
 class AddClassWiseSectionController extends Controller
 {
-    public function add_class_wise_section(Request $request)
+    public function add_class_wise_section(Request $request,$schoolCode)
     {
 
-        $school_code = '100';
+       // $school_code = '100';
 
 
         // $classWiseSectionData = AddClassWiseSection::where('action', 'approved')->where('school_code', $school_code)->get();
@@ -23,32 +23,32 @@ class AddClassWiseSectionController extends Controller
             $selectedClassName = $request->input('class_name');
             // dd($selectedClassName);
             $classWiseSectionData = AddClassWiseSection::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code',$schoolCode)
                 ->where('class_name', $selectedClassName)
                 ->get();
         } elseif ($request->session()->get('class_name')) {
             $selectedClassName = $request->session()->get('class_name');
             // dd($selectedClassName);
             $classWiseSectionData = AddClassWiseSection::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code', $schoolCode)
                 ->where('class_name', $selectedClassName)
                 ->get();
         } else {
             // If no class name is provided, retrieve all class-wise group data
             $selectedClassName = null;
             $classWiseSectionData = AddClassWiseSection::where('action', 'approved')
-                ->where('school_code', $school_code)
+                ->where('school_code', $schoolCode)
                 ->get();
         }
 
-        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
-        $sectionData = AddSection::where('action', 'approved')->where('school_code', $school_code)->get();
+        $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $sectionData = AddSection::where('action', 'approved')->where('school_code',$schoolCode)->get();
 
         return view('Backend/BasicInfo/CommonSetting/addClassWiseSection', compact('classData', 'sectionData', 'classWiseSectionData', 'selectedClassName'));
     }
 
 
-    public function store_add_class_wise_section(Request $request)
+    public function store_add_class_wise_section(Request $request,$schoolCode)
     {
         // dd($request);
         // Validate form data
@@ -57,11 +57,11 @@ class AddClassWiseSectionController extends Controller
             'section_name' => 'required|string'
         ]);
 
-        $school_code = '100';
+        //$school_code = '100';
 
 
         // Check if the combination of class name and group name already exists for this school
-        $existingRecord = AddClassWiseSection::where('school_code', $school_code)
+        $existingRecord = AddClassWiseSection::where('school_code', $schoolCode)
             ->where('class_name', $request->class_name)
             ->where('section_name', $request->section_name)
             ->exists();
@@ -77,7 +77,7 @@ class AddClassWiseSectionController extends Controller
         $classWiseSection->section_name = $request->section_name;
         $classWiseSection->status = 'active';
         $classWiseSection->action = 'approved';
-        $classWiseSection->school_code = $school_code;
+        $classWiseSection->school_code = $schoolCode;
         // dd($classWiseSection);
         $classWiseSection->save();
 

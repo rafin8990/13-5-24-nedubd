@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class AddClassExamController extends Controller
 {
-    public function add_class_exam()
+    public function add_class_exam($schoolCode)
     {
         
-        $school_code = '100';
-        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $schoolCode)->get();
        
         return view('Backend/BasicInfo/CommonSetting/addClassExam', compact('classExamData'));
     }
     
-    public function store_add_class_exam(Request $request)
+    public function store_add_class_exam(Request $request,$schoolCode)
     {
         // Validate the incoming request data
         $request->validate([
@@ -27,10 +27,10 @@ class AddClassExamController extends Controller
         ]);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, class_exam_name, or position already exists
-        $existingRecord = AddClassExam::where('school_code', $school_code)
+        $existingRecord = AddClassExam::where('school_code', $schoolCode)
             ->where(function ($query) use ($request) {
                 $query->where('class_exam_name', $request->class_exam_name)
                     ->orWhere('position', $request->position);
@@ -49,7 +49,7 @@ class AddClassExamController extends Controller
         $classExam->status = $request->status;
         // dd($classExam);
         $classExam->action = 'approved';
-        $classExam->school_code = $school_code;
+        $classExam->school_code = $schoolCode;
 
         // Save the new record
         $classExam->save();

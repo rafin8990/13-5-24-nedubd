@@ -13,13 +13,13 @@ Signature Name
         <div class="grid gap-6 mb-6 md:grid-cols-4 ">
             <button type="button"
                 class=" md:mr-20 text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                <a href="/dashboard/listSignature">List</a>
+                <a href="/dashboard/listSignature/{{$school_code}}">List</a>
                 </button>
 
            
         </div>
         <div class="p-4 md:p-5">
-            <form action="{{url('dashboard/AddSignature')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{url('dashboard/AddSignature',$school_code)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div>
@@ -38,6 +38,13 @@ Signature Name
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         aria-describedby="user_avatar_help" id="user_avatar" type="file">
 
+                </div>
+                <div class="hidden">
+                    <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Code 
+                    </label>
+                    <input type="text" value="{{$school_code}}" name="school_code" id="last_name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter The Police Station Name" />
                 </div>
                 
 

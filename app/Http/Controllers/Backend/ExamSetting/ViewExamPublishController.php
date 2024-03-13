@@ -11,12 +11,12 @@ use Illuminate\Http\Request;
 
 class ViewExamPublishController extends Controller
 {
-    public function ViewExamPublish(){
+    public function ViewExamPublish($schoolCode){
         $classes=AddClass::all();
         $years=AddAcademicYear::all();
         $exam=AddClassExam::all();
-        $school_code = '100';
-        $Data = ExamPublish::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $Data = ExamPublish::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
         return view ('Backend/BasicInfo/ExamSetting/viewExamPublish',compact("classes","years","exam","Data"));
     }

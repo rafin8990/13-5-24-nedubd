@@ -8,16 +8,16 @@ use Illuminate\Http\Request;
 
 class AddGradePointController extends Controller
 {
-    public function add_grade_point()
+    public function add_grade_point($schoolCode)
     {
-        $school_code = '100';
-        $gradePointData = AddGradePoint::where('action', 'approved')->where('school_code', $school_code)->get();
+        //$school_code = '100';
+        $gradePointData = AddGradePoint::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
         return view('Backend/BasicInfo/ExamSetting/addGradePoint', compact('gradePointData'));
     }
 
 
-    public function store_add_grade_point(Request $request)
+    public function store_add_grade_point(Request $request,$schoolCode)
     {
 
         // dd($request);
@@ -33,7 +33,7 @@ class AddGradePointController extends Controller
         // dd($validatedData);
 
         // Set the school code
-        $school_code = '100'; // Your school code here
+       // $school_code = '100'; // Your school code here
 
         // Check if any record with the same school_code, group_name, or position already exists
         // $existingRecord = AddGradePoint::where('school_code', $school_code)
@@ -60,7 +60,7 @@ class AddGradePointController extends Controller
         $gradePoint->note = $request->note;
         $gradePoint->status = $request->status;
         $gradePoint->action = 'approved';
-        $gradePoint->school_code = $school_code;
+        $gradePoint->school_code = $schoolCode;
 
         // dd($gradePoint);
 
