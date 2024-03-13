@@ -16,11 +16,11 @@ return new class extends Migration
             $table->string('class_exam_name');
             $table->string('academic_year_name');
             $table->string('class_name');
-            $table->json('latter_grade');
-            $table->json('grade_point');
-            $table->json('mark_point_1st');
-            $table->json('mark_point_2nd');
-            $table->json('status');
+            $table->string('latter_grade');
+            $table->string('grade_point');
+            $table->string('mark_point_1st');
+            $table->string('mark_point_2nd');
+            $table->string('status');
             $table->string('action');
             $table->string('school_code');
             $table->timestamps();

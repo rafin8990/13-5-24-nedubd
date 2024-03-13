@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('add_class_wise_subject', function (Blueprint $table) {
             $table->id();
             $table->string('class_name');
-            $table->string('subject_name')->nullable();
-            $table->string('subject_type')->nullable();
+            $table->string('subject_name');
+            $table->string('subject_type');
             $table->string('group_name');
             $table->string('subject_serial');
             $table->string('subject_marge');

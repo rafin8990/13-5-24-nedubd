@@ -10,7 +10,7 @@ Grade
         Grade/Grade Setup
     </h3>
 </div>
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10 p-5">
     <form id="myForm" action="{{route('addGradeSetup')}}" method="POST">
     @csrf
         <div class="md:flex my-10 ">
@@ -121,27 +121,30 @@ Grade
                     <tr class=" border-b capitalize text-lg">
                         <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
                             {{$key + 1}}
+                            <input class="hidden" value="{{$key}}" name="key[]" type="text">
                         </th>
                         <td class="px-6 py-4">
                             {{$data->letter_grade}}
-                            <input class="hidden" value="{{$data->letter_grade}}" name="latter_grade[]" type="text">
+                            <input class="hidden" value="{{$data->letter_grade}}" name="latter_grade[{{$key}}]" type="text">
                         </td>
                         <td class="px-6 py-4">
                             <!-- {{$data->grade_point}} -->
-                            <input class="border-0 w-[80px]" value="{{$data->grade_point}}" name="grade_point[]" type="text">
+                            <input class="border-0 w-[80px]" value="{{$data->grade_point}}" name="grade_point[{{$key}}]" type="text">
                         </td>
                         <td class="px-6 py-4">
                             <!-- {{$data->mark_point_1st}} -->
-                            <input class="border-0 w-[80px]" value="{{$data->mark_point_1st}}" name="mark_point_1st[]" type="text">
+                            <input class="border-0 w-[80px]" value="{{$data->mark_point_1st}}" name="mark_point_1st[{{$key}}]" type="text">
                         </td>
                         <td class="px-6 py-4 ">
                             <!-- {{$data->mark_point_2nd}} -->
-                            <input class="border-0 w-[80px]" value="{{$data->mark_point_2nd}}" name="mark_point_2nd[]" type="text">
+                            <input class="border-0 w-[80px]" value="{{$data->mark_point_2nd}}" name="mark_point_2nd[{{$key}}]" type="text">
                         </td>
                         <td class="px-6 py-4 ">
                             <div>
-                                <input id="active" type="checkbox" value="active" name="status[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="active" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+                                <select class="" name="status[]" id="">
+                                    <option selected value="active">Active</option>
+                                    <option value="in_active">In Active</option>
+                                </select>
                             </div>
                         </td>
 
@@ -162,11 +165,11 @@ Grade
             <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
         </div>
         <div class="mr-10">
-            <button  class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
+            <a href="/dashboard"  class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</a>
         </div>
 
         <div class="ml-32">
-            <h3>Total = <div class="border border-2"></div>
+            <h3>Total = <div class=" border-2"></div>
             </h3>
         </div>
     </div>
@@ -180,11 +183,11 @@ Grade
         </div>
        
         <div class="mr-10">
-            <button  class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
+            <a href="/dashboard" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</a>
         </div>
 
         <div class="ml-32">
-            <h3>Total = <div class="border border-2"></div>
+            <h3>Total = <div class=" border-2"></div>
             </h3>
         </div>
 
