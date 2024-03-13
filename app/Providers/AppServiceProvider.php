@@ -30,27 +30,32 @@ class AppServiceProvider extends ServiceProvider
             
             $schoolAdminData=null;
             $studentData=null;
-            $admin=null;
+
+            $adminData=null;
+
             
             $schoolAdminId=Session::get('schoolAdminId');
             $studentId=Session::get('studentId');
             $adminId=Session::get('AdminId');
+
             $school_code=Session::get('school_code');
             if($schoolAdminId){
                 $schoolAdminData=SchoolAdmin::find($schoolAdminId);
             }
-            else if($studentId){
+
+         if($studentId){
 
                 $studentData=Student::find($studentId);
             }
-          
-            else if($adminId){
-                $admin=Admin::find($adminId);
+           if($adminId){
+                $adminData=Admin::find($adminId);
+                // dd($adminData);
             }
             $view->with('schoolAdminData',$schoolAdminData)
                  ->with('studentData',$studentData)
-                 ->with('school_code',$school_code)
-                 ->with('admin',$admin);
+                 ->with('adminData',$adminData)
+                 ->with('school_code',$school_code);
+
 
         });
     }

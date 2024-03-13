@@ -87,7 +87,9 @@
                 </a>
             </li>
 
-            @if($admin)
+
+            @if($adminData)
+
  <!-- NeduBd Member Add complete nedubd -->
  <li class="dropdown">
                 <button type="button"
