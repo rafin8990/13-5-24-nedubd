@@ -90,7 +90,7 @@ Route::prefix('dashboard')->group(function () {
 
     // student module
     Route::post('/create-student', [StudentController::class, 'addStudent'])->name('student.add');
-    Route::get('/add-student', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
+    Route::get('/add-student/{schoolCode}', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
     Route::get('/updateStudentBasicInfo', [StudentController::class, 'updateStudentBasicInfo'])->name('updateStudentBasicInfo');
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/uploadExelFile', [StudentController::class, 'uploadExelFile'])->name('uploadExelFile');

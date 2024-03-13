@@ -81,12 +81,16 @@ class AuthController extends Controller
             Session::pull('schoolAdminId');
             return redirect('/login');
         }
-        if (Session::has('loginId')) {
-            Session::pull('loginId');
+        if (Session::has('teacherID')) {
+            Session::pull('teacherID');
             return redirect('/login');
         }
         if (Session::has('studentId')) {
             Session::pull('studentId');
+            return redirect('/login');
+        }
+        if (Session::has('AdminId')) {
+            Session::pull('AdminId');
             return redirect('/login');
         }
         

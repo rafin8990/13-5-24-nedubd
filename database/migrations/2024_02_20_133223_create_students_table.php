@@ -22,6 +22,7 @@ return new class extends Migration
     $table->string('group');
     $table->string('section');
     $table->string('shift');
+    $table->string('category');
  
     $table->string('year');
     $table->string('gender');
