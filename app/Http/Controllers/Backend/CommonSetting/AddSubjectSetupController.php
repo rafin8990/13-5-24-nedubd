@@ -110,7 +110,6 @@ class AddSubjectSetupController extends Controller
                 $addClassSubject->subject_marge = '0';
                 $addClassSubject->action = 'approved';
                 $addClassSubject->school_code = $schoolCode;
-
                 $addClassSubject->save();
             }
           

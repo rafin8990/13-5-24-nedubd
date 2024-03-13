@@ -43,7 +43,7 @@ Suject Setup
             <div class="mr-5">
                 <select id="group_name" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @if ($selectedGroupName === null)
-                    <option disabled selected>Choose a class</option>
+                    <option disabled selected>Choose a group</option>
                     @elseif($selectedGroupName)
                     <option value="{{ $selectedGroupName }}" selected>{{ $selectedGroupName }}</option>
                     @endif

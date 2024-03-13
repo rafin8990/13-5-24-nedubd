@@ -44,6 +44,7 @@ use App\Http\Controllers\Backend\ExamSetting\SetGrandFinalController;
 use App\Http\Controllers\Backend\ExamSetting\SequentialWiseExamController;
 use App\Http\Controllers\Backend\ExamSetting\SetSignatureController;
 use App\Http\Controllers\Backend\ExamSetting\ViewExamPublishController;
+use App\Http\Controllers\Backend\ExamSetting\ViewExamMarkSetUpController;
 
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
@@ -108,7 +109,7 @@ Route::prefix('dashboard')->group(function () {
 
 
 
-    // exam-Result -------------------- Mostafizur ------------------
+    // exam-Result --------------------------------------
     Route::get('/exam_marks', [ExamResultController::class, 'exam_marks']);
     Route::get('/exam_process', [ExamResultController::class, 'exam_process']);
     Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']);
@@ -303,14 +304,16 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/ViewExamPublish/{schoolCode}', [ViewExamPublishController::class, 'ViewExamPublish']);
 
     //Add Grand Final
-    Route::get('/GrandFinal', [SetGrandFinalController::class, 'GrandFinal']);
-
+    Route::get('/GrandFinal/{schoolCode}', [SetGrandFinalController::class, 'GrandFinal'])->name('grandfinal');
+    Route::put('/store_grandFinal/{schoolCode}', [SetGrandFinalController::class,'store_grandFinal'])->name('store.grandfinal');
+    Route::get('/viewExamMarkSetup/{schoolCode}', [ViewExamMarkSetUpController::class, 'viewExamMarkSetup']);
+    
     //sequential wise exam 
-    Route::get('/SequentialExam', [SequentialWiseExamController::class, 'SequentialExam']);
-
+    Route::get('/SequentialExam/{schoolCode}', [SequentialWiseExamController::class, 'SequentialExam'])->name('sequentialExam');
+    Route::put('/SetExamMarks/{schoolCode}', [SequentialWiseExamController::class, 'store_sequential_exam'])->name('store.sequentialExam');
     //sequential wise exam 
     Route::get('/SetExamMarks', [SetExamMarksController::class, 'SetExamMarks']);
-
+   
     //Set signature
     Route::get('/SetSignature', [SetSignatureController::class, 'SetSignature']);
 
