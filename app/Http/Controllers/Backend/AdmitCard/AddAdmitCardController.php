@@ -92,24 +92,57 @@ class AddAdmitCardController extends Controller
     public function update_add_admit_card(Request $request, $schoolCode)
     {
         $data = $request->all();
-        dd($data);
+        //dd($data);
 
+        // foreach ($data['selected_subjects'] as $selectedSubject) {
+        //     $decodedData = json_decode($selectedSubject, true);
+
+        //     // Access time and date
+        //     $class_name = $decodedData['class_name'];
+        //     $group_name=$decodedData['group_name'];
+        //     $year = $decodedData['year'];
+        //     $class_exam_name=$decodedData['class_exam_name'];
+        //     dd($class_name);
+        //     $request->validate([
+        //         'class_name' => 'required|string',
+        //         'group_name' => 'required|string',
+        //         'class_exam_name' => 'required|string',
+        //         'year' => 'required|string',
+        //     ]);
+
+        // }
+
+        // Validate form data
+//dd($data);
         foreach ($data['selected_subjects'] as $selectedSubject) {
-            $decodedData = json_decode($selectedSubject, true);
 
+            $decodedData = json_decode($selectedSubject, true);
             // Access time and date
             $time = $decodedData['time'];
             $date = $decodedData['date'];
-            dd($time);
-        }
+            $subject_name = $decodedData['subject'];
+            $class_name = $decodedData['class_name'];
+            $group_name = $decodedData['group_name'];
+            $year = $decodedData['year'];
+            $class_exam_name = $decodedData['class_exam_name'];
 
-        // Validate form data
-        $request->validate([
-            'class_name' => 'required|string',
-            'group_name' => 'required|string',
-            'class_exam_name' => 'required|string',
-            'year' => 'required|string',
-        ]);
+
+            
+            
+            $admitCard = new AddAdmitCard();
+            $admitCard->class_name = $class_name;
+            $admitCard->group_name = $group_name;
+            $admitCard->year = $year;
+            $admitCard->class_exam_name = $class_exam_name;
+            $admitCard->subject_name = $subject_name;
+            $admitCard->exam_date = $date;
+            $admitCard->exam_time = $time;
+            $admitCard->status = 'active';
+            $admitCard->action = 'approved';
+            $admitCard->school_code = $schoolCode;
+
+            $admitCard->save();
+        }
 
 
         return redirect()->route('add.admit.card', $schoolCode)->with([

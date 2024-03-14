@@ -186,6 +186,7 @@ Admit Setup
 
                 <td class="px-6 py-4 ">
                     <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    
 
                 </td>
             </tr>
@@ -208,15 +209,20 @@ Admit Setup
             <button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
         </div>
 
-        <div class="ml-32">
-            <h3>Total = <div class="border-2"></div>
+        {{-- <div class="ml-32">
+            <h3>Total =  <div class="border-2"></div>
             </h3>
-        </div>
+        </div> --}}
 
     </div>
 
     <script>
         function submitForm() {
+            var className = document.getElementById('class_name').value;
+            var groupName = document.getElementById('group_name').value; // Corrected id
+            var classExamName = document.getElementById('class_exam_name').value;
+            var academicYearName = document.getElementById('year').value;
+
             // Get all checkboxes
             var checkboxes = document.getElementsByName('subject_name');
             var selectedSubjects = [];
@@ -230,24 +236,26 @@ Admit Setup
                     var timeInput = checkbox.closest('tr').querySelector('input[name="time"]');
 
                     // Parse date and time strings into JavaScript Date objects
-                    var date = new Date(dateInput.value);
-                    var time = new Date('1970-01-01T' + timeInput.value);
+var date = new Date(dateInput.value);
+var time = new Date('1970-01-01T' + timeInput.value);
 
-                    // Calculate the difference in milliseconds
-                    var dateTime = date.getTime() + time.getTime();
-                    var now = new Date();
-                    var difference = now.getTime() - dateTime;
+// Convert date and time to local time zone
+var localDate = date.toLocaleDateString();
+var localTime = time.toLocaleTimeString();
 
-                    // Convert difference to hours and minutes
-                    var hours = Math.floor(difference / (1000 * 60 * 60));
-                    var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+// Store the converted date and time in an object
+var selectedSubject = {
+    subject: checkbox.value,
+    date: localDate,
+    time: localTime,
+    class_name:className,
+    group_name:groupName,
+    class_exam_name:classExamName,
+    year:academicYearName
 
-                    // Store the difference and subject name in an object
-                    var selectedSubject = {
-                        subject: checkbox.value,
-                        date: date,
-                        time: time
-                    };
+
+
+};
 
                     // Push the selected subject data to the array
                     selectedSubjects.push(selectedSubject);
