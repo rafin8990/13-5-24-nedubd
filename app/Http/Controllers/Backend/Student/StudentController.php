@@ -159,17 +159,7 @@ class StudentController extends Controller
             $student->save();
             // return redirect('/dashboard/add-student/{schoolCode}')->with('success', 'Student Sucessfully  created.');
             return redirect()->back()->with('success', 'student added successfully!');
-
-
         }
-
-
-
-
-
-
-
-
     }
 
     private function generateStudentId()
@@ -192,9 +182,7 @@ class StudentController extends Controller
     public function studentProfileUpdate(){
         return view('Backend.Student.studentProfileUpdate');
     }
-    public function uploadExelFile(){
-        return view('Backend.Student.uploadExxelFile');
-    }
+    
     public function uploadStudentPhoto(){
         return view('Backend.Student.uploadPhoto');
     }

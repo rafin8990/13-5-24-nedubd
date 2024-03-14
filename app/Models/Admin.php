@@ -15,6 +15,7 @@ class Admin extends Model
         'email',
         'role',
         'phone_number',
+        'school_code',
         'password',
     ];
 

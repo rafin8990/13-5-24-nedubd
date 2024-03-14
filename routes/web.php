@@ -28,6 +28,7 @@ use App\Http\Controllers\Backend\Student\studentReports\StudentDetailsController
 use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
 use App\Http\Controllers\Backend\Student\studentReports\EsifListController;
+use App\Http\Controllers\Backend\Student\UploadExcelFileController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
@@ -93,7 +94,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/add-student/{schoolCode}', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
     Route::get('/updateStudentBasicInfo', [StudentController::class, 'updateStudentBasicInfo'])->name('updateStudentBasicInfo');
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
-    Route::get('/uploadExelFile', [StudentController::class, 'uploadExelFile'])->name('uploadExelFile');
+    Route::get('/uploadExelFile', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
     Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
 
     // Student Report
