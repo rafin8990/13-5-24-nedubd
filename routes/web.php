@@ -96,6 +96,11 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/uploadExelFile', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
     Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
+    Route::get('/download-demo', [UploadExcelFileController::class, 'downloadDemo'])->name('download.demo');
+    Route::post('/upload-excel', [UploadExcelFileController::class, 'uploadExcel'])->name('upload.excel');
+
+
+    
 
     // Student Report
     Route::get('studentDetails',[StudentDetailsController::class,'studentDetails']);

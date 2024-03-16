@@ -42,7 +42,6 @@ class StudentController extends Controller
             'section' => 'required|string',
             'shift' => 'required|string',
             'category' => 'required|string',
-            
             'year' => 'required|string',
             'gender' => 'required|string',
             'religious' => 'required|string',
