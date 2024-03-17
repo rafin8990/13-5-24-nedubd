@@ -36,15 +36,18 @@ Instruction List
                 </tr>
             </thead>
             <tbody>
+                @foreach ($Data as $key=>$data )
+                    
+               
                 <tr class=" border-b border-blue-400">
                     <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
-
+                      {{$key +1}}
                     </th>
                     <td class="px-6 py-4">
-
+                     {{$data->instruction}}
                     </td>
                     <td class="px-6 py-4 ">
-
+                     {{$data->status}}
                     </td>
                   
                     
@@ -52,12 +55,18 @@ Instruction List
                     <td class="px-6 py-4 ">
                         <div class="flex justify-center">
                             <a href="" class="mr-2"><i class="fa fa-edit" style="color:green;"></i></a>
-                            <a href=""><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
+                            <form method="POST" action="{{ url('dashboard/delete_instruction', $data->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn ">
+                                    <a href=""><i class="fa fa-trash" aria-hidden="true" style="color:red;"></i></a>
+                                </button>
+                            </form>
                         </div>
                     </td>
                 </tr>
 
-
+                @endforeach
 
             </tbody>
         </table>

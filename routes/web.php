@@ -315,7 +315,8 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/SetExamMarks', [SetExamMarksController::class, 'SetExamMarks']);
    
     //Set signature
-    Route::get('/SetSignature', [SetSignatureController::class, 'SetSignature']);
+    Route::get('/SetSignature/{schoolCode}', [SetSignatureController::class, 'SetSignature'])->name('view.signature');
+    Route::post('/SetSignature/{schoolCode}', [SetSignatureController::class, 'processForm'])->name('store.signature');
 
 
     // Exam Setting End .............................................................................................................
@@ -354,17 +355,19 @@ Route::prefix('dashboard')->group(function () {
 
 
     //Print Admit Card
-    Route::get('/printAdmitCard', [PrintAdmitCardController::class, "printAdmitCard"]);
+    Route::get('/printAdmitCard/{schoolCode}', [PrintAdmitCardController::class, "printAdmitCard"])->name('printAdmitCard');
+    Route::post('/downloadAdmit/{schoolCode}', [PrintAdmitCardController::class, "downloadAdmit"])->name('downloadAdmitCard');
 
     //Print Seat Plan
-    Route::get('/printSeatPlan', [PrintSeatPlanController::class, "printSeatPlan"]);
+    Route::get('/printSeatPlan/{schoolCode}', [PrintSeatPlanController::class, "printSeatPlan"]);
 
     //Print Admit Instuction
-    Route::get('/AddAdmitInstruction', [AddAdmitInstructionController::class, "AddAdmitInstruction"]);
+    Route::get('/AddAdmitInstruction/{schoolCode}', [AddAdmitInstructionController::class, "AddAdmitInstruction"])->name('addAdmitinstruction');
+    Route::post('/instructionInsert/{schoolCode}', [AddAdmitInstructionController::class, 'instructionInsert'])->name('store.instructionInsert');
 
     //List Admit Instuction
-    Route::get('/ListAdminInstruction', [ListAdminInstructionController::class, "ListAdminInstruction"]);
-
+    Route::get('/ListAdminInstruction/{schoolCode}', [ListAdminInstructionController::class, "ListAdminInstruction"])->name('listInstruction');
+    Route::delete('/delete_instruction/{id}', [ListAdminInstructionController::class, 'delete_instruction'])->name('delete.instruction');
     //Exam Blank Sheet
     Route::get('/ExamBlankSheet', [ExamBlankSheetController::class, "ExamBlankSheet"]);
 

@@ -3,6 +3,7 @@
 Admit Setup
 @endsection
 @section('Dashboard')
+@include('Message.message')
 <div>
     <h3>
         Admit Setup
@@ -209,10 +210,13 @@ Admit Setup
             <button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
         </div>
 
-        {{-- <div class="ml-32">
-            <h3>Total =  <div class="border-2"></div>
+        <div class="ml-32">
+            <h3>Total = 
+                @if ($classWiseSubjectData !== null)
+                    {{ $classWiseSubjectData->count() }}
+                    @endif <div class="border-2"></div>
             </h3>
-        </div> --}}
+        </div>
 
     </div>
 
@@ -222,6 +226,7 @@ Admit Setup
             var groupName = document.getElementById('group_name').value; // Corrected id
             var classExamName = document.getElementById('class_exam_name').value;
             var academicYearName = document.getElementById('year').value;
+           
 
             // Get all checkboxes
             var checkboxes = document.getElementsByName('subject_name');
@@ -251,7 +256,8 @@ var selectedSubject = {
     class_name:className,
     group_name:groupName,
     class_exam_name:classExamName,
-    year:academicYearName
+    year:academicYearName,
+   
 
 
 
