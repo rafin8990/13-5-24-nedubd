@@ -83,8 +83,6 @@ class NEDUBDController extends Controller
             'school_phone' => 'required|string',
             'mobile_number' => 'required|string',
             'address' => 'required|string',
-            'eiin' => 'required|string',
-            'website' => 'required|string',
             'school_code' => 'required|string',
         ]);
 
