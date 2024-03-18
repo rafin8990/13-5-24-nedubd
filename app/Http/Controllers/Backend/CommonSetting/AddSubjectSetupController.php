@@ -66,10 +66,7 @@ class AddSubjectSetupController extends Controller
         //$school_code = '100';
         $generateId = AddClassWiseSubject::count() + 1;
         $generatedId = sprintf('%02d', $generateId);
-
         $subjectNames = $request->subject_name;
-
-
 
         if ($subjectNames === null) {
             return redirect()->route('add.subject.setup',$schoolCode)->with([

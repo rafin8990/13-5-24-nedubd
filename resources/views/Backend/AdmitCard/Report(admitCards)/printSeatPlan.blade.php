@@ -21,9 +21,9 @@ Student Admin Card
                     <select id="countries" name="class"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose Class</option>
-                    <option >x</option>
-                    <option >y</option>
-                    <option >z</option>
+                    @foreach($classes as $class)
+                        <option >{{$class->class_name}}</option>
+                        @endforeach
                 </select>
                 </div>
             </div>
@@ -33,12 +33,12 @@ Student Admin Card
                     </label>
                 </div>
                 <div class="">
-                    <select id="countries" name="exam_name"
+                    <select id="countries" name="group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose Exam Name</option>
-                        <option >x</option>
-                        <option >y</option>
-                        <option >z</option>
+                        <option selected>Choose Group Name</option>
+                        @foreach($groups as $group)
+                        <option >{{$group->group_name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -51,9 +51,9 @@ Student Admin Card
                     <select id="countries" name="section_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Section Name</option>
-                        <option >x</option>
-                        <option >y</option>
-                        <option >z</option>
+                        @foreach($sections as $section)
+                        <option >{{$section->section_name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -66,9 +66,9 @@ Student Admin Card
                     <select id="countries" name="id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Student ID</option>
-                        <option >x</option>
-                        <option >y</option>
-                        <option >z</option>
+                        @foreach($studentId as $student)
+                        <option >{{$student->student_id}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -81,9 +81,9 @@ Student Admin Card
                     <select id="countries" name="exam_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Choose Exam Name</option>
-                        <option >x</option>
-                        <option >y</option>
-                        <option >z</option>
+                        @foreach($examName as $exam)
+                        <option >{{$exam->class_exam_name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -97,9 +97,9 @@ Student Admin Card
                     <select id="countries" name="year"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose year</option>
-                    <option >x</option>
-                    <option >y</option>
-                    <option >z</option>
+                    @foreach($year as $year)
+                    <option >{{$year->academic_year_name}}</option>
+                    @endforeach
                 </select>
                 </div>
             </div>

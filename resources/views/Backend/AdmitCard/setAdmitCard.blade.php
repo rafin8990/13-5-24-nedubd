@@ -3,13 +3,14 @@
 Admit Setup
 @endsection
 @section('Dashboard')
+@include('Message.message')
 <div>
     <h3>
         Admit Setup
     </h3>
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-    <form id="dataForm" method="POST" action="{{ route('store.add.admit.card') }}">
+    <form id="dataForm" method="POST" action="{{ route('store.add.admit.card',$school_code) }}">
         @csrf
         @method('PUT')
         <div class="grid md:grid-cols-9 gap-4 my-10 ">
@@ -116,7 +117,7 @@ Admit Setup
 
             console.log('admit', formData)
             // Send an AJAX request
-            axios.post(`{{ route('add.admit.card')}}`, formData)
+            axios.post(`{{ route('add.admit.card',$school_code)}}`, formData)
                 .then(function(response) {
                     // Handle success response
                     console.log(response.data);
@@ -186,6 +187,7 @@ Admit Setup
 
                 <td class="px-6 py-4 ">
                     <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    
 
                 </td>
             </tr>
@@ -209,7 +211,10 @@ Admit Setup
         </div>
 
         <div class="ml-32">
-            <h3>Total = <div class="border-2"></div>
+            <h3>Total = 
+                @if ($classWiseSubjectData !== null)
+                    {{ $classWiseSubjectData->count() }}
+                    @endif <div class="border-2"></div>
             </h3>
         </div>
 
@@ -217,6 +222,12 @@ Admit Setup
 
     <script>
         function submitForm() {
+            var className = document.getElementById('class_name').value;
+            var groupName = document.getElementById('group_name').value; // Corrected id
+            var classExamName = document.getElementById('class_exam_name').value;
+            var academicYearName = document.getElementById('year').value;
+           
+
             // Get all checkboxes
             var checkboxes = document.getElementsByName('subject_name');
             var selectedSubjects = [];
@@ -230,24 +241,27 @@ Admit Setup
                     var timeInput = checkbox.closest('tr').querySelector('input[name="time"]');
 
                     // Parse date and time strings into JavaScript Date objects
-                    var date = new Date(dateInput.value);
-                    var time = new Date('1970-01-01T' + timeInput.value);
+var date = new Date(dateInput.value);
+var time = new Date('1970-01-01T' + timeInput.value);
 
-                    // Calculate the difference in milliseconds
-                    var dateTime = date.getTime() + time.getTime();
-                    var now = new Date();
-                    var difference = now.getTime() - dateTime;
+// Convert date and time to local time zone
+var localDate = date.toLocaleDateString();
+var localTime = time.toLocaleTimeString();
 
-                    // Convert difference to hours and minutes
-                    var hours = Math.floor(difference / (1000 * 60 * 60));
-                    var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+// Store the converted date and time in an object
+var selectedSubject = {
+    subject: checkbox.value,
+    date: localDate,
+    time: localTime,
+    class_name:className,
+    group_name:groupName,
+    class_exam_name:classExamName,
+    year:academicYearName,
+   
 
-                    // Store the difference and subject name in an object
-                    var selectedSubject = {
-                        subject: checkbox.value,
-                        hours: hours,
-                        minutes: minutes
-                    };
+
+
+};
 
                     // Push the selected subject data to the array
                     selectedSubjects.push(selectedSubject);
@@ -257,7 +271,7 @@ Admit Setup
             // Create a form element
             var form = document.createElement('form');
             form.setAttribute('method', 'POST');
-            form.setAttribute('action', '{{ route("update.add.admit.card") }}');
+            form.setAttribute('action', '{{ route("update.add.admit.card",$school_code) }}');
             form.setAttribute('enctype', 'multipart/form-data');
 
             // Add method spoofing input for PUT request

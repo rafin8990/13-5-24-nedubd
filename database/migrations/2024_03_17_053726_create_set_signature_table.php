@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('add_admit_card', function (Blueprint $table) {
+        Schema::create('set_signature', function (Blueprint $table) {
             $table->id();
-            $table->string('class_name');
-            $table->string('group_name');
-            $table->string('year');
-            $table->string('class_exam_name');
-            $table->string('subject_name');
-            $table->string('exam_data');
-            $table->string('exam_time');
+            $table->string('report_name');
+            $table->string('signature_name');
+            $table->string('positions');
             $table->enum('status', ['active', 'in active'])->default('active');
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->default('pending');
             $table->string('school_code');
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('add_admit_card');
+        Schema::dropIfExists('set_signature');
     }
 };

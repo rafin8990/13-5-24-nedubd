@@ -87,7 +87,9 @@
                 </a>
             </li>
 
+
             @if($adminData)
+
  <!-- NeduBd Member Add complete nedubd -->
  <li class="dropdown">
                 <button type="button"
@@ -339,7 +341,7 @@
                 </button>
                 <ul id="dropdown-admit-card" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="/dashboard/setAdmitCard"
+                        <a href="/dashboard/setAdmitCard/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Admit Card
                         </a>
@@ -362,19 +364,19 @@
                         </button>
                         <ul id="dropdown-report-card" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="/dashboard/printAdmitCard"
+                                <a href="/dashboard/printAdmitCard/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Print
                                     Admit Card
                                 </a>
                             </li>
                             <li>
-                                <a href="/dashboard/printSeatPlan"
+                                <a href="/dashboard/printSeatPlan/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Print
                                     Seat Plan</a>
                             </li>
 
                             <li>
-                                <a href="/dashboard/AddAdmitInstruction"
+                                <a href="/dashboard/AddAdmitInstruction/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Admit Instruction</a>
                             </li>
@@ -1164,7 +1166,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/dashboard/SetSignature"
+                        <a href="/dashboard/SetSignature/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Signature
                         </a>
