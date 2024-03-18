@@ -17,7 +17,7 @@ class UploadExcelFileController extends Controller
 {
     public function uploadExelFile()
     {
-        $school_code = 100;
+        $school_code=100;
         $classes = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
         $groups = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
         $sections = AddSection::where('action', 'approved')->where('school_code', $school_code)->get();
@@ -110,7 +110,6 @@ class UploadExcelFileController extends Controller
             $student->school_code= $studentData[11];
             $student->action= "approved";
             $student->role= "student";
-            
             $student->admission_date = $studentData['admission_date']?? null;
             $student->Class_name = $class ?? null;
             $student->section = $request->input('section')?? null;

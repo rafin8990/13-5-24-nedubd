@@ -3,9 +3,10 @@
     Student Data
 @endsection
 
-@include('/Message/message')
+
 @section('Dashboard')
     <div>
+    @include('/Message/message')
         <h3>
             Excel Import Student Data
         </h3>
