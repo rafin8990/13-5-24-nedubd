@@ -79,7 +79,7 @@ Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-use
 
 
 Route::prefix('dashboard')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/{schoolCode}', [DashboardController::class, 'index'])->name('dashboard.index');
     // NEDUBD Module 
     Route::get('/addAdmin', [NEDUBDController::class, 'addAdmin']);
     Route::post('/create-admin', [NEDUBDController::class, 'createAdmin'])->name('admin.add');
@@ -357,6 +357,7 @@ Route::prefix('dashboard')->group(function () {
     //Print Admit Card
     Route::get('/printAdmitCard/{schoolCode}', [PrintAdmitCardController::class, "printAdmitCard"])->name('printAdmitCard');
     Route::post('/downloadAdmit/{schoolCode}', [PrintAdmitCardController::class, "downloadAdmit"])->name('downloadAdmitCard');
+    
 
     //Print Seat Plan
     Route::get('/printSeatPlan/{schoolCode}', [PrintSeatPlanController::class, "printSeatPlan"]);

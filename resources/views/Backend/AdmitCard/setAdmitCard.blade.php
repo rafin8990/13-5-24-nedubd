@@ -214,7 +214,8 @@ Admit Setup
             <h3>Total = 
                 @if ($classWiseSubjectData !== null)
                     {{ $classWiseSubjectData->count() }}
-                    @endif <div class="border-2"></div>
+                    @endif
+                     <div class="border-2"></div>
             </h3>
         </div>
 

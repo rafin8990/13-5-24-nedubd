@@ -32,11 +32,11 @@ class AppServiceProvider extends ServiceProvider
             $studentData=null;
 
             $adminData=null;
-
+            $studentData=
             
             $schoolAdminId=Session::get('schoolAdminId');
             $studentId=Session::get('studentId');
-            $adminId=Session::get('AdminId');
+            $AdminId=Session::get('AdminId');
 
             $school_code=Session::get('school_code');
             if($schoolAdminId){
@@ -47,8 +47,8 @@ class AppServiceProvider extends ServiceProvider
 
                 $studentData=Student::find($studentId);
             }
-           if($adminId){
-                $adminData=Admin::find($adminId);
+           if($AdminId){
+                $adminData=Admin::find($AdminId);
                 // dd($adminData);
             }
             $view->with('schoolAdminData',$schoolAdminData)

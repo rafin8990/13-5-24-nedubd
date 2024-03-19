@@ -68,13 +68,13 @@
 
 
             <li class="">
-                <a href="/dashboard" class=" flex items-center p-2 rounded-lg text-white group">
+                <a href="/dashboard/{{$school_code}}" class=" flex items-center p-2 rounded-lg text-white group">
                     <span class="ms-3 text-white ">Dashboard</span>
                 </a>
             </li>
             <!-- dashboard  -->
             <li>
-                <a href="/dashboard" class="flex items-center p-2 text-white  group">
+                <a href="/dashboard/{{$school_code}}" class="flex items-center p-2 text-white  group">
                     <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 " aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 22 21">
                         <path
