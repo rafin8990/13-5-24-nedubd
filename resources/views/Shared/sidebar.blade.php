@@ -196,7 +196,7 @@
                             New Student </a>
                     </li>
                     <li>
-                        <a href="{{ route('updateStudentBasicInfo') }}"
+                        <a href="{{ route('updateStudentBasicInfo', $school_code) }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Update
                             Student Basic Info</a>
                     </li>

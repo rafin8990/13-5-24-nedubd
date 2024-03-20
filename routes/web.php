@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\ExamSetting\FourthSubjectController;
 use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
 use App\Http\Controllers\Backend\NEDUBD\SchoolAdminController;
 use App\Http\Controllers\Backend\Student\StudentController;
+use App\Http\Controllers\Backend\Student\UpdateStudentBasicInfoController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentDetailsController;
 use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
@@ -91,7 +92,10 @@ Route::prefix('dashboard')->group(function () {
     // student module
     Route::post('/create-student', [StudentController::class, 'addStudent'])->name('student.add');
     Route::get('/add-student/{schoolCode}', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
-    Route::get('/updateStudentBasicInfo', [StudentController::class, 'updateStudentBasicInfo'])->name('updateStudentBasicInfo');
+    Route::get('/updateStudentBasicInfo/{schoolCode}', [UpdateStudentBasicInfoController::class, 'updateStudentBasicInfo'])->name('updateStudentBasicInfo');
+    Route::get('/getData/{schoolCode}', [UpdateStudentBasicInfoController::class, 'getData'])->name('getData');
+    Route::put('/updateData/{schoolCode}', [UpdateStudentBasicInfoController::class, 'updateStudentBasic'])->name('updateStudent');
+
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/uploadExelFile', [StudentController::class, 'uploadExelFile'])->name('uploadExelFile');
     Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
