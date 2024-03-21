@@ -16,21 +16,14 @@ class AuthController extends Controller
 {
     public function index()
     {
-        // $schoolAdminId=Session::get('schoolAdminId');
-        // $studentId=Session::get('studentId');
-        // $adminId=Session::get('AdminId');
-        // if($adminId){
-        //     return redirect('/dashboard');
-        // }
-        // else if($studentId){
-        //     return redirect('/dashboard');
-        // }
-        // else if ($schoolAdminId) {
-        //     return redirect('/dashboard');
-        // }
-        // else{
-        // }
-        return view("Auth.Login");
+        $school_code=Session::get('school_code');
+      
+         if($school_code){
+            return redirect('/dashboard');
+         }
+         else{
+             return view("Auth.Login");
+         }
         
         
     }

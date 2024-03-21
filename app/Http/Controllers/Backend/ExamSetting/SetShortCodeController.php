@@ -19,6 +19,7 @@ class SetShortCodeController extends Controller
         $searchClassExamName = null;
         $searchAcademicYearName = null;
         $setCodeData = null;
+        $setCode = null;
         $shortCodeData = null;
 
         if ($request->input('class_name')) {
@@ -66,6 +67,10 @@ class SetShortCodeController extends Controller
 
         // Set the school code
         //$school_code = '100'; // Your school code here
+
+        if(!$request->short_code){
+            return redirect()->back()->with('error', 'Please select a short code first');
+        }
 
         $existingData = SetShortCode::where('action', 'approved')
             ->where('school_code', $schoolCode)
