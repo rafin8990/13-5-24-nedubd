@@ -16,7 +16,16 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view("Auth.login");
+        $school_code=Session::get('school_code');
+      
+         if($school_code){
+            return redirect('/dashboard');
+         }
+         else{
+             return view("Auth.Login");
+         }
+        
+        
     }
 
     public function loginUser(Request $request)
@@ -35,11 +44,13 @@ class AuthController extends Controller
         $student = Student::where('student_id', $request->name)->orWhere('email', $request->name)->orWhere('father_mobile', $request->name)->first();
         $teacher = Teacher::where('teacher_id', $request->name)->orWhere('mobile', $request->name)->first();
 
+       
         if ($admin) {
             if (Hash::check($request->password, $admin->password)) {
                 Session::put('AdminId', $admin->id);
                 Session::put('school_code', $admin->school_code);
                 return redirect('/dashboard/' . $admin->school_code)->with('success', 'Login successful!');
+
             } else {
                 return back()->with('error', 'Login failed. Please check your Id or password.');
             }

@@ -17,6 +17,7 @@ class SchoolInfo extends Model
         'address',
         'eiin',
         'website',
+        'logo',
         'school_code',
     ];
 

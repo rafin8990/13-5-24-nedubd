@@ -2,8 +2,11 @@
 @section('title')
     Student Data
 @endsection
+
+
 @section('Dashboard')
     <div>
+    @include('/Message/message')
         <h3>
             Excel Import Student Data
         </h3>
@@ -13,6 +16,8 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10  border-2 md:p-5">
 
+      <form  action="{{ route('upload.excel') }}" method="post" enctype="multipart/form-data">
+      @csrf
 
         <div class="grid gap-6 mb-6 md:grid-cols-4 mt-2">
             <div>
@@ -20,10 +25,10 @@
                 </label>
                 <select id="" name="class"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a department</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option selected>Choose a class</option>
+                    @foreach($classes as $class)
+                    <option value="{{$class->class_name}}">{{$class->class_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -32,10 +37,10 @@
                 </label>
                 <select id="" name="group"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Choose a designation</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option selected>Choose a group</option>
+                    @foreach($groups as $group)
+                    <option value="{{$group->group_name}}">{{$group->group_name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div>
@@ -44,9 +49,9 @@
                 <select id="" name="section"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a Section</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    @foreach($sections as $section)
+                    <option value="{{$section->section_name}}">{{$section->section_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -56,9 +61,9 @@
                 <select id="" name="shift"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a Shift</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    @foreach($shifts as $shift)
+                    <option value="{{$shift->shift_name}}">{{$shift->shift_name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div>
@@ -67,9 +72,9 @@
                 <select id="" name="category"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a Category</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    @foreach($categories as $category)
+                    <option value="{{$category->category_name}}">{{$category->category_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -79,16 +84,16 @@
                 <select id="" name="year"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Choose a year</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    @foreach($academicYears as $year)
+                    <option value="{{$year->academic_year_name}}">{{$year->academic_year_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
             <div class="">
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Excel
                     File</label>
-                <input name="image"
+                <input name="file"
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     aria-describedby="user_avatar_help" id="user_avatar" type="file">
 
@@ -99,9 +104,8 @@
                 <select id="" name="stu_id"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected>Select</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option value="with_id" >With ID</option>
+                    <option value="generate_id" >Generate ID</option>
                 </select>
             </div>
 
@@ -109,19 +113,20 @@
            
         </div>
         <div class="md:flex justify-center">
-            <div class="">
-                <button type="button"
-                    class="  text-white bg-rose-600 hover:bg-rose-600 focus:ring-4 focus:ring-rose-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-600 focus:outline-none dark:focus:ring-rose-600">Blank Excel Download
-                </button>
+            <div class="mt-2">
+                <a href="{{ route('download.demo') }}" class="  text-white bg-rose-600 hover:bg-rose-600 focus:ring-4 focus:ring-rose-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2  dark:bg-rose-600 dark:hover:bg-rose-600 focus:outline-none dark:focus:ring-rose-600 ">
+                    Blank Excel Download
+            </a>
+                
             </div>
             <div class="">
-                <button type="button"
+                <button type="submit"
                     class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"> Submit
                 </button>
             </div>
         </div>
 
-        
+      </form>
 
 
     </div>

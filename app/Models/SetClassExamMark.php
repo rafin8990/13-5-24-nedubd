@@ -5,22 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SetShortCode extends Model
+class SetClassExamMark extends Model
 {
     use HasFactory;
-
-    protected $table = 'set_short_code';
-
     protected $fillable = [
         'class_name',
-        'class_exam_name',
+        'exam_name',
         'academic_year_name',
         'short_code',
+        'total_mark',
+        'countable_mark',
+        'pass_mark',
+        'acceptance',
+        'marge',
         'status',
-        'action',
         'school_code',
+        'action',
     ];
 
-
-
+    protected $table = 'set_class_exam_marks';
 }

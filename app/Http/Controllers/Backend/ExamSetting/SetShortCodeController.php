@@ -12,13 +12,14 @@ use Illuminate\Http\Request;
 
 class SetShortCodeController extends Controller
 {
-    public function set_short_code(Request $request,$schoolCode)
+    public function set_short_code(Request $request, $schoolCode)
     {
         //$school_code = '100';
         $searchClassData = null;
         $searchClassExamName = null;
         $searchAcademicYearName = null;
         $setCodeData = null;
+        $setCode = null;
         $shortCodeData = null;
 
         if ($request->input('class_name')) {
@@ -43,13 +44,15 @@ class SetShortCodeController extends Controller
         $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
+        // dd($setCodeData, $shortCodeData);
 
-        return view('Backend/BasicInfo/ExamSetting/getShortCode', compact('setCodeData', 'classData', 'classExamData', 'academicYearData', 'shortCodeData', 'searchClassData', 'searchClassExamName', 'searchAcademicYearName'));
+
+        return view('Backend/BasicInfo/ExamSetting/getShortCode', compact('setCode', 'classData', 'classExamData', 'academicYearData', 'shortCodeData', 'searchClassData', 'searchClassExamName', 'searchAcademicYearName'));
     }
 
 
 
-    public function store_set_short_code(Request $request,$schoolCode)
+    public function store_set_short_code(Request $request, $schoolCode)
     {
         // dd($request);
         // Validate the incoming request data
@@ -57,13 +60,17 @@ class SetShortCodeController extends Controller
             'class_name' => 'required|string|max:255',
             'class_exam_name' => 'required|string|max:255',
             'academic_year_name' => 'required|string|max:255',
-            'short_code' => 'required|array',
+            // 'short_code' => 'required|array',
             // 'status' => 'required|string|in:active,in active',
         ]);
-        // dd($validatedData);
+
 
         // Set the school code
         //$school_code = '100'; // Your school code here
+
+        if(!$request->short_code){
+            return redirect()->back()->with('error', 'Please select a short code first');
+        }
 
         $existingData = SetShortCode::where('action', 'approved')
             ->where('school_code', $schoolCode)
@@ -71,29 +78,41 @@ class SetShortCodeController extends Controller
             ->where('class_exam_name', $request->class_exam_name)
             ->where('academic_year_name', $request->academic_year_name)
             ->get();
-            
-        if ($existingData->isNotEmpty()) {
+
+        $shortCodes = $request->input('short_code');
+// dd($validatedData);
+
+        if ($existingData->isNotEmpty()){
             // Update existing data
-            $existingSetShortCode = $existingData->first(); // Assuming you only have one existing data, you can adjust if needed
-
-            // Update the short code
-            $existingSetShortCode->short_code = $request->short_code;
-
-            // Save the changes
-            $existingSetShortCode->save();
-        } else {
-            $setShortCode = new SetShortCode();
-            $setShortCode->class_name = $request->class_name;
-            $setShortCode->class_exam_name = $request->class_exam_name;
-            $setShortCode->academic_year_name = $request->academic_year_name;
-            $setShortCode->short_code = $request->short_code;
-            $setShortCode->status = 'active';
-            $setShortCode->action = 'approved';
-            $setShortCode->school_code =$schoolCode;
-            $setShortCode->save();
+            SetShortCode::where('action', 'approved')
+                ->where('school_code', $schoolCode)
+                ->where('class_name', $request->class_name)
+                ->where('class_exam_name', $request->class_exam_name)
+                ->where('academic_year_name', $request->academic_year_name)
+                ->delete();
         }
+      
+            foreach ($shortCodes as $short_code) {
+                $setShortCode = new SetShortCode();
+                $setShortCode->class_name = $request->class_name;
+                $setShortCode->class_exam_name = $request->class_exam_name;
+                $setShortCode->academic_year_name = $request->academic_year_name;
+                $setShortCode->short_code = $short_code;
+                $setShortCode->status = 'active';
+                $setShortCode->action = 'approved';
+                $setShortCode->school_code = $schoolCode;
+                $setShortCode->save();
+            }
+     
+
+    
+            
+     
+
+        
+
 
         // Redirect back with a success message
-        return redirect()->back()->with('success', 'group added successfully!');
+        return redirect()->back()->with('success', 'short code set successfully!');
     }
 }

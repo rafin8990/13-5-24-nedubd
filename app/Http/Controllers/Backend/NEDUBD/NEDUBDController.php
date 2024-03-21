@@ -83,21 +83,32 @@ class NEDUBDController extends Controller
             'school_phone' => 'required|string',
             'mobile_number' => 'required|string',
             'address' => 'required|string',
-            'eiin' => 'required|string',
-            'website' => 'required|string',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'school_code' => 'required|string',
         ]);
 
-        $SchoolInfo = new SchoolInfo();
-        $SchoolInfo->school_email = $request->input('school_email');
-        $SchoolInfo->school_name = $request->input('school_name');
-        $SchoolInfo->school_phone = $request->input('school_phone');
-        $SchoolInfo->mobile_number = $request->input('mobile_number');
-        $SchoolInfo->address = $request->input('address');
-        $SchoolInfo->eiin = $request->input('eiin');
-        $SchoolInfo->website = $request->input('website');
-        $SchoolInfo->school_code = $request->input('school_code');
-        $SchoolInfo->save();
-        return redirect('/dashboard/addSchoolInfo')->with('success', 'SchoolInfo Sucessfully  Added.');
+        if ($request->hasFile('logo')) {
+            $request->validate([
+                'logo' => 'file|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            $logoPath = $request->file('logo')->move('images/logo', $request->input('school_code') . '_' . uniqid() . '.' . $request->file('logo')->extension());
+            $logo = 'images/logo/' . basename($logoPath);
+            $SchoolInfo = new SchoolInfo();
+            $SchoolInfo->school_email = $request->input('school_email');
+            $SchoolInfo->school_name = $request->input('school_name');
+            $SchoolInfo->school_phone = $request->input('school_phone');
+            $SchoolInfo->mobile_number = $request->input('mobile_number');
+            $SchoolInfo->address = $request->input('address');
+            $SchoolInfo->eiin = $request->input('eiin');
+            $SchoolInfo->website = $request->input('website');
+            $SchoolInfo->logo = $logo;
+            $SchoolInfo->school_code = $request->input('school_code');
+            $SchoolInfo->save();
+            return redirect('/dashboard/addSchoolInfo')->with('success', 'SchoolInfo Sucessfully  Added.');
+
+        }
+
+      
     }
 }

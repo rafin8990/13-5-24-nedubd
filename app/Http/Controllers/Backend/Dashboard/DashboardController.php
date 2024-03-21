@@ -16,7 +16,9 @@ class DashboardController extends Controller
         $classData=AddClass::where('school_code', $schoolCode)->get(); 
         $sectionData=AddSection::where('school_code', $schoolCode)->get(); 
         $groupData=AddGroup::where('school_code', $schoolCode)->get();
-       // dd($studentData) ;
-        return view("Backend.Dashboard.Dashboard",compact('studentData','classData','sectionData','groupData'));
+        $totalStudent=$studentData->count();
+     
+        return view("Backend.Dashboard.Dashboard",compact('totalStudent','classData','sectionData','groupData'));
+
     }
 }

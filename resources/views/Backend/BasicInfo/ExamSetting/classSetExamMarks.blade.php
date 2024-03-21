@@ -8,11 +8,12 @@
             Exam Mark Setup
         </h3>
     </div>
+
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-        <form action="{{ url('dashboard/setExamMarks', $school_code) }}" method="POST"
+        <form action="{{ route('store.set.exam.marks', $school_code) }}" method="POST"
             enctype="multipart/form-data" class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
             @csrf
-            @method('PUT')
+          
             <div>
                 <div class="grid gap-6 mb-6 md:grid-cols-4 mt-2">
                     <div>
@@ -80,77 +81,42 @@
                         </label>
                         <input type="text" value="{{ $school_code }}" name="school_code" id="last_name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Enter The Police Station Name" />
+                            placeholder="" />
                     </div>
 
 
                     <div class="flex justify-end">
-                        <!-- <button type="button" class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get Data
-                    </button> -->
-                        <button type="button" onclick="submitForm()"
+                       
+                        <button type="submit+" 
                             class="text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get
                             Data</button>
 
                     </div>
                 </div>
             </div>
-            <script>
-                // submitForm.js
+        </form>    
+        
 
-                  // Create a form element
-            var form = document.createElement('form');
-            form.setAttribute('method', 'GET');
-            form.setAttribute('action', '{{ route("set.short.code",$school_code) }}');
-            form.setAttribute('enctype', 'multipart/form-data');
-
-            // Add CSRF token input
-            var csrfTokenInput = document.createElement('input');
-            csrfTokenInput.setAttribute('type', 'hidden');
-            csrfTokenInput.setAttribute('name', '_token');
-            csrfTokenInput.setAttribute('value', '{{ csrf_token() }}');
-            form.appendChild(csrfTokenInput);
-
-            // Add other inputs
-            var classNameInput = document.createElement('input');
-            classNameInput.setAttribute('type', 'hidden');
-            classNameInput.setAttribute('name', 'class_name');
-            classNameInput.setAttribute('value', className);
-            form.appendChild(classNameInput);
-
-            var classExamNameInput = document.createElement('input');
-            classExamNameInput.setAttribute('type', 'hidden');
-            classExamNameInput.setAttribute('name', 'class_exam_name');
-            classExamNameInput.setAttribute('value', classExamName);
-            form.appendChild(classExamNameInput);
-
-            var academicYearNameInput = document.createElement('input');
-            academicYearNameInput.setAttribute('type', 'hidden');
-            academicYearNameInput.setAttribute('name', 'academic_year_name');
-            academicYearNameInput.setAttribute('value', academicYearName);
-            form.appendChild(academicYearNameInput);
-
-            // Add selected short codes
-            shortCodes.forEach(function(shortCode) {
-                var shortCodeInput = document.createElement('input');
-                shortCodeInput.setAttribute('type', 'hidden');
-                shortCodeInput.setAttribute('name', 'short_codes[]');
-                shortCodeInput.setAttribute('value', shortCode.value);
-                form.appendChild(shortCodeInput);
-            });
-
-            // Append the form to the document body and submit it
-            document.body.appendChild(form);
-            form.submit();
-            </script>
+        <form action="{{route('saveSetExamMarks')}}" method="post">
+        @csrf
             <div>
                 <div
                     class="grid gap-6 mb-6 py-5 md:grid-cols-1 items-center ps-4 border border-gray-200 rounded dark:border-gray-700 mx-20">
                     <h3>Select subject</h3>
+
+                    <input type="text" class="hidden" value="{{$className}}" name="class_name" id="">
+                    <input type="text" class="hidden" value="{{$classExamName}}" name="exam_name" id="">
+                    <input type="text" class="hidden" value="{{$academic_year_name}}" name="academic_year_name" id="">
                     <div>
-                        <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="bordered-checkbox-1"
-                            class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Select All</label>
+                    @if($searchClassses->count() > 0)
+                    @foreach($searchClassses as $key=> $class)
+                    <div>
+                    <input id="bordered-checkbox-1" type="checkbox" value="{{$class->subject_name}}" name="subject[{{$class->subject_name}}]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$class->subject_name}}</label>
+                    </div>
+                    @endforeach
+                     @endif
+                        
                     </div>
                 </div>
                 
@@ -178,77 +144,122 @@
                 </div>
                 <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
                     <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
-                        <th scope="col" class="px-6 py-3 bg-blue-500">
+                        <th scope="col" class="px-4 py-3 bg-blue-500">
                             SL
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             SHORT CODE
                         </th>
-                        <th scope="col" class="px-6 py-3 bg-blue-500">
+                        <th scope="col" class="px-4 py-3 bg-blue-500">
                             TOTAL MARKS
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Countable Mark
                         </th>
-                        <th scope="col" class="px-6 py-3 bg-blue-500">
+                        <th scope="col" class="px-4 py-3 bg-blue-500">
                             Pass Mark
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Acceptance
                         </th>
-                        <th scope="col" class="px-6 py-3 bg-blue-500">
+                        <th scope="col" class="px-4 py-3 bg-blue-500">
                             Merge
                         </th>
+                        <th scope="col" class="px-4 py-3 bg-blue-500">
+                            Status
+                        </th>
                     </thead>
-                    <tbody>
-                        <tr class=" border-b border-blue-400">
-
-                        </tr>
-
-
-
+                    <tbody id="shortCodesTableBody">
+                            @foreach($shortCodes as $key => $code)
+                            <tr class=" border-b border-blue-400">
+                                <td class="px-4 py-3">{{$key + 1}}</td>
+                                <td class="px-4 py-3">{{$code->short_code}}</td>
+                                <input class="hidden" value="{{$code->short_code}}" name="short_code[{{$key}}]" type="text">
+                                <input class="hidden" value="{{$key}}" name="key[{{$key}}]" type="text">
+                                <td class="px-4 py-3"><input name="total_marks[{{$key}}]" class="border-0 w-[100px] total_marks" type="text"></td>
+                                <td class="px-4 py-3"><input name="countable_marks[{{$key}}]" class="border-0 w-[100px] countable_marks" type="text"></td>
+                                <td class="px-4 py-3"><input name="pass_marks[{{$key}}]" class="border-0 w-[100px] pass_marks" type="text"></td>
+                                <td class="px-4 py-3"><input name="acceptance[{{$key}}]" class="border-0 w-[100px] acceptance" type="text"></td>
+                                <td class="px-4 py-3"><input name="marge[{{$key}}]" value="0" class="border-0 w-[100px]" type="text"></td>
+                                <td class="px-4 py-3">
+                                    <div>
+                                        <select class="p-2" name="status[{{$key}}]" id="">
+                                            <option selected value="active">Active</option>
+                                            <option value="in_active">In Active</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <input class="hidden" value="{{$school_code}}" name="school_code" type="text">
+                                <input class="hidden" value="approved" name="action" type="text">
+                            </tr>
+                            @endforeach
                     </tbody>
                 </table>
             </div>
             <br><br>
             <div class="md:flex justify-center">
                 <div class="mr-10">
-                    <button type="submit"
+                    <a
                         class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Mark
-                        Config View</button>
+                        Config View</a>
                 </div>
                 <div class="mr-10">
                     <button type="submit"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
                 </div>
                 <div class="mr-10">
-                    <button type="submit"
-                        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
+                    <a href="/dashboard"
+                        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</a>
                 </div>
-
+<!-- 
                 <div class="ml-32">
                     <h3>Total = <div class=" border-2"></div>
                     </h3>
-                </div>
+                </div> -->
 
             </div>
         </form>
+
+
+
+
+
+        
+    <script>
+    // Get all input fields
+    const totalMarksInputs = document.querySelectorAll('.total_marks');
+    const countableMarksInputs = document.querySelectorAll('.countable_marks');
+    const passMarksInputs = document.querySelectorAll('.pass_marks');
+    const acceptanceInputs = document.querySelectorAll('.acceptance');
+
+    // Function to calculate pass marks and acceptance
+    function calculateMarks() {
+        totalMarksInputs.forEach((totalMarksInput, index) => {
+            const totalMarks = parseFloat(totalMarksInput.value) || 0;
+            const countableMarks = parseFloat(countableMarksInputs[index].value) || 0;
+
+            // Calculate pass marks
+            const passMarks = Math.round(totalMarks / 3);
+            passMarksInputs[index].value = passMarks;
+
+            // Calculate acceptance
+            const acceptance = (totalMarks !== 0) ? (countableMarks / totalMarks).toFixed(2) : 0;
+            acceptanceInputs[index].value = acceptance;
+        });
+    }
+
+    // Attach event listeners to input fields
+    totalMarksInputs.forEach(input => {
+        input.addEventListener('input', calculateMarks);
+    });
+
+    countableMarksInputs.forEach(input => {
+        input.addEventListener('input', calculateMarks);
+    });
+
+    // Initially calculate marks when the page loads
+    calculateMarks();
+</script>
     @endsection
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            let $dateDropdown = $('#date-dropdown');
-
-            let currentYear = new Date().getFullYear();
-            let earliestYear = 1970;
-
-            while (currentYear >= earliestYear) {
-                let $dateOption = $('<option>');
-                $dateOption.text(currentYear);
-                $dateOption.val(currentYear);
-                $dateDropdown.append($dateOption);
-                currentYear -= 1;
-            }
-        });
-    </script>
+ 

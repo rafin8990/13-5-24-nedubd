@@ -32,6 +32,7 @@ class StudentController extends Controller
 
     public function addStudent(Request $request)
     {
+<<<<<<< HEAD
         $this->validate($request, [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -84,7 +85,62 @@ class StudentController extends Controller
             'email' => 'required|string',
             'password' => 'required|string|min:4',
         ]);
+=======
+>>>>>>> b69c0f0ce5598df3c8640173b05f2b59923fb1c5
 
+        // dd($request);
+        // $this->validate($request, [
+        //     'first_name' => 'string',
+        //     'last_name' => 'string',
+        //     'birth_date' => 'string',
+        //     'student_roll' => 'string',
+        //     'Class_name' => 'string',
+        //     'group' => 'string',
+        //     'section' => 'string',
+        //     'shift' => 'string',
+        //     'category' => 'string',
+        //     'year' => 'string',
+        //     'gender' => 'string',
+        //     'religious' => 'string',
+        //     'nationality' => 'string',
+        //     'blood_group' => 'string',
+        //     'session' => 'string',
+        //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //     'admission_date' => 'string',
+        //     'father_name' => 'string',
+        //     'father_mobile' => 'string',
+        //     'father_occupation' => 'string',
+        //     'father_nid' => 'string',
+        //     'father_birth_date' => 'string',
+        //     'mother_name' => 'string',
+        //     'mother_number' => 'string',
+        //     'mother_occupation' => 'string',
+        //     'mother_nid' => 'string',
+        //     'mother_birth_date' => 'string',
+        //     'mother_income' => 'string',
+        //     'present_village' => 'string',
+        //     'present_post_office' => 'string',
+        //     'present_country' => 'string',
+        //     'present_zip_code' => 'string',
+        //     'present_district' => 'string',
+        //     'present_police_station' => 'string',
+        //     'parmanent_village' => 'string',
+        //     'parmanent_post_office' => 'string',
+        //     'parmanent_country' => 'string',
+        //     'parmanent_zip_code' => 'string',
+        //     'parmanent_district' => 'string',
+        //     'parmanent_police_station' => 'string',
+        //     'guardian_name' => 'string',
+        //     'guardian_address' => 'string',
+        //     'last_school_name' => 'string',
+        //     'last_class_name' => 'string',
+        //     'last_result' => 'string',
+        //     'last_passing_year' => 'string',
+        //     'email' => 'string',
+        //     'password' => 'string|min:4',
+        // ]);
+
+       
         if ($request->hasFile('image')) {
             $request->validate([
                 'image' => 'file|mimes:jpeg,png,jpg,gif|max:2048',
@@ -161,17 +217,7 @@ class StudentController extends Controller
             $student->save();
             // return redirect('/dashboard/add-student/{schoolCode}')->with('success', 'Student Sucessfully  created.');
             return redirect()->back()->with('success', 'student added successfully!');
-
-
         }
-
-
-
-
-
-
-
-
     }
 
     private function generateStudentId()
@@ -194,9 +240,7 @@ class StudentController extends Controller
     public function studentProfileUpdate(){
         return view('Backend.Student.studentProfileUpdate');
     }
-    public function uploadExelFile(){
-        return view('Backend.Student.uploadExxelFile');
-    }
+    
     public function uploadStudentPhoto(){
         return view('Backend.Student.uploadPhoto');
     }

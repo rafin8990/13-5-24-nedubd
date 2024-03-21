@@ -30,6 +30,7 @@ use App\Http\Controllers\Backend\Student\studentReports\StudentDetailsController
 use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
 use App\Http\Controllers\Backend\Student\studentReports\EsifListController;
+use App\Http\Controllers\Backend\Student\UploadExcelFileController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
@@ -105,8 +106,13 @@ Route::prefix('dashboard')->group(function () {
 
 
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
-    Route::get('/uploadExelFile', [StudentController::class, 'uploadExelFile'])->name('uploadExelFile');
+    Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
     Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
+    Route::get('/download-demo', [UploadExcelFileController::class, 'downloadDemo'])->name('download.demo');
+    Route::post('/upload-excel', [UploadExcelFileController::class, 'uploadExcel'])->name('upload.excel');
+
+
+    
 
     // Student Report
     Route::get('studentDetails',[StudentDetailsController::class,'studentDetails']);
@@ -283,7 +289,8 @@ Route::prefix('dashboard')->group(function () {
 
     // set exam marks
     Route::get('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'set_exam_marks'])->name('set.exam.marks');
-    Route::put('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
+    Route::post('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
+    Route::post('/saveSetExamMarks',[SetExamMarksController::class,'saveSetExamMarks'])->name('saveSetExamMarks');
 
     //forth subject
 
