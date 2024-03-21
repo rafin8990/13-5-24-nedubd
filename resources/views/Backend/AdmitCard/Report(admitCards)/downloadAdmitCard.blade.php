@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-pdf/0.0.2/dom-to-pdf.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <title>Admit Card</title>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jspdf-html2canvas@latest/dist/jspdf-html2canvas.min.js"></script>
+
 </head>
 
 <body>
 
-    <div class="max-w-[1100px] mx-auto border-4 border-amber-400">
+    <div id="page" class="max-w-[1100px] mx-auto border-4 border-amber-400">
         <div class="flex w-full justify-between items-center p-5  ">
             <div><img src="https://cdn.pixabay.com/photo/2023/01/13/17/44/red-7716610_640.png"
                     class="rounded-full w-28 h-28" alt=""></div>
@@ -119,28 +122,32 @@
         </div>
 
         <div>
+            {{-- <a
+                href="{{ route('admit-card.download', ['schoolCode' => $Data->school_code, 'class' => $Data->class_name, 'group' => $Data->group, 'section_name' => $Data->section, 'id' => $Data->student_id, 'exam_name' => $exam_name, 'year' => $year]) }}">
+                <button id="" type="button"
+                    class="text-white bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800">Download</button>
+            </a> --}}
 
-            <button id="downloadButton" type="button"
+
+            <button id="btn" type="button"
                 class="text-white bg-rose-700 hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800">Download</button>
-
-
         </div>
+
     </div>
 
     <script>
-     
-            const downloadButton = document.getElementById("#downloadButton");
+        let btn = document.getElementById('btn');
+        let page = document.getElementById('page');
 
-            downloadButton.addEventListener("click", function () {
-                // Convert the HTML document to PDF
-                domtoimage.toPng(document.body)
-                    .then(function (dataUrl) {
-                        var pdf = new jsPDF();
-                        pdf.addImage(dataUrl, 'PNG', 0, 0);
-                        pdf.save("admit_card.pdf");
-                    });
+        btn.addEventListener('click', function() {
+            html2PDF(page, {
+                jsPDF: {
+                    format: 'a4',
+                },
+                imageType: 'image/jpeg',
+                output: './pdf/generate.pdf'
             });
-       
+        });
     </script>
 
 </body>
