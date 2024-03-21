@@ -39,7 +39,9 @@ class AuthController extends Controller
             if (Hash::check($request->password, $admin->password)) {
                 Session::put('AdminId', $admin->id);
                 Session::put('school_code', $admin->school_code);
+
                 return redirect('/dashboard/' . $admin->school_code)->with('success', 'Login successful!');
+
             } else {
                 return back()->with('error', 'Login failed. Please check your Id or password.');
             }

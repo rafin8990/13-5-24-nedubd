@@ -76,6 +76,8 @@ Add Admin
 
             </div>
 
+            <input value="nedubd" name="school_code" class="hidden" type="text">
+
             <div class="my-5">
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Upload
                     Picture</label>

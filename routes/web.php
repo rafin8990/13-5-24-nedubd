@@ -29,6 +29,7 @@ use App\Http\Controllers\Backend\Student\studentReports\StudentDetailsController
 use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
 use App\Http\Controllers\Backend\Student\studentReports\EsifListController;
+use App\Http\Controllers\Backend\Student\UploadExcelFileController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
@@ -97,8 +98,13 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/updateData/{schoolCode}', [UpdateStudentBasicInfoController::class, 'updateStudentBasic'])->name('updateStudent');
 
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
-    Route::get('/uploadExelFile', [StudentController::class, 'uploadExelFile'])->name('uploadExelFile');
+    Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
     Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
+    Route::get('/download-demo', [UploadExcelFileController::class, 'downloadDemo'])->name('download.demo');
+    Route::post('/upload-excel', [UploadExcelFileController::class, 'uploadExcel'])->name('upload.excel');
+
+
+    
 
     // Student Report
     Route::get('studentDetails',[StudentDetailsController::class,'studentDetails']);
