@@ -74,7 +74,7 @@
             </li>
             <!-- dashboard  -->
             <li>
-                <a href="/dashboard" class="flex items-center p-2 text-white  group">
+                <a href="/dashboard/{{$school_code}}" class="flex items-center p-2 text-white  group">
                     <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 " aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 22 21">
                         <path
@@ -196,7 +196,7 @@
                             New Student </a>
                     </li>
                     <li>
-                        <a href="{{ route('updateStudentBasicInfo') }}"
+                        <a href="{{ route('updateStudentBasicInfo', $school_code) }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Update
                             Student Basic Info</a>
                     </li>

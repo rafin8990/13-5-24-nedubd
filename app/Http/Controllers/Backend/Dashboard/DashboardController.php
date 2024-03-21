@@ -19,5 +19,6 @@ class DashboardController extends Controller
         $totalStudent=$studentData->count();
      
         return view("Backend.Dashboard.Dashboard",compact('totalStudent','classData','sectionData','groupData'));
+
     }
 }

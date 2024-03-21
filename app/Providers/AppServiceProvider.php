@@ -29,9 +29,11 @@ class AppServiceProvider extends ServiceProvider
             $schoolAdminData=null;
             $studentData=null;
             $adminData=null;
+
             $schoolAdminId=Session::get('schoolAdminId');
             $studentId=Session::get('studentId');
             $adminId=Session::get('AdminId');
+
             $school_code=Session::get('school_code');
             if($schoolAdminId){
                 $schoolAdminData=SchoolAdmin::find($schoolAdminId);

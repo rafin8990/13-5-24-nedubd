@@ -66,11 +66,6 @@
                 <p>
                 <p>
                    {{$totalStudent}}
-                  
-
-                    {{-- @if ($studentData->count() > 0)
-                        {{ $studentData->count() }}
-                    @endif --}}
                 </p>
 
                 </p>
@@ -118,7 +113,6 @@
         <div class="border shadow-md">
             <div class="bg-gradient-to-r  from-black to-gray-600 p-5 rounded  mx-2 lg:mx-0">
                 <h1 class="text-2xl font-bold text-white">Todays Student's Attendance</h1>
-
             </div>
             <div class="text-md font-semibold grid grid-cols-2 mt-5">
                 <div class="flex justify-center">
@@ -137,6 +131,7 @@
         <div class="border shadow-md">
             <div class="bg-gradient-to-r  from-black to-gray-600 p-5 rounded  mx-2 lg:mx-0">
                 <h1 class="text-2xl font-bold text-white">Todays Teacher's Attendance</h1>
+
 
             </div>
             <div class="text-md font-semibold grid grid-cols-2 mt-5">
@@ -299,3 +294,4 @@
     {{-- Asma --}}
 
 @endsection
+
