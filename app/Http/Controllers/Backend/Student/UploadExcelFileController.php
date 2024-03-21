@@ -12,6 +12,7 @@ use App\Models\AddShift;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Hash;
 
 class UploadExcelFileController extends Controller
 {
@@ -63,6 +64,21 @@ class UploadExcelFileController extends Controller
             } else if ($idOption == 'generate_id') {
                 $studentId = $this->generateUniqueStudentId();
             }
+
+            if (
+                is_null($studentData[1]) || // student_roll
+                is_null($studentData[2]) || // first_name
+                is_null($studentData[3]) || // group
+                is_null($studentData[4]) || // category
+                is_null($studentData[5]) || // gender
+                is_null($studentData[7]) || // religious
+                is_null($studentData[8]) || // father_name
+                is_null($studentData[9]) || // mother_name
+                is_null($studentData[10])   // father_mobile
+            ) {
+                continue; // Skip this student if any essential field is null
+            }
+            
             $student = new Student();
             $student->first_name = $studentData[2];
             $student->student_roll = $studentData[1];
@@ -106,7 +122,7 @@ class UploadExcelFileController extends Controller
             $student->last_result= $studentData['last_result']?? null;
             $student->last_passing_year= $studentData['last_passing_year']?? null;
             $student->email= $studentData['email']?? null;
-            $student->password= $studentData['password']?? null;
+            $student->password=Hash::make( $studentData['password']?? 12345);
             $student->school_code= $studentData[11];
             $student->action= "approved";
             $student->role= "student";
@@ -170,13 +186,13 @@ class UploadExcelFileController extends Controller
             $rowData[] = $cell->getValue();
         }
         
-        // dd($rowData);
+       
 
         $data[] = $rowData;
     }
     
     array_shift($data);
-    
+    // dd($data);
     return $data;
 }
 

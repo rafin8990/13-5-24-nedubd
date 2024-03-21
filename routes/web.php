@@ -281,7 +281,7 @@ Route::prefix('dashboard')->group(function () {
 
     // set exam marks
     Route::get('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'set_exam_marks'])->name('set.exam.marks');
-    Route::put('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
+    Route::post('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
 
     //forth subject
 

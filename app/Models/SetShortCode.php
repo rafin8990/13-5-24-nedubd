@@ -21,8 +21,6 @@ class SetShortCode extends Model
         'school_code',
     ];
 
-    protected $casts = [
-        'short_code' => 'json', // Assuming 'data' field is JSON
-    ];
+
 
 }
