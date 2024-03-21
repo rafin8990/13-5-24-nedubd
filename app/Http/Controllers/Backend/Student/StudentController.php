@@ -49,6 +49,7 @@ class StudentController extends Controller
             'nationality' => 'required|string',
             'blood_group' => 'required|string',
             'session' => 'required|string',
+            'status' => 'required|string|in:active,in active',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'admission_date' => 'required|string',
             'father_name' => 'required|string',
@@ -120,6 +121,7 @@ class StudentController extends Controller
             $student->nationality = $request->input('nationality');
             $student->blood_group = $request->input('blood_group');
             $student->session = $request->input('session');
+            $student->status = $request->input('status');
             $student->image = $studentImage;
             $student->admission_date = $request->input('admission_date');
             $student->father_name = $request->input('father_name');

@@ -54,7 +54,7 @@ class UpdateStudentBasicInfoController extends Controller
 
         if ($student->isNotEmpty()) {
             return view('Backend.Student.updateStudentBasicInfo', compact('classData', 'groupData', 'sectionData', 'Year', 'Session','student'))->with([
-                'success' => 'Subject update added successfully!',
+                'success' => 'Student found successfully!',
                 'class_name' => $request->class_name,
                 'group' => $request->group,
                 'section' => $request->section,

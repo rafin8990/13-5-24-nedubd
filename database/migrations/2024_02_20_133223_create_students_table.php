@@ -30,6 +30,7 @@ return new class extends Migration
     $table->string('nationality');
     $table->string('blood_group');
     $table->string('session');
+    $table->enum('status', ['active', 'in active'])->default('active');
     $table->string('image');
     $table->string('admission_date');
     $table->string('father_name');
