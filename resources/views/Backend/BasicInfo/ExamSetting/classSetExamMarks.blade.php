@@ -8,11 +8,12 @@
             Exam Mark Setup
         </h3>
     </div>
+
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-        <form action="{{ url('dashboard/setExamMarks', $school_code) }}" method="POST"
+        <form action="{{ route('store.set.exam.marks', $school_code) }}" method="POST"
             enctype="multipart/form-data" class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
             @csrf
-            @method('PUT')
+          
             <div>
                 <div class="grid gap-6 mb-6 md:grid-cols-4 mt-2">
                     <div>
@@ -85,72 +86,32 @@
 
 
                     <div class="flex justify-end">
-                        <!-- <button type="button" class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get Data
-                    </button> -->
-                        <button type="button" onclick="submitForm()"
+                       
+                        <button type="submit+" 
                             class="text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get
                             Data</button>
 
                     </div>
                 </div>
             </div>
-            <script>
-                // submitForm.js
+        </form>    
+        
 
-                  // Create a form element
-            var form = document.createElement('form');
-            form.setAttribute('method', 'GET');
-            form.setAttribute('action', '{{ route("set.short.code",$school_code) }}');
-            form.setAttribute('enctype', 'multipart/form-data');
-
-            // Add CSRF token input
-            var csrfTokenInput = document.createElement('input');
-            csrfTokenInput.setAttribute('type', 'hidden');
-            csrfTokenInput.setAttribute('name', '_token');
-            csrfTokenInput.setAttribute('value', '{{ csrf_token() }}');
-            form.appendChild(csrfTokenInput);
-
-            // Add other inputs
-            var classNameInput = document.createElement('input');
-            classNameInput.setAttribute('type', 'hidden');
-            classNameInput.setAttribute('name', 'class_name');
-            classNameInput.setAttribute('value', className);
-            form.appendChild(classNameInput);
-
-            var classExamNameInput = document.createElement('input');
-            classExamNameInput.setAttribute('type', 'hidden');
-            classExamNameInput.setAttribute('name', 'class_exam_name');
-            classExamNameInput.setAttribute('value', classExamName);
-            form.appendChild(classExamNameInput);
-
-            var academicYearNameInput = document.createElement('input');
-            academicYearNameInput.setAttribute('type', 'hidden');
-            academicYearNameInput.setAttribute('name', 'academic_year_name');
-            academicYearNameInput.setAttribute('value', academicYearName);
-            form.appendChild(academicYearNameInput);
-
-            // Add selected short codes
-            shortCodes.forEach(function(shortCode) {
-                var shortCodeInput = document.createElement('input');
-                shortCodeInput.setAttribute('type', 'hidden');
-                shortCodeInput.setAttribute('name', 'short_codes[]');
-                shortCodeInput.setAttribute('value', shortCode.value);
-                form.appendChild(shortCodeInput);
-            });
-
-            // Append the form to the document body and submit it
-            document.body.appendChild(form);
-            form.submit();
-            </script>
+        <form action="">
             <div>
                 <div
                     class="grid gap-6 mb-6 py-5 md:grid-cols-1 items-center ps-4 border border-gray-200 rounded dark:border-gray-700 mx-20">
                     <h3>Select subject</h3>
                     <div>
-                        <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox"
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="bordered-checkbox-1"
-                            class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Select All</label>
+                    @if($searchClassses->count() > 0)
+                    @foreach($searchClassses as $class)
+                    <div>
+                    <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$class->subject_name}}</label>
+                    </div>
+                    @endforeach
+                     @endif
+                        
                     </div>
                 </div>
                 
@@ -202,7 +163,9 @@
                     </thead>
                     <tbody>
                         <tr class=" border-b border-blue-400">
-
+                            <td>
+                                <input type="text">
+                            </td>
                         </tr>
 
 
@@ -235,20 +198,4 @@
         </form>
     @endsection
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            let $dateDropdown = $('#date-dropdown');
-
-            let currentYear = new Date().getFullYear();
-            let earliestYear = 1970;
-
-            while (currentYear >= earliestYear) {
-                let $dateOption = $('<option>');
-                $dateOption.text(currentYear);
-                $dateOption.val(currentYear);
-                $dateDropdown.append($dateOption);
-                currentYear -= 1;
-            }
-        });
-    </script>
+ 

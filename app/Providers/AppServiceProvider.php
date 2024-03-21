@@ -26,23 +26,16 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer('*', function ($view) {
-
-            
             $schoolAdminData=null;
             $studentData=null;
-
             $adminData=null;
-
-            
             $schoolAdminId=Session::get('schoolAdminId');
             $studentId=Session::get('studentId');
             $adminId=Session::get('AdminId');
-
             $school_code=Session::get('school_code');
             if($schoolAdminId){
                 $schoolAdminData=SchoolAdmin::find($schoolAdminId);
             }
-
          if($studentId){
 
                 $studentData=Student::find($studentId);

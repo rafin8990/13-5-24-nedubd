@@ -68,7 +68,7 @@
 
 
             <li class="">
-                <a href="/dashboard" class=" flex items-center p-2 rounded-lg text-white group">
+                <a href="/dashboard/{{$school_code}}" class=" flex items-center p-2 rounded-lg text-white group">
                     <span class="ms-3 text-white ">Dashboard</span>
                 </a>
             </li>

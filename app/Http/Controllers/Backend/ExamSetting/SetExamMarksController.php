@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AddAcademicYear;
 use App\Models\AddClass;
 use App\Models\AddClassExam;
+use App\Models\AddClassWiseSubject;
 use Illuminate\Http\Request;
 
 class SetExamMarksController extends Controller
@@ -16,7 +17,7 @@ class SetExamMarksController extends Controller
         return view ('Backend/BasicInfo/ExamSetting/classSetExamMarks');
         
     }
-    public function set_exam_marks(Request $request,$schoolCode)
+    public function set_exam_marks(Request $request, $schoolCode)
     {
         //$school_code = '100';
         $searchClassData = null;
@@ -30,12 +31,26 @@ class SetExamMarksController extends Controller
         $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
 
-        return view('Backend/BasicInfo/ExamSetting/classSetExamMarks', compact('classData', 'classExamData', 'academicYearData', 'searchClassData', 'searchClassExamName', 'searchAcademicYearName'));
+        
+        $className = $request->session()->get('class_name');
+        $classExamName = $request->session()->get('class_exam_name');
+        $academic_year_name = $request->session()->get('academic_year_name');
+        $searchClassses=AddClassWiseSubject::where("school_code",$schoolCode)->where("action","approved")->where('class_name',$className)->get();
+
+        // dd($searchClassses);
+
+
+        return view('Backend/BasicInfo/ExamSetting/classSetExamMarks', compact('classData', 'classExamData', 'academicYearData', 'searchClassData', 'searchClassExamName', 'searchAcademicYearName','searchClassses'));
     }
 
     public function store_exam_marks(Request $request)
     {
-        dd($request);
+        return redirect()->route('set.exam.marks',$request->input('school_code'))->with([
+            'class_name' => $request->input('class_name'),
+            "class_exam_name"=>$request->input('class_exam_name'),
+            'academic_year_name' => $request->input('academic_year_name'),
+            'school_code'=>$request->input('school_code')
+        ]);
 
     }
 }

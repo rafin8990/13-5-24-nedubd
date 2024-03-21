@@ -16,7 +16,23 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view("Auth.login");
+        // $schoolAdminId=Session::get('schoolAdminId');
+        // $studentId=Session::get('studentId');
+        // $adminId=Session::get('AdminId');
+        // if($adminId){
+        //     return redirect('/dashboard');
+        // }
+        // else if($studentId){
+        //     return redirect('/dashboard');
+        // }
+        // else if ($schoolAdminId) {
+        //     return redirect('/dashboard');
+        // }
+        // else{
+        // }
+        return view("Auth.Login");
+        
+        
     }
 
     public function loginUser(Request $request)
@@ -34,12 +50,12 @@ class AuthController extends Controller
         $student = Student::where('student_id', $request->name)->orWhere('email', $request->name)->orWhere('father_mobile', $request->name)->first();
         $teacher = Teacher::where('teacher_id', $request->name)->orWhere('mobile', $request->name)->first();
 
+       
         if ($admin) {
             if (Hash::check($request->password, $admin->password)) {
                 Session::put('AdminId', $admin->id);
                 Session::put('school_code', $admin->school_code);
-
-                return redirect('/dashboard')->with('success', 'Login successful!');
+                return redirect('/dashboard/' . $admin->school_code)->with('success', 'Login successful!');
             } else {
                 return back()->with('error', 'Login failed. Please check your Id or password.');
             }
@@ -49,7 +65,7 @@ class AuthController extends Controller
                 Session::put('studentId', $student->id);
                 Session::put('school_code', $student->school_code);
 
-                return redirect('/dashboard')->with('success', 'Login successful!');
+                return redirect('/dashboard/' . $student->school_code)->with('success', 'Login successful!');
             } else {
                 return back()->with('error', 'Login failed. Please check your Id or password.');
             }
@@ -59,7 +75,7 @@ class AuthController extends Controller
                 Session::put('teacherID', $teacher->id);
                 Session::put('school_code', $teacher->school_code);
 
-                return redirect('/dashboard')->with('success', 'Login successful!');
+                return redirect('/dashboard/' . $teacher->school_code)->with('success', 'Login successful!');
             } else {
                 return back()->with('error', 'Login failed. Please check your Id or password.');
             }
@@ -69,7 +85,7 @@ class AuthController extends Controller
                 Session::put('schoolAdminId', $schoolAdmin->id);
                 Session::put('school_code', $schoolAdmin->school_code);
 
-                return redirect('/dashboard')->with('success', 'Login successful!');
+                return redirect('/dashboard/' . $schoolAdmin->school_code)->with('success', 'Login successful!');
             } else {
                 return back()->with('error', 'Login failed. Please check your Id or password.');
             }

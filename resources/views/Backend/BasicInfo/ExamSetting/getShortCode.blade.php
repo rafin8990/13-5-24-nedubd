@@ -93,7 +93,7 @@ Short Code
             var className = document.getElementById('class_name').value;
             var classExamName = document.getElementById('class_exam_name').value;
             var academicYearName = document.getElementById('date-academic_year_name').value;
-            var shortCodes = document.querySelectorAll('input[name="short_code[]"]:checked');
+            var shortCodes = document.querySelectorAll('input[name="short_code"]:checked');
 
             // Create a form element
             var form = document.createElement('form');
@@ -181,31 +181,31 @@ Short Code
                     $found = false;
                     @endphp
 
-                    @if($setCodeData !== null)
-                    @foreach(($setCodeData->short_code) as $code)
+                    @if($setCode !== null)
 
-                    @if($data->short_code === $code)
-                    <input id="short_code" type="checkbox" value="{{ $code }}" name="short_code[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" checked>
 
+                    @foreach($setCode as $code)                
+
+                    @if( $data->short_code === $code->short_code)
+                    <input id="short_code" type="checkbox" value="{{ $code->short_code }}" name="short_code[{{ $code->short_code }}]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" checked>
                     @php
                     $found = true;
-                    @endphp
-
-                    @break
-
-                    @endif
-
+                    @endphp                   
+                    @endif 
                     @endforeach
-                    @endif
+                    @endif 
+                                 
+               
 
                     @if(!$found)
-                    <input id="short_code" type="checkbox" value="{{ $data->short_code }}" name="short_code[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="short_code" type="checkbox" value="{{ $data->short_code }}" name="short_code[{{ $data->short_code }}]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     @endif
                 </td>
 
             </tr>
             @endforeach
             @endif
+            
 
 
         </tbody>

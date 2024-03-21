@@ -80,7 +80,7 @@ Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-use
 
 
 Route::prefix('dashboard')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/{schoolCode}', [DashboardController::class, 'index'])->name('dashboard.index');
     // NEDUBD Module 
     Route::get('/addAdmin', [NEDUBDController::class, 'addAdmin']);
     Route::post('/create-admin', [NEDUBDController::class, 'createAdmin'])->name('admin.add');
@@ -277,7 +277,7 @@ Route::prefix('dashboard')->group(function () {
 
     // set exam marks
     Route::get('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'set_exam_marks'])->name('set.exam.marks');
-    Route::put('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
+    Route::post('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
 
     //forth subject
 

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('class_name');
             $table->string('class_exam_name');
             $table->string('academic_year_name');
-            $table->json('short_code')->nullable();
+            $table->string('short_code')->nullable();
             $table->enum('status', ['active', 'in active'])->default('active');
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->default('pending');
             $table->string('school_code');
