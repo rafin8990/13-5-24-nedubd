@@ -287,98 +287,94 @@
 
 
             <div class="flex justify-start mt-5 p-2">
-                <button type="button" id="delete-btn"
-                    class="text-white bg-rose-700 hover:bg-rose-600 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-3 py-1 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800"
-                    disabled>Delete</button>
+                <input type="checkbox" id="delete-btn" class="mr-10">
+                <a id="delete-anchor" href="#" onclick="return confirm('Are you sure you want to delete selected data?');" class="text-white bg-rose-700 hover:bg-rose-600 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-3 py-1 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800" disabled>Delete</a>
             </div>
         </form>
 
 
-        <script>
-            // Function to toggle between displaying text and input fields
-            function toggleRowEditing(rowIndex) {
-                var row = document.querySelector('tbody').children[rowIndex];
-                var inputs = row.querySelectorAll('.row-input');
-                var dataFields = row.querySelectorAll('.row-data');
-                for (var i = 0; i < inputs.length; i++) {
-                    inputs[i].classList.toggle('hidden');
-                    dataFields[i].classList.toggle('hidden');
-                }
-            }
-        
-            // Function to update delete button status
-            function updateDeleteButtonStatus() {
-                var anyChecked = false;
-                document.querySelectorAll('.row-checkbox').forEach(function(checkbox) {
-                    if (checkbox.checked) {
-                        anyChecked = true;
-                    }
-                });
-                var deleteButton = document.getElementById('delete-btn');
-                deleteButton.disabled = !anyChecked;
-            }
-        
-            // Event listener for checkbox change
-            document.querySelectorAll('.row-checkbox').forEach(function(checkbox) {
-                checkbox.addEventListener('change', function() {
-                    var rowIndex = this.getAttribute('data-row-index');
-                    toggleRowEditing(rowIndex);
-                    updateDeleteButtonStatus();
-                });
-            });
-        
-            // Event listener for select all checkbox
-            document.getElementById('select-all-checkbox').addEventListener('change', function() {
-                var checkboxes = document.querySelectorAll('.row-checkbox');
-                checkboxes.forEach(function(checkbox) {
-                    checkbox.checked = this.checked;
-                });
-                updateDeleteButtonStatus();
-            });
-        
-            // Event listener for delete button click
-            document.getElementById('delete-btn').addEventListener('click', function() {
-                var confirmation = confirm("Are you sure you want to delete?");
-                if (confirmation) {
-                    var selectedIds = getSelectedStudentIds();
-                    var schoolCode = '{{ $school_code }}'; // Get the school code from the Blade template
-                    fetch(`/deleteStudent/${schoolCode}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token if CSRF protection is enabled
-                        },
-                        body: JSON.stringify({ ids: selectedIds })
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Reload the page after successful deletion
-                            window.location.reload();
-                        } else {
-                            // Handle errors
-                            console.error('Failed to delete students');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                    });
-                }
-            });
-        
-            // Function to get the IDs of selected students
-            function getSelectedStudentIds() {
-                const selectedIds = [];
-                document.querySelectorAll('.row-checkbox:checked').forEach(function(checkbox) {
-                    selectedIds.push(checkbox.value);
-                });
-                return selectedIds;
-            }
-        </script>
-        
-
-
-
-
     </div>
+
+    
+    <script>
+      // Define a global variable to store selected student IDs
+var selectedStudentIds = [];
+
+// Function to toggle between displaying text and input fields
+function toggleRowEditing(rowIndex) {
+    var row = document.querySelector('tbody').children[rowIndex];
+    var inputs = row.querySelectorAll('.row-input');
+    var dataFields = row.querySelectorAll('.row-data');
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].classList.toggle('hidden');
+        dataFields[i].classList.toggle('hidden');
+    }
+}
+
+// Function to update delete button status
+function updateDeleteButtonStatus() {
+    var anyChecked = false;
+    selectedStudentIds = []; // Clear previously selected IDs
+    document.querySelectorAll('.row-checkbox').forEach(function(checkbox) {
+        if (checkbox.checked) {
+            anyChecked = true;
+            selectedStudentIds.push(checkbox.value); // Add selected ID to the array
+        }
+    });
+    var deleteButton = document.getElementById('delete-btn');
+    deleteButton.disabled = !anyChecked;
+}
+
+// Event listener for checkbox change
+document.querySelectorAll('.row-checkbox').forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+        var rowIndex = this.getAttribute('data-row-index');
+        toggleRowEditing(rowIndex);
+        updateDeleteButtonStatus();
+    });
+});
+
+document.getElementById('delete-btn').addEventListener('click', function() {
+        var confirmation = confirm("Are you sure you want to delete?");
+        if (confirmation) {
+            // Construct the URL with selected student IDs
+            var deleteUrl = '{{ route("deleteStudent", ["schoolCode" => ":schoolCode", "ids" => ":ids"]) }}';
+            deleteUrl = deleteUrl.replace(':schoolCode', '{{ $school_code }}');
+            deleteUrl = deleteUrl.replace(':ids', selectedStudentIds.join(','));
+
+            // Create a form dynamically to send a DELETE request
+            var form = document.createElement('form');
+            form.method = 'POST'; // Use POST method to submit the form
+            form.action = deleteUrl;
+            form.style.display = 'none'; // Hide the form
+
+            // Add a method spoofing input field for DELETE request
+            var methodInput = document.createElement('input');
+            methodInput.type = 'hidden';
+            methodInput.name = '_method';
+            methodInput.value = 'DELETE';
+
+            // Append the method input field to the form
+            form.appendChild(methodInput);
+
+            // Add CSRF token input field
+            var csrfTokenInput = document.createElement('input');
+            csrfTokenInput.type = 'hidden';
+            csrfTokenInput.name = '_token';
+            csrfTokenInput.value = '{{ csrf_token() }}';
+
+            // Append CSRF token input field to the form
+            form.appendChild(csrfTokenInput);
+
+            // Append the form to the body and submit it
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
+
+    </script>
+    
+
+
 
 @endsection

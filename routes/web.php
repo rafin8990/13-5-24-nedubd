@@ -102,7 +102,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/studentClassInfo/{schoolCode}', [UpdateStudentClassInfoController::class, 'studentClassInfo'])->name('studentClassInfo');
     Route::get('/getStudentClassData/{schoolCode}', [UpdateStudentClassInfoController::class, 'getStudentClassData'])->name('getStudentClassData');
     Route::put('/updateStudentClass/{schoolCode}', [UpdateStudentClassInfoController::class, 'updateStudentClass'])->name('updateStudentClass');
-    Route::delete('/deleteStudent/{school_code}', [UpdateStudentClassInfoController::class, 'delete'])->name('deleteStudent');
+    Route::delete('/deleteStudent/{schoolCode}/{ids}', [UpdateStudentClassInfoController::class, 'delete'])->name('deleteStudent');
 
 
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');

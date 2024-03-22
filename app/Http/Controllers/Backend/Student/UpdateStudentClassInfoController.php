@@ -106,19 +106,20 @@ class UpdateStudentClassInfoController extends Controller
 
     }
 
-    public function delete(Request $request, $school_code)
+    public function delete( $schoolCode, $ids)
     {
-        dd($request);
-        $ids = $request->input('id'); // Get the array of selected student IDs
+       
 
         // Perform the deletion logic
         if (!empty($ids)) {
-            Student::whereIn('id', $ids)->delete();
-            // You can add any additional logic here, such as displaying a success message
-            return redirect()->route('studentClassInfo', $school_code)->with('success', 'Students deleted successfully');
+            $idArray = explode(',', $ids);
+
+        // Delete the students
+        Student::whereIn('id', $idArray)->delete();
+            return redirect()->route('studentClassInfo', $schoolCode)->with('success', 'Students deleted successfully');
         } else {
             // Handle if no IDs are selected
-            return redirect()->route('studentClassInfo', $school_code)->with('error', 'No students selected for deletion');
+            return redirect()->route('studentClassInfo', $schoolCode)->with('error', 'No students selected for deletion');
         }
     }
 }

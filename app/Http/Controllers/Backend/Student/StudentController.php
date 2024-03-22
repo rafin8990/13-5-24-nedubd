@@ -32,7 +32,7 @@ class StudentController extends Controller
 
     public function addStudent(Request $request)
     {
-<<<<<<< HEAD
+
         $this->validate($request, [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
@@ -85,8 +85,6 @@ class StudentController extends Controller
             'email' => 'required|string',
             'password' => 'required|string|min:4',
         ]);
-=======
->>>>>>> b69c0f0ce5598df3c8640173b05f2b59923fb1c5
 
         // dd($request);
         // $this->validate($request, [
