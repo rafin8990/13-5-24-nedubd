@@ -19,7 +19,7 @@ class AuthController extends Controller
         $school_code=Session::get('school_code');
       
          if($school_code){
-            return redirect('/dashboard');
+            return redirect('/dashboard',$school_code);
          }
          else{
              return view("Auth.Login");

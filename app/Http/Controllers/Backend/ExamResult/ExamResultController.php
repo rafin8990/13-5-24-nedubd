@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 
 class ExamResultController extends Controller
 {
-    public function exam_marks()
+    public function exam_marks($school_code)
     {
 
-        $school_code = '100';
+        // $school_code = '100';
         
         $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
         $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();

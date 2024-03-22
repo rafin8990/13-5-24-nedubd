@@ -3,6 +3,7 @@
     Exam Mark Setup
 @endsection
 @section('Dashboard')
+@include('Message.message')
     <div>
         <h3>
             Exam Mark Setup
@@ -10,7 +11,7 @@
     </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-        <form action="{{ route('store.set.exam.marks', $school_code) }}" method="POST"
+        <form action="{{ route('store.set.exam.marks',$school_code) }}" method="POST"
             enctype="multipart/form-data" class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
             @csrf
           
@@ -97,13 +98,13 @@
         </form>    
         
 
-        <form action="{{route('saveSetExamMarks')}}" method="post">
+        <form action="{{route('saveSetExamMarks',$school_code)}}" method="POST">
         @csrf
             <div>
                 <div
                     class="grid gap-6 mb-6 py-5 md:grid-cols-1 items-center ps-4 border border-gray-200 rounded dark:border-gray-700 mx-20">
                     <h3>Select subject</h3>
-
+                    @if($className!=null)
                     <input type="text" class="hidden" value="{{$className}}" name="class_name" id="">
                     <input type="text" class="hidden" value="{{$classExamName}}" name="exam_name" id="">
                     <input type="text" class="hidden" value="{{$academic_year_name}}" name="academic_year_name" id="">
@@ -118,9 +119,11 @@
                      @endif
                         
                     </div>
+                    @endif
                 </div>
                 
             </div>
+            
             <div class="flex justify-center mb-5">
                 <div class="text-rose-600">
                     <h3 class="text-lg">Suggestion:</h3>
@@ -169,13 +172,14 @@
                             Status
                         </th>
                     </thead>
+                    @if($shortCodes !=null)
                     <tbody id="shortCodesTableBody">
                             @foreach($shortCodes as $key => $code)
                             <tr class=" border-b border-blue-400">
                                 <td class="px-4 py-3">{{$key + 1}}</td>
                                 <td class="px-4 py-3">{{$code->short_code}}</td>
                                 <input class="hidden" value="{{$code->short_code}}" name="short_code[{{$key}}]" type="text">
-                                <input class="hidden" value="{{$key}}" name="key[{{$key}}]" type="text">
+                                <input class="hidden" value="{{$key}}" name="key[]" type="text">
                                 <td class="px-4 py-3"><input name="total_marks[{{$key}}]" class="border-0 w-[100px] total_marks" type="text"></td>
                                 <td class="px-4 py-3"><input name="countable_marks[{{$key}}]" class="border-0 w-[100px] countable_marks" type="text"></td>
                                 <td class="px-4 py-3"><input name="pass_marks[{{$key}}]" class="border-0 w-[100px] pass_marks" type="text"></td>
@@ -194,6 +198,7 @@
                             </tr>
                             @endforeach
                     </tbody>
+                    @endif
                 </table>
             </div>
             <br><br>
@@ -219,7 +224,7 @@
 
             </div>
         </form>
-
+     
 
 
 

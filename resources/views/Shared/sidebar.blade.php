@@ -413,7 +413,7 @@
                 </button>
                 <ul id="dropdown-exam" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="/dashboard/exam_marks"
+                        <a href="/dashboard/exam_marks/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Marks Input </a>
                     </li>
@@ -1135,12 +1135,12 @@
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setExamMarks/{{$school_code}}"
+                        <a href="{{route('get.exam.marks',$school_code)}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Exam Marks</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setForthSubject"
+                        <a href="/dashboard/setForthSubject/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             4th Subject</a>
                     </li>
@@ -1155,9 +1155,7 @@
                             Add Signature</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setGradeSetup"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grade
-                            Setup</a>
+                        <a href="/dashboard/setGradeSetup/{{$school_code}}" class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grade  Setup</a>
                     </li>
                     <li>
                         <a href="/dashboard/GrandFinal/{{$school_code}}"

@@ -11,7 +11,7 @@ Grade
     </h3>
 </div>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10 p-5">
-    <form id="myForm" action="{{route('addGradeSetup')}}" method="POST">
+    <form id="myForm" action="{{route('addGradeSetup',$school_code)}}" method="POST">
     @csrf
         <div class="md:flex my-10 ">
             <div class="mr-5">
@@ -48,7 +48,7 @@ Grade
 
 
     @if($classExamName)
-    <form action="{{route('saveGradeSetup')}}" method="POST">
+    <form action="{{route('saveGradeSetup',$school_code)}}" method="POST">
 @csrf
 
 <input class="hidden" value="{{$classExamName}}" name="class_exam_name" type="text">
@@ -179,7 +179,7 @@ Grade
 @else
 <div class="md:flex justify-center">
         <div class="mr-10">
-            <a href="/dashboard/viewGradeSetup" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET Config View</a>
+            <a href="/dashboard/viewGradeSetup/{{$school_code}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET Config View</a>
         </div>
        
         <div class="mr-10">

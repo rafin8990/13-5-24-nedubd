@@ -11,7 +11,7 @@
         </h3>
     </div>
 
-    <form action="{{ route('getGradeSetup') }}" method="POST">
+    <form action="{{ route('getGradeSetup',$school_code) }}" method="POST">
         @csrf
         <div class="md:flex my-10 ">
             <div class="mr-5">
