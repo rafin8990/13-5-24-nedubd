@@ -12,10 +12,10 @@ use Illuminate\Http\Request;
 
 class GradeSetupController extends Controller
 {
-    public function grade_setup(Request $request)
+    public function grade_setup(Request $request,$school_code)
     {
 
-        $school_code = '100';
+        //$school_code = '100';
 
         $gradePointData = AddGradePoint::where('action', 'approved')->where('school_code', $school_code)->get();
 
@@ -35,16 +35,15 @@ class GradeSetupController extends Controller
         return view('Backend/BasicInfo/ExamSetting/gradeSetup', compact('gradePointData', 'classData', 'academicYearData', 'classExamData', 'classExamName', 'academic_year_name','gradesetup'));
     }
 
-    public function addGradeSetup(Request $request)
+    public function addGradeSetup(Request $request,$school_code)
     {
-        return redirect()->route('set.grade.setup')->with([
+        return redirect()->route('set.grade.setup',$school_code)->with([
             'class_exam_name' => $request->class_exam_name,
             'academic_year_name' => $request->academic_year_name,
-
         ]);
     }
 
-    public function saveGradeSetup(Request $request)
+    public function saveGradeSetup(Request $request,$school_code)
     {
 
         $classExamName = $request->input('class_exam_name');
@@ -59,7 +58,7 @@ class GradeSetupController extends Controller
         $markPoint2nds =($request->input('mark_point_2nd'));
         $statuses =($request->input('status'));
         $action = $request->input('action');
-        $school_code = "100";
+        //$school_code = "100";
 
         
 
@@ -99,8 +98,8 @@ class GradeSetupController extends Controller
     }
 
 
-    public function viewGradeSetup(Request $request){
-        $school_code = '100';
+    public function viewGradeSetup(Request $request,$school_code){
+        //$school_code = '100';
         // $grade=GradeSetup::all();
         // dd($grade->toArray());
 
@@ -117,9 +116,9 @@ class GradeSetupController extends Controller
     }
 
 
-    public function viewGradeSetupData(Request $request){
+    public function viewGradeSetupData(Request $request,$school_code){
         // dd($request);
-        return redirect()->route('viewGradeSetup')->with([
+        return redirect()->route('viewGradeSetup',$school_code)->with([
             'class_exam_name' => $request->class_exam_name,
             'academic_year_name' => $request->academic_year_name,
 
