@@ -14,9 +14,9 @@ use Illuminate\Http\Request;
 
 class FourthSubjectController extends Controller
 {
-    public function fourthSubject(Request $request)
+    public function fourthSubject(Request $request, $school_code)
     {
-        $school_code = '100';
+        // $school_code = '100';
         $class = null;
         $section = null;
         $group = null;

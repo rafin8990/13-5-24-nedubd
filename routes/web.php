@@ -115,10 +115,10 @@ Route::prefix('dashboard')->group(function () {
     
 
     // Student Report
-    Route::get('studentDetails',[StudentDetailsController::class,'studentDetails']);
-    Route::get('studentShortList',[addShortListController::class,'studentShortList']);
-    Route::get('studentListWithPhoto',[StudentListWithPhotoController::class,'studentListWithPhoto']);
-    Route::get('e_sifLists',[EsifListController::class,'e_sifList']);
+    Route::get('/studentDetails',[StudentDetailsController::class,'studentDetails']);
+    Route::get('/studentShortList',[addShortListController::class,'studentShortList']);
+    Route::get('/studentListWithPhoto',[StudentListWithPhotoController::class,'studentListWithPhoto']);
+    Route::get('/e_sifLists',[EsifListController::class,'e_sifList']);
 
 
 
@@ -128,7 +128,7 @@ Route::prefix('dashboard')->group(function () {
 
 
     // exam-Result --------------------------------------
-    Route::get('/exam_marks', [ExamResultController::class, 'exam_marks']);
+    Route::get('/exam_marks/{school_code}', [ExamResultController::class, 'exam_marks']);
     Route::get('/exam_process', [ExamResultController::class, 'exam_process']);
     Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']);
     Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']);
@@ -269,13 +269,13 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/delete_grade_point/{id}', [AddGradePointController::class, 'delete_add_grade_point'])->name('delete.grade.point');
 
     // Grade Setup
-    Route::get('/setGradeSetup', [GradeSetupController::class, 'grade_setup'])->name('set.grade.setup');
+    Route::get('/setGradeSetup/{schoolCode}', [GradeSetupController::class, 'grade_setup'])->name('set.grade.setup');
     // Route::delete('/delete_set_grade_setup/{id}', [GradeSetupController::class, 'delete_set_grade_setup'])->name('delete.set.grade.setup');
-    Route::post('/addGradeSetup',[GradeSetupController::class,'addGradeSetup'])->name('addGradeSetup');
-    Route::post('/saveGradeSetup',[GradeSetupController::class,'saveGradeSetup'])->name('saveGradeSetup');
+    Route::post('/addGradeSetup/{schoolCode}',[GradeSetupController::class,'addGradeSetup'])->name('addGradeSetup');
+    Route::post('/saveGradeSetup/{schoolCode}',[GradeSetupController::class,'saveGradeSetup'])->name('saveGradeSetup');
 
-    Route::get('/viewGradeSetup',[GradeSetupController::class,'viewGradeSetup'])->name('viewGradeSetup');
-    Route::post('/getGradeSetup',[GradeSetupController::class,'viewGradeSetupData'])->name('getGradeSetup');
+    Route::get('/viewGradeSetup/{schoolCode}',[GradeSetupController::class,'viewGradeSetup'])->name('viewGradeSetup');
+    Route::post('/getGradeSetup/{schoolCode}',[GradeSetupController::class,'viewGradeSetupData'])->name('getGradeSetup');
 
     // Add Short Code
     Route::get('/addShortCode/{schoolCode}', [AddShortCodeController::class, 'add_short_code'])->name('add.short.code');
@@ -288,13 +288,13 @@ Route::prefix('dashboard')->group(function () {
 
 
     // set exam marks
-    Route::get('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'set_exam_marks'])->name('set.exam.marks');
-    Route::post('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('store.set.exam.marks');
-    Route::post('/saveSetExamMarks',[SetExamMarksController::class,'saveSetExamMarks'])->name('saveSetExamMarks');
+    Route::get('/getExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('get.exam.marks');
+    Route::post('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'set_exam_marks'])->name('store.set.exam.marks');
+    Route::post('/saveSetExamMarks/{schoolCode}',[SetExamMarksController::class,'saveSetExamMarks'])->name('saveSetExamMarks');
 
     //forth subject
 
-    Route::get('/setForthSubject',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
+    Route::get('/setForthSubject/{school_code}',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
     Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
     Route::post('/saveFourthSubject', [FourthSubjectController::class,'saveFourthSubject'])->name('saveFourthSubject');
     Route::get('/viewFourthSubject', [FourthSubjectController::class,'viewFourthSubject'])->name('viewFourthSubject');
