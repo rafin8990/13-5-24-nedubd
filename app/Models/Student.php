@@ -25,6 +25,7 @@ class Student extends Model
         'nationality',
         'blood_group',
         'session',
+        'status',
         'image',
         'admission_date',
         'father_name',

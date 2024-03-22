@@ -33,6 +33,59 @@ class StudentController extends Controller
     public function addStudent(Request $request)
     {
 
+        $this->validate($request, [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'birth_date' => 'required|string',
+            'student_roll' => 'required|string',
+            'Class_name' => 'required|string',
+            'group' => 'required|string',
+            'section' => 'required|string',
+            'shift' => 'required|string',
+            'category' => 'required|string',
+            
+            'year' => 'required|string',
+            'gender' => 'required|string',
+            'religious' => 'required|string',
+            'nationality' => 'required|string',
+            'blood_group' => 'required|string',
+            'session' => 'required|string',
+            'status' => 'required|string|in:active,in active',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'admission_date' => 'required|string',
+            'father_name' => 'required|string',
+            'father_mobile' => 'required|string',
+            'father_occupation' => 'required|string',
+            'father_nid' => 'required|string',
+            'father_birth_date' => 'required|string',
+            'mother_name' => 'required|string',
+            'mother_number' => 'required|string',
+            'mother_occupation' => 'required|string',
+            'mother_nid' => 'required|string',
+            'mother_birth_date' => 'required|string',
+            'mother_income' => 'required|string',
+            'present_village' => 'required|string',
+            'present_post_office' => 'required|string',
+            'present_country' => 'required|string',
+            'present_zip_code' => 'required|string',
+            'present_district' => 'required|string',
+            'present_police_station' => 'required|string',
+            'parmanent_village' => 'required|string',
+            'parmanent_post_office' => 'required|string',
+            'parmanent_country' => 'required|string',
+            'parmanent_zip_code' => 'required|string',
+            'parmanent_district' => 'required|string',
+            'parmanent_police_station' => 'required|string',
+            'guardian_name' => 'required|string',
+            'guardian_address' => 'required|string',
+            'last_school_name' => 'required|string',
+            'last_class_name' => 'required|string',
+            'last_result' => 'required|string',
+            'last_passing_year' => 'required|string',
+            'email' => 'required|string',
+            'password' => 'required|string|min:4',
+        ]);
+
         // dd($request);
         // $this->validate($request, [
         //     'first_name' => 'string',
@@ -122,6 +175,7 @@ class StudentController extends Controller
             $student->nationality = $request->input('nationality');
             $student->blood_group = $request->input('blood_group');
             $student->session = $request->input('session');
+            $student->status = $request->input('status');
             $student->image = $studentImage;
             $student->admission_date = $request->input('admission_date');
             $student->father_name = $request->input('father_name');
