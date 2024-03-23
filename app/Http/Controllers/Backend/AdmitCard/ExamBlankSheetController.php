@@ -10,4 +10,5 @@ class ExamBlankSheetController extends Controller
     public function ExamBlankSheet(){
         return view('Backend/AdmitCard/Report(admitcards)/ExamBlankSheet');
     }
+    
 }
