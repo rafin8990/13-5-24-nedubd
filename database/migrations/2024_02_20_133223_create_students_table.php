@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('birth_date')->nullable();
@@ -66,7 +65,9 @@ return new class extends Migration
             $table->string('school_code')->nullable();
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->nullable()->default('pending');
             $table->string('role')->nullable();
-            $table->enum('status', ['active', 'in active'])->default('active');
+
+            $table->enum('', ['active', 'in active'])->default('active');
+
 
     $table->timestamps();
         });

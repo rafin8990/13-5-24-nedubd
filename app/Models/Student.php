@@ -62,6 +62,7 @@ class Student extends Model
         'school_code',
         'action',
         'role',
+        
     ];
 
     protected $table="students";
