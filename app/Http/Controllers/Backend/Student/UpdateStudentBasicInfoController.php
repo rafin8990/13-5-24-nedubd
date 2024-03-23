@@ -8,6 +8,8 @@ use App\Models\AddAcademicYear;
 use App\Models\AddClass;
 use App\Models\AddClassWiseGroup;
 use App\Models\AddClassWiseSection;
+use App\Models\AddGroup;
+use App\Models\AddSection;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -20,8 +22,8 @@ class UpdateStudentBasicInfoController extends Controller
         $Year = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $Session = AddAcademicSession::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
-        $groupData = AddClassWiseGroup::where('action', 'approved')->where('school_code', $schoolCode)->get();
-        $sectionData = AddClassWiseSection::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $groupData = AddGroup::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $sectionData = AddSection::where('action', 'approved')->where('school_code', $schoolCode)->get();
         return view('Backend.Student.updateStudentBasicInfo', compact('classData', 'groupData', 'sectionData', 'Year', 'Session', 'student'));
     }
     public function getData(Request $request, $schoolCode)
