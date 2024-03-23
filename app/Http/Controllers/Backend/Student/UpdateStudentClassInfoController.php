@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Student;
 
+use App\Models\AddGroup;
+use App\Models\AddSection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\AddAcademicSession;
@@ -22,8 +24,8 @@ class UpdateStudentClassInfoController extends Controller
         $Year = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $Session = AddAcademicSession::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
-        $groupData = AddClassWiseGroup::where('action', 'approved')->where('school_code', $schoolCode)->get();
-        $sectionData = AddClassWiseSection::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $groupData = AddGroup::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $sectionData = AddSection::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $shiftData=AddShift::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $categoryData=AddCategory::where('action', 'approved')->where('school_code', $schoolCode)->get();
         return view('Backend.Student.updateStudentClassInfo', compact('classData', 'groupData', 'sectionData', 'Year', 'Session', 'student','shiftData','categoryData'));
