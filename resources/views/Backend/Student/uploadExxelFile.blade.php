@@ -114,7 +114,7 @@
         </div>
         <div class="md:flex justify-center">
             <div class="mt-2">
-                <a href="{{ route('download.demo') }}" class="  text-white bg-rose-600 hover:bg-rose-600 focus:ring-4 focus:ring-rose-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2  dark:bg-rose-600 dark:hover:bg-rose-600 focus:outline-none dark:focus:ring-rose-600 ">
+                <a href="{{ route('download.demo',$school_code) }}" class="  text-white bg-rose-600 hover:bg-rose-600 focus:ring-4 focus:ring-rose-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2  dark:bg-rose-600 dark:hover:bg-rose-600 focus:outline-none dark:focus:ring-rose-600 ">
                     Blank Excel Download
             </a>
                 

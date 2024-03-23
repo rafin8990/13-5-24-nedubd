@@ -22,10 +22,7 @@ class AuthController extends Controller
         //     return redirect('/dashboard',$school_code);
         //  }
         //  else{
-             return view("Auth.Login");
-        
-        
-        
+             return view("Auth.Login");   
     }
 
     public function loginUser(Request $request)
