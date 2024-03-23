@@ -108,7 +108,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
     Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
-    Route::get('/download-demo', [UploadExcelFileController::class, 'downloadDemo'])->name('download.demo');
+    Route::get('/download-demo/{schoolCode}', [UploadExcelFileController::class, 'downloadDemo'])->name('download.demo');
     Route::post('/upload-excel', [UploadExcelFileController::class, 'uploadExcel'])->name('upload.excel');
 
 
@@ -389,7 +389,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/ListAdminInstruction/{schoolCode}', [ListAdminInstructionController::class, "ListAdminInstruction"])->name('listInstruction');
     Route::delete('/delete_instruction/{id}', [ListAdminInstructionController::class, 'delete_instruction'])->name('delete.instruction');
     //Exam Blank Sheet
-    Route::get('/ExamBlankSheet', [ExamBlankSheetController::class, "ExamBlankSheet"]);
+    Route::get('/ExamBlankSheet/{schoolCode}', [ExamBlankSheetController::class, "ExamBlankSheet"]);
 
 
     // NEDUBD Add School Admin 

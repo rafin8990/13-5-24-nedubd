@@ -119,7 +119,8 @@ class UpdateStudentClassInfoController extends Controller
         // Delete the students
         Student::whereIn('id', $idArray)->delete();
             return redirect()->route('studentClassInfo', $schoolCode)->with('success', 'Students deleted successfully');
-        } else {
+        } 
+        else {
             // Handle if no IDs are selected
             return redirect()->route('studentClassInfo', $schoolCode)->with('error', 'No students selected for deletion');
         }
