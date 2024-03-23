@@ -16,14 +16,14 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $school_code=Session::get('school_code');
+        // $school_code=Session::get('school_code');
       
-         if($school_code){
-            return redirect('/dashboard',$school_code);
-         }
-         else{
+        //  if($school_code){
+        //     return redirect('/dashboard',$school_code);
+        //  }
+        //  else{
              return view("Auth.Login");
-         }
+        //  }
         
         
     }

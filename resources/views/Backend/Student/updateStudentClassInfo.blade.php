@@ -287,8 +287,8 @@
 
 
             <div class="flex justify-start mt-5 p-2">
-                <input type="checkbox" id="delete-btn" class="mr-10">
-                <a id="delete-anchor" href="#" onclick="return confirm('Are you sure you want to delete selected data?');" class="text-white bg-rose-700 hover:bg-rose-600 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-3 py-1 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800" disabled>Delete</a>
+                {{-- <input type="checkbox"  class="mr-10"> --}}
+                <a  id="delete-btn" class="text-white bg-rose-700 hover:bg-rose-600 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-3 py-1 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800" >Delete</a>
             </div>
         </form>
 
@@ -335,7 +335,7 @@ document.querySelectorAll('.row-checkbox').forEach(function(checkbox) {
 });
 
 document.getElementById('delete-btn').addEventListener('click', function() {
-        var confirmation = confirm("Are you sure you want to delete?");
+        var confirmation = confirm("Are you sure you want to delete selected data?");
         if (confirmation) {
             // Construct the URL with selected student IDs
             var deleteUrl = '{{ route("deleteStudent", ["schoolCode" => ":schoolCode", "ids" => ":ids"]) }}';
