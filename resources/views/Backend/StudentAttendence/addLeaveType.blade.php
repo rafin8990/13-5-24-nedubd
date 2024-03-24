@@ -1,12 +1,12 @@
 @extends('Backend.app')
 @section('title')
-Add Student
+Leave Type
 @endsection
 @section('Dashboard')
 @include('/Message/message')
 
 <div>
-    <h1>Add New student Section </h1>
+    <h1>Leave Type</h1>
 </div>
 
 @endsection

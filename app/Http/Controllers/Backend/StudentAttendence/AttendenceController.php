@@ -12,4 +12,15 @@ class AttendenceController extends Controller
     {
         return view('Backend.StudentAttendence.addStudentAttendence');
     }
+
+    public function student_leave_form($school_code)
+    {
+        return view('Backend.StudentAttendence.LeaveEntryForm');
+    }
+
+
+    public function add_leave_type($school_code)
+    {
+        return view('Backend.StudentAttendence.addLeaveType');
+    }
 }

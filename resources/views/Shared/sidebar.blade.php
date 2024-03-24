@@ -688,12 +688,12 @@
                             Add STD Attendence</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentLeaveForm/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Leave
                             Entry Form </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/addLeaveType/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                             Leave Type </a>
                     </li>
@@ -1192,7 +1192,6 @@
         </ul>
 </aside>
 
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const clickedLink = localStorage.getItem("clickedLink");
@@ -1206,6 +1205,9 @@
                 }
             }
         }
+        function clearLocalStorage() {
+            localStorage.removeItem("clickedLink");
+        }
         const dropdownLinks = document.querySelectorAll("#logo-sidebar .dropdown a");
         dropdownLinks.forEach(function(link) {
             link.addEventListener("click", function(event) {
@@ -1214,10 +1216,19 @@
                 });
                 event.target.classList.add("clicked");
                 localStorage.setItem("clickedLink", event.target.getAttribute("href"));
+                // Clearing local storage after 2min
+                setTimeout(clearLocalStorage, 5000);
             });
         });
+        setTimeout(function() {
+            if (localStorage.getItem("clickedLink")) {
+                clearLocalStorage();
+            }
+        }, 5000);
     });
+    // 120000
 </script>
+
 
 
 <script>
@@ -1227,3 +1238,4 @@
         content.style.maxHeight = button.getAttribute("aria-expanded") === "true" ? content.scrollHeight + "px" : "0";
     }
 </script>
+
