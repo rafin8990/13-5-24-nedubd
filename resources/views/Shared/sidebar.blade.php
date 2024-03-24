@@ -17,7 +17,7 @@
         background: #0766AD;
     }
 
-/*     
+    /*
     .accordion {
         list-style-type: none;
         padding: 0;
@@ -52,11 +52,11 @@
         background: rgb(255, 255, 255, 0.2) !important;
         padding: 10px auto;
     }
-       
+
     .dropdown ul {
-            overflow: hidden;
-            transition: all 1s ease; 
-        }
+        overflow: hidden;
+        transition: all 1s ease;
+    }
 </style>
 
 <aside id="logo-sidebar"
@@ -68,13 +68,13 @@
 
 
             <li class="">
-                <a href="/dashboard/{{$school_code}}" class=" flex items-center p-2 rounded-lg text-white group">
+                <a href="/dashboard/{{ $school_code }}" class=" flex items-center p-2 rounded-lg text-white group">
                     <span class="ms-3 text-white ">Dashboard</span>
                 </a>
             </li>
             <!-- dashboard  -->
             <li>
-                <a href="/dashboard/{{$school_code}}" class="flex items-center p-2 text-white  group">
+                <a href="/dashboard/{{ $school_code }}" class="flex items-center p-2 text-white  group">
                     <svg class="w-5 h-5 text-white transition duration-75 dark:text-gray-400 " aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 22 21">
                         <path
@@ -88,50 +88,47 @@
             </li>
 
 
-            @if($adminData)
+            @if ($adminData)
+                <!-- NeduBd Member Add complete nedubd -->
+                <li class="dropdown">
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20"
+                        aria-controls="dropdown-nedubd" data-collapse-toggle="dropdown-nedubd">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="#FFFFFF" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                        </svg>
 
- <!-- NeduBd Member Add complete nedubd -->
- <li class="dropdown">
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group hover:bg-slate-100/20"
-                    aria-controls="dropdown-nedubd" data-collapse-toggle="dropdown-nedubd">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="#FFFFFF" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                    </svg>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">NEDUBD</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 10 6">
+                            <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
 
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">NEDUBD</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-
-                </button>
-                <ul id="dropdown-nedubd" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="/dashboard/addAdmin"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Create
-                            New Member</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/addSchoolInfo"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                            School Info</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/addSchoolAdmin"
-                            class="flex items-center w-full p-2 text-white  transition  rounded-lg pl-11 group ">Add
-                            School Admin</a>
-                    </li>
-                </ul>
-            </li>
-
-            
+                    </button>
+                    <ul id="dropdown-nedubd" class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="/dashboard/addAdmin"
+                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Create
+                                New Member</a>
+                        </li>
+                        <li>
+                            <a href="/dashboard/addSchoolInfo"
+                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
+                                School Info</a>
+                        </li>
+                        <li>
+                            <a href="/dashboard/addSchoolAdmin"
+                                class="flex items-center w-full p-2 text-white  transition  rounded-lg pl-11 group ">Add
+                                School Admin</a>
+                        </li>
+                    </ul>
+                </li>
             @endif
-           
- 
+
+
 
             <!-- online Application  -->
             <li class="dropdown">
@@ -341,7 +338,7 @@
                 </button>
                 <ul id="dropdown-admit-card" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="/dashboard/setAdmitCard/{{$school_code}}"
+                        <a href="/dashboard/setAdmitCard/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Admit Card
                         </a>
@@ -364,24 +361,24 @@
                         </button>
                         <ul id="dropdown-report-card" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="/dashboard/printAdmitCard/{{$school_code}}"
+                                <a href="/dashboard/printAdmitCard/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Print
                                     Admit Card
                                 </a>
                             </li>
                             <li>
-                                <a href="/dashboard/printSeatPlan/{{$school_code}}"
+                                <a href="/dashboard/printSeatPlan/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Print
                                     Seat Plan</a>
                             </li>
 
                             <li>
-                                <a href="/dashboard/AddAdmitInstruction/{{$school_code}}"
+                                <a href="/dashboard/AddAdmitInstruction/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Admit Instruction</a>
                             </li>
                             <li>
-                                <a href="/dashboard/ExamBlankSheet/{{$school_code}}"
+                                <a href="/dashboard/ExamBlankSheet/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                                     Exam Blank Sheet</a>
                             </li>
@@ -396,13 +393,15 @@
             </li>
 
             {{-- exam and Result --}}
-       <li class="dropdown">
-                <button class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group cursor-pointer hover:bg-slate-100/20"
+            <li class="dropdown">
+                <button
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition-all duration-700 rounded-lg group cursor-pointer hover:bg-slate-100/20"
                     aria-controls="dropdown-exam" data-collapse-toggle="dropdown-exam">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
                         <path d="M12 3V5H3V3H12ZM16 19V21H3V19H16ZM22 11V13H3V11H22Z"></path>
                     </svg>
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Exam &   Result</span>
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Exam &
+                        Result</span>
 
                     <svg class="w-3 h-3 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 10 6">
@@ -413,7 +412,7 @@
                 </button>
                 <ul id="dropdown-exam" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="/dashboard/exam_marks/{{$school_code}}"
+                        <a href="/dashboard/exam_marks/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Marks Input </a>
                     </li>
@@ -684,9 +683,9 @@
                 </button>
                 <ul id="dropdown-student-Attendence" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="#"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                            STD Attendence</a>
+                        <a href="/dashboard/addStudentAttendence/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                            Add STD Attendence</a>
                     </li>
                     <li>
                         <a href="#"
@@ -808,7 +807,8 @@
 
             {{-- Report exam and result  --}}
             <li class="dropdown">
-                <button class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
+                <button
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
                     aria-controls="dropdown-report" data-collapse-toggle="dropdown-report">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
                         <path
@@ -887,7 +887,8 @@
             {{-- teacher --}}
 
             <li class="dropdown">
-                <button class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
+                <button
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
                     aria-controls="dropdown-teacher" data-collapse-toggle="dropdown-teacher">
                     <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="#ffffff" class="w-6 h-6">
@@ -1012,77 +1013,77 @@
                                     Institute Info</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSubjectSetup/{{$school_code}}"
+                                <a href="/dashboard/addSubjectSetup/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class Subject Setting</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClass/{{$school_code}}"
+                                <a href="/dashboard/addClass/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSection/{{$school_code}}"
+                                <a href="/dashboard/addSection/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Section</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addShift/{{$school_code}}"
+                                <a href="/dashboard/addShift/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     shift</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addGroup/{{$school_code}}"
+                                <a href="/dashboard/addGroup/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Group</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addSubject/{{$school_code}}"
+                                <a href="/dashboard/addSubject/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Subject</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addAcademicSession/{{$school_code}}"
+                                <a href="/dashboard/addAcademicSession/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Academic Session</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addAcademicYear/{{$school_code}}"
+                                <a href="/dashboard/addAcademicYear/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Academic Year</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addBoardExam/{{$school_code}}"
+                                <a href="/dashboard/addBoardExam/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Board Exam</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addCategory/{{$school_code}}"
+                                <a href="/dashboard/addCategory/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Category</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassExam/{{$school_code}}"
+                                <a href="/dashboard/addClassExam/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class Exam</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseGroup/{{$school_code}}"
+                                <a href="/dashboard/addClassWiseGroup/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class wise Group</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseSection/{{$school_code}}"
+                                <a href="/dashboard/addClassWiseSection/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class wise Section</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addClassWiseShift/{{$school_code}}"
+                                <a href="/dashboard/addClassWiseShift/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Class wise Shift</a>
                             </li>
                             <li>
-                                <a href="/dashboard/addPeriod/{{$school_code}}"
+                                <a href="/dashboard/addPeriod/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Period</a>
                             </li>
@@ -1120,63 +1121,65 @@
                 <ul id="dropdown-exam-setting" class="hidden py-2 space-y-2">
 
                     <li>
-                        <a href="/dashboard/addGradePoint/{{$school_code}}"
+                        <a href="/dashboard/addGradePoint/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                             Grade Point</a>
                     </li>
                     <li>
-                        <a href="/dashboard/addShortCode/{{$school_code}}"
+                        <a href="/dashboard/addShortCode/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setShortCode/{{$school_code}}"
+                        <a href="/dashboard/setShortCode/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Short Code</a>
                     </li>
                     <li>
-                        <a href="{{route('get.exam.marks',$school_code)}}"
+                        <a href="{{ route('get.exam.marks', $school_code) }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Exam Marks</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setForthSubject/{{$school_code}}"
+                        <a href="/dashboard/setForthSubject/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             4th Subject</a>
                     </li>
                     <li>
-                        <a href="/dashboard/AddReportName/{{$school_code}}"
+                        <a href="/dashboard/AddReportName/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Add Report Name</a>
                     </li>
                     <li>
-                        <a href="/dashboard/AddSignature/{{$school_code}}"
+                        <a href="/dashboard/AddSignature/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Add Signature</a>
                     </li>
                     <li>
-                        <a href="/dashboard/setGradeSetup/{{$school_code}}" class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grade  Setup</a>
+                        <a href="/dashboard/setGradeSetup/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grade
+                            Setup</a>
                     </li>
                     <li>
-                        <a href="/dashboard/GrandFinal/{{$school_code}}"
+                        <a href="/dashboard/GrandFinal/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grand
                             Final
                         </a>
                     </li>
                     <li>
-                        <a href="/dashboard/SetSignature/{{$school_code}}"
+                        <a href="/dashboard/SetSignature/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
                             Signature
                         </a>
                     </li>
                     <li>
-                        <a href="/dashboard/ExamPublish/{{$school_code}}"
+                        <a href="/dashboard/ExamPublish/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Exam
                             Publish
                         </a>
                     </li>
                     <li>
-                        <a href="/dashboard/SequentialExam/{{$school_code}}"
+                        <a href="/dashboard/SequentialExam/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Sequential
                             Wise Exam
                         </a>
@@ -1224,5 +1227,3 @@
         content.style.maxHeight = button.getAttribute("aria-expanded") === "true" ? content.scrollHeight + "px" : "0";
     }
 </script>
-
-
