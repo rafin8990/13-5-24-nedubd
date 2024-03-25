@@ -58,6 +58,7 @@ use App\Http\Controllers\Backend\AdmitCard\AddAdmitInstructionController;
 use App\Http\Controllers\Backend\AdmitCard\ListAdminInstructionController;
 use App\Http\Controllers\Backend\AdmitCard\ExamBlankSheetController;
 use App\Http\Controllers\Backend\StudentAttendence\AttendenceController;
+use App\Http\Controllers\Backend\ReportStudentAttendence\ReportStudentAttendenceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -127,6 +128,17 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/studentLeaveForm/{schoolCode}', [AttendenceController::class, "student_leave_form"])->name('studentLeaveForm');
     Route::get('/addLeaveType/{schoolCode}', [AttendenceController::class, "add_leave_type"])->name('addLeaveType');
 
+    // report Student Attendence 
+    Route::get('/attendenceReport/{schoolCode}', [ReportStudentAttendenceController::class, "attendence_report"])->name('attendenceReport');
+
+
+    Route::get('/attendenceBlankReport/{schoolCode}', [ReportStudentAttendenceController::class, "attendence_blank_report"])->name('attendenceBlankReport');
+
+    Route::get('/dateWiseReport/{schoolCode}', [ReportStudentAttendenceController::class, "date_wise_report"])->name('dateWiseReport');
+
+    Route::get('/listOfLeaveReport/{schoolCode}', [ReportStudentAttendenceController::class, "list_of_leave_report"])->name('listOfLeaveReport');
+
+    Route::get('/setionWiseSection/{schoolCode}', [ReportStudentAttendenceController::class, "section_wise_report"])->name('setionWiseSection');
 
 
 
@@ -142,17 +154,17 @@ Route::prefix('dashboard')->group(function () {
 
 
     // exam-report
-    Route::get('/progressReport', [ReportsExamsReportsController::class, 'progressReport']);
-    Route::get('/exam-failList', [ReportsExamsReportsController::class, 'failList1']);
-    Route::get('/tebular-format1', [ReportsExamsReportsController::class, 'format1']);
-    Route::get('/tebular-format2', [ReportsExamsReportsController::class, 'format2']);
-    Route::get('/tebular-format3', [ReportsExamsReportsController::class, 'format3']);
-    Route::get('/gradeInfo', [ReportsExamsReportsController::class, 'gradeInfo']);
-    Route::get('/grandFinal', [ReportsExamsReportsController::class, 'grandFinal']);
-    Route::get('/meritClass', [ReportsExamsReportsController::class, 'meritClass']);
-    Route::get('/meritList', [ReportsExamsReportsController::class, 'meritList']);
-    Route::get('/passFailPercentage', [ReportsExamsReportsController::class, 'passFailPercentage']);
-    Route::get('/unassignedSubject', [ReportsExamsReportsController::class, 'unassignedSubject']);
+    Route::get('/progressReport/{schoolCode}', [ReportsExamsReportsController::class, 'progressReport']);
+    Route::get('/exam-failList/{schoolCode}', [ReportsExamsReportsController::class, 'failList1']);
+    Route::get('/tebular-format1/{schoolCode}', [ReportsExamsReportsController::class, 'format1']);
+    Route::get('/tebular-format2/{schoolCode}', [ReportsExamsReportsController::class, 'format2']);
+    Route::get('/tebular-format3/{schoolCode}', [ReportsExamsReportsController::class, 'format3']);
+    Route::get('/gradeInfo/{schoolCode}', [ReportsExamsReportsController::class, 'gradeInfo']);
+    Route::get('/grandFinal/{schoolCode}', [ReportsExamsReportsController::class, 'grandFinal']);
+    Route::get('/meritClass/{schoolCode}', [ReportsExamsReportsController::class, 'meritClass']);
+    Route::get('/meritList/{schoolCode}', [ReportsExamsReportsController::class, 'meritList']);
+    Route::get('/passFailPercentage/{schoolCode}', [ReportsExamsReportsController::class, 'passFailPercentage']);
+    Route::get('/unassignedSubject/{schoolCode}', [ReportsExamsReportsController::class, 'unassignedSubject']);
 
 
     //grand final
