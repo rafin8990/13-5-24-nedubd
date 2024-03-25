@@ -418,32 +418,32 @@
                             Marks Input </a>
                     </li>
                     <li>
-                        <a href="/dashboard/exam_process"
+                        <a href="/dashboard/exam_process/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Exam Process </a>
                     </li>
                     <li>
-                        <a href="/dashboard/exam_excel"
+                        <a href="/dashboard/exam_excel/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Exam Excel </a>
                     </li>
                     <li>
-                        <a href="/dashboard/update_exam_process"
+                        <a href="/dashboard/update_exam_process/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Update
                             Exam Process</a>
                     </li>
                     <li>
-                        <a href="/dashboard/student_exam_excel"
+                        <a href="/dashboard/student_exam_excel/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
                             Exam Excel</a>
                     </li>
                     <li>
-                        <a href="/dashboard/exam_marks_delete"
+                        <a href="/dashboard/exam_marks_delete/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
                             exam Marks Delete</a>
                     </li>
                     <li>
-                        <a href="/dashboard/exam_sms"
+                        <a href="/dashboard/exam_sms/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                             Exam SMS</a>
                     </li>

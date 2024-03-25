@@ -109,7 +109,9 @@ class UpdateStudentClassInfoController extends Controller
     public function delete( $schoolCode, $ids)
     {
        
-
+if (!$ids){
+    return redirect()->route('studentClassInfo', $schoolCode)->with('error', 'No students selected for deletion');
+}
         // Perform the deletion logic
         if (!empty($ids)) {
             $idArray = explode(',', $ids);

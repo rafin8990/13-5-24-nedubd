@@ -34,6 +34,7 @@ use App\Http\Controllers\Backend\Student\UploadExcelFileController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
+use App\Http\Controllers\Backend\ExamResult\ExamProcessController;
 
 use App\Http\Controllers\Backend\ExamSetting\AddGradePointController;
 use App\Http\Controllers\Backend\ExamSetting\AddShortCodeController;
@@ -129,10 +130,11 @@ Route::prefix('dashboard')->group(function () {
 
     // exam-Result --------------------------------------
     Route::get('/exam_marks/{school_code}', [ExamResultController::class, 'exam_marks']);
-    Route::get('/exam_process', [ExamResultController::class, 'exam_process']);
-    Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']);
-    Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']);
-    Route::get('/exam_sms', [ExamResultController::class, 'exam_sms']);
+    Route::get('/exam_process/{schoolCode}', [ExamProcessController::class, 'exam_process']);
+    Route::get('/getStudents/{schoolCode}/{class}/{group}/{section}', [ExamProcessController::class, 'getStudents']);
+    Route::get('/exam_excel/{schoolCode}', [ExamResultController::class, 'exam_excel']);
+    Route::get('/exam_marks_delete/{schoolCode}', [ExamResultController::class, 'exam_marks_delete']);
+    Route::get('/exam_sms/{schoolCode}', [ExamResultController::class, 'exam_sms']);
 
 
 

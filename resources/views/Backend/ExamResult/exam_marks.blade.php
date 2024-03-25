@@ -8,12 +8,12 @@ Exam Marks
 @include('/Message/message')
 
 <div>
-    <h1 class="text-4xl font font-bold my-5 mx-5 text-accent">Exam Marks</h1>
+    <h1 class="">Exam Marks</h1>
 </div>
 
 
 
-<div>
+<div class="mx-10 mt-5">
     <div class=" mb-3">
         <div class="card-body p-2">
             <div class="grid grid-cols-11 gap-4">
@@ -130,14 +130,14 @@ Exam Marks
 
                 <div class="col-span-1">
                     <div class="">
-                        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-5" onclick="exam_marks_input_search()">Find</button>
+                        <button class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-green-800 mt-5" >Find</button>
                     </div>
                 </div>
                 <div class="col-span-3">
-                    <div class="">
-                        <input type="file" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+                    <div class="md:mt-5">
+                        <input type="file" class="file-input border file-input-primary w-full max-w-xs" />
                         <br>
-                        <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-3" onclick="exam_marks_input_search()">Upload</button>
+                        <button class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-green-800 mt-3" >Upload</button>
                     </div>
                 </div>
 
@@ -155,13 +155,14 @@ Exam Marks
     <div class="w-full ">
         <div class="flex justify-around">
             <div class=" flex justify-between gap-5 ">
-                <button class="btn btn-info text-white w-full mb-2 md:mb-0" target="_blank">Blank Page</button>
-                <button class="btn btn-info text-white w-full print" target="_blank">Print Mark Page</button>
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Blank Page</button>
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Print Mark Page</button>
+               
             </div>
             <div class=" flex justify-between gap-5">
 
                 <input class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="submit" value="Save">
-                <a class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" href="/dashboard"><i class="fa fa-times"></i> Close</a>
+                <a class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" href="/dashboard"><i class="fa fa-times"></i> Close</a>            
             </div>
 
         </div>
