@@ -119,10 +119,10 @@ Route::prefix('dashboard')->group(function () {
 
 
     // Student Report
-    Route::get('/studentDetails', [StudentDetailsController::class, 'studentDetails']);
-    Route::get('/studentShortList', [addShortListController::class, 'studentShortList']);
-    Route::get('/studentListWithPhoto', [StudentListWithPhotoController::class, 'studentListWithPhoto']);
-    Route::get('/e_sifLists', [EsifListController::class, 'e_sifList']);
+    Route::get('/studentDetails/{schoolCode}', [StudentDetailsController::class, 'studentDetails']);
+    Route::get('/studentShortList/{schoolCode}', [addShortListController::class, 'studentShortList']);
+    Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto']);
+    Route::get('/e_sifLists/{schoolCode}', [EsifListController::class, 'e_sifList']);
 
 
 
