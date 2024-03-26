@@ -106,27 +106,12 @@
                             <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 1 4 4 4-4" />
                         </svg>
-
-                    </button>
-                    <ul id="dropdown-nedubd" class="hidden py-2 space-y-2">
-                        <li>
-                            <a href="/dashboard/addAdmin"
-                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Create
-                                New Member</a>
-                        </li>
-                        <li>
-                            <a href="/dashboard/addSchoolInfo"
-                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                                School Info</a>
-                        </li>
-                        <li>
-                            <a href="/dashboard/addSchoolAdmin"
-                                class="flex items-center w-full p-2 text-white  transition  rounded-lg pl-11 group ">Add
-                                School Admin</a>
-                        </li>
-                    </ul>
-                </li>
-            @endif
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">NEDUBD</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
 
 
                 </button>
@@ -148,6 +133,8 @@
                     </li>
                 </ul>
             </li>
+            @endif
+
 
 
 
