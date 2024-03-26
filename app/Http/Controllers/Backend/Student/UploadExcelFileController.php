@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Hash;
 
 class UploadExcelFileController extends Controller
 {
-    public function uploadExelFile()
+    public function uploadExelFile($school_code)
     {
-        $school_code=100;
         $classes = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
         $groups = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
         $sections = AddSection::where('action', 'approved')->where('school_code', $school_code)->get();

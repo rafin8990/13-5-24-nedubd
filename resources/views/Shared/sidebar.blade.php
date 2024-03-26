@@ -211,12 +211,12 @@
                             Exel File</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{route('uploadPhoto',$school_code)}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                             Photo</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{route('migrateStudent',$school_code)}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Migrate
                             Student</a>
                     </li>
