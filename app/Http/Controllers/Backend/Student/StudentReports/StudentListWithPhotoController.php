@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class StudentListWithPhotoController extends Controller
 {
-    public function studentListWithPhoto(){
+    public function studentListWithPhoto($school_code){
         return view('Backend.Student.students(report).studentListWithPhoto');
     }
 }
