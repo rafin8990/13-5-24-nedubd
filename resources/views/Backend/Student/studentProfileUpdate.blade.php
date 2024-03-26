@@ -5,23 +5,21 @@
 @section('Dashboard')
     <div>
         <h3>
-            Student Profile Update 
+            Student Profile Update
         </h3>
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
-        <div class="md:flex justify-end  ">
-            <button type="button"
-                class=" text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Basic
-                Info
-            </button>
-            <button type="button"
-                class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Photo
-            </button>
-        </div>
+       
         <hr>
         <form action="">
 
-            <div class="grid gap-6 mb-6 md:grid-cols-7 mt-2">
+            <div class="grid gap-6 mb-6 md:grid-cols-9 mt-2">
+                <div>
+                    <button type="button"
+                        class=" text-white bg-rose-700 hover:bg-rose-600 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800">Add
+                        
+                    </button>
+                </div>
                 <div>
                     <select id="" name="class"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -31,7 +29,7 @@
                         <option value="">z</option>
                     </select>
                 </div>
-    
+
                 <div>
                     <select id="" name="group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -59,7 +57,7 @@
                         <option value="">z</option>
                     </select>
                 </div>
-    
+
                 <div>
                     <select id="" name="session"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -69,14 +67,19 @@
                         <option value="">z</option>
                     </select>
                 </div>
-    
+
                 <input type="text"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="" />
-    
+
                 <div class="flex justify-end">
                     <button type="button"
-                    class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search
+                        class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search
+                    </button>
+                </div>
+                <div>
+                    <button type="button"
+                    class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Print
                 </button>
                 </div>
             </div>
@@ -86,7 +89,7 @@
                 <tr>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
                         <input id="link-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Roll
@@ -107,7 +110,7 @@
                         Mother Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Mother NID	
+                        Mother NID
                     </th>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
                         BirthDate
@@ -124,11 +127,11 @@
                     <th scope="col" class="px-6 py-3 bg-blue-500">
                         Mobile
                     </th>
-                    
+
                 </tr>
             </thead>
             <tbody>
-                
+
 
 
 
@@ -136,8 +139,8 @@
         </table>
         <div class="flex justify-end mt-5">
             <button type="button"
-            class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update
-        </button>
+                class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update
+            </button>
         </div>
     </div>
 @endsection

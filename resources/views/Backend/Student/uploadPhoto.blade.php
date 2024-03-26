@@ -10,12 +10,24 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
         <div class="md:flex justify-end  ">
+            <a href="{{ route('updateStudentBasicInfo', $school_code) }}">
+                <button type="button"
+                    class=" text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Basic
+                    Info
+                </button>
+            </a>
+            <a href="{{ route('studentClassInfo', $school_code) }}">
+                <button type="button"
+                    class=" text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Class
+                    Info
+                </button>
+            </a>
             <button type="button"
-                class=" text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Basic
-                Info
+                class=" text-white bg-rose-700 hover:bg-rose-600 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800">photo
+                
             </button>
             <button type="button"
-                class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Photo
+                class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add Student
             </button>
         </div>
         <hr>
@@ -84,45 +96,21 @@
         <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
             <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
                 <tr>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        <input id="link-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    </th>
+                    
                     <th scope="col" class="px-6 py-3">
-                        Roll
+                        Student Id
                     </th>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
-                        Student ID
+                        Roll
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Name
                     </th>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
-                        Father Name
+                        Photo
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Father NID
-                    </th>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        Mother Name
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Mother NID	
-                    </th>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        BirthDate
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Gender
-                    </th>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        Religion
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        BG
-                    </th>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        Mobile
+                        Upload Photo
                     </th>
                     
                 </tr>
