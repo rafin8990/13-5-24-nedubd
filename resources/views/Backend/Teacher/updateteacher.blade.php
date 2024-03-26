@@ -32,14 +32,14 @@ Update Teacher
                     <span class="text-red-500">*</span>
                     <div class="relative max-w-sm">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path
                                     d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                             </svg>
                         </div>
                         <input value="{{$teachers->birth_date}}"  datepicker datepicker-autohide name="birth_date" type="text"
-                            class="input input-bordered block w-full ps-10 p-2.5 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="input input-bordered block w-full ps-10 p-2.5 "
                             placeholder="Select birthdate">
                     </div>
                 </div>
@@ -54,7 +54,7 @@ Update Teacher
                 <div class="mt-5 w-[200px] mr-32">
                     <label>Designation:</label>
                     <span class="text-red-500">*</span>
-                    <select id="designation" name="designation" value="{{$teachers->designation}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select id="designation" name="designation" value="{{$teachers->designation}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option>{{$teachers->designation}}</option>
                         <option>Assistant teachers </option>
                         <option>teachers</option>
@@ -63,7 +63,7 @@ Update Teacher
                 <div class="mt-5 w-[200px] mr-32">
                     <label>Section:</label>
                     <span class="text-red-500">*</span>
-                    <select value="{{$teachers->section}}" id="Section" name="section" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select value="{{$teachers->section}}" id="Section" name="section" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         <option>{{$teachers->section}}</option>
                         <option>Permanent</option>
                         <option>Provition</option>
@@ -74,11 +74,11 @@ Update Teacher
                         <label>Joining date:</label>
                     <span class="text-red-500">*</span>
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                           <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                           <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                             </svg>
                         </div>
-                        <input datepicker datepicker-autohide type="text" name="joindate" value="{{$teachers->joindate}}" class="input input-bordered block w-full ps-10 p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select joining date">
+                        <input datepicker datepicker-autohide type="text" name="joindate" value="{{$teachers->joindate}}" class="input input-bordered block w-full ps-10 p-2.5 " placeholder="Select joining date">
                       </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@ Update Teacher
                     <label>Gmail:</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
                                 <path
                                     d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
@@ -158,7 +158,7 @@ Update Teacher
                             </svg>
                         </div>
                         <input name="email" value="{{$teachers->email}}" type="text" id="email-address-icon"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 "
                             placeholder="name@flowbite.com">
                     </div>
                 </div>

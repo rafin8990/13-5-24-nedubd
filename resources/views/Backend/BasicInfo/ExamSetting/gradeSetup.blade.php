@@ -15,10 +15,10 @@ Grade
     @csrf
         <div class="md:flex my-10 ">
             <div class="mr-5">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Exam Name :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Exam Name :</label>
             </div>
             <div class="mr-5">
-                <select id="class_exam_name" name="class_exam_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="class_exam_name" name="class_exam_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                     <option disabled selected>Choose a exam</option>
                     @foreach($classExamData as $data)
                     <option value="{{ $data->class_exam_name }}">{{ $data->class_exam_name }}</option>
@@ -26,10 +26,10 @@ Grade
                 </select>
             </div>
             <div class="mr-5">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Year :</label>
             </div>
             <div class="mr-5">
-                <select id="academic_year_name" name="academic_year_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="academic_year_name" name="academic_year_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                     <option disabled selected>Choose year</option>
                     @foreach($academicYearData as $data)
                     <option value="{{ $data->academic_year_name }}">{{ $data->academic_year_name}}</option>
@@ -37,7 +37,7 @@ Grade
                 </select>
             </div>
             <div>
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">GET DATA</button>
             </div>
 
         </div>
@@ -57,7 +57,7 @@ Grade
     <div class="flex ">
 
         <div class="">
-            <div class="grid gap-5 mb-6  md:grid-cols-1 items-center ps-4 border border-blue-200 rounded dark:border-gray-700  mx-5 px-20 py-10">
+            <div class="grid gap-5 mb-6  md:grid-cols-1 items-center ps-4 border border-blue-200 rounded   mx-5 px-20 py-10">
                 <h3>
                     Select Class
                 </h3>
@@ -75,11 +75,11 @@ Grade
                type="checkbox" 
                value="{{ $data->class_name }}" 
                name="class_name[]" 
-               class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
+               class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  " 
                @if($classChecked) checked @endif
         >
     @endunless
-                    <label for="group_{{ $data->class_name }}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->class_name }}</label>
+                    <label for="group_{{ $data->class_name }}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">{{ $data->class_name }}</label>
                 </div>
                 @endforeach
             </div>
@@ -93,8 +93,8 @@ Grade
                 </h3>
             </div>
 
-            <table class=" text-sm text-left rtl:text-right text-black dark:text-blue-100">
-                <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+            <table class=" text-sm text-left rtl:text-right text-black ">
+                <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
                     <tr>
                         <th scope="col" class="px-6 py-3 bg-blue-500">
                             SL
@@ -119,7 +119,7 @@ Grade
                 <tbody>
                     @foreach($gradePointData as $key => $data)
                     <tr class=" border-b capitalize text-lg">
-                        <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
+                        <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap ">
                             {{$key + 1}}
                             <input class="hidden" value="{{$key}}" name="key[]" type="text">
                         </th>
@@ -159,13 +159,13 @@ Grade
 
     <div class="md:flex justify-center">
     <div class="mr-10">
-            <a href="/dashboard/viewGradeSetup" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET Config View</a>
+            <a href="/dashboard/viewGradeSetup" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">GET Config View</a>
         </div>
         <div class="mr-10">
-            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">Save</button>
         </div>
         <div class="mr-10">
-            <a href="/dashboard"  class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</a>
+            <a href="/dashboard"  class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Close</a>
         </div>
 
         <div class="ml-32">
@@ -179,11 +179,11 @@ Grade
 @else
 <div class="md:flex justify-center">
         <div class="mr-10">
-            <a href="/dashboard/viewGradeSetup/{{$school_code}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET Config View</a>
+            <a href="/dashboard/viewGradeSetup/{{$school_code}}" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">GET Config View</a>
         </div>
        
         <div class="mr-10">
-            <a href="/dashboard" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</a>
+            <a href="/dashboard" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Close</a>
         </div>
 
         <div class="ml-32">

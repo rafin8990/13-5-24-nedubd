@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class addShortListController extends Controller
 {
-    public function studentShortList(){
+    public function studentShortList($school_code){
         return view('Backend.Student.students(report).studentShortList');
     }
 }
