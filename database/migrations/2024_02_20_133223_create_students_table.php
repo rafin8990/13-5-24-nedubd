@@ -65,8 +65,7 @@ return new class extends Migration
             $table->string('school_code')->nullable();
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->nullable()->default('pending');
             $table->string('role')->nullable();
-
-            $table->enum('', ['active', 'in active'])->default('active');
+            $table->enum('status', ['active', 'in active'])->default('active');
 
 
     $table->timestamps();

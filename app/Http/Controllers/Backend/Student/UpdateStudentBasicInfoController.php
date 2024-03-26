@@ -43,7 +43,6 @@ class UpdateStudentBasicInfoController extends Controller
             ->where('group', $selectedGroupName)
             ->where('section', $selectedSectionName)
             ->where('year', $selectedYear)
-            ->where('session', $selectedSesion)
             ->get();
         //dd($student);
 

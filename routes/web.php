@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\CommonSetting\AddSubjectSetupController;
 
 use App\Http\Controllers\Backend\CommonSetting\InstituteInfoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Backend\ExamResult\MarkInputController;
 use App\Http\Controllers\Backend\ExamSetting\FourthSubjectController;
 use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
 use App\Http\Controllers\Backend\NEDUBD\SchoolAdminController;
@@ -128,7 +129,8 @@ Route::prefix('dashboard')->group(function () {
 
 
     // exam-Result --------------------------------------
-    Route::get('/exam_marks/{school_code}', [ExamResultController::class, 'exam_marks']);
+    Route::get('/exam_marks/{school_code}', [MarkInputController::class, 'exam_marks']);
+    Route::get('/generateExcel/{school_code}',[MarkInputController::class,"generateExcelSheet"])->name('generateExcel');
     Route::get('/exam_process', [ExamResultController::class, 'exam_process']);
     Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']);
     Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']);
