@@ -83,7 +83,7 @@ class AddClassWiseSectionController extends Controller
 
 
         // return redirect()->back()->with('success', 'class wise section added successfully!');
-        return redirect()->route('add.class.wise.section')->with('success', 'Class wise group added successfully!')->with('class_name', $request->class_name);
+        return redirect()->route('add.class.wise.section',$schoolCode)->with('success', 'Class wise group added successfully!')->with('class_name', $request->class_name);
     }
 
     public function delete_add_class_wise_section($id)

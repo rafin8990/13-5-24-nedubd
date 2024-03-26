@@ -23,7 +23,7 @@ Add Student
             <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4">
                 <div>
                     <label for="student_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Student ID</label>
-                    <input type="text" value="{{$studentId}}" name="student_id" id="student_id"
+                    <input type="text" readOnly value="{{$studentId}}" name="student_id" id="student_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter The First Name" />
                 </div>

@@ -132,6 +132,7 @@ class UploadExcelFileController extends Controller
             $student->shift = $request->input('shift')?? null;
             $student->category = $request->input('category')?? null;
             $student->year = $request->input('year')?? null;
+            $student->status = $studentData['status']?? 'active';
             $student->student_id = $studentId;
             $student->save();
         }

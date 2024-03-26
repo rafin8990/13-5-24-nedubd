@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\CommonSetting\AddSubjectSetupController;
 
 use App\Http\Controllers\Backend\CommonSetting\InstituteInfoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Backend\ExamResult\MarkInputController;
 use App\Http\Controllers\Backend\ExamSetting\FourthSubjectController;
 use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
 use App\Http\Controllers\Backend\NEDUBD\SchoolAdminController;
@@ -136,10 +137,6 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/exam_excel/{schoolCode}', [ExamResultController::class, 'exam_excel']);
     Route::get('/exam_marks_delete/{schoolCode}', [ExamResultController::class, 'exam_marks_delete']);
     Route::get('/exam_sms/{schoolCode}', [ExamResultController::class, 'exam_sms']);
-
-
-
-
 
     // exam-report
     Route::get('/progressReport', [ReportsExamsReportsController::class, 'progressReport']);
