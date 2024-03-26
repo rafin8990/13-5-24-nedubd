@@ -1,248 +1,118 @@
 @extends('Backend.app')
 @section('title')
-Exam Mark Setup Grand Final
+    Exam Mark Setup Grand Final
 @endsection
 @section('Dashboard')
-@include('/Message/message')
-<div>
-    <h1 class="ml-5 font font-semibold text-accent  my-10"> Exam Mark Setup Grand Final
-    </h1>
-</div>
+    @include('/Message/message')
+    <div>
+        <h1 class="ml-5 font font-semibold text-accent  my-10"> Exam Mark Setup Grand Final
+        </h1>
+    </div>
+    <form action="{{route('store.grandfinal',$school_code)}} "  method="POST">
+        @csrf
+        @method('PUT')
+    <div class="md:flex mx-10">
+        
+        <div class="flex border justify-center mr-5 md:mr-32 mb-5 md:mb-0">
+            <div class="mx-10 my-10 ">
+                <h3 class="mb-5">Select Class</h3>
+                @foreach ($classData as $data)
+                    <div>
+                        <!-- <input id="subject_name" type="checkbox" value="{{ $data->class_name }}" name="subject_name[]" class="shift-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
+                        <input id="subject_name" type="checkbox" value="{{ $data->class_name }}" name="class_name[]"
+                            class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="subject_name"
+                            class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->class_name }}</label>
+                    </div>
+                @endforeach
 
-<div class="md:flex mx-10">
+            </div>
+        </div>
 
-<div class="flex border justify-center mr-5 md:mr-32 mb-5 md:mb-0">
-  <div class="mx-10 my-10 ">
-    <h3 class="mb-5">Select Class</h3>
-    <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="select-all-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="select-all-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Select All</label>
+        <div>
+            <div class="flex justify-center text-md font-bold">
+                <h2>
+                    EXAM WISE GRAND FINAL SETTING</h2>
             </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="vue-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="vue-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Play</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="react-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="react-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nursery</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="angular-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="angular-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">KG</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">One</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Two</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Three</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Four</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Five</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Six</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Seven</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Eight</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nine</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ten</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">all inactive</label>
-            </div>
-        </li>
-        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-            <div class="flex items-center ps-3">
-                <input id="laravel-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="laravel-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pre Play</label>
-            </div>
-        </li>
-    </ul>
-    
-</div>
-</div>
+            <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
 
-<div class="overflow-x-auto">
-    <h1 class="text-xl font-bold">EXAM WISE GRAND FINAL SETTING</h1>
-  <table class="table border md:table-lg table-xs">
-    <!-- head -->
-    <thead>
-      <tr>
-        <th>Sl</th>
-        <th>Exam Name</th>
-        <th>Percentage</th>
-        <th>Exam Serial</th>
-        <th>Status</th>
-       
-      </tr>
-    </thead>
-    <tbody>
-      <!-- row 1 -->
-      <tr>
-        <th>1</th>
-        <td>1st Midterm</td>
-        <td>0</td>
-        <td></td>
-        <td><div class="flex items-center ps-3">
-            <input id="select-all-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="select-all-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-        </div></td>
-      </tr>
-      <tr>
-        <th>2</th>
-        <td>1st Semester</td>
-        <td>0</td>
-        <td></td>
-        <td><div class="flex items-center ps-3">
-            <input id="select-all-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="select-all-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-        </div></td>
-      </tr>
-      <tr>
-        <th>3</th>
-        <td>2nd Midterm</td>
-        <td>0</td>
-        <td></td>
-        <td><div class="flex items-center ps-3">
-            <input id="select-all-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="select-all-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-        </div></td>
-      </tr>
-      <tr>
-        <th>4</th>
-        <td>2nd Semester</td>
-        <td>0</td>
-        <td></td>
-        <td><div class="flex items-center ps-3">
-            <input id="select-all-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="select-all-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-        </div></td>
-      </tr>
-      <tr>
-        <th>5</th>
-        <td>3rd Midterm</td>
-        <td>0</td>
-        <td></td>
-        <td><div class="flex items-center ps-3">
-            <input id="select-all-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="select-all-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-        </div></td>
-      </tr>
-      <tr>
-        <th>6</th>
-        <td>3rd Semester</td>
-        <td>0</td>
-        <td></td>
-        <td><div class="flex items-center ps-3">
-            <input id="select-all-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-            <label for="select-all-checkbox" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
-        </div></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-</div>
+                <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            SL
+                        </th>
+                        <th scope="col" class="px-6 py-3 bg-blue-500">
+                            EXAM NAME
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            PERCENTAGE
+                        </th>
+                        <th scope="col" class="px-6 py-3 bg-blue-500">
+                            EXAM SERIAL
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Status
+                        </th>
 
 
-<div class="flex justify-center mb-10 sticky bottom-3 z-50">
 
-    <div class="flex justify-center mr-20">
-        <button class=" btn btn-accent text-white ">
-            <i class="fa fa-eye"
-                            style="color:white;"></i>
-          View
-        </button>
-      </div>
-      <div class="flex justify-center mr-20">
-        <button class=" btn btn-accent text-white ">
-          Save
-        </button>
-      </div>
-      <div class="flex justify-center mr-20">
-        <button class=" btn btn-accent text-white ">
-          Print
-        </button>
-      </div>
+                    </tr>
 
-</div>
+                </thead>
+                <tbody>
+                    @foreach ($examName as $key => $data)
+    <tr class=" border-b border-blue-400">
+        <td class="px-6 py-4">
+            {{ $key + 1 }}
+        </td>
+        <td class="px-6 py-4">
+            {{ $data->class_exam_name }}
+           <div class="hidden">
+            <input type="text" id="percentage" name="class_exam_name[]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value=" {{ $data->class_exam_name }}" />
+           </div>
+      
 
 
+        </td>
+        <!-- ... other columns ... -->
+        <td class="px-6 py-4">
+            <input type="text" id="percentage" name="percentage[{{ $key }}]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="0" />
+        </td>
+        <td class="px-6 py-4">
+            <input type="text" id="Exam_serial" name="serial[{{ $key }}]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="0" />
+        </td>
+        <td class="px-6 py-4">
+            <input id="laravel-checkbox" type="checkbox" value="active" name="status[{{ $key }}]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+        </td>
+    </tr>
+@endforeach
+
+
+
+                </tbody>
+            </table>
+        </div>
+        <br><br>
+
+    </div>
+
+    <div class="grid md:grid-cols-3 sticky z-56 md:mt-20">
+        <div class="mr-10 md:flex justify-center">
+            <a href="{{url('dashboard/grandFinalList',$school_code)}}">
+            <button type="button"
+                class="text-white  bg-blue-400 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-20 py-2.5 text-center dark:bg-blue-300 dark:hover:bg-blue-400 dark:focus:ring-blue-400">View</button>
+            </a>
+        </div>
+        <div class="mr-10">
+            <button type="submit"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-20 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">save</button>
+        </div>
+
+        <div class="ml-32">
+            <h3>Total Percent = <div class="border-2"></div>
+            </h3>
+        </div>
+
+    </div>
+</form>
 @endsection
-{{-- 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const selectAllCheckbox = document.getElementById("select-all-checkbox");
-        const individualCheckboxes = document.querySelectorAll("input[type='checkbox']:not(#select-all-checkbox)");
-    
-        selectAllCheckbox.addEventListener("change", function() {
-            individualCheckboxes.forEach(checkbox => {
-                checkbox.checked = selectAllCheckbox.checked;
-            });
-        });
-    
-        individualCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function() {
-                if (!this.checked) {
-                    selectAllCheckbox.checked = false;
-                } else {
-                    selectAllCheckbox.checked = [...individualCheckboxes].every(checkbox => checkbox.checked);
-                }
-            });
-        });
-    });
-    </script> --}}

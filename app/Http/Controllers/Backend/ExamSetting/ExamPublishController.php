@@ -13,9 +13,9 @@ class ExamPublishController extends Controller
 {
     public function ExamPublish($schoolCode){
         $Data = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
-        $classes=AddClass::all();
-        $years=AddAcademicYear::all();
-        $exam=AddClassExam::all();
+        $classes=AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $years=AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $exam=AddClassExam::where('action', 'approved')->where('school_code', $schoolCode)->get();
 
         return view ('Backend/BasicInfo/ExamSetting/examPublish',compact("classes","years","exam","Data"));
     }

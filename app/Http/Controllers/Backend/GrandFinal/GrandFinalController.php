@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend\GrandFinal;
 
 use App\Http\Controllers\Controller;
+use App\Models\AddClass;
+use App\Models\AddClassExam;
 use Illuminate\Http\Request;
 
 class GrandFinalController extends Controller
@@ -22,7 +24,9 @@ class GrandFinalController extends Controller
     public function passFailPercentage2(){
         return view('/Backend/Grand_Final/passFailPercentage');
     }
-    public function setupGrand(){
-        return view('/Backend/Grand_Final/setupGrand');
+    public function setupGrand($schoolCode){
+        $examName = AddClassExam::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
+        return view('/Backend/Grand_Final/setupGrand',compact('classData','examName'));
     }
 }
