@@ -51,6 +51,7 @@ use App\Http\Controllers\Backend\ExamSetting\ViewExamPublishController;
 use App\Http\Controllers\Backend\ExamSetting\ViewExamMarkSetUpController;
 
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
+use App\Http\Controllers\Backend\GrandFinal\GrandFinalListController;
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
 use App\Http\Controllers\Backend\AdmitCard\SetAdmitCardController;
 use App\Http\Controllers\Backend\AdmitCard\PrintAdmitCardController;
@@ -160,8 +161,10 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/grand_merit_list', [GrandFinalController::class, 'grandMeritList']);
     Route::get('/grand_exam_progress_report', [GrandFinalController::class, 'grandProgressReport']);
     Route::get('/grand_result_pass_fail_percentage', [GrandFinalController::class, 'passFailPercentage']);
-    Route::get('/grand_exam_setup', [GrandFinalController::class, 'setupGrand']);
-
+    Route::get('/grand_exam_setup/{schoolCode}', [GrandFinalController::class, 'setupGrand']);
+    Route::get('/grandFinalList/{schoolCode}', [GrandFinalListController::class, 'grandFinalList'])->name('grandFinalList');
+    Route::post('/viewGrandFinal/{schoolCode}', [GrandFinalListController::class, 'viewGrandFinal'])->name('viewGrandFinal');
+    
 
     // teacher routes
     Route::get('/teachers/{schoolCode}', [TeacherController::class, 'teachers'])->name('teachers');
