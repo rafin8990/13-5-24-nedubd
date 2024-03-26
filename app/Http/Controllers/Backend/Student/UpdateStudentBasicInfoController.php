@@ -44,9 +44,6 @@ class UpdateStudentBasicInfoController extends Controller
             ->where('section', $selectedSectionName)
             ->where('year', $selectedYear)
             ->get();
-        //dd($student);
-
-
         $Year = AddAcademicYear::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $Session = AddAcademicSession::where('action', 'approved')->where('school_code', $schoolCode)->get();
         $classData = AddClass::where('action', 'approved')->where('school_code', $schoolCode)->get();
@@ -65,50 +62,64 @@ class UpdateStudentBasicInfoController extends Controller
             ]);
           
         }
-      
 
             return redirect()->route('updateStudentBasicInfo',$schoolCode)->with('error','Student Data Not Found');
-               
-        
-
-      
-        
-
-
     }
 
-    public function updateStudentBasic(Request $request,$schoolCode)
-    {
+    // public function updateStudentBasic(Request $request,$schoolCode)
+    // {
+    //     // dd($request->id);
+    //     if($request->id !== null){
+    //         foreach ($request->id as $id) {
+              
+    //              Student::where('id', $id)
+    //                 ->update([
+    //                     'student_roll' => $request->student_roll[$id],
+    //                     'student_id' => $request->student_id[$id],
+    //                     'name' => $request->name[$id],
+    //                     'father_name' => $request->father_name[$id],
+    //                     'father_nid' => $request->father_nid[$id],
+    //                     'mother_name' => $request->mother_name[$id],
+    //                     'mother_nid' => $request->mother_nid[$id],
+    //                     'birth_date' => $request->birth_date[$id],
+    //                     'gender' => $request->gender[$id],
+    //                     'religious' => $request->religious[$id],
+    //                     'blood_group' => $request->blood_group[$id],
+    //                     'mobile_no' => $request->mobile_no[$id],
+    //                 ]);
+    //                 return redirect()->route('updateStudentBasicInfo',$schoolCode)->with([
+    //                     'success' => 'Student update successfully!',
+    //                 ]);
+    //         }
+    //     }
+    //     return redirect()->route('updateStudentBasicInfo',$schoolCode)->with([
+    //         'error' => 'No data selected!' ]);
 
-        // dd($request);
-        if($request->id !== null){
+    // }
 
-            foreach ($request->id as $id) {
-                $resulf = Student::where('id', $id)
-                    ->update([
-                        'student_roll' => $request->student_roll[$id],
-                        'student_id' => $request->student_id[$id],
-                        'first_name' => $request->first_name[$id],
-                        'last_name' => $request->last_name[$id],
-                        'father_name' => $request->father_name[$id],
-                        'father_nid' => $request->father_nid[$id],
-                        'mother_name' => $request->mother_name[$id],
-                        'mother_nid' => $request->mother_nid[$id],
-                        'birth_date' => $request->birth_date[$id],
-                        'gender' => $request->gender[$id],
-                        'religious' => $request->religious[$id],
-                        'blood_group' => $request->blood_group[$id],
-                        'father_mobile' => $request->father_mobile[$id],
-                    ]);
-                    return redirect()->route('updateStudentBasicInfo',$schoolCode)->with([
-                        'success' => 'Student update successfully!',
-                    ]);
-            }
-    
-            
+    public function updateStudentBasic(Request $request, $schoolCode)
+{
+    if ($request->has('id')) {
+        foreach ($request->id as $id) {
+            Student::where('id', $id)->update([
+                'student_roll' => $request->input('student_roll')[$id],
+                'student_id' => $request->input('student_id')[$id],
+                'name' => $request->input('name')[$id],
+                'father_name' => $request->input('father_name')[$id],
+                'father_nid' => $request->input('father_nid')[$id],
+                'mother_name' => $request->input('mother_name')[$id],
+                'mother_nid' => $request->input('mother_nid')[$id],
+                'birth_date' => $request->input('birth_date')[$id],
+                'gender' => $request->input('gender')[$id],
+                'religious' => $request->input('religious')[$id],
+                'blood_group' => $request->input('blood_group')[$id],
+                'mobile_no' => $request->input('mobile_no')[$id],
+            ]);
         }
-        return redirect()->route('updateStudentBasicInfo',$schoolCode)->with([
-            'error' => 'No data selected!' ]);
-
+        
+        return redirect()->route('updateStudentBasicInfo', $schoolCode)->with('success', 'Students updated successfully!');
     }
+
+    return redirect()->route('updateStudentBasicInfo', $schoolCode)->with('error', 'No data selected!');
+}
 }

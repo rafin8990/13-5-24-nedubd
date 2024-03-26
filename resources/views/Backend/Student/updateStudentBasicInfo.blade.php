@@ -115,10 +115,7 @@
                         Student ID
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        First Name
-                    </th>
-                    <th scope="col" class="px-6 py-3 bg-blue-500">
-                        Last Name
+                     Name
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Father Name
@@ -168,12 +165,8 @@
                         <input type="text" name="student_id[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->student_id}}">
                     </td>
                     <td scope="col" class="px-6 py-3">
-                        <span class="row-data">{{$data->first_name}} </span>
-                        <input type="text" name="first_name[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->first_name}} ">
-                    </td>
-                    <td scope="col" class="px-6 py-3">
-                        <span class="row-data">{{$data->last_name}}</span>
-                        <input type="text" name="last_name[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->last_name}}">
+                        <span class="row-data">{{$data->name}} </span>
+                        <input type="text" name="name[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->name}} ">
                     </td>
                     <td scope="col" class="px-6 py-3">
                         <span class="row-data">{{$data->father_name}}</span>
@@ -208,8 +201,8 @@
                         <input type="text" name="blood_group[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->blood_group}}">
                     </td>
                     <td scope="col" class="px-6 py-3">
-                        <span class="row-data">{{$data->father_mobile}}</span>
-                        <input type="text" name="father_mobile[{{ $data->id }}]" class="form-control row-input hidden" value=" {{$data->father_mobile}}">
+                        <span class="row-data">{{$data->mobile_no}}</span>
+                        <input type="text" name="mobile_no[{{ $data->id }}]" class="form-control row-input hidden" value=" {{$data->mobile_no}}">
                     </td>
                     
                 </tr>
