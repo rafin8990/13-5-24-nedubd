@@ -18,11 +18,11 @@ Suject Setup
         @method('PUT')
         <div class="grid md:grid-cols-6 gap-4 my-10 ">
             <div class="mr-5 md:flex justify-end">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class Name
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Class Name
                     :</label>
             </div>
             <div class="mr-5">
-                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                     <!-- <option disabled selected>Choose a class</option> -->
                     @if ($selectedClassName === null)
                     <option disabled selected>Choose a class</option>
@@ -37,11 +37,11 @@ Suject Setup
                 </select>
             </div>
             <div class="mr-5 md:flex justify-end">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Group Name
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Group Name
                     :</label>
             </div>
             <div class="mr-5">
-                <select id="group_name" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="group_name" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                     @if ($selectedGroupName === null)
                     <option disabled selected>Choose a group</option>
                     @elseif($selectedGroupName)
@@ -53,27 +53,27 @@ Suject Setup
                 </select>
             </div>
             <div class="hidden">
-                <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Code 
+                <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">School Code 
                 </label>
                 <input type="text" value="{{$school_code}}" name="school_code" id="last_name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     "
                     placeholder="Enter The Police Station Name" />
             </div>
             <div>
-                <button onclick="submitForm()" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET
+                <button onclick="submitForm()" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">GET
                     DATA</button>
             </div>
 
         </div>
         <div>
             <div>
-                <div class="grid gap-6 mb-6 py-5 md:grid-cols-3 items-center ps-4 border border-gray-200 rounded dark:border-gray-700 mx-20">
+                <div class="grid gap-6 mb-6 py-5 md:grid-cols-3 items-center ps-4 border border-gray-200 rounded  mx-20">
 
                     @foreach ($subjectData as $data)
                     <div>
-                        <!-- <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name[]" class="shift-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
-                        <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="subject_name" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->subject_name }}</label>
+                        <!-- <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name[]" class="shift-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  "> -->
+                        <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name[]" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
+                        <label for="subject_name" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">{{ $data->subject_name }}</label>
                     </div>
                     @endforeach
 
@@ -137,8 +137,8 @@ Suject Setup
 
         @csrf
         @method('PUT')
-        <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+        <table class="w-full text-sm text-left rtl:text-right text-black ">
+            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
                 <tr>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
                         SL
@@ -164,7 +164,7 @@ Suject Setup
                 @if ($classWiseSubjectData !== null)
                 @foreach ($classWiseSubjectData as $key => $data)
                 <tr class=" border-b capitalize text-lg">
-                    <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
+                    <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap ">
                         {{ $key + 1 }}
                     </th>
                     <td class="px-6 py-4">
@@ -176,7 +176,7 @@ Suject Setup
                     </td>
 
                     <td class="px-6 py-4">
-                        <select name="subject_type[{{ $data->id }}]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select name="subject_type[{{ $data->id }}]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                             <option class="capitalize" value="{{ $data->subject_type }}">
                                 {{ $data->subject_type }}
                             </option>
@@ -190,7 +190,7 @@ Suject Setup
                     </td>
                     <td class="px-6 py-4 ">
 
-                        <input type="text" id="subject_marge" name="subject_marge[{{ $data->id }}]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ $data->subject_marge }}" />
+                        <input type="text" id="subject_marge" name="subject_marge[{{ $data->id }}]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     " value="{{ $data->subject_marge }}" />
                     </td>
 
                     <td class="px-6 py-4  text-xl flex justify-center">
@@ -222,10 +222,10 @@ Suject Setup
         <br><br>
         <div class="grid md:grid-cols-3 ">
             <div class="mr-10 md:flex justify-center">
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">Save</button>
             </div>
             <div class="mr-10">
-                <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
+                <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Close</button>
             </div>
 
             <div class="ml-32">
