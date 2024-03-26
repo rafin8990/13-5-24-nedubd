@@ -1,12 +1,13 @@
 @extends('Backend.app')
 @section('title')
-    Student Details Information
+    Addmission Summary
 @endsection
+
 @section('Dashboard')
     @include('Message.message')
     <div class="py-5">
-        <h3 class="text-xl font-bold text-center">
-            Student Details Information
+        <h3 class="text-xl font-bold text-center ">
+            Addmission Summary
         </h3>
     </div>
     <div class="">
@@ -24,19 +25,6 @@
                             <option>Choose a class</option>
                             <option>one</option>
                             <option>two</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="grid md:grid-cols-3 mb-5">
-                    <div class=" ">
-                        <label for="last_name" class="block mb-2 text-lg font-medium text-white ">STUDENT ID :
-                        </label>
-                    </div>
-                    <div class="">
-                        <select id="countries" name="id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-blue-500 block w-full p-2.5 ">
-                            <option selected>Choose student id</option>
-                            <option>01</option>
                         </select>
                     </div>
                 </div>

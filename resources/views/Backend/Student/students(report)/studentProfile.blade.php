@@ -2,11 +2,14 @@
 @section('title')
     Student Details Information
 @endsection
+
+
+
 @section('Dashboard')
     @include('Message.message')
     <div class="py-5">
-        <h3 class="text-xl font-bold text-center">
-            Student Details Information
+        <h3 class="text-xl font-bold text-center ">
+            Student Profile
         </h3>
     </div>
     <div class="">

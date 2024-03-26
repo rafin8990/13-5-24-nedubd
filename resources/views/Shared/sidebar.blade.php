@@ -256,60 +256,58 @@
                                     Student Short List </a>
                             </li>
                             <li>
+                                <a href="/dashboard/studentListWithPhoto/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Student List With Photo</a>
+                            </li>
+                            <li>
                                 <a href="/dashboard/e_sifLists/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                                     E-SIF List </a>
                             </li>
                             <li>
-                                <a href="/dashboard/studentListWithPhoto/{{ $school_code }}"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
-                                    List With photo</a>
+                                <a href="/dashboard/studentProfile/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Student Proile </a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
-                                    Profile</a>
+                                <a href="/dashboard/religionWiseStudentSummary/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Religion Wise Studetn Summary</a>
+                            </li>
+
+                            <li>
+                                <a href="/dashboard/studentIdCard/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Student ID Card</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">religion_wise_std_summary</a>
+                                <a href="/dashboard/listOfMigrateStudent/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    List Of Migrate Student</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
-                                    ID Card</a>
+                                <a href="/dashboard/admissionSummary/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Admission Summary</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
-                                    of Migrate Student</a>
+                                <a href="/dashboard/classSectionSTdTotal/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Class Section Std Total</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Admission
-                                    Summary</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Class
-                                    Section Std Total</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Prottoyon
-                                    Potro</a>
-                            </li>
-                            <li>
-                                <a href="#"
+                                <a href="/dashboard/transferCertificate/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Transfer
                                     Certificate</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/testimonial/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Testimonial</a>
                             </li>
+                       
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/transferCertificateList/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Transfer
                                     Certificate List</a>
                             </li>
@@ -942,12 +940,6 @@
                     </li>
                 </ul>
             </li>
-
-
-
-
-
-
 
 
             {{-- teacher --}}
