@@ -27,6 +27,9 @@ use App\Http\Controllers\Backend\NEDUBD\SchoolAdminController;
 use App\Http\Controllers\Backend\Student\StudentController;
 use App\Http\Controllers\Backend\Student\UpdateStudentBasicInfoController;
 use App\Http\Controllers\Backend\Student\UpdateStudentClassInfoController;
+use App\Http\Controllers\Backend\Student\StudentProfileUpdateController;
+use App\Http\Controllers\Backend\Student\UploadPhotoController;
+use App\Http\Controllers\Backend\Student\MigrateStudentController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentDetailsController;
 use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
@@ -107,11 +110,15 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/getStudentClassData/{schoolCode}', [UpdateStudentClassInfoController::class, 'getStudentClassData'])->name('getStudentClassData');
     Route::put('/updateStudentClass/{schoolCode}', [UpdateStudentClassInfoController::class, 'updateStudentClass'])->name('updateStudentClass');
     Route::delete('/deleteStudent/{schoolCode}/{ids}', [UpdateStudentClassInfoController::class, 'delete'])->name('deleteStudent');
-
-
-    Route::get('/studentProfileUpdate', [StudentController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
+    //update student profile
+    Route::get('/studentProfileUpdate/{schoolCode}', [StudentProfileUpdateController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
-    Route::get('/uploadStudentPhoto', [StudentController::class, 'uploadStudentPhoto'])->name('uploadStudentPhoto');
+    //upload photo student
+    Route::get('/uploadStudentPhoto/{schoolCode}', [UploadPhotoController::class, 'uploadStudentPhoto'])->name('StudentPhoto');
+    Route::get('/uploadPhoto/{schoolCode}', [UploadPhotoController::class, 'uploadPhoto'])->name('uploadPhoto');
+    //Migrate Student
+    Route::get('/migrateStudent/{schoolCode}', [MigrateStudentController::class, 'migrateStudent'])->name('migrateStudent');
+
     Route::get('/download-demo/{schoolCode}', [UploadExcelFileController::class, 'downloadDemo'])->name('download.demo');
     Route::post('/upload-excel', [UploadExcelFileController::class, 'uploadExcel'])->name('upload.excel');
 
