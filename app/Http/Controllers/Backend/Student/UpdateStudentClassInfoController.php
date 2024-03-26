@@ -51,10 +51,8 @@ class UpdateStudentClassInfoController extends Controller
             ->where('group', $selectedGroupName)
             ->where('section', $selectedSectionName)
             ->where('year', $selectedYear)
-            ->where('session', $selectedSesion)
             ->where('category', $selectedCategory)
             ->where('shift', $selectedShift)
-            ->where('status', $selectedStatus)
             ->get();
         //dd($student);
 
