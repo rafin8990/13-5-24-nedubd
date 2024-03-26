@@ -14,11 +14,11 @@ Exam Mark Setup
             @method('PUT')
         <div class="md:flex my-10 ">
             <div class="mr-5">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class Name :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Class Name :</label>
             </div>
             <div class="mr-10">
                 <select id="countries" name="class_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
 
                         @if ($searchClassData === null)
                         <option disabled selected>Choose a class</option>
@@ -33,11 +33,11 @@ Exam Mark Setup
                     </select>
             </div>
             <div class="mr-5">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Exam Name :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Exam Name :</label>
             </div>
             <div class="mr-10">
                 <select id="countries" name="exam_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
 
                         @if ($searchClassExamName === null)
                                 <option selected>Choose a exam</option>
@@ -52,11 +52,11 @@ Exam Mark Setup
                     </select>
             </div>
             <div class="mr-5">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Year :</label>
             </div>
             <div class="mr-5">
                 <select name="year" id=''
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                         @if ($searchAcademicYearName === null)
                         <option selected>Select Year</option>
                     @elseif($searchAcademicYearName)
@@ -71,7 +71,7 @@ Exam Mark Setup
             </div>
             <div>
                 <button type="submit"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">GET DATA</button>
             </div>
 
         </div>
@@ -81,7 +81,7 @@ Exam Mark Setup
     <div class="flex">
 
         <div class="mr-20" >
-            <div class="grid gap-6 mb-6  md:grid-cols-1 items-center ps-4 border border-blue-200 rounded dark:border-gray-700 mx-20 px-20 py-10">
+            <div class="grid gap-6 mb-6  md:grid-cols-1 items-center ps-4 border border-blue-200 rounded  mx-20 px-20 py-10">
                 <h3>
                     Select SEQUENTIAL 
                     <h3 class="text-rose-700">
@@ -91,20 +91,20 @@ Exam Mark Setup
                 
                 <div>
 
-                    <input id="sequential_exam" type="checkbox" value="Grade-TotalMark-Roll"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Grade-TotalMark-Roll</label>
+                    <input id="sequential_exam" type="checkbox" value="Grade-TotalMark-Roll"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
+                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Grade-TotalMark-Roll</label>
                 </div>
                 <div>
-                    <input id="sequential_exam" type="checkbox" value="TotalMark-Grade-Roll" name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">TotalMark-Grade-Roll</label>
+                    <input id="sequential_exam" type="checkbox" value="TotalMark-Grade-Roll" name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
+                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">TotalMark-Grade-Roll</label>
                 </div>
                 <div>
-                    <input id="sequential_exam" type="checkbox" value="TotalMark-Roll-Grade"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">TotalMark-Roll-Grade</label>
+                    <input id="sequential_exam" type="checkbox" value="TotalMark-Roll-Grade"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
+                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">TotalMark-Roll-Grade</label>
                 </div>
                 <div>
-                    <input id="sequential_exam" type="checkbox" value="Roll-TotalMark-Grade"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Roll-TotalMark-Grade</label>
+                    <input id="sequential_exam" type="checkbox" value="Roll-TotalMark-Grade"  name="sequential_exam" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
+                <label for="sequential_exam" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Roll-TotalMark-Grade</label>
 
                 </div>
                
@@ -134,8 +134,8 @@ Exam Mark Setup
             </h3>
            </div>
          
-        <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+        <table class="w-full text-sm text-left rtl:text-right text-black ">
+            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
                 <tr>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
                         SL
@@ -157,7 +157,7 @@ Exam Mark Setup
                     
                 
                 <tr class=" border-b border-blue-400">
-                    <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
+                    <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap ">
                         {{ $key + 1 }}
                     </th>
                     <td class="px-6 py-4">

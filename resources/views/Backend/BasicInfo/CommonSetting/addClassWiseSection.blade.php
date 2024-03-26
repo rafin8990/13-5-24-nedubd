@@ -16,11 +16,11 @@ SectionData
         @csrf
         <div class="flex my-10 ">
             <div class="mr-5">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class Name :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Class Name :</label>
             </div>
 
             <div class="mr-5">
-                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onchange="saveSelectedValue()">
+                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " onchange="saveSelectedValue()">
                     @if($selectedClassName=== null)
                     <option disabled selected>Choose a class</option>
                     @elseif($selectedClassName )
@@ -33,23 +33,23 @@ SectionData
                 </select>
             </div>
             <div class="hidden">
-                <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School Code 
+                <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">School Code 
                 </label>
                 <input type="text" value="{{$school_code}}" name="school_code" id="last_name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                     placeholder="Enter The Police Station Name" />
             </div>
             <div>
-                <button type="button" onclick="getData()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
+                <button type="button" onclick="getData()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">GET DATA</button>
             </div>
 
         </div>
         <div>
-            <div class="grid gap-6 mb-6 py-5 md:grid-cols-3 items-center ps-4 border border-gray-200 rounded dark:border-gray-700 mx-20">
+            <div class="grid gap-6 mb-6 py-5 md:grid-cols-3 items-center ps-4 border border-gray-200 rounded  mx-20">
                 @foreach($sectionData as $data)
                 <div>
-                    <input id="section_{{ $data->section_name }}" type="checkbox" value="{{ $data->section_name }}" name="section_name" class="section-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label for="section_{{ $data->section_name }}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $data->section_name }}</label>
+                    <input id="section_{{ $data->section_name }}" type="checkbox" value="{{ $data->section_name }}" name="section_name" class="section-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 ">
+                    <label for="section_{{ $data->section_name }}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">{{ $data->section_name }}</label>
                 </div>
                 @endforeach
             </div>
@@ -106,8 +106,8 @@ SectionData
             Class Wise Section Setting
         </h3>
     </div>
-    <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-        <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+    <table class="w-full text-sm text-left rtl:text-right text-black ">
+        <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
             <tr>
                 <th scope="col" class="px-6 py-3 bg-blue-500">
                     SL
@@ -126,7 +126,7 @@ SectionData
         <tbody>
             @foreach($classWiseSectionData as $key=> $data)
             <tr class=" border-b capitalize text-lg">
-                <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
+                <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap ">
                     {{$key + 1}}
                 </th>
                 <td class="px-6 py-4">

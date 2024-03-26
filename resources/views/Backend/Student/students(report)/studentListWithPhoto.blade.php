@@ -92,22 +92,22 @@ Student Information with Image
             </div>
             <div class="">
                 <input id="" type="checkbox" value="" name="father_name" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">With Father's Name</label>
+                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">With Father's Name</label>
                 
             </div>
             <div class="">
-                <input id="" type="checkbox" value="" name="mother_name" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">With Mother's Name</label>
+                <input id="" type="checkbox" value="" name="mother_name" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2  ">
+                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">With Mother's Name</label>
                 
             </div>
             <div class="">
-                <input id="" type="checkbox" value="" name="dob" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">With Date of Birth</label>
+                <input id="" type="checkbox" value="" name="dob" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2  ">
+                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">With Date of Birth</label>
                 
             </div>
             <div class="">
-                <input id="" type="checkbox" value="" name="photo" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">With Photo</label>
+                <input id="" type="checkbox" value="" name="photo" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2  ">
+                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">With Photo</label>
                 
             </div>
            
@@ -115,7 +115,7 @@ Student Information with Image
         <div class="md:flex justify-end mr-10 mt-10">
             <div class="">
                 <button type="button"
-                    class="  text-white bg-rose-600 hover:bg-rose-600 focus:ring-4 focus:ring-rose-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-600 focus:outline-none dark:focus:ring-rose-600">Search
+                    class="  text-white bg-rose-600 hover:bg-rose-600 focus:ring-4 focus:ring-rose-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2   focus:outline-none ">Search
                 </button>
             </div>
            
