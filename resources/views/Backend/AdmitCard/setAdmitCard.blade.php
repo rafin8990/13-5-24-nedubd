@@ -15,10 +15,10 @@ Admit Setup
         @method('PUT')
         <div class="grid md:grid-cols-9 gap-4 my-10 ">
             <div class=" md:flex justify-end">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Class :</label>
             </div>
             <div class="">
-                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="class_name" name="class_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     @if ($selectClassData === null)
                     <option disabled selected>Choose a class</option>
                     @elseif($selectClassData)
@@ -31,10 +31,10 @@ Admit Setup
                 </select>
             </div>
             <div class=" md:flex justify-end">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Group :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Group :</label>
             </div>
             <div class="">
-                <select id="group_name" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="group_name" name="group_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                     @if ($selectGroupData === null)
                     <option disabled selected>Choose a group</option>
                     @elseif($selectGroupData)
@@ -48,10 +48,10 @@ Admit Setup
                 </select>
             </div>
             <div class=" md:flex justify-end">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Exam :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Exam :</label>
             </div>
             <div class="">
-                <select id="class_exam_name" name="class_exam_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="class_exam_name" name="class_exam_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
                     @if ($selectClassExamName === null)
                     <option disabled selected>Choose a exam</option>
@@ -67,10 +67,10 @@ Admit Setup
             </div>
 
             <div class=" md:flex justify-end">
-                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year :</label>
+                <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Year :</label>
             </div>
             <div class="">
-                <select id="year" name="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="year" name="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
                     @if ($selectYear === null)
                     <option disabled selected>Select Year</option>
@@ -84,7 +84,7 @@ Admit Setup
                 </select>
             </div>
             <div>
-                <button type="submit" onclick="submitForm()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET DATA</button>
+                <button type="submit" onclick="submitForm()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">GET DATA</button>
             </div>
         </div>
     </form>
@@ -139,8 +139,8 @@ Admit Setup
     </div>
 
 
-    <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-        <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+    <table class="w-full text-sm text-left rtl:text-right text-black ">
+        <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
             <tr>
                 <th scope="col" class="px-6 py-3 bg-blue-500">
                     SL
@@ -164,7 +164,7 @@ Admit Setup
             @if ($classWiseSubjectData !== null)
             @foreach ($classWiseSubjectData as $key => $data)
             <tr class=" border-b border-blue-400">
-                <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap dark:text-blue-100">
+                <th scope="row" class="px-6 py-4 font-medium  text-black whitespace-nowrap ">
                     {{ $key + 1 }}
                 </th>
                 <td class="px-6 py-4">
@@ -173,12 +173,12 @@ Admit Setup
                 <td class="px-6 py-4">
                     <div class="relative max-w-sm">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                             </svg>
                         </div>
 
-                        <input type="date" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                        <input type="date" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  " placeholder="Select date">
                     </div>
                 </td>
                 <td class="px-6 py-4">
@@ -186,7 +186,7 @@ Admit Setup
                 </td>
 
                 <td class="px-6 py-4 ">
-                    <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <input id="subject_name" type="checkbox" value="{{ $data->subject_name }}" name="subject_name" class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 ">
                     
 
                 </td>
@@ -203,11 +203,11 @@ Admit Setup
     <div class="md:flex justify-center">
 
         <div class="mr-10">
-            <button type="button" onclick="submitForm()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+            <button type="button" onclick="submitForm()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Save</button>
 
         </div>
         <div class="mr-10">
-            <button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
+            <button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Close</button>
         </div>
 
         <div class="ml-32">

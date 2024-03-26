@@ -19,11 +19,11 @@
                 <div class="grid gap-6 mb-6 md:grid-cols-4 mt-2">
                     <div>
                         <div class="mr-5">
-                            <label for="class_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class
+                            <label for="class_name" class="block mb-2 text-sm font-medium text-gray-900 ">Class
                                 Name:</label>
                         </div>
                         <select id="class_name" name="class_name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
 
 
                             @if ($searchClassData === null)
@@ -41,10 +41,10 @@
                     <div>
                         <div class="mr-5">
                             <label for="class_exam_name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Exam Name:</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 ">Exam Name:</label>
                         </div>
                         <select id="class_exam_name" name="class_exam_name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                             @if ($searchClassExamName === null)
                                 <option selected>Choose a exam</option>
                             @elseif($searchClassExamName)
@@ -59,10 +59,10 @@
                     <div>
                         <div class="mr-5">
                             <label for="academic_year_name"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year:</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 ">Year:</label>
                         </div>
                         <select name="academic_year_name" id='date-academic_year_name'
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                             @if ($searchAcademicYearName === null)
                                 <option selected>Select Year</option>
                             @elseif($searchAcademicYearName)
@@ -77,11 +77,11 @@
                     </div>
 
                     <div class="hidden">
-                        <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">School
+                        <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">School
                             Code
                         </label>
                         <input type="text" value="{{ $school_code }}" name="school_code" id="last_name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     "
                             placeholder="" />
                     </div>
 
@@ -89,7 +89,7 @@
                     <div class="flex justify-end">
                        
                         <button type="submit+" 
-                            class="text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Get
+                            class="text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none ">Get
                             Data</button>
 
                     </div>
@@ -102,7 +102,7 @@
         @csrf
             <div>
                 <div
-                    class="grid gap-6 mb-6 py-5 md:grid-cols-1 items-center ps-4 border border-gray-200 rounded dark:border-gray-700 mx-20">
+                    class="grid gap-6 mb-6 py-5 md:grid-cols-1 items-center ps-4 border border-gray-200 rounded  mx-20">
                     <h3>Select subject</h3>
                     @if($className!=null)
                     <input type="text" class="hidden" value="{{$className}}" name="class_name" id="">
@@ -112,8 +112,8 @@
                     @if($searchClassses->count() > 0)
                     @foreach($searchClassses as $key=> $class)
                     <div>
-                    <input id="bordered-checkbox-1" type="checkbox" value="{{$class->subject_name}}" name="subject[{{$class->subject_name}}]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$class->subject_name}}</label>
+                    <input id="bordered-checkbox-1" type="checkbox" value="{{$class->subject_name}}" name="subject[{{$class->subject_name}}]" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
+                        <label for="bordered-checkbox-1" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">{{$class->subject_name}}</label>
                     </div>
                     @endforeach
                      @endif
@@ -145,8 +145,8 @@
                         EXAM WISE MARK SETTING
                     </h3>
                 </div>
-                <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-                    <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+                <table class="w-full text-sm text-left rtl:text-right text-black ">
+                    <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
                         <th scope="col" class="px-4 py-3 bg-blue-500">
                             SL
                         </th>
@@ -205,16 +205,16 @@
             <div class="md:flex justify-center">
                 <div class="mr-10">
                     <a
-                        class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Mark
+                        class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">Mark
                         Config View</a>
                 </div>
                 <div class="mr-10">
                     <button type="submit"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">Save</button>
                 </div>
                 <div class="mr-10">
                     <a href="/dashboard"
-                        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</a>
+                        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Close</a>
                 </div>
 <!-- 
                 <div class="ml-32">
