@@ -31,9 +31,7 @@ Add School Admin
             class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus: peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
     </div>
     <div class="grid md:grid-cols-2 md:gap-6">
-       
         <div class="relative z-0 w-full group">
-
                 <select onchange="setSchoolCode()" id="schoolName"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                     <option>Select School</option>
@@ -43,9 +41,9 @@ Add School Admin
                 </select>
 
             </div>
-        <div class="hidden z-0 w-full group">
-<input name="school_name" id="school_name" type="text">
-
+            
+            <div class="hidden z-0 w-full group">
+                <input name="school_name" id="school_name" type="text">
             </div>
         <div class="relative z-0 w-full mb-5 group">
             <input readOnly type="text" name="school_code" id="school_code"
@@ -106,3 +104,4 @@ Add School Admin
         School.value=schoolName;
     }
 </script>
+

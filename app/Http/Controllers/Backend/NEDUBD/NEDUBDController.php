@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class NEDUBDController extends Controller
 {
-    public function addAdmin()
+    public function addAdmin($school_code)
     {
         $admins=Admin::all();
 
@@ -50,6 +50,7 @@ class NEDUBDController extends Controller
             $Admin->password = Hash::make($request->input('password'));
             $Admin->role = $request->input('role');
             $Admin->phone_number = $request->input('phone_number');
+            $Admin->school_code = 'nedubd';
             $Admin->save();
             return redirect('/dashboard/addAdmin')->with('success', 'Admin Sucessfully  created.');
 
