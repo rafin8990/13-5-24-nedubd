@@ -80,7 +80,7 @@ class UploadExcelFileController extends Controller
             }
             
             $student = new Student();
-            $student->first_name = $studentData[2];
+            $student->name = $studentData[2];
             $student->student_roll = $studentData[1];
             $student->group = $studentData[3];
             $student->category = $studentData[4];
@@ -89,13 +89,14 @@ class UploadExcelFileController extends Controller
             $student->religious = $studentData[7];
             $student->father_name = $studentData[8];
             $student->mother_name = $studentData[9];
-            $student->father_mobile = $studentData[10];
-            $student->last_name = $studentData['last_name']?? null;
+            $student->mobile_no = $studentData[10];
+            $student->nedubd_student_id = $this->generateUniqueStudentId();
             $student->nationality = $studentData['nationality']?? null;
             $student->blood_group = $studentData['blood_group']?? null;
             $student->session = $studentData['session']?? null;
             $student->image = $studentData['image']?? null;
             $student->father_occupation = $studentData['father_occupation']?? null;
+            $student->father_mobile = $studentData['father_mobile']?? null;
             $student->father_nid= $studentData['father_nid	']?? null;
             $student->father_birth_date	= $studentData['father_birth_date']?? null;
             $student->mother_number	= $studentData['mother_number']?? null;
@@ -132,6 +133,7 @@ class UploadExcelFileController extends Controller
             $student->shift = $request->input('shift')?? null;
             $student->category = $request->input('category')?? null;
             $student->year = $request->input('year')?? null;
+            $student->status = $studentData['status']?? 'active';
             $student->student_id = $studentId;
             $student->save();
         }
@@ -147,20 +149,20 @@ class UploadExcelFileController extends Controller
         $newId = 1;
     
         if ($lastStudent) {
-            $lastId = intval(substr($lastStudent->student_id, -4));
+            $lastId = intval(substr($lastStudent->nedubd_student_id, -4));
             $newId = $lastId + 1;
         }
     
         $newStudentId = 'STU' . $currentYear . str_pad($newId, 4, '0', STR_PAD_LEFT);
     
         // Check if the generated ID already exists
-        $existingStudent = Student::where('student_id', $newStudentId)->first();
+        $existingStudent = Student::where('nedubd_student_id', $newStudentId)->first();
         if ($existingStudent) {
             // If it exists, increment the ID until a unique one is found
             do {
                 $newId++;
                 $newStudentId = 'STU' . $currentYear . str_pad($newId, 4, '0', STR_PAD_LEFT);
-                $existingStudent = Student::where('student_id', $newStudentId)->first();
+                $existingStudent = Student::where('nedubd_student_id', $newStudentId)->first();
             } while ($existingStudent);
         }
     

@@ -10,10 +10,11 @@ class Student extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'name',
         'birth_date',
         'student_roll',
+        'student_id',
+        'nedubd_student_id',
         'class_name',
         'group',
         'section',
@@ -28,6 +29,7 @@ class Student extends Model
         'status',
         'image',
         'admission_date',
+        'mobile_no',
         'father_name',
         'father_mobile',
         'father_occupation',
@@ -62,6 +64,7 @@ class Student extends Model
         'school_code',
         'action',
         'role',
+        
     ];
 
     protected $table="students";

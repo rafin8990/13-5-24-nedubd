@@ -31,37 +31,11 @@ Exam Marks
                         </select>
                     </div>
 
-                </div>
-                <!-- Group -->
-                <div class="col-span-1">
-                    <div class="">
-                        <label for="class" class="text-gray-700">Group:</label>
-                        <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-                            <option disabled selected value="">Select</option>
-                            @foreach($groupData as $data)
-                            <option value="{{ $data->group_name }}">{{ $data->group_name }}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
-                <!-- Section -->
-                <div class="col-span-1">
-                    <div class="">
-                        <label for="class" class="text-gray-700">Section:</label>
-                        <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
 
-                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-                            <option disabled selected value="">Select</option>
-                            @foreach($sectionData as $data)
-                            <option value="{{ $data->section_name }}">{{ $data->section_name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
                 <!-- Shift -->
                 <div class="col-span-1">
                     <div class="">
@@ -141,14 +115,61 @@ Exam Marks
                     </div>
                 </div>
 
+
             </div>
-        </div>
-    </div>
+
 
 </div>
 
 
 <hr>
+
+
+<table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
+            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+                <tr>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        SL
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Student Name
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        Student ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Class
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        Roll
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Subject
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        T-1 = 25/00
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        CQ = 100/00
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        T. Marks
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Grade
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        GPA
+                    </th>   
+                </tr>
+            </thead>
+            <tbody>
+                
+
+
+
+            </tbody>
+        </table>
 
 <div class="mt-5">
 
@@ -159,6 +180,7 @@ Exam Marks
                 <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Print Mark Page</button>
                
             </div>
+
             <div class=" flex justify-between gap-5">
 
                 <input class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="submit" value="Save">
@@ -172,4 +194,31 @@ Exam Marks
 
 </div>
 
+
+
+<script>
+    
+    document.getElementById('generateExcelForm').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        console.log(this.action);
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: {
+                'X-CSRF-Token': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.blob()) 
+        .then(blob => {
+            const url = window.URL.createObjectURL(new Blob([blob]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'table.xlsx'); 
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
 @endsection

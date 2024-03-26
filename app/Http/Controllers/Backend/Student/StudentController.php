@@ -19,7 +19,7 @@ class StudentController extends Controller
     public function AddStudentForm($schoolCode)
     {
         // $school_code=100;
-        $studentId= $this->generateStudentId();
+        $studentId= $this->generateUniqueStudentId();
         $classes=AddClass::where("action", "approved")->where("school_code",$schoolCode)->get();
         $sections=AddSection::where("action", "approved")->where("school_code",$schoolCode)->get();
         $groups=AddGroup::where("action", "approved")->where("school_code",$schoolCode)->get();
@@ -33,135 +33,27 @@ class StudentController extends Controller
     public function addStudent(Request $request)
     {
 
-        $this->validate($request, [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'birth_date' => 'required|string',
-            'student_roll' => 'required|string',
-            'Class_name' => 'required|string',
-            'group' => 'required|string',
-            'section' => 'required|string',
-            'shift' => 'required|string',
-            'category' => 'required|string',
-            
-            'year' => 'required|string',
-            'gender' => 'required|string',
-            'religious' => 'required|string',
-            'nationality' => 'required|string',
-            'blood_group' => 'required|string',
-            'session' => 'required|string',
-            'status' => 'required|string|in:active,in active',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'admission_date' => 'required|string',
-            'father_name' => 'required|string',
-            'father_mobile' => 'required|string',
-            'father_occupation' => 'required|string',
-            'father_nid' => 'required|string',
-            'father_birth_date' => 'required|string',
-            'mother_name' => 'required|string',
-            'mother_number' => 'required|string',
-            'mother_occupation' => 'required|string',
-            'mother_nid' => 'required|string',
-            'mother_birth_date' => 'required|string',
-            'mother_income' => 'required|string',
-            'present_village' => 'required|string',
-            'present_post_office' => 'required|string',
-            'present_country' => 'required|string',
-            'present_zip_code' => 'required|string',
-            'present_district' => 'required|string',
-            'present_police_station' => 'required|string',
-            'parmanent_village' => 'required|string',
-            'parmanent_post_office' => 'required|string',
-            'parmanent_country' => 'required|string',
-            'parmanent_zip_code' => 'required|string',
-            'parmanent_district' => 'required|string',
-            'parmanent_police_station' => 'required|string',
-            'guardian_name' => 'required|string',
-            'guardian_address' => 'required|string',
-            'last_school_name' => 'required|string',
-            'last_class_name' => 'required|string',
-            'last_result' => 'required|string',
-            'last_passing_year' => 'required|string',
-            'email' => 'required|string',
-            'password' => 'required|string|min:4',
-        ]);
-
-        // dd($request);
-        // $this->validate($request, [
-        //     'first_name' => 'string',
-        //     'last_name' => 'string',
-        //     'birth_date' => 'string',
-        //     'student_roll' => 'string',
-        //     'Class_name' => 'string',
-        //     'group' => 'string',
-        //     'section' => 'string',
-        //     'shift' => 'string',
-        //     'category' => 'string',
-        //     'year' => 'string',
-        //     'gender' => 'string',
-        //     'religious' => 'string',
-        //     'nationality' => 'string',
-        //     'blood_group' => 'string',
-        //     'session' => 'string',
-        //     'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        //     'admission_date' => 'string',
-        //     'father_name' => 'string',
-        //     'father_mobile' => 'string',
-        //     'father_occupation' => 'string',
-        //     'father_nid' => 'string',
-        //     'father_birth_date' => 'string',
-        //     'mother_name' => 'string',
-        //     'mother_number' => 'string',
-        //     'mother_occupation' => 'string',
-        //     'mother_nid' => 'string',
-        //     'mother_birth_date' => 'string',
-        //     'mother_income' => 'string',
-        //     'present_village' => 'string',
-        //     'present_post_office' => 'string',
-        //     'present_country' => 'string',
-        //     'present_zip_code' => 'string',
-        //     'present_district' => 'string',
-        //     'present_police_station' => 'string',
-        //     'parmanent_village' => 'string',
-        //     'parmanent_post_office' => 'string',
-        //     'parmanent_country' => 'string',
-        //     'parmanent_zip_code' => 'string',
-        //     'parmanent_district' => 'string',
-        //     'parmanent_police_station' => 'string',
-        //     'guardian_name' => 'string',
-        //     'guardian_address' => 'string',
-        //     'last_school_name' => 'string',
-        //     'last_class_name' => 'string',
-        //     'last_result' => 'string',
-        //     'last_passing_year' => 'string',
-        //     'email' => 'string',
-        //     'password' => 'string|min:4',
-        // ]);
-
-       
         if ($request->hasFile('image')) {
             $request->validate([
                 'image' => 'file|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
 
-            $imagePath = $request->file('image')->move('images/student', $request->input('student_id') . '_' . uniqid() . '.' . $request->file('image')->extension());
+            $imagePath = $request->file('image')->move('images/student', $request->input('nedubd_student_id') . '_' . uniqid() . '.' . $request->file('image')->extension());
             $studentImage = 'images/student/' . basename($imagePath);
 
             // dd($studentImage);
 
-            $isExist = Student::where('student_id', $request->input('student_id'))
+            $isExist = Student::where('nedubd_student_id', $request->input('nedubd_student_id'))
                 ->exists();
 
             if ($isExist) {
-                // return back()->with('error', 'Failed. This Student already exists');
                 return redirect()->back()->with('error', 'This Student already exists.');
             }
 
-
             $student = new Student();
-            $student->first_name = $request->input('first_name');
-            $student->last_name = $request->input('last_name');
+            $student->name = $request->input('name');
             $student->birth_date = $request->input('birth_date');
+            $student->nedubd_student_id = $request->input('nedubd_student_id');
             $student->student_id = $request->input('student_id');
             $student->student_roll = $request->input('student_roll');
             $student->Class_name = $request->input('Class_name');
@@ -178,6 +70,7 @@ class StudentController extends Controller
             $student->status = $request->input('status');
             $student->image = $studentImage;
             $student->admission_date = $request->input('admission_date');
+            $student->mobile_no = $request->input('mobile_no');
             $student->father_name = $request->input('father_name');
             $student->father_mobile = $request->input('father_mobile');
             $student->father_occupation = $request->input('father_occupation');
@@ -208,27 +101,38 @@ class StudentController extends Controller
             $student->last_result = $request->input('last_result');
             $student->last_passing_year = $request->input('last_passing_year');
             $student->email = $request->input('email');
-            $student->password = Hash::make($request->input('password'));
+            $student->password = Hash::make($request->input('password') ?? '12345');
             $student->role = 'student';
             $student->school_code = $request->input('school_code');
             $student->action = $request->input('action');
             $student->save();
-            // return redirect('/dashboard/add-student/{schoolCode}')->with('success', 'Student Sucessfully  created.');
             return redirect()->back()->with('success', 'student added successfully!');
         }
     }
 
-    private function generateStudentId()
+    private function generateUniqueStudentId()
     {
         $lastStudent = Student::latest()->first();
+        $currentYear = date('Y');
+        $newId = 1;
+    
         if ($lastStudent) {
-            $lastId = intval(substr($lastStudent->student_id, -4));
+            $lastId = intval(substr($lastStudent->nedubd_student_id, -4));
             $newId = $lastId + 1;
-        } else {
-            $newId = 1;
         }
-
-        return 'STU' . date('Y') . str_pad($newId, 4, '0', STR_PAD_LEFT);
+    
+        $newStudentId = 'STU' . $currentYear . str_pad($newId, 4, '0', STR_PAD_LEFT);
+    
+        $existingStudent = Student::where('nedubd_student_id', $newStudentId)->first();
+        if ($existingStudent) {
+            do {
+                $newId++;
+                $newStudentId = 'STU' . $currentYear . str_pad($newId, 4, '0', STR_PAD_LEFT);
+                $existingStudent = Student::where('nedubd_student_id', $newStudentId)->first();
+            } while ($existingStudent);
+        }
+    
+        return $newStudentId;
     }
 
 

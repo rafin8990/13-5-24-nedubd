@@ -136,11 +136,8 @@
                             <input id="select-all-checkbox" type="checkbox" value=""
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            First Name
-                        </th>
                         <th scope="col" class="px-6 py-3 bg-blue-500">
-                            Last Name
+                             Name
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Student ID
@@ -180,13 +177,9 @@
                                 <td scope="col" class="px-6 py-3">
                                     <input type="checkbox" value="{{ $data->id }}" name="id[]" class="row-checkbox"
                                         data-row-index="{{ $key }}">
-
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $data->first_name }}
                                 </td>
                                 <td class="px-6 py-4 ">
-                                    {{ $data->last_name }}
+                                    {{ $data->name }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $data->student_id }}

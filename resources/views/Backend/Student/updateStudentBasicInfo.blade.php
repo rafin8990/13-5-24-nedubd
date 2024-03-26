@@ -104,134 +104,120 @@
         <form action="{{ route('updateStudent', $school_code) }}" method="POST">
             @csrf
             @method('PUT')
-            <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-                <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
-                    <tr>
-                        <th scope="col" class="px-6 py-3 bg-blue-500">
-                            <input type="checkbox" id="select-all-checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Roll
-                        </th>
-                        <th scope="col" class="px-6 py-3 bg-blue-500">
-                            Student ID
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            First Name
-                        </th>
-                        <th scope="col" class="px-6 py-3 bg-blue-500">
-                            Last Name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Father Name
-                        </th>
-                        <th scope="col" class="px-6 py-3  bg-blue-500">
-                            Father NID
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Mother Name
-                        </th>
-                        <th scope="col" class="px-6 py-3  bg-blue-500">
-                            Mother NID
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            BirthDate
-                        </th>
-                        <th scope="col" class="px-6 py-3  bg-blue-500">
-                            Gender
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Religion
-                        </th>
-                        <th scope="col" class="px-6 py-3  bg-blue-500">
-                            BG
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Mobile
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @if ($student !== null)
-                        {{-- @dd($student) <!-- Add this line to inspect the value --> --}}
-                        @foreach ($student as $key => $data)
-                            <tr>
-                                <td scope="col" class="px-6 py-3">
-                                    <input type="checkbox" value="{{ $data->id }}" name="id[]" class="row-checkbox"
-                                        data-row-index="{{ $key }}">
-
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->student_roll }}</span>
-                                    <input type="text" name="student_roll[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->student_roll }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->student_id }}</span>
-                                    <input type="text" name="student_id[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->student_id }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->first_name }} </span>
-                                    <input type="text" name="first_name[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->first_name }} ">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->last_name }}</span>
-                                    <input type="text" name="last_name[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->last_name }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->father_name }}</span>
-                                    <input type="text" name="father_name[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->father_name }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->father_nid }}</span>
-                                    <input type="text" name="father_nid[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->father_nid }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->mother_name }}</span>
-                                    <input type="text" name="mother_name[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value=" {{ $data->mother_name }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->mother_nid }}</span>
-                                    <input type="text" name="mother_nid[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->mother_nid }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->birth_date }}</span>
-                                    <input type="text" name="birth_date[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->birth_date }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data"> {{ $data->gender }}</span>
-                                    <input type="text" name="gender[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value=" {{ $data->gender }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->religious }}</span>
-                                    <input type="text" name="religious[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value=" {{ $data->religious }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->blood_group }}</span>
-                                    <input type="text" name="blood_group[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->blood_group }}">
-                                </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->father_mobile }}</span>
-                                    <input type="text" name="father_mobile[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value=" {{ $data->father_mobile }}">
-                                </td>
-
-                            </tr>
-                        @endforeach
-                    @endif
+        <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
+            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+                <tr>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        <input type="checkbox" id="select-all-checkbox"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Roll
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        Student ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        First Name
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        Last Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Father Name
+                    </th>
+                    <th scope="col" class="px-6 py-3  bg-blue-500">
+                        Father NID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Mother Name
+                    </th>
+                    <th scope="col" class="px-6 py-3  bg-blue-500">
+                        Mother NID	
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        BirthDate
+                    </th>
+                    <th scope="col" class="px-6 py-3  bg-blue-500">
+                        Gender
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Religion
+                    </th>
+                    <th scope="col" class="px-6 py-3  bg-blue-500">
+                        BG
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Mobile
+                    </th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @if ($student !== null)
+                {{-- @dd($student) <!-- Add this line to inspect the value --> --}}
+                @foreach ($student as $key=>$data)
+                <tr>
+                    <td scope="col" class="px-6 py-3">
+                          <input type="checkbox" value="{{ $data->id }}" name="id[]" class="row-checkbox" data-row-index="{{$key}}">
+                          
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->student_roll}}</span>
+                        <input type="text" name="student_roll[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->student_roll}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->student_id}}</span>
+                        <input type="text" name="student_id[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->student_id}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->first_name}} </span>
+                        <input type="text" name="first_name[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->first_name}} ">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->last_name}}</span>
+                        <input type="text" name="last_name[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->last_name}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->father_name}}</span>
+                        <input type="text" name="father_name[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->father_name}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->father_nid}}</span>
+                        <input type="text" name="father_nid[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->father_nid}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->mother_name}}</span>
+                        <input type="text" name="mother_name[{{ $data->id }}]" class="form-control row-input hidden" value=" {{$data->mother_name}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->mother_nid}}</span>
+                        <input type="text" name="mother_nid[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->mother_nid}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->birth_date}}</span>
+                        <input type="text" name="birth_date[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->birth_date}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data"> {{$data->gender}}</span>
+                        <input type="text" name="gender[{{ $data->id }}]" class="form-control row-input hidden" value=" {{$data->gender}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->religious}}</span>
+                        <input type="text" name="religious[{{ $data->id }}]" class="form-control row-input hidden" value=" {{$data->religious}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->blood_group}}</span>
+                        <input type="text" name="blood_group[{{ $data->id }}]" class="form-control row-input hidden" value="{{$data->blood_group}}">
+                    </td>
+                    <td scope="col" class="px-6 py-3">
+                        <span class="row-data">{{$data->father_mobile}}</span>
+                        <input type="text" name="father_mobile[{{ $data->id }}]" class="form-control row-input hidden" value=" {{$data->father_mobile}}">
+                    </td>
+                    
+                </tr>
+                @endforeach
+                @endif
 
 
                 </tbody>
