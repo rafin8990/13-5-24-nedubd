@@ -1,6 +1,6 @@
 @extends('Backend.app')
 @section('title')
-Exam Mark Setup Grand Final
+    Exam Mark Setup Grand Final
 @endsection
 @section('Dashboard')
 @include('/Message/message')
@@ -222,27 +222,11 @@ Exam Mark Setup Grand Final
 </div>
 
 
+        <div class="ml-32">
+            <h3>Total Percent = <div class="border-2"></div>
+            </h3>
+        </div>
+
+    </div>
+</form>
 @endsection
-{{-- 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const selectAllCheckbox = document.getElementById("select-all-checkbox");
-        const individualCheckboxes = document.querySelectorAll("input[type='checkbox']:not(#select-all-checkbox)");
-    
-        selectAllCheckbox.addEventListener("change", function() {
-            individualCheckboxes.forEach(checkbox => {
-                checkbox.checked = selectAllCheckbox.checked;
-            });
-        });
-    
-        individualCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener("change", function() {
-                if (!this.checked) {
-                    selectAllCheckbox.checked = false;
-                } else {
-                    selectAllCheckbox.checked = [...individualCheckboxes].every(checkbox => checkbox.checked);
-                }
-            });
-        });
-    });
-    </script> --}}

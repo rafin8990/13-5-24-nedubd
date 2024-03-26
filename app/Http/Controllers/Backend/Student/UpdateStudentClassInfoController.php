@@ -51,10 +51,8 @@ class UpdateStudentClassInfoController extends Controller
             ->where('group', $selectedGroupName)
             ->where('section', $selectedSectionName)
             ->where('year', $selectedYear)
-            ->where('session', $selectedSesion)
             ->where('category', $selectedCategory)
             ->where('shift', $selectedShift)
-            ->where('status', $selectedStatus)
             ->get();
         //dd($student);
 
@@ -111,7 +109,9 @@ class UpdateStudentClassInfoController extends Controller
     public function delete( $schoolCode, $ids)
     {
        
-
+if (!$ids){
+    return redirect()->route('studentClassInfo', $schoolCode)->with('error', 'No students selected for deletion');
+}
         // Perform the deletion logic
         if (!empty($ids)) {
             $idArray = explode(',', $ids);

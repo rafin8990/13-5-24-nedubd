@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\CommonSetting\AddSubjectSetupController;
 
 use App\Http\Controllers\Backend\CommonSetting\InstituteInfoController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
+use App\Http\Controllers\Backend\ExamResult\MarkInputController;
 use App\Http\Controllers\Backend\ExamSetting\FourthSubjectController;
 use App\Http\Controllers\Backend\NEDUBD\NEDUBDController;
 use App\Http\Controllers\Backend\NEDUBD\SchoolAdminController;
@@ -34,6 +35,7 @@ use App\Http\Controllers\Backend\Student\UploadExcelFileController;
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
+use App\Http\Controllers\Backend\ExamResult\ExamProcessController;
 
 use App\Http\Controllers\Backend\ExamSetting\AddGradePointController;
 use App\Http\Controllers\Backend\ExamSetting\AddShortCodeController;
@@ -50,6 +52,7 @@ use App\Http\Controllers\Backend\ExamSetting\ViewExamPublishController;
 use App\Http\Controllers\Backend\ExamSetting\ViewExamMarkSetUpController;
 
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
+use App\Http\Controllers\Backend\GrandFinal\GrandFinalListController;
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
 use App\Http\Controllers\Backend\AdmitCard\SetAdmitCardController;
 use App\Http\Controllers\Backend\AdmitCard\PrintAdmitCardController;
@@ -144,14 +147,11 @@ Route::prefix('dashboard')->group(function () {
 
     // exam-Result --------------------------------------
     Route::get('/exam_marks/{school_code}', [ExamResultController::class, 'exam_marks']);
-    Route::get('/exam_process', [ExamResultController::class, 'exam_process']);
-    Route::get('/exam_excel', [ExamResultController::class, 'exam_excel']);
-    Route::get('/exam_marks_delete', [ExamResultController::class, 'exam_marks_delete']);
-    Route::get('/exam_sms', [ExamResultController::class, 'exam_sms']);
-
-
-
-
+    Route::get('/exam_process/{schoolCode}', [ExamProcessController::class, 'exam_process']);
+    Route::get('/getStudents/{schoolCode}/{class}/{group}/{section}', [ExamProcessController::class, 'getStudents']);
+    Route::get('/exam_excel/{schoolCode}', [ExamResultController::class, 'exam_excel']);
+    Route::get('/exam_marks_delete/{schoolCode}', [ExamResultController::class, 'exam_marks_delete']);
+    Route::get('/exam_sms/{schoolCode}', [ExamResultController::class, 'exam_sms']);
 
     // exam-report
     Route::get('/progressReport/{schoolCode}', [ReportsExamsReportsController::class, 'progressReport']);
@@ -173,8 +173,10 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/grand_merit_list', [GrandFinalController::class, 'grandMeritList']);
     Route::get('/grand_exam_progress_report', [GrandFinalController::class, 'grandProgressReport']);
     Route::get('/grand_result_pass_fail_percentage', [GrandFinalController::class, 'passFailPercentage']);
-    Route::get('/grand_exam_setup', [GrandFinalController::class, 'setupGrand']);
-
+    Route::get('/grand_exam_setup/{schoolCode}', [GrandFinalController::class, 'setupGrand']);
+    Route::get('/grandFinalList/{schoolCode}', [GrandFinalListController::class, 'grandFinalList'])->name('grandFinalList');
+    Route::post('/viewGrandFinal/{schoolCode}', [GrandFinalListController::class, 'viewGrandFinal'])->name('viewGrandFinal');
+    
 
     // teacher routes
     Route::get('/teachers/{schoolCode}', [TeacherController::class, 'teachers'])->name('teachers');

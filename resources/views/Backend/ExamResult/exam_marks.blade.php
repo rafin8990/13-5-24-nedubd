@@ -8,12 +8,12 @@ Exam Marks
 @include('/Message/message')
 
 <div>
-    <h1 class="text-4xl font font-bold my-5 mx-5 text-accent">Exam Marks</h1>
+    <h1 class="">Exam Marks</h1>
 </div>
 
 
 
-<div>
+<div class="mx-10 mt-5">
     <div class=" mb-3">
         <div class="card-body p-2">
             <div class="grid grid-cols-11 gap-4">
@@ -31,27 +31,14 @@ Exam Marks
                         </select>
                     </div>
 
-                </div>
-                <!-- Group -->
-                <div class="col-span-1">
-                    <div class="">
-                        <label for="class" class="text-gray-700">Group:</label>
-                        <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
+
 
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
 
-                            <option disabled selected value="">Select</option>
-                            @foreach($groupData as $data)
-                            <option value="{{ $data->group_name }}">{{ $data->group_name }}</option>
-                            @endforeach
-                        </select>
+
                     </div>
                 </div>
-                <!-- Section -->
-                <div class="col-span-1">
-                    <div class="">
-                        <label for="class" class="text-gray-700">Section:</label>
-                        <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
+
 
                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
 
@@ -62,6 +49,7 @@ Exam Marks
                         </select>
                     </div>
                 </div>
+
                 <!-- Shift -->
                 <div class="col-span-1">
                     <div class="">
@@ -130,38 +118,93 @@ Exam Marks
 
                 <div class="col-span-1">
                     <div class="">
+
                         <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  mt-5" onclick="exam_marks_input_search()">Find</button>
+
                     </div>
                 </div>
                 <div class="col-span-3">
-                    <div class="">
-                        <input type="file" class="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+                    <div class="md:mt-5">
+                        <input type="file" class="file-input border file-input-primary w-full max-w-xs" />
                         <br>
+
                         <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  mt-3" onclick="exam_marks_input_search()">Upload</button>
+
                     </div>
                 </div>
 
+
             </div>
-        </div>
-    </div>
+
 
 </div>
 
 
 <hr>
 
+
+<table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
+            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+                <tr>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        SL
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Student Name
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        Student ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Class
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        Roll
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Subject
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        T-1 = 25/00
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        CQ = 100/00
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        T. Marks
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Grade
+                    </th>
+                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                        GPA
+                    </th>   
+                </tr>
+            </thead>
+            <tbody>
+                
+
+
+
+            </tbody>
+        </table>
+
 <div class="mt-5">
 
     <div class="w-full ">
         <div class="flex justify-around">
             <div class=" flex justify-between gap-5 ">
-                <button class="btn btn-info text-white w-full mb-2 md:mb-0" target="_blank">Blank Page</button>
-                <button class="btn btn-info text-white w-full print" target="_blank">Print Mark Page</button>
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Blank Page</button>
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Print Mark Page</button>
+               
             </div>
+
             <div class=" flex justify-between gap-5">
+
 
                 <input class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none " type="submit" value="Save">
                 <a class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 " href="/dashboard"><i class="fa fa-times"></i> Close</a>
+
             </div>
 
         </div>
@@ -171,4 +214,31 @@ Exam Marks
 
 </div>
 
+
+
+<script>
+    
+    document.getElementById('generateExcelForm').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        console.log(this.action);
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: {
+                'X-CSRF-Token': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.blob()) 
+        .then(blob => {
+            const url = window.URL.createObjectURL(new Blob([blob]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'table.xlsx'); 
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
 @endsection

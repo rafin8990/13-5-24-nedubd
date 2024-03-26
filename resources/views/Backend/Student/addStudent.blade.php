@@ -18,6 +18,7 @@ Add Student
             </div>
             <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4">
                 <div>
+
                     <label for="student_id" class="block mb-2 text-sm font-medium text-gray-900 ">Student ID</label>
                     <input type="text" readOnly value="{{$studentId}}" name="student_id" id="student_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
@@ -36,6 +37,7 @@ Add Student
                     <input type="text" name="last_name" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
                         placeholder="Enter The Last Name" />
+
                 </div>
                 <div>
                     <label for="company" class="block mb-2 text-sm font-medium text-gray-900 ">Birth
@@ -51,8 +53,10 @@ Add Student
                             </svg>
                         </div>
                         <input datepicker datepicker-autohide type="text" name="birth_date"
+
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5   "
                             placeholder="Select date">
+
                     </div>
 
 
@@ -69,7 +73,9 @@ Add Student
                     <label for="classess" class="block mb-2 text-sm font-medium text-gray-900 ">Class
                         Name</label>
                     <select id="classess" name="Class_name"
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+
                         <option selected>Choose a class</option>
                         @foreach($classes as $class)
                         <option >{{$class->class_name}}</option>
@@ -80,7 +86,9 @@ Add Student
                 <div>
                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 ">group</label>
                     <select id="countries" name="group"
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+
                         <option selected>Choose a group</option>
                         @foreach($groups as $group)
                         <option >{{$group->group_name}}</option>
@@ -93,7 +101,9 @@ Add Student
                     <label for="website"
                         class="block mb-2 text-sm font-medium text-gray-900 ">section</label>
                     <select id="countries" name="section"
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+
                         <option selected>Choose a Section</option>
                         @foreach($sections as $section)
                         <option >{{$section->section_name}}</option>
@@ -104,7 +114,9 @@ Add Student
                 <div>
                     <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 ">shift</label>
                     <select id="countries" name="shift"
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+
                         <option selected>Choose a Shift</option>
                         @foreach($shifts as $shift)
                         <option >{{$shift->shift_name}}</option>
@@ -116,7 +128,9 @@ Add Student
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">category (Day
                         care & general)</label>
                     <select id="countries" name="category"
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+
                         <option disabled selected>Choose a Category</option>
                         @foreach($categories as $category)
                         <option >{{$category->category_name}}</option>
@@ -128,7 +142,9 @@ Add Student
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Academic
                         Year</label>
                     <select name="year" 
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+
                         <option>Select Year</option>
                         @foreach($years as $year)
                         <option >{{$year->academic_year_name}}</option>
@@ -140,7 +156,9 @@ Add Student
                     <label for="confirm_password"
                         class="block mb-2 text-sm font-medium text-gray-900 ">Gender</label>
                     <select id="countries" name="gender"
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+
                         <option selected>Choose gender</option>
                         <option >Male</option>
                         <option >Female</option>
@@ -150,7 +168,9 @@ Add Student
                     <label for="email"
                         class="block mb-2 text-sm font-medium text-gray-900 ">Religious</label>
                     <select id="countries" name="religious"
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+
                         <option selected>Choose Religious</option>
                         <option >Islam</option>
                         <option >Hindu</option>
@@ -212,8 +232,10 @@ Add Student
                     <label class="block mb-2 text-sm font-medium text-gray-900 " for="user_avatar">Upload
                         Picture</label>
                     <input name="image"
+
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none  "
                         aria-describedby="user_avatar_help" id="user_avatar" type="file">
+
 
                 </div>
                 <div class="mb-6">
@@ -230,6 +252,15 @@ Add Student
                         <input datepicker datepicker-autohide type="text" name="admission_date"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5   "
                             placeholder="Select date">
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="mobile_no"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mobile No</label>
+                    <div class="relative max-w-sm">
+                        <input  type="text" name="mobile_no"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Mobile no">
                     </div>
                 </div>
             </div>
