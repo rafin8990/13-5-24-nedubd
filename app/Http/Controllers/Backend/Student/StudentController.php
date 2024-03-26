@@ -139,11 +139,7 @@ class StudentController extends Controller
     public function updateStudentBasicInfo(){
         return view('Backend.Student.updateStudentBasicInfo');
     }
-    public function studentProfileUpdate(){
-        return view('Backend.Student.studentProfileUpdate');
-    }
+  
     
-    public function uploadStudentPhoto(){
-        return view('Backend.Student.uploadPhoto');
-    }
+   
 }
