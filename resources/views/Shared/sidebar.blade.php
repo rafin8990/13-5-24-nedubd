@@ -111,17 +111,17 @@
                 </button>
                 <ul id="dropdown-nedubd" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="/dashboard/addAdmin"
+                        <a href="/dashboard/addAdmin/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Create
                             New Member</a>
                     </li>
                     <li>
-                        <a href="/dashboard/addSchoolInfo"
+                        <a href="/dashboard/addSchoolInfo/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                             School Info</a>
                     </li>
                     <li>
-                        <a href="/dashboard/addSchoolAdmin"
+                        <a href="/dashboard/addSchoolAdmin/{{$school_code}}"
                             class="flex items-center w-full p-2 text-white  transition  rounded-lg pl-11 group ">Add
                             School Admin</a>
                     </li>

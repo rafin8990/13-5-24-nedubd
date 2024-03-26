@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('role');
             $table->string('phone_number');
-            $table->string('school_code');
+            $table->string('school_code')->default('nedubd');
             $table->string('password');
             $table->timestamps();
         });
