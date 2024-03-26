@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('name')->nullable();
             $table->string('birth_date')->nullable();
-            $table->string('student_id')->unique();
+            $table->string('nedubd_student_id')->unique();
+            $table->string('student_id')->nullable();
             $table->string('student_roll')->nullable();
             $table->string('Class_name')->nullable();
             $table->string('group')->nullable();
@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('session')->nullable();
             $table->string('image')->nullable();
             $table->string('admission_date')->nullable();
+            $table->string('mobile_no')->nullable();
             $table->string('father_name')->nullable();
             $table->string('father_mobile')->nullable();
             $table->string('father_occupation')->nullable();
@@ -60,7 +61,7 @@ return new class extends Migration
             $table->string('last_class_name')->nullable();
             $table->string('last_result')->nullable();
             $table->string('last_passing_year')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->string('password')->nullable();
             $table->string('school_code')->nullable();
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->nullable()->default('pending');
