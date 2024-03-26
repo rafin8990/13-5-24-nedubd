@@ -62,6 +62,15 @@ use App\Http\Controllers\Backend\AdmitCard\ListAdminInstructionController;
 use App\Http\Controllers\Backend\AdmitCard\ExamBlankSheetController;
 use App\Http\Controllers\Backend\StudentAttendence\AttendenceController;
 use App\Http\Controllers\Backend\ReportStudentAttendence\ReportStudentAttendenceController;
+use App\Http\Controllers\Backend\Student\StudentReports\admissionSummaryController;
+use App\Http\Controllers\Backend\Student\StudentReports\classSectionSTdTotalController;
+use App\Http\Controllers\Backend\Student\StudentReports\listOfMigrateStudentListController;
+use App\Http\Controllers\Backend\Student\StudentReports\religionWiseStudentSummaryController;
+use App\Http\Controllers\Backend\Student\StudentReports\studentIdCardController;
+use App\Http\Controllers\Backend\Student\StudentReports\StudentProfileController;
+use App\Http\Controllers\Backend\Student\StudentReports\testimonialController;
+use App\Http\Controllers\Backend\Student\StudentReports\trasnferCertificateController;
+use App\Http\Controllers\Backend\Student\StudentReports\trasnferCertificateListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -119,10 +128,31 @@ Route::prefix('dashboard')->group(function () {
 
 
     // Student Report
-    Route::get('/studentDetails/{schoolCode}', [StudentDetailsController::class, 'studentDetails']);
-    Route::get('/studentShortList/{schoolCode}', [addShortListController::class, 'studentShortList']);
-    Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto']);
+    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary']);
+
+    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal']);
+
     Route::get('/e_sifLists/{schoolCode}', [EsifListController::class, 'e_sifList']);
+
+    Route::get('/listOfMigrateStudent/{schoolCode}', [listOfMigrateStudentListController::class, 'listOfMigrateStudent']);
+
+    Route::get('/religionWiseStudentSummary/{schoolCode}', [religionWiseStudentSummaryController::class, 'religion_wise_student_summary']);
+
+    Route::get('/studentDetails/{schoolCode}', [StudentDetailsController::class, 'studentDetails']);
+
+    Route::get('/studentIdCard/{schoolCode}', [studentIdCardController::class, 'student_id_card']);
+
+    Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto']);
+
+    Route::get('/studentProfile/{schoolCode}', [StudentProfileController::class, 'student_profile']);
+
+    Route::get('/studentShortList/{schoolCode}', [addShortListController::class, 'studentShortList']);
+
+    Route::get('/testimonial/{schoolCode}', [testimonialController::class, 'testimonial']);
+
+    Route::get('/transferCertificate/{schoolCode}', [trasnferCertificateController::class, 'trasnfer_certificate']);
+
+    Route::get('/transferCertificateList/{schoolCode}', [trasnferCertificateListController::class, 'trasnfer_certificate_list']);
 
 
 
@@ -176,7 +206,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/grand_exam_setup/{schoolCode}', [GrandFinalController::class, 'setupGrand']);
     Route::get('/grandFinalList/{schoolCode}', [GrandFinalListController::class, 'grandFinalList'])->name('grandFinalList');
     Route::post('/viewGrandFinal/{schoolCode}', [GrandFinalListController::class, 'viewGrandFinal'])->name('viewGrandFinal');
-    
+
 
     // teacher routes
     Route::get('/teachers/{schoolCode}', [TeacherController::class, 'teachers'])->name('teachers');
