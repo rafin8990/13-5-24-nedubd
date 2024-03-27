@@ -32,7 +32,7 @@ class StudentController extends Controller
 
     public function addStudent(Request $request)
     {
-
+// dd($request);
         if ($request->hasFile('image')) {
             $request->validate([
                 'image' => 'file|mimes:jpeg,png,jpg,gif|max:2048',
@@ -54,7 +54,7 @@ class StudentController extends Controller
             $student->name = $request->input('name');
             $student->birth_date = $request->input('birth_date');
             $student->nedubd_student_id = $request->input('nedubd_student_id');
-            $student->student_id = $request->input('student_id');
+            $student->student_id = $request->input('student_id')?? $this->generateUniqueStudentId();
             $student->student_roll = $request->input('student_roll');
             $student->Class_name = $request->input('Class_name');
             $student->group = $request->input('group');
@@ -106,7 +106,11 @@ class StudentController extends Controller
             $student->school_code = $request->input('school_code');
             $student->action = $request->input('action');
             $student->save();
-            return redirect()->back()->with('success', 'student added successfully!');
+            if($student){
+                return redirect()->back()->with('success', 'student added successfully!');
+            }else{
+                return redirect()->back()->with('error', 'student can not added successfully!');
+            }
         }
     }
 

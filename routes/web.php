@@ -183,7 +183,7 @@ Route::prefix('dashboard')->group(function () {
 
 
     // exam-Result --------------------------------------
-    Route::get('/exam_marks/{school_code}', [ExamResultController::class, 'exam_marks']);
+    Route::get('/marksInput/{schoolCode}', [MarkInputController::class, 'exam_marks']);
     Route::get('/exam_process/{schoolCode}', [ExamProcessController::class, 'exam_process']);
     Route::get('/getStudents/{schoolCode}/{class}/{group}/{section}', [ExamProcessController::class, 'getStudents']);
     Route::get('/exam_excel/{schoolCode}', [ExamResultController::class, 'exam_excel']);

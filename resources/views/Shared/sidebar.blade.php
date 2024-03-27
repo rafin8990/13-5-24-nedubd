@@ -411,7 +411,7 @@
                 </button>
                 <ul id="dropdown-exam" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="/dashboard/exam_marks/{{ $school_code }}"
+                        <a href="/dashboard/marksInput/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Marks Input </a>
                     </li>
@@ -524,57 +524,57 @@
 
                         <ul id="dropdown-report" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="/dashboard/progressReport"
+                                <a href="/dashboard/progressReport/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Single Mark Sheet </a>
                             </li>
                             <li>
-                                <a href="/dashboard/grandFinal"
+                                <a href="/dashboard/grandFinal/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Update
                                     Grand Final</a>
                             </li>
                             <li>
-                                <a href="/dashboard/tebular-format1"
+                                <a href="/dashboard/tebular-format1/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Student
                                     Tabulation [Format-1]</a>
                             </li>
                             <li>
-                                <a href="/dashboard/tebular-format2"
+                                <a href="/dashboard/tebular-format2/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                                     Tabulation [Format-2]</a>
                             </li>
                             <li>
-                                <a href="/dashboard/tebular-format3"
+                                <a href="/dashboard/tebular-format3/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                                     Tabulation [Format-3]</a>
                             </li>
                             <li>
-                                <a href="/dashboard/meritList"
+                                <a href="/dashboard/meritList/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                                     Merit List</a>
                             </li>
                             <li>
-                                <a href="/dashboard/meritClass"
+                                <a href="/dashboard/meritClass/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                                     Merit List</a>
                             </li>
                             <li>
-                                <a href="/dashboard/exam-failList"
+                                <a href="/dashboard/exam-failList/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                                     Fail List Summary</a>
                             </li>
                             <li>
-                                <a href="/dashboard/unassignedSubject"
+                                <a href="/dashboard/unassignedSubject/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                                     List of Unassigned Subject</a>
                             </li>
                             <li>
-                                <a href="/dashboard/passFailPercentage"
+                                <a href="/dashboard/passFailPercentage/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                                     List of Pass/Fail Percentage</a>
                             </li>
                             <li>
-                                <a href="/dashboard/gradeInfo"
+                                <a href="/dashboard/gradeInfo/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
                                     List of Grade Info</a>
                             </li>

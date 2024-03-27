@@ -19,25 +19,23 @@ Add Student
             <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4">
                 <div>
 
-                    <label for="student_id" class="block mb-2 text-sm font-medium text-gray-900 ">Student ID</label>
-                    <input type="text" readOnly value="{{$studentId}}" name="student_id" id="student_id"
+                    <label for="nedubd_student_id" class="block mb-2 text-sm font-medium text-gray-900 ">NEDUBD Student ID</label>
+                    <input type="text" readOnly value="{{$studentId}}" name="nedubd_student_id" id="nedubd_student_id"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
-                        placeholder="Enter The First Name" />
+                        placeholder="" />
                 </div>
                 <div>
-                    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 ">First
-                        name</label>
-                    <input type="text" name="first_name" id="first_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
-                        placeholder="Enter The First Name" />
-                </div>
-                <div>
-                    <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 ">Last
-                        name</label>
-                    <input type="text" name="last_name" id="last_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
-                        placeholder="Enter The Last Name" />
 
+                    <label for="student_id" class="block mb-2 text-sm font-medium text-gray-900 ">Institute Student ID</label>
+                    <input type="text" name="student_id" id="student_id"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+                        placeholder="student_id" />
+                </div>
+                <div>
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
+                    <input type="text" name="name" id="name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
+                        placeholder="Enter The  Name" />
                 </div>
                 <div>
                     <label for="company" class="block mb-2 text-sm font-medium text-gray-900 ">Birth
