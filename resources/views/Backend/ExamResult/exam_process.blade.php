@@ -132,7 +132,7 @@
                 <div class="flex justify-between items-center mb-5">
                     <label for="class" class="text-gray-700 font-bold w-[150px] mr-2">GROUP:</label>
                     <select id="group-select"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                         <option disabled selected value="">Select</option>
                         @foreach ($groupData as $data)
                             <option value="{{ $data->group_name }}">{{ $data->group_name }}</option>
@@ -143,7 +143,7 @@
                 <div class="flex justify-between items-center mb-5">
                     <label for="class" class="text-gray-700 font-bold w-[150px] mr-2">SECTION:</label>
                     <select id="section-select"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                         <option disabled selected value="">Select</option>
                         @foreach ($sectionData as $data)
                             <option value="{{ $data->section_name }}">{{ $data->section_name }}</option>
@@ -155,14 +155,14 @@
                 <div class="flex justify-between items-center mb-5">
                     <label for="student" class="text-gray-700 font-bold w-[150px] mr-2">STUDENT ROLL:</label>
                     <select id="student-select"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                         <option disabled selected value="">Select</option>
                     </select>
                 </div>
                 <div class="flex justify-between items-center mb-5">
                     <label for="class" class="text-gray-700 font-bold w-[150px] mr-2">EXAM NAME:</label>
                     <select
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                         <option disabled selected value="">Select</option>
                         @foreach ($classExamData as $data)
                             <option value="{{ $data->class_exam_name }}">{{ $data->class_exam_name }}</option>
@@ -173,7 +173,7 @@
                 <div class="flex justify-between items-center mb-5">
                     <label for="class" class="text-gray-700 font-bold w-[150px] mr-2">MERIT STATUS:</label>
                     <select
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                         <option disabled selected value="">Select</option>
                         <option value="1">Section Wise</option>
                         <option value="2">Class Wise</option>
@@ -183,7 +183,7 @@
                 <div class="flex justify-between items-center mb-5">
                     <label for="class" class="text-gray-700 font-bold w-[150px] mr-2">YEAR:</label>
                     <select
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                         <option disabled selected value="">Select</option>
                         @foreach ($academicYearData as $data)
                             <option value="{{ $data->academic_year_name }}">{{ $data->academic_year_name }}</option>
@@ -198,7 +198,7 @@
                 <div class="row form-group">
                     <div class="offset-md-8 col-md-2" style="">
                         <button style="width: 100%;"
-                            class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  "
                             id="feesCollectSaved">Print</button>
                     </div>
                 </div>
