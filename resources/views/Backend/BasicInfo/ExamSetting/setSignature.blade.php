@@ -15,12 +15,12 @@
             @csrf
             <div class="md:flex my-10 ">
                 <div class="mr-5">
-                    <label for="session" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Report NAME
+                    <label for="session" class="block mb-2 text-sm font-medium text-gray-900 ">Report NAME
                         :</label>
                 </div>
                 <div class="mr-10">
                     <select id="countries" name="report_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                         @if($selectedReport === null)
                     <option disabled selected>Choose a report</option>
                     @elseif($selectedReport )
@@ -34,7 +34,7 @@
 
                 <div>
                     <button type="submit" id="getDataButton"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">GET
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">GET
                         DATA
                     </button>
                 </div>
@@ -51,7 +51,7 @@
             <form id="dataForm" method="POST" action="{{ route('store.signature', $school_code) }}">
                 @csrf
                 <table id="data" class="w-full text-sm text-left rtl:text-right text-black">
-                    <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+                    <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
                         <tr>
                             <th scope="col" class="px-6 py-3 bg-blue-500">SL</th>
                             <th scope="col" class="px-6 py-3">SIGNATURE NAME</th>
@@ -88,10 +88,10 @@
                 </table>
                 <div class="md:flex justify-center my-10">
                     <div class="mr-10">
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">Save</button>
                     </div>
                     <div class="mr-10">
-                        <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Close</button>
+                        <button type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Close</button>
                     </div>
                 </div>
             </form>

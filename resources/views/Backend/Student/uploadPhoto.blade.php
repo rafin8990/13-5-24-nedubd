@@ -8,10 +8,12 @@
             Student Image Upload
         </h3>
     </div>
+
     <div class="text-center font-bold text-2xl mt-10">
         <h3>Student Information</h3>
     </div>
 <div class="mx-10 border mt-10">
+
 
 
     <div class="grid md:grid-cols-2 mx-32 md:mt-10">
@@ -28,6 +30,8 @@
                 class="px-10  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                 Submit
             </button>
+
+
 
         </div>
 

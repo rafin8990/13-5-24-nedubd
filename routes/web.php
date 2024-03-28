@@ -64,7 +64,17 @@ use App\Http\Controllers\Backend\AdmitCard\PrintSeatPlanController;
 use App\Http\Controllers\Backend\AdmitCard\AddAdmitInstructionController;
 use App\Http\Controllers\Backend\AdmitCard\ListAdminInstructionController;
 use App\Http\Controllers\Backend\AdmitCard\ExamBlankSheetController;
-
+use App\Http\Controllers\Backend\StudentAttendence\AttendenceController;
+use App\Http\Controllers\Backend\ReportStudentAttendence\ReportStudentAttendenceController;
+use App\Http\Controllers\Backend\Student\StudentReports\admissionSummaryController;
+use App\Http\Controllers\Backend\Student\StudentReports\classSectionSTdTotalController;
+use App\Http\Controllers\Backend\Student\StudentReports\listOfMigrateStudentListController;
+use App\Http\Controllers\Backend\Student\StudentReports\religionWiseStudentSummaryController;
+use App\Http\Controllers\Backend\Student\StudentReports\studentIdCardController;
+use App\Http\Controllers\Backend\Student\StudentReports\StudentProfileController;
+use App\Http\Controllers\Backend\Student\StudentReports\testimonialController;
+use App\Http\Controllers\Backend\Student\StudentReports\trasnferCertificateController;
+use App\Http\Controllers\Backend\Student\StudentReports\trasnferCertificateListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,9 +101,9 @@ Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-use
 Route::prefix('dashboard')->group(function () {
     Route::get('/{schoolCode}', [DashboardController::class, 'index'])->name('dashboard.index');
     // NEDUBD Module 
-    Route::get('/addAdmin', [NEDUBDController::class, 'addAdmin']);
+    Route::get('/addAdmin/{schoolCode}', [NEDUBDController::class, 'addAdmin']);
     Route::post('/create-admin', [NEDUBDController::class, 'createAdmin'])->name('admin.add');
-    Route::get('/addSchoolInfo', [NEDUBDController::class, 'addSchoolInfo']);
+    Route::get('/addSchoolInfo/{schoolCode}', [NEDUBDController::class, 'addSchoolInfo']);
     Route::post('/create-schoolInfo', [NEDUBDController::class, 'createSchoolInfo'])->name('schoolInfo.add');
 
 
@@ -129,18 +139,53 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/upload-excel', [UploadExcelFileController::class, 'uploadExcel'])->name('upload.excel');
 
 
-    
+
 
     // Student Report
-    Route::get('/studentDetails',[StudentDetailsController::class,'studentDetails']);
-    Route::get('/studentShortList',[addShortListController::class,'studentShortList']);
-    Route::get('/studentListWithPhoto',[StudentListWithPhotoController::class,'studentListWithPhoto']);
-    Route::get('/e_sifLists',[EsifListController::class,'e_sifList']);
+    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary']);
+
+    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal']);
+
+    Route::get('/e_sifLists/{schoolCode}', [EsifListController::class, 'e_sifList']);
+
+    Route::get('/listOfMigrateStudent/{schoolCode}', [listOfMigrateStudentListController::class, 'listOfMigrateStudent']);
+
+    Route::get('/religionWiseStudentSummary/{schoolCode}', [religionWiseStudentSummaryController::class, 'religion_wise_student_summary']);
+
+    Route::get('/studentDetails/{schoolCode}', [StudentDetailsController::class, 'studentDetails']);
+
+    Route::get('/studentIdCard/{schoolCode}', [studentIdCardController::class, 'student_id_card']);
+
+    Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto']);
+
+    Route::get('/studentProfile/{schoolCode}', [StudentProfileController::class, 'student_profile']);
+
+    Route::get('/studentShortList/{schoolCode}', [addShortListController::class, 'studentShortList']);
+
+    Route::get('/testimonial/{schoolCode}', [testimonialController::class, 'testimonial']);
+
+    Route::get('/transferCertificate/{schoolCode}', [trasnferCertificateController::class, 'trasnfer_certificate']);
+
+    Route::get('/transferCertificateList/{schoolCode}', [trasnferCertificateListController::class, 'trasnfer_certificate_list']);
 
 
 
+    // sayem - student attendence 
+    Route::get('/addStudentAttendence/{schoolCode}', [AttendenceController::class, "add_student_attence"])->name('addStudentAttendence');
+    Route::get('/studentLeaveForm/{schoolCode}', [AttendenceController::class, "student_leave_form"])->name('studentLeaveForm');
+    Route::get('/addLeaveType/{schoolCode}', [AttendenceController::class, "add_leave_type"])->name('addLeaveType');
+
+    // report Student Attendence 
+    Route::get('/attendenceReport/{schoolCode}', [ReportStudentAttendenceController::class, "attendence_report"])->name('attendenceReport');
 
 
+    Route::get('/attendenceBlankReport/{schoolCode}', [ReportStudentAttendenceController::class, "attendence_blank_report"])->name('attendenceBlankReport');
+
+    Route::get('/dateWiseReport/{schoolCode}', [ReportStudentAttendenceController::class, "date_wise_report"])->name('dateWiseReport');
+
+    Route::get('/listOfLeaveReport/{schoolCode}', [ReportStudentAttendenceController::class, "list_of_leave_report"])->name('listOfLeaveReport');
+
+    Route::get('/setionWiseSection/{schoolCode}', [ReportStudentAttendenceController::class, "section_wise_report"])->name('setionWiseSection');
 
 
 
@@ -153,17 +198,17 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/exam_sms/{schoolCode}', [ExamResultController::class, 'exam_sms']);
 
     // exam-report
-    Route::get('/progressReport', [ReportsExamsReportsController::class, 'progressReport']);
-    Route::get('/exam-failList', [ReportsExamsReportsController::class, 'failList1']);
-    Route::get('/tebular-format1', [ReportsExamsReportsController::class, 'format1']);
-    Route::get('/tebular-format2', [ReportsExamsReportsController::class, 'format2']);
-    Route::get('/tebular-format3', [ReportsExamsReportsController::class, 'format3']);
-    Route::get('/gradeInfo', [ReportsExamsReportsController::class, 'gradeInfo']);
-    Route::get('/grandFinal', [ReportsExamsReportsController::class, 'grandFinal']);
-    Route::get('/meritClass', [ReportsExamsReportsController::class, 'meritClass']);
-    Route::get('/meritList', [ReportsExamsReportsController::class, 'meritList']);
-    Route::get('/passFailPercentage', [ReportsExamsReportsController::class, 'passFailPercentage']);
-    Route::get('/unassignedSubject', [ReportsExamsReportsController::class, 'unassignedSubject']);
+    Route::get('/progressReport/{schoolCode}', [ReportsExamsReportsController::class, 'progressReport']);
+    Route::get('/exam-failList/{schoolCode}', [ReportsExamsReportsController::class, 'failList1']);
+    Route::get('/tebular-format1/{schoolCode}', [ReportsExamsReportsController::class, 'format1']);
+    Route::get('/tebular-format2/{schoolCode}', [ReportsExamsReportsController::class, 'format2']);
+    Route::get('/tebular-format3/{schoolCode}', [ReportsExamsReportsController::class, 'format3']);
+    Route::get('/gradeInfo/{schoolCode}', [ReportsExamsReportsController::class, 'gradeInfo']);
+    Route::get('/grandFinal/{schoolCode}', [ReportsExamsReportsController::class, 'grandFinal']);
+    Route::get('/meritClass/{schoolCode}', [ReportsExamsReportsController::class, 'meritClass']);
+    Route::get('/meritList/{schoolCode}', [ReportsExamsReportsController::class, 'meritList']);
+    Route::get('/passFailPercentage/{schoolCode}', [ReportsExamsReportsController::class, 'passFailPercentage']);
+    Route::get('/unassignedSubject/{schoolCode}', [ReportsExamsReportsController::class, 'unassignedSubject']);
 
 
     //grand final
@@ -175,7 +220,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/grand_exam_setup/{schoolCode}', [GrandFinalController::class, 'setupGrand']);
     Route::get('/grandFinalList/{schoolCode}', [GrandFinalListController::class, 'grandFinalList'])->name('grandFinalList');
     Route::post('/viewGrandFinal/{schoolCode}', [GrandFinalListController::class, 'viewGrandFinal'])->name('viewGrandFinal');
-    
+
 
     // teacher routes
     Route::get('/teachers/{schoolCode}', [TeacherController::class, 'teachers'])->name('teachers');
@@ -272,7 +317,7 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/addSubjectSetup/{schoolCode}', [AddSubjectSetupController::class, 'store_add_subject_setup'])->name('store.subject.setup');
     Route::put('/updateSubjectSetup/{schoolCode}', [AddSubjectSetupController::class, 'updateSubjectSetup'])->name('update.setSubject');
 
-  
+
     // Common Setting End .............................................................................................................
 
 
@@ -287,11 +332,11 @@ Route::prefix('dashboard')->group(function () {
     // Grade Setup
     Route::get('/setGradeSetup/{schoolCode}', [GradeSetupController::class, 'grade_setup'])->name('set.grade.setup');
     // Route::delete('/delete_set_grade_setup/{id}', [GradeSetupController::class, 'delete_set_grade_setup'])->name('delete.set.grade.setup');
-    Route::post('/addGradeSetup/{schoolCode}',[GradeSetupController::class,'addGradeSetup'])->name('addGradeSetup');
-    Route::post('/saveGradeSetup/{schoolCode}',[GradeSetupController::class,'saveGradeSetup'])->name('saveGradeSetup');
+    Route::post('/addGradeSetup/{schoolCode}', [GradeSetupController::class, 'addGradeSetup'])->name('addGradeSetup');
+    Route::post('/saveGradeSetup/{schoolCode}', [GradeSetupController::class, 'saveGradeSetup'])->name('saveGradeSetup');
 
-    Route::get('/viewGradeSetup/{schoolCode}',[GradeSetupController::class,'viewGradeSetup'])->name('viewGradeSetup');
-    Route::post('/getGradeSetup/{schoolCode}',[GradeSetupController::class,'viewGradeSetupData'])->name('getGradeSetup');
+    Route::get('/viewGradeSetup/{schoolCode}', [GradeSetupController::class, 'viewGradeSetup'])->name('viewGradeSetup');
+    Route::post('/getGradeSetup/{schoolCode}', [GradeSetupController::class, 'viewGradeSetupData'])->name('getGradeSetup');
 
     // Add Short Code
     Route::get('/addShortCode/{schoolCode}', [AddShortCodeController::class, 'add_short_code'])->name('add.short.code');
@@ -306,16 +351,16 @@ Route::prefix('dashboard')->group(function () {
     // set exam marks
     Route::get('/getExamMarks/{schoolCode}', [SetExamMarksController::class, 'store_exam_marks'])->name('get.exam.marks');
     Route::post('/setExamMarks/{schoolCode}', [SetExamMarksController::class, 'set_exam_marks'])->name('store.set.exam.marks');
-    Route::post('/saveSetExamMarks/{schoolCode}',[SetExamMarksController::class,'saveSetExamMarks'])->name('saveSetExamMarks');
+    Route::post('/saveSetExamMarks/{schoolCode}', [SetExamMarksController::class, 'saveSetExamMarks'])->name('saveSetExamMarks');
 
     //forth subject
 
-    Route::get('/setForthSubject/{school_code}',[FourthSubjectController::class,'fourthSubject'])->name('set.Forth.Subject');
-    Route::post('/addFourthSubject',[FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
-    Route::post('/saveFourthSubject', [FourthSubjectController::class,'saveFourthSubject'])->name('saveFourthSubject');
-    Route::get('/viewFourthSubject', [FourthSubjectController::class,'viewFourthSubject'])->name('viewFourthSubject');
-    Route::post('/getFourthSubject', [FourthSubjectController::class,'getFourthSubject'])->name('getFourthSubject');
-    Route::delete('/deleteFourthSubject/{id}',[FourthSubjectController::class,'deleteFourthSubject'])->name('deleteFourthSubject');
+    Route::get('/setForthSubject/{school_code}', [FourthSubjectController::class, 'fourthSubject'])->name('set.Forth.Subject');
+    Route::post('/addFourthSubject', [FourthSubjectController::class, 'addFourthSubject'])->name('addFourthSubject');
+    Route::post('/saveFourthSubject', [FourthSubjectController::class, 'saveFourthSubject'])->name('saveFourthSubject');
+    Route::get('/viewFourthSubject', [FourthSubjectController::class, 'viewFourthSubject'])->name('viewFourthSubject');
+    Route::post('/getFourthSubject', [FourthSubjectController::class, 'getFourthSubject'])->name('getFourthSubject');
+    Route::delete('/deleteFourthSubject/{id}', [FourthSubjectController::class, 'deleteFourthSubject'])->name('deleteFourthSubject');
 
 
 
@@ -323,15 +368,15 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/AddReportName/{schoolCode}', [AddReportNameController::class, 'add_report'])->name('add.report');
     Route::put('/AddReportName/{schoolCode}', [AddReportNameController::class, 'store_add_report'])->name('store.report');
     Route::delete('/delete_report/{id}', [AddReportNameController::class, 'delete_add_report'])->name('delete.report');
-    
-    
+
+
     //Add Signature Name
     Route::get('/AddSignature/{schoolCode}', [AddSignatureController::class, 'AddSignature']);
     Route::put('/AddSignature/{schoolCode}', [AddSignatureController::class, 'store_add_sign'])->name('store.sign');
     Route::delete('/delete_sign/{id}', [AddSignatureController::class, 'delete_add_sign'])->name('delete.sign');
-    
+
     Route::get('/listSignature/{schoolCode}', [AddSignatureController::class, 'listSignature']);
-    
+
     //Add Exam Publish 
     Route::get('/ExamPublish/{schoolCode}', [ExamPublishController::class, 'ExamPublish']);
     Route::post('/addExamPublish/{schoolCode}', [ExamPublishController::class, 'store_add_exam_publish'])->name('store.exampublish');
@@ -340,15 +385,15 @@ Route::prefix('dashboard')->group(function () {
 
     //Add Grand Final
     Route::get('/GrandFinal/{schoolCode}', [SetGrandFinalController::class, 'GrandFinal'])->name('grandfinal');
-    Route::put('/store_grandFinal/{schoolCode}', [SetGrandFinalController::class,'store_grandFinal'])->name('store.grandfinal');
+    Route::put('/store_grandFinal/{schoolCode}', [SetGrandFinalController::class, 'store_grandFinal'])->name('store.grandfinal');
     Route::get('/viewExamMarkSetup/{schoolCode}', [ViewExamMarkSetUpController::class, 'viewExamMarkSetup']);
-    
+
     //sequential wise exam 
     Route::get('/SequentialExam/{schoolCode}', [SequentialWiseExamController::class, 'SequentialExam'])->name('sequentialExam');
     Route::put('/SetExamMarks/{schoolCode}', [SequentialWiseExamController::class, 'store_sequential_exam'])->name('store.sequentialExam');
     //sequential wise exam 
     Route::get('/SetExamMarks', [SetExamMarksController::class, 'SetExamMarks']);
-   
+
     //Set signature
     Route::get('/SetSignature/{schoolCode}', [SetSignatureController::class, 'SetSignature'])->name('view.signature');
     Route::post('/SetSignature/{schoolCode}', [SetSignatureController::class, 'processForm'])->name('store.signature');
@@ -378,7 +423,7 @@ Route::prefix('dashboard')->group(function () {
     // Route::put('/addSubjectSetup', [AddSubjectSetupController::class, 'store_add_subject_setup'])->name('store.subject.setup');
     // Route::put('/updateSubjectSetup', [AddSubjectSetupController::class, 'updateSubjectSetup'])->name('update.setSubject');
 
-  
+
     //Set Admit Card
     Route::group(['prefix' => '/', 'namespace' => 'admitCard'], function () {
         Route::get('/setAdmitCard/{schoolCode}', [AddAdmitCardController::class, "add_admit_card"])->name('add.admit.card');
@@ -392,7 +437,7 @@ Route::prefix('dashboard')->group(function () {
     //Print Admit Card
     Route::get('/printAdmitCard/{schoolCode}', [PrintAdmitCardController::class, "printAdmitCard"])->name('printAdmitCard');
     Route::post('/downloadAdmit/{schoolCode}', [PrintAdmitCardController::class, "downloadAdmit"])->name('downloadAdmitCard');
-    
+
 
     //Print Seat Plan
     Route::get('/printSeatPlan/{schoolCode}', [PrintSeatPlanController::class, "printSeatPlan"]);
@@ -409,6 +454,6 @@ Route::prefix('dashboard')->group(function () {
 
 
     // NEDUBD Add School Admin 
-    Route::get('/addSchoolAdmin', [SchoolAdminController::class, "addSchoolAdmin"]);
+    Route::get('/addSchoolAdmin/{schoolCode}', [SchoolAdminController::class, "addSchoolAdmin"]);
     Route::post('/createSchoolAdmin', [SchoolAdminController::class, "createSchoolAdmin"])->name('schoolAdmin.create');
 });

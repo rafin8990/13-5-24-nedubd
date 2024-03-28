@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class StudentDetailsController extends Controller
 {
-    public function StudentDetails(){
+    public function StudentDetails($school_code){
         return view('Backend.Student.students(report).studentDetails');
     }
 }

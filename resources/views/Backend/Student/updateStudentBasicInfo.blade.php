@@ -11,6 +11,7 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
         <div class="md:flex justify-end  ">
+
             <a href="{{ route('updateStudentBasicInfo', $school_code) }}">
                 <button type="button"
                     class=" text-white bg-rose-700 hover:bg-rose-600 focus:ring-4 focus:ring-rose-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-rose-600 dark:hover:bg-rose-700 focus:outline-none dark:focus:ring-rose-800">Basic
@@ -33,6 +34,7 @@
                     class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add
                     Student
                 </button>
+
         </div>
         <hr>
         <form action="{{ route('getData', $school_code) }}" method="GET">
@@ -41,7 +43,7 @@
             <div class="grid gap-6 mb-6 md:grid-cols-7 mt-2">
                 <div>
                     <select id="class_name" name="class_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a class</option>
                         @foreach ($classData as $data)
                             <option value="{{ $data->class_name }}">{{ $data->class_name }}</option>
@@ -51,7 +53,7 @@
 
                 <div>
                     <select id="group" name="group"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a Group</option>
                         @foreach ($groupData as $group)
                             <option value="{{ $group->group_name }}">{{ $group->group_name }}</option>
@@ -60,7 +62,7 @@
                 </div>
                 <div>
                     <select id="section" name="section"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a section</option>
                         @foreach ($sectionData as $section)
                             <option value="{{ $section->section_name }}">{{ $section->section_name }}</option>
@@ -69,7 +71,7 @@
                 </div>
                 <div>
                     <select id="section" name="year"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a year</option>
                         @foreach ($Year as $year)
                             <option value="{{ $year->academic_year_name }}">{{ $year->academic_year_name }}</option>
@@ -81,7 +83,9 @@
 
                 <div>
                     <select id="" name="session"
+
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+
                         <option selected>Choose a session</option>
                         @foreach ($Session as $session)
                             <option value="{{ $session->academic_session_name }}">{{ $session->academic_session_name }}
@@ -91,13 +95,15 @@
                 </div>
 
                 <input type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                     placeholder="" />
 
                 <div class="flex justify-end">
                     <button type="submit"
+
                         class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search
                     </button>
+
                 </div>
             </div>
         </form>
@@ -105,12 +111,12 @@
         <form action="{{ route('updateStudent', $school_code) }}" method="POST">
             @csrf
             @method('PUT')
-        <table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+        <table class="w-full text-sm text-left rtl:text-right text-black ">
+            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
                 <tr>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
                         <input type="checkbox" id="select-all-checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 ">
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Roll
@@ -221,6 +227,7 @@
                 @endif
 
 
+
                 </tbody>
             </table>
             <div class="flex justify-end mt-5">
@@ -229,6 +236,7 @@
                 </button>
             </div>
         </form>
+
     </div>
 
 
