@@ -130,7 +130,19 @@ Route::prefix('dashboard')->group(function () {
     // Student Report
     Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary']);
 
-    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal']);
+
+    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal'])->name('classSectionSTdTotal');
+    
+    Route::get('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf']);
+
+    Route::post('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf'])->name('classSectionStdTotalDownload');
+
+
+
+
+
+
+
 
     Route::get('/e_sifLists/{schoolCode}', [EsifListController::class, 'e_sifList']);
 
