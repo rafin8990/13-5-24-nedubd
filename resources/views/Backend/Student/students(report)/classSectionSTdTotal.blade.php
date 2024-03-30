@@ -27,7 +27,7 @@
                             <option selected>Select Class</option>
                             @foreach($classes as $class)
                                 <option >{{$class->class_name}}</option>
-                                @endforeach
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Select Year</option>
                             @foreach($year as $year)
-                    <option >{{$year->academic_year_name}}</option>
-                    @endforeach
+                                  <option >{{$year->academic_year_name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

@@ -33,12 +33,9 @@ class classSectionSTdTotalController extends Controller
         $Data = Student::where('school_code', $schoolCode)
             ->where('class_name', $class)
             ->get();
-        // dd($Data);
         if ($Data->isEmpty()) {
             return redirect()->route('classSectionSTdTotal', $schoolCode)->with('error', 'Student data not found.');
-            // return redirect()->route('classSectionSTdTotal', $schoolCode)->with('error', 'Student data not found.');
         }
-
         return view('Backend.Student.students(report).classSectionSTdTotalDownload', compact('Data', 'year', 'schoolCode'));
     }
 
@@ -50,12 +47,9 @@ class classSectionSTdTotalController extends Controller
     {
         $class = $request->class;
         $year = $request->year;
-
         $Data = Student::where('school_code', $schoolCode)
             ->where('class_name', $class)
             ->get();
-        dd($Data);
-
         $pdf = PDF::loadView('Backend.Student.students(report).pdf.classSectionStdtotalDownload', compact('Data', 'year',));
         return $pdf->download('student-class-section-total.pdf');
     }

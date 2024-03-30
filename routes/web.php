@@ -128,7 +128,15 @@ Route::prefix('dashboard')->group(function () {
 
 
     // Student Report
-    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary']);
+    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary'])->name('admissionSummary');
+
+    Route::get('/admissionSummaryDownload/{schoolCode}', [admissionSummaryController::class, 'addmission_summary_download']);
+
+    Route::post('/admissionSummaryDownload/{schoolCode}', [admissionSummaryController::class, 'downloadAdmisionSummaryPdf'])->name('admissionSummaryDownload');
+
+
+
+
 
 
     Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal'])->name('classSectionSTdTotal');
