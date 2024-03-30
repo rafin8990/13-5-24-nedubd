@@ -31,6 +31,7 @@ use App\Http\Controllers\Backend\Student\StudentProfileUpdateController;
 use App\Http\Controllers\Backend\Student\UploadPhotoController;
 use App\Http\Controllers\Backend\Student\MigrateStudentController;
 use App\Http\Controllers\Backend\Student\UpdateStudentController;
+use App\Http\Controllers\Backend\Student\BasicAddStudentController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentDetailsController;
 use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
@@ -123,9 +124,15 @@ Route::prefix('dashboard')->group(function () {
     //update student profile
     Route::get('/studentProfileUpdate/{schoolCode}', [StudentProfileUpdateController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/findData/{schoolCode}', [StudentProfileUpdateController::class, 'findData'])->name('studentData');
+    
+    //Update Student ->Add Student
+    Route::get('/getStudent/{schoolCode}', [BasicAddStudentController::class, 'getStudent'])->name('getStudent');
+    Route::post('/postStudent', [BasicAddStudentController::class,'postStudent'])->name('postStudent');
 
+    
     //update student 
     Route::get('/student_update/{id}/{schoolCode}', [UpdateStudentController::class, 'student_update'])->name('student_update');
+    Route::put('/students/{id}', [UpdateStudentController::class, 'updateStudent'])->name('students.update');
 
     //update student ExcelFile
     Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
@@ -156,7 +163,9 @@ Route::prefix('dashboard')->group(function () {
 
     Route::get('/studentIdCard/{schoolCode}', [studentIdCardController::class, 'student_id_card']);
 
-    Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto']);
+    Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto'])->name('studentListWithPhoto');
+    Route::post('/listStudent', [StudentListWithPhotoController::class,'viewStudentListPhoto'])->name('viewStudentListPhoto');
+
 
     Route::get('/studentProfile/{schoolCode}', [StudentProfileController::class, 'student_profile']);
 

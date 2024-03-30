@@ -3,7 +3,7 @@
 Update Student
 @endsection
 @section('Dashboard')
-@include('Message.message')
+@include('/Message/message')
 <div class="">
     <h3>Update Student </h3>
 </div>
@@ -15,8 +15,9 @@ Update Student
 <div class="mx-10 mt-10">
 
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('students.update', $student->id) }}" method="POST">
         @csrf
+            @method('PUT')
     <div class="font-bold">
                 <h3>Student Information</h3>
             </div>
@@ -73,7 +74,7 @@ Update Student
                         Name</label>
                     <select id="classess" name="Class_name" value="{{$student->Class_name}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option selected>Choose a class</option>
+                        <option selected>{{$student->Class_name}}</option>
                         @foreach($classes as $class)
                         <option >{{$class->class_name}}</option>
                         @endforeach
@@ -84,7 +85,7 @@ Update Student
                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">group</label>
                     <select id="countries" name="group" value="{{$student->group}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option selected>Choose a group</option>
+                        <option selected>{{$student->group}}</option>
                         @foreach($groups as $group)
                         <option >{{$group->group_name}}</option>
                         @endforeach
@@ -97,7 +98,7 @@ Update Student
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">section</label>
                     <select id="countries" name="section" value="{{$student->section}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option selected>Choose a Section</option>
+                        <option selected>{{$student->section}}</option>
                         @foreach($sections as $section)
                         <option >{{$section->section_name}}</option>
                         @endforeach
@@ -108,7 +109,7 @@ Update Student
                     <label for="visitors" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">shift</label>
                     <select id="countries" name="shift" value="{{$student->shift}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option selected>Choose a Shift</option>
+                        <option selected>{{$student->shift}}</option>
                         @foreach($shifts as $shift)
                         <option >{{$shift->shift_name}}</option>
                         @endforeach
@@ -120,7 +121,7 @@ Update Student
                         care & general)</label>
                     <select id="countries" name="category" value="{{$student->category}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option disabled selected>Choose a Category</option>
+                        <option  selected>{{$student->category}}</option>
                         @foreach($categories as $category)
                         <option >{{$category->category_name}}</option>
                         @endforeach
@@ -132,7 +133,7 @@ Update Student
                         Year</label>
                     <select name="year"  value="{{$student->year}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option>Select Year</option>
+                        <option>{{$student->year}}</option>
                         @foreach($years as $year)
                         <option >{{$year->academic_year_name}}</option>
                         @endforeach
@@ -144,7 +145,7 @@ Update Student
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
                     <select id="countries" name="gender" value="{{$student->gender}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option selected>Choose gender</option>
+                        <option selected>{{$student->gender}}</option>
                         <option >Male</option>
                         <option >Female</option>
                     </select>
@@ -154,7 +155,7 @@ Update Student
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Religious</label>
                     <select id="countries" name="religious" value="{{$student->religious}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option selected>Choose Religious</option>
+                        <option selected>{{$student->religious}}</option>
                         <option >Islam</option>
                         <option >Hindu</option>
                         <option >Buddhism</option>
@@ -176,7 +177,7 @@ Update Student
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Blood_group</label>
                     <select id="countries" name="blood_group" value="{{$student->blood_group}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose Blood_group</option>
+                        <option selected>{{$student->blood_group}}</option>
                         <option >A+</option>
                         <option >A-</option>
                         <option >O+</option>
@@ -192,7 +193,7 @@ Update Student
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Session</label>
                     <select id="countries" name="session"  value="{{$student->session}}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Choose Session</option>
+                        <option selected>{{$student->session}}</option>
                         @foreach($sessions as $session)
                         <option >{{$session->academic_session_name}}</option>
                         @endforeach
@@ -202,7 +203,7 @@ Update Student
                     <label for="password"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose Status</label>
                         <select name="status"  value="{{$student->status}}" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <!-- <option selected="">Select status</option> -->
+                            <option selected="">{{$student->status}}</option>
                             <option value="active">Active</option>
                             <option value="in active">In active</option>
 
@@ -214,9 +215,12 @@ Update Student
                 <div class="mb-6">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Upload
                         Picture</label>
-                    <input name="image"
+                    <input name="image" value="{{ $student->image }}"
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                        aria-describedby="user_avatar_help" id="user_avatar" type="file" required>
+                        aria-describedby="user_avatar_help" id="user_avatar" type="file" >
+                        <div>
+                        <img src="{{ asset($student->image) }}" alt="Sign Image" class="w-[100px]"/>
+                        </div>
 
                 </div>
                 <div class="mb-6">
@@ -534,28 +538,8 @@ Update Student
                 </div>
             </div>
 
-            <div class="font-bold">
-                <h3>
-                    Authentication
-                </h3>
-            </div>
-            <div class="grid gap-6 mb-6 md:grid-cols-2 p-5  border-4">
-                <div>
-                    <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email
-
-                    </label>
-                    <input type="email" id="email" name="email" value="{{$student->email}}"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Enter your email" />
-                </div>
-                <div>
-                    <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password
-                    </label>
-                    <input type="password" name="password" id="floating_password"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Enter your password" />
-                </div>
-            </div>
+          
+          
          
             <div class="grid gap-6 mb-6 md:grid-cols-4 p-5  border-4 hidden">
                 <div class="hidden">

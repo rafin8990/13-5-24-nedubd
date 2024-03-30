@@ -468,7 +468,7 @@
                         </button>
                         <ul id="dropdown-grand" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="/dashboard/grand_exam_setup"
+                                <a href="/dashboard/grand_exam_setup/{{$school_code}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
                                     Setup Grand </a>
                             </li>
@@ -1297,10 +1297,3 @@
         content.style.maxHeight = button.getAttribute("aria-expanded") === "true" ? content.scrollHeight + "px" : "0";
     }
 </script>
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 1bff208e8ae3020ebb876df9b7251d8fdf91ddd9
