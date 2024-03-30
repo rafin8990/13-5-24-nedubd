@@ -122,4 +122,15 @@ class UpdateStudentBasicInfoController extends Controller
 
     return redirect()->route('updateStudentBasicInfo', $schoolCode)->with('error', 'No data selected!');
 }
+
+
+
+
+
+
+
+
+public function uploadStudentPhoto(){
+    return view('Backend.Student.updateUploadPhoto');
+}
 }

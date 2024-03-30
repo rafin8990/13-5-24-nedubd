@@ -21,7 +21,7 @@
                         <label for="class" class="block mb-2 text-lg font-medium text-white "> CLASS :
                         </label>
                     </div>
-                    <div class="">
+                    <div class="col-span-2">
                         <select id="countries" name="class"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Select Class</option>
@@ -38,7 +38,7 @@
                         <label for="year" class="block mb-2 text-lg font-medium text-white "> Academic Year
                         </label>
                     </div>
-                    <div class="">
+                    <div class="col-span-2">
                         <select id="countries" name="year"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Select Year</option>
