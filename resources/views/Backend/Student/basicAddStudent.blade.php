@@ -68,7 +68,7 @@
                 </div>
             </div>
 <div class="text-rose-700">
-    If student id fill up then it save in student id field otherwise it generate unique auto student id feild
+    If you have a student ID, enter it. Otherwise, it'll generate a new one automatically.
 </div>
             <table id="student-table" class="w-full text-sm text-left rtl:text-right text-black ">
                 <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
