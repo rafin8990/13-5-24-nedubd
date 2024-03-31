@@ -160,7 +160,9 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/religionWiseStudentSummary/{schoolCode}', [religionWiseStudentSummaryController::class, 'religion_wise_student_summary']);
 
     Route::get('/studentDetails/{schoolCode}', [StudentDetailsController::class, 'studentDetails']);
-
+    Route::get('/getStudentID/{schoolCode}/{class}', [StudentDetailsController::class, 'getStudentID']);
+    Route::post('/StudentDetailsPrint/{schoolCode}', [StudentDetailsController::class, 'StudentDetailsPrint'])->name('StudentDetailsPrint');
+    
     Route::get('/studentIdCard/{schoolCode}', [studentIdCardController::class, 'student_id_card']);
 
     Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto'])->name('studentListWithPhoto');
