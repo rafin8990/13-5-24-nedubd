@@ -14,8 +14,8 @@
 
     <div class="mx-10 mt-5">
         <div class=" mb-3">
-            <div class="md:flex justify-center ">
-                <div class="lg:grid grid-cols-11 gap-8">
+            <div class="md:flex  ">
+                <div class="lg:grid grid-cols-6 gap-8">
                     <!-- Class Name -->
                     <div class="col-span-1">
 
@@ -30,9 +30,6 @@
                                 @endforeach
                             </select>
                         </div>
-
-
-
                     </div>
 
 
@@ -56,6 +53,8 @@
                     <!-- Subject -->
                     <div class="col-span-1">
                         <div class=""> 
+                        <label for="class" class="text-gray-700">Subject:</label>
+                            <input type="hidden" name="classExcelLoad" id="classExcelLoad" value="">
                             <select
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 

@@ -66,36 +66,7 @@ class UpdateStudentBasicInfoController extends Controller
             return redirect()->route('updateStudentBasicInfo',$schoolCode)->with('error','Student Data Not Found');
     }
 
-    // public function updateStudentBasic(Request $request,$schoolCode)
-    // {
-    //     // dd($request->id);
-    //     if($request->id !== null){
-    //         foreach ($request->id as $id) {
-              
-    //              Student::where('id', $id)
-    //                 ->update([
-    //                     'student_roll' => $request->student_roll[$id],
-    //                     'student_id' => $request->student_id[$id],
-    //                     'name' => $request->name[$id],
-    //                     'father_name' => $request->father_name[$id],
-    //                     'father_nid' => $request->father_nid[$id],
-    //                     'mother_name' => $request->mother_name[$id],
-    //                     'mother_nid' => $request->mother_nid[$id],
-    //                     'birth_date' => $request->birth_date[$id],
-    //                     'gender' => $request->gender[$id],
-    //                     'religious' => $request->religious[$id],
-    //                     'blood_group' => $request->blood_group[$id],
-    //                     'mobile_no' => $request->mobile_no[$id],
-    //                 ]);
-    //                 return redirect()->route('updateStudentBasicInfo',$schoolCode)->with([
-    //                     'success' => 'Student update successfully!',
-    //                 ]);
-    //         }
-    //     }
-    //     return redirect()->route('updateStudentBasicInfo',$schoolCode)->with([
-    //         'error' => 'No data selected!' ]);
-
-    // }
+    
 
     public function updateStudentBasic(Request $request, $schoolCode)
 {
@@ -121,5 +92,16 @@ class UpdateStudentBasicInfoController extends Controller
     }
 
     return redirect()->route('updateStudentBasicInfo', $schoolCode)->with('error', 'No data selected!');
+}
+
+
+
+
+
+
+
+
+public function uploadStudentPhoto(){
+    return view('Backend.Student.updateUploadPhoto');
 }
 }
