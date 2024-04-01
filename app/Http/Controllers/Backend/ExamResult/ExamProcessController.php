@@ -34,7 +34,7 @@ class ExamProcessController extends Controller
             ->where('group', $groupValue)
             ->where('section', $sectionValue)
             ->where('school_code', $schoolCode)
-            ->pluck('student_id', 'student_id');
+            ->pluck('student_roll', 'student_roll');
     
         // You may return the students as JSON response or in any suitable format
         return response()->json($students);
