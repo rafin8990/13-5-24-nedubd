@@ -136,6 +136,7 @@ Route::prefix('dashboard')->group(function () {
 
     //update student ExcelFile
     Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
+
     //upload photo student
     Route::get('/uploadStudentPhoto/{schoolCode}', [UploadPhotoController::class, 'uploadStudentPhoto'])->name('StudentPhoto');
     Route::get('/uploadPhoto/{schoolCode}', [UploadPhotoController::class, 'uploadPhoto'])->name('uploadPhoto');
@@ -149,9 +150,29 @@ Route::prefix('dashboard')->group(function () {
 
 
     // Student Report
-    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary']);
+    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary'])->name('admissionSummary');
 
-    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal']);
+    Route::get('/admissionSummaryDownload/{schoolCode}', [admissionSummaryController::class, 'addmission_summary_download']);
+
+    Route::post('/admissionSummaryDownload/{schoolCode}', [admissionSummaryController::class, 'downloadAdmisionSummaryPdf'])->name('admissionSummaryDownload');
+
+
+
+
+
+
+    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal'])->name('classSectionSTdTotal');
+    
+    Route::get('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf']);
+
+    Route::post('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf'])->name('classSectionStdTotalDownload');
+
+
+
+
+
+
+
 
     Route::get('/e_sifLists/{schoolCode}', [EsifListController::class, 'e_sifList']);
 

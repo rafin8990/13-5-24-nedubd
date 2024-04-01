@@ -149,8 +149,8 @@
 <hr>
 
 
-<table class="w-full text-sm text-left rtl:text-right text-black dark:text-blue-100">
-            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 dark:text-white">
+<table class="w-full text-sm text-left rtl:text-right text-black ">
+            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
                 <tr>
                     <th scope="col" class="px-6 py-3 bg-blue-500">
                         SL
@@ -200,8 +200,8 @@
     <div class="w-full ">
         <div class="flex justify-around">
             <div class=" flex justify-between gap-5 ">
-                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Blank Page</button>
-                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Print Mark Page</button>
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">Blank Page</button>
+                <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center  ">Print Mark Page</button>
                
             </div>
 

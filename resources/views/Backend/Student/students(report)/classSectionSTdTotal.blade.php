@@ -1,6 +1,6 @@
 @extends('Backend.app')
 @section('title')
-    lass Section Total Student
+    Class Section Total Student
 @endsection
 
 
@@ -9,24 +9,25 @@
     @include('Message.message')
     <div class="py-5">
         <h3 class="text-xl font-bold text-center ">
-            lass Section Total Student
+            Class Section Total Student
         </h3>
     </div>
     <div class="">
         <div class="md:mx-52 border-2 p-10 bg-blue-950">
-            <form action="" method="" enctype="multipart/form-data">
+            <form action="{{ route('classSectionStdTotalDownload', $school_code) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="grid md:grid-cols-3 mb-5 ">
                     <div class=" ">
-                        <label for="last_name" class="block mb-2 text-lg font-medium text-white "> CLASS :
+                        <label for="class" class="block mb-2 text-lg font-medium text-white "> CLASS :
                         </label>
                     </div>
-                    <div class="">
-                        <select id="countries" name="Class_name"
+                    <div class="col-span-2">
+                        <select id="countries" name="class"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-blue-500 block w-full p-2.5 ">
-                            <option>Choose a class</option>
-                            <option>one</option>
-                            <option>two</option>
+                            <option selected>Select Class</option>
+                            @foreach($classes as $class)
+                                <option >{{$class->class_name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -34,14 +35,16 @@
 
                 <div class="grid md:grid-cols-3 mb-5">
                     <div class=" ">
-                        <label for="last_name" class="block mb-2 text-lg font-medium text-white "> Academic Year
+                        <label for="year" class="block mb-2 text-lg font-medium text-white "> Academic Year
                         </label>
                     </div>
-                    <div class="">
-                        <select id="countries" name="id"
+                    <div class="col-span-2">
+                        <select id="countries" name="year"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-blue-500 block w-full p-2.5 ">
                             <option selected>Select Year</option>
-                            <option>01</option>
+                            @foreach($year as $year)
+                                  <option >{{$year->academic_year_name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
