@@ -32,7 +32,6 @@ class PrintAdmitCardController extends Controller
 
     public function downloadAdmit(Request $request, $schoolCode)
     {
-
         $class = $request->class;
         $group = $request->group;
         $section_name = $request->section_name;
@@ -74,11 +73,6 @@ class PrintAdmitCardController extends Controller
             ->where('sign', 'Headmaster')
             ->get();
             return view('Backend/AdmitCard/Report(admitCards)/downloadAdmitCard', compact('Data', 'exam_name', 'year', 'admit', 'headteacher','schoolCode'));
-        
-
-        
-
-
 
     }
     public function downloadPDF(Request $request, $schoolCode)

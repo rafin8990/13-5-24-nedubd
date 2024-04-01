@@ -112,15 +112,23 @@ Route::prefix('dashboard')->group(function () {
     // student module
     Route::post('/create-student', [StudentController::class, 'addStudent'])->name('student.add');
     Route::get('/add-student/{schoolCode}', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
-    //Update Student Basic Info
+
+
+
+    //Update Student Basdic Info
+
     Route::get('/updateStudentBasicInfo/{schoolCode}', [UpdateStudentBasicInfoController::class, 'updateStudentBasicInfo'])->name('updateStudentBasicInfo');
     Route::get('/getData/{schoolCode}', [UpdateStudentBasicInfoController::class, 'getData'])->name('getData');
     Route::put('/updateData/{schoolCode}', [UpdateStudentBasicInfoController::class, 'updateStudentBasic'])->name('updateStudent');
+
+
     //Update student Student Class Info
     Route::get('/studentClassInfo/{schoolCode}', [UpdateStudentClassInfoController::class, 'studentClassInfo'])->name('studentClassInfo');
     Route::get('/getStudentClassData/{schoolCode}', [UpdateStudentClassInfoController::class, 'getStudentClassData'])->name('getStudentClassData');
     Route::put('/updateStudentClass/{schoolCode}', [UpdateStudentClassInfoController::class, 'updateStudentClass'])->name('updateStudentClass');
     Route::delete('/deleteStudent/{schoolCode}/{ids}', [UpdateStudentClassInfoController::class, 'delete'])->name('deleteStudent');
+
+
     //update student profile
     Route::get('/studentProfileUpdate/{schoolCode}', [StudentProfileUpdateController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/findData/{schoolCode}', [StudentProfileUpdateController::class, 'findData'])->name('studentData');
@@ -136,9 +144,17 @@ Route::prefix('dashboard')->group(function () {
 
     //update student ExcelFile
     Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
+
+
     //upload photo student
     Route::get('/uploadStudentPhoto/{schoolCode}', [UploadPhotoController::class, 'uploadStudentPhoto'])->name('StudentPhoto');
+    Route::post('/updatePhoto/{schoolCode}', [UploadPhotoController::class, 'updatePhoto'])->name('updatePhoto');
+    Route::post('/update-student-image/{schoolCode}/{id}', [UploadPhotoController::class, 'updateImage'])->name('update.student.image');
     Route::get('/uploadPhoto/{schoolCode}', [UploadPhotoController::class, 'uploadPhoto'])->name('uploadPhoto');
+
+
+
+
     //Migrate Student
     Route::get('/migrateStudent/{schoolCode}', [MigrateStudentController::class, 'migrateStudent'])->name('migrateStudent');
 
@@ -149,17 +165,33 @@ Route::prefix('dashboard')->group(function () {
 
 
     // Student Report
-    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary']);
 
-    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal']);
+    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary'])->name('admissionSummary');
+
+    Route::get('/admissionSummaryDownload/{schoolCode}', [admissionSummaryController::class, 'addmission_summary_download']);
+
+    Route::post('/admissionSummaryDownload/{schoolCode}', [admissionSummaryController::class, 'downloadAdmisionSummaryPdf'])->name('admissionSummaryDownload');
+
+
+
+
+
+
+    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal'])->name('classSectionSTdTotal');
+    
+    Route::get('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf']);
+
+    Route::post('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf'])->name('classSectionStdTotalDownload');
+
+
+
+
 
     Route::get('/e_sifLists/{schoolCode}', [EsifListController::class, 'e_sifList']);
-
     Route::get('/listOfMigrateStudent/{schoolCode}', [listOfMigrateStudentListController::class, 'listOfMigrateStudent']);
-
     Route::get('/religionWiseStudentSummary/{schoolCode}', [religionWiseStudentSummaryController::class, 'religion_wise_student_summary']);
-
     Route::get('/studentDetails/{schoolCode}', [StudentDetailsController::class, 'studentDetails']);
+
     Route::get('/getStudentID/{schoolCode}/{class}', [StudentDetailsController::class, 'getStudentID']);
     Route::post('/StudentDetailsPrint/{schoolCode}', [StudentDetailsController::class, 'StudentDetailsPrint'])->name('StudentDetailsPrint');
     
@@ -170,13 +202,10 @@ Route::prefix('dashboard')->group(function () {
 
 
     Route::get('/studentProfile/{schoolCode}', [StudentProfileController::class, 'student_profile']);
-
     Route::get('/studentShortList/{schoolCode}', [addShortListController::class, 'studentShortList']);
-
+    Route::post('/viewStudentShortList',[addShortListController::class,'viewStudentShortList'])->name('viewStudentShortList');
     Route::get('/testimonial/{schoolCode}', [testimonialController::class, 'testimonial']);
-
     Route::get('/transferCertificate/{schoolCode}', [trasnferCertificateController::class, 'trasnfer_certificate']);
-
     Route::get('/transferCertificateList/{schoolCode}', [trasnferCertificateListController::class, 'trasnfer_certificate_list']);
 
 
@@ -186,22 +215,20 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/studentLeaveForm/{schoolCode}', [AttendenceController::class, "student_leave_form"])->name('studentLeaveForm');
     Route::get('/addLeaveType/{schoolCode}', [AttendenceController::class, "add_leave_type"])->name('addLeaveType');
 
+
     // report Student Attendence 
     Route::get('/attendenceReport/{schoolCode}', [ReportStudentAttendenceController::class, "attendence_report"])->name('attendenceReport');
-
-
     Route::get('/attendenceBlankReport/{schoolCode}', [ReportStudentAttendenceController::class, "attendence_blank_report"])->name('attendenceBlankReport');
-
     Route::get('/dateWiseReport/{schoolCode}', [ReportStudentAttendenceController::class, "date_wise_report"])->name('dateWiseReport');
-
     Route::get('/listOfLeaveReport/{schoolCode}', [ReportStudentAttendenceController::class, "list_of_leave_report"])->name('listOfLeaveReport');
-
     Route::get('/setionWiseSection/{schoolCode}', [ReportStudentAttendenceController::class, "section_wise_report"])->name('setionWiseSection');
 
 
 
     // exam-Result --------------------------------------
-    Route::get('/exam_marks/{school_code}', [MarkInputController::class, 'exam_marks']);
+
+    Route::get('/marksInput/{schoolCode}', [MarkInputController::class, 'exam_marks']);
+
     Route::get('/exam_process/{schoolCode}', [ExamProcessController::class, 'exam_process']);
     Route::get('/getStudents/{schoolCode}/{class}/{group}/{section}', [ExamProcessController::class, 'getStudents']);
     Route::get('/exam_excel/{schoolCode}', [ExamResultController::class, 'exam_excel']);
