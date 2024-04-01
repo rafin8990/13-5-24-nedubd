@@ -44,6 +44,7 @@
 
             <div class="grid gap-6 mb-6 md:grid-cols-10 mt-2">
                 <div>
+                <label for="class" class="text-gray-700">Class:</label>
                     <select id="class_name" name="class_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a class</option>
@@ -54,6 +55,7 @@
                 </div>
 
                 <div>
+                <label for="class" class="text-gray-700">Group:</label>
                     <select id="group" name="group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a Group</option>
@@ -63,6 +65,7 @@
                     </select>
                 </div>
                 <div>
+                <label for="class" class="text-gray-700">Ssection:</label>
                     <select id="section" name="section"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a Section</option>
@@ -72,6 +75,7 @@
                     </select>
                 </div>
                 <div>
+                <label for="class" class="text-gray-700">category:</label>
                     <select id="category" name="category"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a Category</option>
@@ -81,6 +85,7 @@
                     </select>
                 </div>
                 <div>
+                <label for="class" class="text-gray-700">Shift:</label>
                     <select id="shift" name="shift"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a Shift</option>
@@ -90,6 +95,7 @@
                     </select>
                 </div>
                 <div>
+                <label for="class" class="text-gray-700">Year:</label>
                     <select id="year" name="year"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a year</option>
@@ -100,6 +106,7 @@
                 </div>
 
                 <div>
+                <label for="class" class="text-gray-700">Session:</label>
                     <select id="" name="session"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a session</option>
@@ -110,6 +117,7 @@
                     </select>
                 </div>
                 <div>
+                <label for="class" class="text-gray-700">Status:</label>
                     <select id="" name="status"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option selected>Choose a Status</option>
@@ -119,9 +127,9 @@
                     </select>
                 </div>
 
-                <input type="text"
+                <!-- <input type="text"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                    placeholder="" />
+                    placeholder="" /> -->
 
                 <div class="flex justify-end">
                     <button type="submit"
