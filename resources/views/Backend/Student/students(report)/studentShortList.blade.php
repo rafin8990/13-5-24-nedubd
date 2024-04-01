@@ -3,12 +3,15 @@
     Student Short List Information
 @endsection
 @section('Dashboard')
+
+@include('Message.message')
     <div>
         <h3>
             Student Short List Information
         </h3>
     </div>
-
+<form method="POST" action="{{route('viewStudentShortList')}}">
+@csrf
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10 border-2 md:p-5">
 
 
@@ -17,11 +20,12 @@
                 <label class="block mb-2 text-sm font-medium text-gray-900 " for="user_avatar">Class
                 </label>
                 <select id="" name="class"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Choose a class</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+
+                    <option disabled selected>Choose class</option>
+                    @foreach($classes as $class)
+                    <option value="{{$class->class_name}}">{{$class->class_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -30,10 +34,10 @@
                 </label>
                 <select id="" name="group"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Choose a group</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option disabled selected>Choose group</option>
+                    @foreach($groups as $group)
+                    <option value="{{$group->group_name}}">{{$group->group_name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div>
@@ -41,10 +45,10 @@
                 </label>
                 <select id="" name="section"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Choose a Section</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option disabled selected>Choose section</option>
+                    @foreach($sections as $section)
+                    <option value="{{$section->section_name}}">{{$section->section_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -54,34 +58,39 @@
                 </label>
                 <select id="" name="category"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Choose a Category</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option disabled selected>Choose Category</option>
+                    @foreach($categories as $category)
+                    <option value="{{$category->category_name}}">{{$category->category_name}}</option>
+                    @endforeach
                 </select>
             </div>
 
-            <div>
+            <!-- <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 " for="user_avatar">Hall Name
                 </label>
                 <select id="" name="hall_name"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
                     <option selected>Choose a Hall Name</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option >x</option>
+                    <option >y</option>
+                    <option >z</option>
                 </select>
-            </div>
+            </div> -->
 
             <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 " for="user_avatar">Blood Group
                 </label>
                 <select id="" name="blood_group"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Choose a Blood Group</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
-                    <option value="">z</option>
+                    <option disabled selected>Choose blood</option>
+                    <option >A+</option>
+                        <option >A-</option>
+                        <option >O+</option>
+                        <option >O-</option>
+                        <option >B+</option>
+                        <option >B-</option>
+                        <option >AB+</option>
+                        <option >AB-</option>
                 </select>
             </div>
 
@@ -91,9 +100,9 @@
                 </label>
                 <select id="" name="gender"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Select gender</option>
-                    <option value="">Male</option>
-                    <option value="">Female</option>
+                    <option disabled selected>Choose Gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
 
                 </select>
             </div>
@@ -102,31 +111,33 @@
                 </label>
                 <select id="" name="religion"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Select Religion</option>
-                    <option value="">Islam</option>
-                    <option value="">Hindhu</option>
+                    <option disabled selected>Choose religion</option>
+                        <option >Islam</option>
+                        <option >Hindu</option>
+                        <option >Buddhism</option>
+                        <option >Christian</option>
 
                 </select>
             </div>
-            <div>
+            <!-- <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 " for="user_avatar">Students Status
                 </label>
                 <select id="" name="student_status"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Select student status</option>
-                    <option value="">active</option>
-                    <option value="">In active</option>
+                    <option >active</option>
+                    <option >In active</option>
 
                 </select>
-            </div>
+            </div> -->
             <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 " for="user_avatar">Academic Year
                 </label>
                 <select id="" name="academic_year"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Select Academic Year</option>
-                    <option value="">x</option>
-                    <option value="">y</option>
+                    <option disabled selected>Choose Academic Year</option>
+                    @foreach($years as $year)
+                    <option value="{{$year->academic_year_name}}">{{$year->academic_year_name}}</option>
+                    @endforeach
 
                 </select>
             </div>
@@ -136,9 +147,9 @@
                 </label>
                 <select id="" name="status"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5     ">
-                    <option selected>Select status</option>
-                    <option value="">active</option>
-                    <option value="">In active</option>
+                    <option disabled selected>Choose Status</option>
+                    <option >new</option>
+                    <option >old</option>
 
                 </select>
             </div>
@@ -175,156 +186,89 @@
                         placeholder="Select date">
                 </div>
 
+                <div>
+                    <input class="hidden" name="school_code" value="{{$school_code}}" type="text">
+                </div>
+
             </div>
-
-
-
-
         </div>
-
-        <div class="grid md:grid-cols-4  grid-cols-2">
+        <div class="grid grid-cols-2 md:grid-cols-4  ">
+            @foreach($columns as $column)
             <div class="">
-                <input id="" type="checkbox" value="" name="class_name"
+                <input id="{{$column}}" value="{{$column}}" type="checkbox"  name="columns[{{$column}}]"
                     class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Student ID</label>
+                <label for="{{$column}}" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">{{$column}}</label>
 
             </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="name"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Name</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="roll"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Roll</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="class"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Class</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="section"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Section</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="group"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Group</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="category"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Category</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="gender"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Gender</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="religion"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Religion</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="mobile"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Mobile</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="Father_name"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">father's Name</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="father_nid"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Father NID</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="father_Birthdate"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Father Birth
-                    Date</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="mother_name"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Mother's Name</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="mother_nid"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Mother NID</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="mother_birthdate"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Mother Birth
-                    Date</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="dob"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Date of Birth</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="admission_date"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Admission Date</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="blood_group"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Blood Group</label>
-
-            </div>
-            <div class="">
-                <input id="" type="checkbox" value="" name="status"
-                    class="group-checkbox w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500   focus:ring-2  ">
-                <label for="" class="w-full py-4 ms-2 text-sm font-medium text-gray-900 ">Status</label>
-
-            </div>
+            @endforeach
         </div>
         <div class="md:flex justify-end mr-10 mt-10">
             <div class="">
-                <button type="button"
+          
+                <button type="button" id="btn"
                     class="  text-white bg-rose-600 hover:bg-rose-600 focus:ring-4 focus:ring-rose-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2   focus:outline-none ">PDF
                     Download
                 </button>
+            
             </div>
             <div class="">
-                <button type="button"
+                <button type="submit"
                     class="  text-white bg-blue-700 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2  focus:outline-none ">
                     View Report
                 </button>
             </div>
         </div>
-
-
-
-
     </div>
+@if($students != null)
+    @if(!is_null($students) && count($students) > 0)
+<div id="page" class="mx-10">
+
+
+    <table class="w-full text-sm text-left rtl:text-right text-black " >
+        <thead class="text-lg text-white uppercase bg-blue-600 border-b border-blue-400 ">
+            <tr>
+            
+
+                @foreach ($col as $column)
+
+                <th scope="col" class="px-6 py-3 bg-blue-500">
+                {{ $column }}</th>
+
+                @endforeach
+            
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach ($students as $student)
+
+                <tr>
+                
+                    @foreach ($col as $column)
+
+                    <td class="px-6 py-4">{{ $student->$column }}</td>
+
+                    @endforeach
+                    
+                </tr>
+
+            @endforeach
+
+        </tbody>
+
+    </table>
+
+@else
+
+    <p>No students found.</p>
+
+@endif
+@endif
+
+</div>
+
 
     <div class="md:flex justify-start ml-10 mt-10">
         <div class="">
@@ -340,4 +284,25 @@
             </button>
         </div>
     </div>
+
+</form>
+
+<script>
+        let btn = document.getElementById('btn');
+        let page = document.getElementById('page');
+
+        btn.addEventListener('click', function() {
+            html2PDF(page, {
+                jsPDF: {
+                    format: 'a4',
+                },
+                imageType: 'image/jpeg',
+                output: './pdf/generate.pdf'
+            });
+        });
+</script>
+
+
+
+
 @endsection
