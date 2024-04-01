@@ -115,8 +115,8 @@
                 <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
                     <tr>
                         <th scope="col" class="px-6 py-3 bg-blue-500">
-                            <input type="checkbox" id="select-all-checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 ">
+                            {{-- <input type="checkbox" id="select-all-checkbox"
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500  focus:ring-2 "> --}}
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Roll
@@ -125,11 +125,9 @@
                             Student ID
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            First Name
+                             Name
                         </th>
-                        <th scope="col" class="px-6 py-3 bg-blue-500">
-                            Last Name
-                        </th>
+                        
                         <th scope="col" class="px-6 py-3">
                             Father Name
                         </th>
@@ -173,67 +171,63 @@
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->student_roll }}</span>
                                     <input type="text" name="student_roll[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->student_roll }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value="{{ $data->student_roll }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->student_id }}</span>
                                     <input type="text" name="student_id[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->student_id }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value="{{ $data->student_id }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->first_name }} </span>
-                                    <input type="text" name="first_name[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->first_name }} ">
+                                    <span class="row-data">{{ $data->name }} </span>
+                                    <input type="text" name="name[{{ $data->id }}]"
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value="{{ $data->name }} ">
                                 </td>
-                                <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->last_name }}</span>
-                                    <input type="text" name="last_name[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->last_name }}">
-                                </td>
+                               
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->father_name }}</span>
                                     <input type="text" name="father_name[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->father_name }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value="{{ $data->father_name }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->father_nid }}</span>
                                     <input type="text" name="father_nid[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->father_nid }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value="{{ $data->father_nid }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->mother_name }}</span>
                                     <input type="text" name="mother_name[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value=" {{ $data->mother_name }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value=" {{ $data->mother_name }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->mother_nid }}</span>
                                     <input type="text" name="mother_nid[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->mother_nid }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value="{{ $data->mother_nid }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->birth_date }}</span>
                                     <input type="text" name="birth_date[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->birth_date }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value="{{ $data->birth_date }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data"> {{ $data->gender }}</span>
                                     <input type="text" name="gender[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value=" {{ $data->gender }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value=" {{ $data->gender }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->religious }}</span>
                                     <input type="text" name="religious[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value=" {{ $data->religious }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value=" {{ $data->religious }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
                                     <span class="row-data">{{ $data->blood_group }}</span>
                                     <input type="text" name="blood_group[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value="{{ $data->blood_group }}">
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value="{{ $data->blood_group }}">
                                 </td>
                                 <td scope="col" class="px-6 py-3">
-                                    <span class="row-data">{{ $data->father_mobile }}</span>
-                                    <input type="text" name="father_mobile[{{ $data->id }}]"
-                                        class="form-control row-input hidden" value=" {{ $data->father_mobile }}">
+                                    <span class="row-data">{{ $data->mobile_no }}</span>
+                                    <input type="text" name="mobile_no[{{ $data->id }}]"
+                                        class="form-control row-input hidden md:w-[120px] md:h-[30px] px-2" value=" {{ $data->mobile_no }}">
                                 </td>
 
                             </tr>

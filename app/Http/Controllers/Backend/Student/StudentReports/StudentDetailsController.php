@@ -29,12 +29,24 @@ class StudentDetailsController extends Controller
         return response()->json($students);
     }
     public function StudentDetailsPrint(Request $request ,$schoolCode){
+        //dd($request);
         $classValue=$request->Class_name;
         $id=$request->id;
+        $year=$request->year;
         $students = Student::where('Class_name', $classValue)
         ->where('school_code', $schoolCode)
+        ->where('year', $year)
+        ->where('student_id', $id)->exists();
+if($students){
+    $students = Student::where('Class_name', $classValue)
+        ->where('school_code', $schoolCode)
+        ->where('year', $year)
         ->where('student_id', $id)->get();
 
-        return view('Backend.Student.students(report).studentDetailsPrint',compact('students'));
+    return view('Backend.Student.students(report).studentDetailsPrint',compact('students'));
+}
+else{
+    return redirect()->back()->with('error','not found');
+}
     }
 }
