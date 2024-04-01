@@ -30,6 +30,8 @@ use App\Http\Controllers\Backend\Student\UpdateStudentClassInfoController;
 use App\Http\Controllers\Backend\Student\StudentProfileUpdateController;
 use App\Http\Controllers\Backend\Student\UploadPhotoController;
 use App\Http\Controllers\Backend\Student\MigrateStudentController;
+use App\Http\Controllers\Backend\Student\UpdateStudentController;
+use App\Http\Controllers\Backend\Student\BasicAddStudentController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentDetailsController;
 use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
@@ -112,7 +114,9 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/add-student/{schoolCode}', [StudentController::class, 'AddStudentForm'])->name('AddStudentForm');
 
 
+
     //Update Student Basdic Info
+
     Route::get('/updateStudentBasicInfo/{schoolCode}', [UpdateStudentBasicInfoController::class, 'updateStudentBasicInfo'])->name('updateStudentBasicInfo');
     Route::get('/getData/{schoolCode}', [UpdateStudentBasicInfoController::class, 'getData'])->name('getData');
     Route::put('/updateData/{schoolCode}', [UpdateStudentBasicInfoController::class, 'updateStudentBasic'])->name('updateStudent');
@@ -127,8 +131,19 @@ Route::prefix('dashboard')->group(function () {
 
     //update student profile
     Route::get('/studentProfileUpdate/{schoolCode}', [StudentProfileUpdateController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
-    Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
+    Route::get('/findData/{schoolCode}', [StudentProfileUpdateController::class, 'findData'])->name('studentData');
+    
+    //Update Student ->Add Student
+    Route::get('/getStudent/{schoolCode}', [BasicAddStudentController::class, 'getStudent'])->name('getStudent');
+    Route::post('/postStudent', [BasicAddStudentController::class,'postStudent'])->name('postStudent');
 
+    
+    //update student 
+    Route::get('/student_update/{id}/{schoolCode}', [UpdateStudentController::class, 'student_update'])->name('student_update');
+    Route::put('/students/{id}', [UpdateStudentController::class, 'updateStudent'])->name('students.update');
+
+    //update student ExcelFile
+    Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
 
 
     //upload photo student
@@ -150,14 +165,42 @@ Route::prefix('dashboard')->group(function () {
 
 
     // Student Report
-    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary']);
-    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal']);
+
+    Route::get('/admissionSummary/{schoolCode}', [admissionSummaryController::class, 'admission_summary'])->name('admissionSummary');
+
+    Route::get('/admissionSummaryDownload/{schoolCode}', [admissionSummaryController::class, 'addmission_summary_download']);
+
+    Route::post('/admissionSummaryDownload/{schoolCode}', [admissionSummaryController::class, 'downloadAdmisionSummaryPdf'])->name('admissionSummaryDownload');
+
+
+
+
+
+
+    Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal'])->name('classSectionSTdTotal');
+    
+    Route::get('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf']);
+
+    Route::post('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf'])->name('classSectionStdTotalDownload');
+
+
+
+
+
     Route::get('/e_sifLists/{schoolCode}', [EsifListController::class, 'e_sifList']);
     Route::get('/listOfMigrateStudent/{schoolCode}', [listOfMigrateStudentListController::class, 'listOfMigrateStudent']);
     Route::get('/religionWiseStudentSummary/{schoolCode}', [religionWiseStudentSummaryController::class, 'religion_wise_student_summary']);
     Route::get('/studentDetails/{schoolCode}', [StudentDetailsController::class, 'studentDetails']);
+
+    Route::get('/getStudentID/{schoolCode}/{class}', [StudentDetailsController::class, 'getStudentID']);
+    Route::post('/StudentDetailsPrint/{schoolCode}', [StudentDetailsController::class, 'StudentDetailsPrint'])->name('StudentDetailsPrint');
+    
     Route::get('/studentIdCard/{schoolCode}', [studentIdCardController::class, 'student_id_card']);
-    Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto']);
+
+    Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto'])->name('studentListWithPhoto');
+    Route::post('/listStudent', [StudentListWithPhotoController::class,'viewStudentListPhoto'])->name('viewStudentListPhoto');
+
+
     Route::get('/studentProfile/{schoolCode}', [StudentProfileController::class, 'student_profile']);
     Route::get('/studentShortList/{schoolCode}', [addShortListController::class, 'studentShortList']);
     Route::post('/viewStudentShortList',[addShortListController::class,'viewStudentShortList'])->name('viewStudentShortList');
@@ -183,7 +226,9 @@ Route::prefix('dashboard')->group(function () {
 
 
     // exam-Result --------------------------------------
+
     Route::get('/marksInput/{schoolCode}', [MarkInputController::class, 'exam_marks']);
+
     Route::get('/exam_process/{schoolCode}', [ExamProcessController::class, 'exam_process']);
     Route::get('/getStudents/{schoolCode}/{class}/{group}/{section}', [ExamProcessController::class, 'getStudents']);
     Route::get('/exam_excel/{schoolCode}', [ExamResultController::class, 'exam_excel']);
