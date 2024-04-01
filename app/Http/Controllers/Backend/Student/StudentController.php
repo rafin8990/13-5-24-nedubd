@@ -33,13 +33,16 @@ class StudentController extends Controller
     public function addStudent(Request $request)
     {
 
-        if ($request->hasFile('image')) {
-            $request->validate([
+       $request->validate([
                 'image' => 'file|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
+            $imagePath=null;
+            if($request->hasFile('image')){
+                $imagePath = $request->file('image')->move('images/student', $request->input('nedubd_student_id') . '_' . uniqid() . '.' . $request->file('image')->extension());
+                $studentImage = 'images/student/' . basename($imagePath);
+            }
 
-            $imagePath = $request->file('image')->move('images/student', $request->input('nedubd_student_id') . '_' . uniqid() . '.' . $request->file('image')->extension());
-            $studentImage = 'images/student/' . basename($imagePath);
+            
 
             // dd($studentImage);
 
@@ -54,7 +57,7 @@ class StudentController extends Controller
             $student->name = $request->input('name');
             $student->birth_date = $request->input('birth_date');
             $student->nedubd_student_id = $request->input('nedubd_student_id');
-            $student->student_id = $request->input('student_id');
+            $student->student_id = $request->input('student_id')??$this->generateUniqueStudentId();
             $student->student_roll = $request->input('student_roll');
             $student->Class_name = $request->input('Class_name');
             $student->group = $request->input('group');
@@ -68,7 +71,7 @@ class StudentController extends Controller
             $student->blood_group = $request->input('blood_group');
             $student->session = $request->input('session');
             $student->status = $request->input('status');
-            $student->image = $studentImage;
+            $student->image = $studentImage??null;
             $student->admission_date = $request->input('admission_date');
             $student->mobile_no = $request->input('mobile_no');
             $student->father_name = $request->input('father_name');
@@ -107,7 +110,6 @@ class StudentController extends Controller
             $student->action = $request->input('action');
             $student->save();
             return redirect()->back()->with('success', 'student added successfully!');
-        }
     }
 
     private function generateUniqueStudentId()

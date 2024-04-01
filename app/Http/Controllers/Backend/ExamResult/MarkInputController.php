@@ -19,9 +19,6 @@ class MarkInputController extends Controller
 
     public function exam_marks($school_code)
     {
-
-        // $school_code = '100';
-        
         $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
         $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
         $sectionData = AddSection::where('action', 'approved')->where('school_code', $school_code)->get();
@@ -33,6 +30,9 @@ class MarkInputController extends Controller
         return view('/Backend/ExamResult/exam_marks', compact('classData', 'groupData', 'sectionData', 'shiftData', 'subjectData', 'classExamData', 'academicYearData'));
     }
    
+
+
+    
     public function generateExcelSheet(Request $request, $school_code) {
         $tableData = [
             'Student_name' => 'Student_name',

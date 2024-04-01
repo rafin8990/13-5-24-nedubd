@@ -121,7 +121,6 @@ class GradeSetupController extends Controller
         return redirect()->route('viewGradeSetup',$school_code)->with([
             'class_exam_name' => $request->class_exam_name,
             'academic_year_name' => $request->academic_year_name,
-
         ]);
        
 
