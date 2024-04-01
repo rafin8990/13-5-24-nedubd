@@ -75,7 +75,7 @@
         </div>
         {{-- guardian Info --}}
         <div class="grid grid-cols-12 mt-1">
-            <div class="border-t  border-b border-l border-t  border-black p-1.5 col-span-2"> পিতার নাম </div>
+            <div class=" border-b border-l border-t  border-black p-1.5 col-span-2"> পিতার নাম </div>
             <div class="border-l border-b border-t  border-black p-1.5 col-span-5">{{$Data->father_name}}</div>
             <div class="border-l border-b border-t border-black p-1.5 col-span-2">মোবাইল</div>
             <div class="border-l border-b border-t border-r border-black p-1.5 col-span-3">{{$Data->father_mobile}}</div>
