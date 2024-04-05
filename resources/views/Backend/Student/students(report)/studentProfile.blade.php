@@ -298,28 +298,7 @@
     </div>
 
    {{-- scripts --}}
-    <script>
-        function getRandomColor(colorCodes, prevColor) {
-            let randomColor;
-            do {
-                const randomIndex = Math.floor(Math.random() * colorCodes.length);
-                randomColor = colorCodes[randomIndex];
-            } while (randomColor === prevColor);
-            return randomColor;
-        }
-        const colorCodes = [
-            '#96B6C5', '#ADC4CE', '#EEE0C9', '#F1F0E8',
-            '#B5C0D0', '#CCD3CA', '#F5E8DD', '#EED3D9'
-        ];
-        let prevColor = null;
-        const tableHeaders = document.querySelectorAll('th');
-        tableHeaders.forEach(th => {
-            const randomColor = getRandomColor(colorCodes, prevColor);
-            th.style.backgroundColor = randomColor;
-            prevColor = randomColor;
-        });
-    </script>
-
+    
     <script>
         function openTab(evt, tabName) {
             var i, tabcontent, tablinks;
