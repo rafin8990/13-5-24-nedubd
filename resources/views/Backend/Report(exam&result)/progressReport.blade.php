@@ -108,13 +108,13 @@
 {{--   <div class="grid grid-cols-3 place-items-start ">
                 <label for="applicaiton_date" class="block mb-2 text-sm font-medium">Applicaiton Date</label>
                 <input id="applicaiton_date"
-                    class="bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 w-full col-span-2"
+                    class="bg-gray-50  text-gray-900 text-sm rounded-lg  block  p-2.5 w-full col-span-2"
                     type="date">
             </div>
             <div class="grid grid-cols-3 place-items-start ">
                 <label for="applicaiton_date" class="block mb-2 text-sm font-medium">Applicaiton Date</label>
                 <input id="applicaiton_date"
-                    class="bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5 w-full col-span-2"
+                    class="bg-gray-50  text-gray-900 text-sm rounded-lg  block p-2.5 w-full col-span-2"
                     type="date">
             </div> --}}
 
