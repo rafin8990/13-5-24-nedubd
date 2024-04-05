@@ -64,11 +64,11 @@
             <div class="flex justify-between text-white">
                 <p>Total Students</p>
                 <p>
-                <p>
+               
                    {{$totalStudent}}
                 </p>
 
-                </p>
+              
 
 
 
@@ -288,10 +288,6 @@
             </div>
         </div>
     </div>
-
-
-
-    {{-- Asma --}}
 
 @endsection
 
