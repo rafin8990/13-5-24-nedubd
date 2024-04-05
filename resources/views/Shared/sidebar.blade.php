@@ -620,6 +620,10 @@
                                 <a href="/dashboard/message/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Send Message</a>
                             </li>
+                            <li>
+                                <a href="/dashboard/excelmsg/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload Excel</a>
+                            </li>
                         </ul>
                     </li>    
             <!-- student accounts  -->

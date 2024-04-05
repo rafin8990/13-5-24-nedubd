@@ -39,8 +39,16 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  "
                     placeholder="Enter the code" />
             </div>
+           
             
             <div class="w-full flex justify-end">
+                <div class="mt-2">
+                    <a href="{{ route('download.demo', $school_code) }}"
+                        class="  text-white bg-rose-600 hover:bg-rose-600 focus:ring-4 focus:ring-rose-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2  focus:outline-none ">
+                        Blank Excel Download
+                    </a>
+
+                </div>
                 <button type="submit"
                     class="w-1/3  text-white bg-blue-700 hover:bg-blue-600 focus:ring-0  font-medium rounded-lg text-sm px-3 py-2.5 me-2 mb-2 focus:outline-none">Submit
                 </button>
