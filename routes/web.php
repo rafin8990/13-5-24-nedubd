@@ -149,6 +149,8 @@ Route::prefix('dashboard')->group(function () {
 
     //update student ExcelFile
     Route::get('/uploadExelFile/{schoolCode}', [UploadExcelFileController::class, 'uploadExelFile'])->name('uploadExelFile');
+    Route::get('/download-demo/{schoolCode}', [UploadExcelFileController::class, 'downloadDemo'])->name('download.demo');
+    Route::post('/upload-excel', [UploadExcelFileController::class, 'uploadExcel'])->name('upload.excel');
 
 
     //upload photo student
@@ -163,8 +165,7 @@ Route::prefix('dashboard')->group(function () {
     //Migrate Student
     Route::get('/migrateStudent/{schoolCode}', [MigrateStudentController::class, 'migrateStudent'])->name('migrateStudent');
 
-    Route::get('/download-demo/{schoolCode}', [UploadExcelFileController::class, 'downloadDemo'])->name('download.demo');
-    Route::post('/upload-excel', [UploadExcelFileController::class, 'uploadExcel'])->name('upload.excel');
+   
 
 
 
@@ -266,8 +267,16 @@ Route::prefix('dashboard')->group(function () {
  
     //Message
     Route::get('/contact/{schoolCode}', [AddContactController::class, 'Contact'])->name('contact');
+    Route::post('/addContact', [AddContactController::class, 'addContact'])->name('addContact');
+
     Route::get('/message/{schoolCode}', [SendMSGController::class, 'message'])->name('message');
+    Route::post('/sendMessage', [SendMSGController::class, 'sendMessage'])->name('sendMessage');
+
+
     Route::get('/excelmsg/{schoolCode}', [ExcelMSGController::class, 'excelMsg'])->name('excelmsg');
+    Route::get('/download-contact/{schoolCode}', [ExcelMSGController::class, 'downloadDemo'])->name('download.contact');
+    Route::post('/uploadExcel', [ExcelMSGController::class, 'uploadExcel'])->name('uploadExcel');
+
 
 
     // teacher routes
