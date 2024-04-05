@@ -58,6 +58,10 @@ use App\Http\Controllers\Backend\ExamSetting\ViewExamMarkSetUpController;
 
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalController;
 use App\Http\Controllers\Backend\GrandFinal\GrandFinalListController;
+
+use App\Http\Controllers\Backend\Message\AddContactController;
+use App\Http\Controllers\Backend\Message\SendMSGController;
+
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
 use App\Http\Controllers\Backend\AdmitCard\SetAdmitCardController;
 use App\Http\Controllers\Backend\AdmitCard\PrintAdmitCardController;
@@ -258,6 +262,10 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/grand_exam_setup/{schoolCode}', [GrandFinalController::class, 'setupGrand']);
     Route::get('/grandFinalList/{schoolCode}', [GrandFinalListController::class, 'grandFinalList'])->name('grandFinalList');
     Route::post('/viewGrandFinal/{schoolCode}', [GrandFinalListController::class, 'viewGrandFinal'])->name('viewGrandFinal');
+ 
+    //Message
+    Route::get('/contact/{schoolCode}', [AddContactController::class, 'Contact'])->name('contact');
+    Route::get('/message/{schoolCode}', [SendMSGController::class, 'message'])->name('message');
 
 
     // teacher routes
