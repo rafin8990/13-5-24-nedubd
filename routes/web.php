@@ -61,6 +61,7 @@ use App\Http\Controllers\Backend\GrandFinal\GrandFinalListController;
 
 use App\Http\Controllers\Backend\Message\AddContactController;
 use App\Http\Controllers\Backend\Message\SendMSGController;
+use App\Http\Controllers\Backend\Message\ExcelMSGController;
 
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
 use App\Http\Controllers\Backend\AdmitCard\SetAdmitCardController;
@@ -266,6 +267,7 @@ Route::prefix('dashboard')->group(function () {
     //Message
     Route::get('/contact/{schoolCode}', [AddContactController::class, 'Contact'])->name('contact');
     Route::get('/message/{schoolCode}', [SendMSGController::class, 'message'])->name('message');
+    Route::get('/excelmsg/{schoolCode}', [ExcelMSGController::class, 'excelMsg'])->name('excelmsg');
 
 
     // teacher routes
