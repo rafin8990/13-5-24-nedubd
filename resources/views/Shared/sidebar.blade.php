@@ -500,6 +500,7 @@
                         </ul>
                     </li>
 
+
                     {{-- Report exam and result  --}}
                     <li class="dropdown">
                         <button
@@ -586,6 +587,41 @@
 
                 </ul>
             </li>
+
+            
+                    {{-- Message --}}
+
+                    <li class="dropdown">
+                        <button
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
+                            aria-controls="dropdown-message" data-collapse-toggle="dropdown-message">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="#ffffff">
+                                <path
+                                    d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
+                                </path>
+                            </svg>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">
+                               Messaging </span>
+
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+
+                        <ul id="dropdown-message" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="/dashboard/contact/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add Contact </a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/message/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Send Message</a>
+                            </li>
+                        </ul>
+                    </li>    
             <!-- student accounts  -->
 
             <li class="dropdown">
