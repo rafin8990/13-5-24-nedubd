@@ -1,6 +1,6 @@
 @extends('Backend.app')
 @section('title')
-  Send Message
+    Send Message
 @endsection
 @section('Dashboard')
     @include('/Message/message')
@@ -14,15 +14,16 @@
         <h1 class="text-2xl font-bold my-10 mx-5 text-center">Send Message</h1>
     </div>
     <div class=" mb-3">
-        <form action="{{route('sendMessage')}}" method="POST" class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-3/5 mx-auto space-y-3">
-        @csrf
+        <form action="{{ route('sendMessage') }}" method="POST"
+            class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-3/5 mx-auto space-y-3">
+            @csrf
             <div class="grid grid-cols-3 place-items-start  gap-5">
                 <label for="class" class="block mb-2 text-sm font-medium whitespace-noWrap ">Instruction
                     :</label>
-                    <textarea name="message" id="instruction" rows="4"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
-                        placeholder="write a message"></textarea>
-                        <input value="{{$school_code}}" name="school_code" class="hidden" type="text">
+                <textarea name="message" id="instruction" rows="4"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                    placeholder="write a message"></textarea>
+                <input value="{{ $school_code }}" name="school_code" class="hidden" type="text">
             </div>
 
             <div class="w-full flex justify-end">
@@ -38,6 +39,9 @@
                 <table class="w-full text-sm text-center rtl:text-right text-black">
                     <thead class="text-center text-white uppercase bg-blue-300 border-b border-blue-200 ">
                         <tr>
+                            <th scope="col" class=" text-sm px-6 py-3">
+                                Status
+                            </th>
                             <th scope="col" class=" text-sm px-6 py-3 bg-blue-500">
                                 Name
                             </th>
@@ -45,47 +49,79 @@
                                 Contact
                             </th>
                             <th scope="col" class=" text-sm px-6 py-3 bg-blue-500">
-                                Status
+                                Action
                             </th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($contacts as $data)
-                        <tr>
-                            <td scope="col" class=" text-sm px-6 py-3">
-                                {{$data->name}}
-                            </td>
-                            <td scope="col" class=" text-sm px-6 py-3">
-                                {{$data->contact}}
-                            </td>
-                            <td scope="col" class=" text-sm px-6 py-3">
-                                <input type="checkbox" name="contact[{{$data->contact}}]" value="{{$data->contact}}" checked id="">
-                            </td>
-                            
-                        </tr>
+                        @foreach ($contacts as $data)
+                            <tr id="row_{{ $data->id }}">
+                                <td scope="col" class="text-sm px-6 py-3">
+                                    <input type="checkbox" name="contact[{{ $data->contact }}]" value="{{ $data->contact }}"
+                                        class="row-checkbox" data-row-id="{{ $data->id }}" checked>
+                                </td>
+                                <td scope="col" class="text-sm px-6 py-3">
+                                    {{ $data->name }}
+                                </td>
+                                <td scope="col" class="text-sm px-6 py-3">
+                                    {{ $data->contact }}
+                                </td>
+                                <td scope="col" class="text-sm px-6 py-3 flex justify-center">
+                                    <button class="btn delete-button" data-contact-id="{{ $data->id }}">
+                                        <i class="fa fa-trash" aria-hidden="true" style="color:red;"></i>
+                                    </button>
+                                </td>
+                            </tr>
                         @endforeach
+
+
                     </tbody>
                 </table>
             </div>
-            
-            
-            
+
+
+
         </form>
     </div>
+    <script>
+        // Event listener for delete button click
+        document.querySelectorAll('.delete-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var contactId = this.getAttribute('data-contact-id');
+                var confirmation = confirm("Are you sure you want to delete this contact?");
+                if (confirmation) {
+                    deleteContact(contactId);
+                }
+            });
+        });
+
+        // Function to delete contact via AJAX
+        function deleteContact(contactId) {
+            fetch('/dashboard/delete_contact/' + contactId, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error deleting contact');
+                    }
+                })
+                .then(data => {
+                    // Remove the row from the table
+                    var row = document.getElementById('row_' + contactId);
+                    row.parentNode.removeChild(row);
+                    alert(data.message); // Show success message
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error deleting contact');
+                });
+        }
+    </script>
 @endsection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
