@@ -22,8 +22,11 @@ class SendMSGController extends Controller
         $sid = "Bdassociateeng";
     
         foreach($contacts as $contact){
-            $url = "http://api.boom-cast.com/boomcast/WebFramework/boomCastWebService/externalApiSendTextMessage.php?masking=NOMASK&userName=bassociate&password=8d611d3ea607e1e12f0f3440c314c3c1&MsgType=TEXT&receiver=$contact&message=$messageEncoded";
-            $param = "user=bassociate&pass=8d611d3ea607e1e12f0f3440c314c3c1&sms[0][0]= $contact&sms[0][1]=" . urlencode("$request->message") . "&sms[0][2]=123456789&sid=$sid";
+            // Check if message is not empty before sending SMS
+            if (!empty($messages)) {
+                // Send SMS only if there's a message
+                $url = "http://api.boom-cast.com/boomcast/WebFramework/boomCastWebService/externalApiSendTextMessage.php?masking=NOMASK&userName=bassociate&password=8d611d3ea607e1e12f0f3440c314c3c1&MsgType=TEXT&receiver=$contact&message=$messageEncoded";
+                $param = "user=bassociate&pass=8d611d3ea607e1e12f0f3440c314c3c1&sms[0][0]= $contact&sms[0][1]=" . urlencode("$request->message") . "&sms[0][2]=123456789&sid=$sid";
     
                 $crl = curl_init();
                 curl_setopt($crl, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -35,14 +38,31 @@ class SendMSGController extends Controller
                 curl_setopt($crl, CURLOPT_POSTFIELDS, $param);
                 $response = curl_exec($crl);
                 curl_close($crl);
-            // Assuming Message model represents 'messages' table
-            $message = new Message();
-            $message->message = $messageEncoded;
-            $message->contact = $contact;
-            $message->school_code = $school_code;
-            $message->save();
+            }
+    
+            // Save message to database only if there's a message
+            if (!empty($messages)) {
+                $message = new Message();
+                $message->message = $messageEncoded;
+                $message->contact = $contact;
+                $message->school_code = $school_code;
+                $message->save();
+            }
         }
     
         return redirect()->back()->with('success', 'SMS sent successfully');
     }
+    
+
+    public function delete_add_contact($id)
+{
+    try {
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+        return response()->json(['message' => 'Contact deleted successfully']);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Failed to delete contact'], 500);
+    }
+}
+
 }

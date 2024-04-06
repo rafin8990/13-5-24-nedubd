@@ -127,7 +127,7 @@ Add Class
 
                     <a class="mr-2 edit-button"><i class="fa fa-edit" style="color:green;"></i></a>
 
-                    <form method="POST" action="{{ url('dashboard/delete_class', $data->id) }}">
+                    <form method="POST" action="{{ url('dashboard/delete_contact', $data->id) }}">
                         @csrf
                         @method('DELETE')
                         <button class="btn ">
