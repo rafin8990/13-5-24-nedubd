@@ -15,6 +15,7 @@ class AddContactController extends Controller
    public function addContact(Request $request){
       $existingContact=Contact::where('school_code',$request->school_code)->where('action','approved')->where('contact',$request->contact)->exists();
 
+
       if($existingContact){
          return redirect()->back()->with('error','Contact already added');
       }
@@ -28,5 +29,7 @@ class AddContactController extends Controller
          return redirect()->back()->with('success','Contact added successfully');
 
    }
+
+  
    
 }
