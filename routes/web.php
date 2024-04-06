@@ -268,10 +268,11 @@ Route::prefix('dashboard')->group(function () {
     //Message
     Route::get('/contact/{schoolCode}', [AddContactController::class, 'Contact'])->name('contact');
     Route::post('/addContact', [AddContactController::class, 'addContact'])->name('addContact');
-
+    
     Route::get('/message/{schoolCode}', [SendMSGController::class, 'message'])->name('message');
     Route::post('/sendMessage', [SendMSGController::class, 'sendMessage'])->name('sendMessage');
-
+    Route::delete('/delete_contact/{id}', [SendMSGController::class, 'delete_add_contact'])->name('delete.contact');
+  
 
     Route::get('/excelmsg/{schoolCode}', [ExcelMSGController::class, 'excelMsg'])->name('excelmsg');
     Route::get('/download-contact/{schoolCode}', [ExcelMSGController::class, 'downloadDemo'])->name('download.contact');
