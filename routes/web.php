@@ -37,6 +37,29 @@ use App\Http\Controllers\Backend\Student\studentReports\addShortListController;
 use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoController;
 use App\Http\Controllers\Backend\Student\studentReports\EsifListController;
 use App\Http\Controllers\Backend\Student\UploadExcelFileController;
+
+use App\Http\Controllers\Backend\Student_Account\Others\FromFeeController;
+use App\Http\Controllers\Backend\Student_Account\Others\DonationController;
+use App\Http\Controllers\Backend\Student_Account\Others\OthersFeeController;
+use App\Http\Controllers\Backend\Student_Account\Others\FineFailController;
+
+use App\Http\Controllers\Backend\Student_Account\Reports\DailyCollectionReportController;
+use App\Http\Controllers\Backend\Student_Account\Reports\geneTranferInquiriController;
+use App\Http\Controllers\Backend\Student_Account\Reports\DuePaySummaryController;
+use App\Http\Controllers\Backend\Student_Account\Reports\HeadWiseSummaryController;
+use App\Http\Controllers\Backend\Student_Account\Reports\TransferToAccountsController;
+use App\Http\Controllers\Backend\Student_Account\Reports\PaidInvoiceController;
+use App\Http\Controllers\Backend\Student_Account\Reports\OuthTransInquiryController;
+use App\Http\Controllers\Backend\Student_Account\Reports\ListOfDueOrPayController;
+use App\Http\Controllers\Backend\Student_Account\Reports\ListOfHeadWiseController;
+use App\Http\Controllers\Backend\Student_Account\Reports\ListOfMonthWiseFeesController;
+use App\Http\Controllers\Backend\Student_Account\Reports\ListOfSepecialDiscountController;
+use App\Http\Controllers\Backend\Student_Account\Reports\ListOfFineOrFailOrAbsentController;
+use App\Http\Controllers\Backend\Student_Account\Reports\ListOfDonationController;
+use App\Http\Controllers\Backend\Student_Account\Reports\ListOfFormFeesController;
+use App\Http\Controllers\Backend\Student_Account\Reports\MonthlyPaidDetailsController;
+
+
 use App\Http\Controllers\Backend\Teacher\TeacherController;
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
@@ -214,7 +237,28 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/transferCertificate/{schoolCode}', [trasnferCertificateController::class, 'trasnfer_certificate']);
     Route::get('/transferCertificateList/{schoolCode}', [trasnferCertificateListController::class, 'trasnfer_certificate_list']);
 
-
+//Students Accounts
+//others
+Route::get('/FeeCollection/{schoolCode}', [FromFeeController::class, 'AddFromFee'])->name('feeCollection');
+Route::get('/donation/{schoolCode}', [DonationController::class, 'AddDonationFee'])->name('donation');
+Route::get('/othersFee/{schoolCode}', [OthersFeeController::class, 'AddOthersFee'])->name('othersFee');
+Route::get('/addFineFail/{schoolCode}', [FineFailController::class, 'AddFineFail'])->name('addFineFail');
+//reports
+Route::get('/DailyCollectionReport/{schoolCode}', [DailyCollectionReportController::class, 'DailyCollectionReport'])->name('DailyCollectionReport');
+Route::get('/geneTransferInquiri/{schoolCode}', [geneTranferInquiriController::class, 'geneTransferInquiri'])->name('geneTransferInquiri');
+Route::get('/DuepaySummary/{schoolCode}', [DuePaySummaryController::class, 'DuepaySummary'])->name('DuepaySummary');
+Route::get('/headwiseSummary/{schoolCode}', [HeadWiseSummaryController::class, 'headwiseSummary'])->name('headwiseSummary');
+Route::get('/transferToAccounts/{schoolCode}', [TransferToAccountsController::class, 'transferToAccounts'])->name('transferToAccounts');
+Route::get('/paidInvoice/{schoolCode}', [PaidInvoiceController::class, 'paidInvoice'])->name('paidInvoice');
+Route::get('/othTransInquiry/{schoolCode}', [OuthTransInquiryController::class, 'othTransInquiry'])->name('othTransInquiry');
+Route::get('/ListOfdueOrPay/{schoolCode}', [ListOfDueOrPayController::class, 'ListOfdueOrPay'])->name('ListOfdueOrPay');
+Route::get('/listOfHeadWise/{schoolCode}', [ListOfHeadWiseController::class, 'listOfHeadWise'])->name('listOfHeadWise');
+Route::get('/listOfMonthWiseFees/{schoolCode}', [ListOfMonthWiseFeesController::class, 'listOfMonthWiseFees'])->name('listOfMonthWiseFees');
+Route::get('/listOfSpecialDiscount/{schoolCode}', [ListOfSepecialDiscountController::class, 'listOfSpecialDiscount'])->name('listOfSpecialDiscount');
+Route::get('/listOfFineOrFailOrAbsent/{schoolCode}', [ListOfFineOrFailOrAbsentController::class, 'listOfFineOrFailOrAbsent'])->name('listOfFineOrFailOrAbsent');
+Route::get('/listOfDonation/{schoolCode}', [ListOfDonationController::class, 'listOfDonation'])->name('listOfDonation');
+Route::get('/listOfFormFees/{schoolCode}', [ListOfFormFeesController::class, 'listOfFormFees'])->name('listOfFormFees');
+Route::get('/monthlyPaidDetails/{schoolCode}', [MonthlyPaidDetailsController::class, 'monthlyPaidDetails'])->name('monthlyPaidDetails');
 
     // sayem - student attendence 
     Route::get('/addStudentAttendence/{schoolCode}', [AttendenceController::class, "add_student_attence"])->name('addStudentAttendence');

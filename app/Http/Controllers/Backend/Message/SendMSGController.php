@@ -60,7 +60,8 @@ class SendMSGController extends Controller
         $contact = Contact::findOrFail($id);
         $contact->delete();
         return response()->json(['message' => 'Contact deleted successfully']);
-    } catch (\Exception $e) {
+    } 
+    catch (\Exception $e) {
         return response()->json(['error' => 'Failed to delete contact'], 500);
     }
 }
