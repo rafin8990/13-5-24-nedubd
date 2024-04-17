@@ -85,6 +85,7 @@ use App\Http\Controllers\Backend\GrandFinal\GrandFinalListController;
 use App\Http\Controllers\Backend\Message\AddContactController;
 use App\Http\Controllers\Backend\Message\SendMSGController;
 use App\Http\Controllers\Backend\Message\ExcelMSGController;
+use App\Http\Controllers\Backend\Message\AddMsgController;
 
 use App\Http\Controllers\Backend\ReportsExamsReports\ReportsExamsReportsController;
 use App\Http\Controllers\Backend\AdmitCard\SetAdmitCardController;
@@ -316,13 +317,15 @@ Route::get('/monthlyPaidDetails/{schoolCode}', [MonthlyPaidDetailsController::cl
     Route::get('/message/{schoolCode}', [SendMSGController::class, 'message'])->name('message');
     Route::post('/sendMessage', [SendMSGController::class, 'sendMessage'])->name('sendMessage');
     Route::delete('/delete_contact/{id}', [SendMSGController::class, 'delete_add_contact'])->name('delete.contact');
-  
-
+    
+    
     Route::get('/excelmsg/{schoolCode}', [ExcelMSGController::class, 'excelMsg'])->name('excelmsg');
     Route::get('/download-contact/{schoolCode}', [ExcelMSGController::class, 'downloadDemo'])->name('download.contact');
     Route::post('/uploadExcel', [ExcelMSGController::class, 'uploadExcel'])->name('uploadExcel');
-
-
+    
+    Route::get('/addMessage/{schoolCode}', [AddMsgController::class, 'addMsg'])->name('addMsg');
+    Route::post('/addInstruction', [AddMsgController::class, 'addInstruction'])->name('addInstruction');
+    
 
     // teacher routes
     Route::get('/teachers/{schoolCode}', [TeacherController::class, 'teachers'])->name('teachers');

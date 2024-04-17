@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Message;
 
 use App\Http\Controllers\Controller;
+use App\Models\AddMsg;
 use App\Models\Contact;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ class SendMSGController extends Controller
 {
     public function message($school_code){
         $contacts=Contact::where('school_code',$school_code)->where('action','approved')->get();
-        return view ('Backend.Messaging.sendMessage',compact('contacts'));
+        $messages = AddMsg::where('school_code',$school_code)->where('action','approved')->get();
+        return view ('Backend.Messaging.sendMessage',compact('contacts','messages'));
        }
 
        public function sendMessage(Request $request){
