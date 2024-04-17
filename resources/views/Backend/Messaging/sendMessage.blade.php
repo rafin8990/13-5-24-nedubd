@@ -17,7 +17,7 @@
         <form action="{{ route('sendMessage') }}" method="POST"
             class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-3/5 mx-auto space-y-3">
             @csrf
-            <div class="grid grid-cols-3 place-items-start  gap-5">
+            <div class=" place-items-start  gap-5">
                 <label for="class" class="block mb-2 text-sm font-medium whitespace-noWrap ">Instruction
                     :</label>
                 <textarea name="message" id="instruction" rows="4"
