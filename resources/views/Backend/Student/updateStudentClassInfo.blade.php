@@ -9,6 +9,7 @@
             Student Class Info
         </h3>
     </div>
+    di
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-10 md:my-10">
         <div class="md:flex justify-end  ">
             <a href="{{ route('updateStudentBasicInfo', $school_code) }}">
