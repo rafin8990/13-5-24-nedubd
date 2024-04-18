@@ -17,6 +17,7 @@
         <form action="{{ route('sendMessage') }}" method="POST"
             class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-3/5 mx-auto space-y-3">
             @csrf
+
             <div class="place-items-start gap-5">
                 <label for="message_dropdown" class="block mb-2 text-sm font-medium whitespace-noWrap">Select Message:</label>
                 <select name="message_dropdown" id="message_dropdown" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
@@ -27,6 +28,7 @@
                 </select>
                 <label for="instruction" class="block mb-2 text-sm font-medium whitespace-noWrap">Instruction:</label>
                 <textarea name="message" id="instruction" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="write a message"></textarea>
+
                 <input value="{{ $school_code }}" name="school_code" class="hidden" type="text">
             </div>
 
@@ -136,3 +138,4 @@
         });
     </script>
 @endsection
+

@@ -16,4 +16,3 @@ class AddMsg extends Model
     ];
 
     protected $table="add_messages";
-}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Message;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\TotalContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
@@ -39,22 +40,38 @@ class ExcelMSGController extends Controller
         // dd($contacts);
 
         foreach ($contacts as $contact) {
-            // dd($contact[1]);
+            // Check if name is null, skip the current iteration if it is
+            if ($contact[0] === null) {
+                continue;
+            }
+        
             $existingContact = Contact::where('school_code', $request->school_code)
-            ->where('action', 'approved')
-            ->where('contact', $contact[1])
-            ->first(); // Execute the query and get the first result
-
-if ($existingContact) {
-return redirect()->back()->with('error', 'Contact already added');
-}
+                ->where('action', 'approved')
+                ->where('contact', $contact[1])
+                ->first(); // Execute the query and get the first result
+        
+            if ($existingContact) {
+                // Skip this iteration and move to the next one
+                continue;
+            }
+        
+            // If no existing contact found and name is not null, proceed with saving
             $student = new Contact();
             $student->name = $contact[0];
             $student->contact = $contact[1];
             $student->school_code = $school_code;
-            $student->action= "approved";
+            $student->action = "approved";
             $student->save();
+        
+            //total contact
+            $tcontact = new TotalContact();
+            $tcontact->name = $contact[0];
+            $tcontact->contact = $contact[1];
+            $tcontact->school_code = $school_code;
+            $tcontact->action = "approved";
+            $tcontact->save();
         }
+        
 
             return redirect()->back()->with('success', "contact Uploaded successfully");
       

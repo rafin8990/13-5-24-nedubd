@@ -59,7 +59,7 @@
         <div class="bg-gradient-to-r  from-blue-500 to-blue-950 p-5 rounded  mx-2 lg:mx-0">
             <h1 class="text-xl font-bold text-white">Student</h1>
             <div class="w-full bg-gray-400 rounded-full h-2.5 mb-4 mt-2 ">
-                <div class="bg-white h-2.5 rounded-full" style="width: 45%"></div>
+                <div class="bg-white h-2.5 rounded-full" style="width: {{$totalStudent}}%"></div>
             </div>
             <div class="flex justify-between text-white">
                 <p>Total Students</p>
@@ -78,7 +78,7 @@
         <div class="bg-gradient-to-r  from-green-500 to-green-950 p-5 rounded  mx-2 lg:mx-0">
             <h1 class="text-xl font-bold text-white">Class</h1>
             <div class="w-full bg-gray-400 rounded-full h-2.5 mb-4 mt-2 ">
-                <div class="bg-green-500 h-2.5 rounded-full" style="width: 45%"></div>
+                <div class="bg-blue-500 h-2.5 rounded-full" style="width: {{$classData->count()}}%"></div>
             </div>
             <div class="flex justify-between text-white">
                 <p>Total Class</p>
@@ -89,7 +89,7 @@
         <div class="bg-gradient-to-r  from-orange-500 to-orange-950 p-5 rounded  mx-2 lg:mx-0">
             <h1 class="text-xl font-bold text-white">Section</h1>
             <div class="w-full bg-gray-400 rounded-full h-2.5 mb-4 mt-2 ">
-                <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 45%"></div>
+                <div class="bg-yellow-500 h-2.5 rounded-full" style="width: {{$sectionData->count()}}%"></div>
             </div>
             <div class="flex justify-between text-white">
                 <p>Total Section</p>
@@ -99,11 +99,21 @@
         <div class="bg-gradient-to-r  from-green-500 to-green-950 p-5 rounded  mx-2 lg:mx-0">
             <h1 class="text-xl font-bold text-white">Group</h1>
             <div class="w-full bg-white rounded-full h-2.5 mb-4 mt-2 ">
-                <div class="bg-blue-500 h-2.5 rounded-full" style="width: 45%"></div>
+                <div class="bg-blue-500 h-2.5 rounded-full" style="width: {{$groupData->count()}}%"></div>
             </div>
             <div class="flex justify-between text-white">
                 <p>Total Group</p>
                 <p>{{$groupData->count()}}</p>
+            </div>
+        </div>
+        <div class="bg-gradient-to-r  from-green-500 to-green-950 p-5 rounded  mx-2 lg:mx-0">
+            <h1 class="text-xl font-bold text-white">Total Message Send</h1>
+            <div class="w-full bg-white rounded-full h-2.5 mb-4 mt-2 ">
+                <div class="bg-blue-500 h-2.5 rounded-full" style="width: {{$msgData->count()}}%"></div>
+            </div>
+            <div class="flex justify-between text-white">
+                <p>Total Message</p>
+                <p>{{$msgData->count()}}</p>
             </div>
         </div>
 
