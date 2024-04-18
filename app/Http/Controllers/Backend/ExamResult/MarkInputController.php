@@ -10,6 +10,8 @@ use App\Models\AddGroup;
 use App\Models\AddSection;
 use App\Models\AddShift;
 use App\Models\AddSubject;
+use App\Models\ExamPublish;
+use App\Models\SetShortCode;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -26,7 +28,6 @@ class MarkInputController extends Controller
         $subjectData = AddSubject::where('action', 'approved')->where('school_code', $school_code)->get();
         $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $school_code)->get();
         $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
-
         return view('/Backend/ExamResult/exam_marks', compact('classData', 'groupData', 'sectionData', 'shiftData', 'subjectData', 'classExamData', 'academicYearData'));
     }
    
@@ -34,44 +35,32 @@ class MarkInputController extends Controller
 
     
     public function generateExcelSheet(Request $request, $school_code) {
-        $tableData = [
-            'Student_name' => 'Student_name',
-            'Student_id' => 'Student_id',
-            'class_name' => 'class_name',
-            'Shift' => 'Shift',
-            'Section_name' => 'Section_name',
-            'Group_name' => 'Group_name',
-            'Roll' => 'Roll',
-            'Subject' => 'Subject',
-            'Exam_name' => 'Exam_name',
-            'Year' => 'Year',
-            'Full_marks' => 'Full_marks',
-            'T-1=25/00' => 'T-1=25/00',
-            'CQ=100/00' => 'CQ=100/00',
-            'T.Marks' => 'T.Marks',
-            'Grade' => 'Grade',
-            'GPA' => 'GPA',
-            'Absent' => 'Absent',
-            'school_code' => 'school_code',
-        ];
-    
-        $spreadsheet = new Spreadsheet();
-        $sheet = $spreadsheet->getActiveSheet();
-    
-        $headers = array_keys($tableData);
-        $sheet->fromArray([$headers], NULL, 'A1');
-    
-        $data = array_values($tableData);
-        $sheet->fromArray([$data], NULL, 'A2');
-    
-        $writer = new Xlsx($spreadsheet);
-        $tempFilePath = tempnam(sys_get_temp_dir(), 'excel');
-        $writer->save($tempFilePath);
-        $fileContents = file_get_contents($tempFilePath);
-        unlink($tempFilePath);
-    
-        return response($fileContents)
-            ->header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-            ->header('Content-Disposition', 'attachment; filename="table.xlsx"');
+        // dd($request);
+$class=$request->input('class');
+$group=$request->input('group');
+$section=$request->input('section');
+$shift=$request->input('shift');
+$subject=$request->input('subject');
+$exam=$request->input('exam');
+$year=$request->input('year');
+// dd($class);
+
+        $classData = AddClass::where('action', 'approved')->where('school_code', $school_code)->get();
+        $groupData = AddGroup::where('action', 'approved')->where('school_code', $school_code)->get();
+        $sectionData = AddSection::where('action', 'approved')->where('school_code', $school_code)->get();
+        $shiftData = AddShift::where('action', 'approved')->where('school_code', $school_code)->get();
+        $subjectData = AddSubject::where('action', 'approved')->where('school_code', $school_code)->get();
+        $classExamData = AddClassExam::where('action', 'approved')->where('school_code', $school_code)->get();
+        $academicYearData = AddAcademicYear::where('action', 'approved')->where('school_code', $school_code)->get();
+
+        $existingExam= ExamPublish::where('school_code',$school_code)->where('action','approved')->where('Class_name',$class)->where('exam_name',$exam)->where('year',$year)->where('status','active')->first();
+
+        if($existingExam){
+            return redirect()->back()->with('error','Exam already published');
+        }
+
+        $shortCodes=SetShortCode::where('school_code',$school_code)->where('action','approved')->where('class_exam_name',$exam)->where('academic_year_name',$year)->where('class_name',$class)->get();
+
+return view('/Backend/ExamResult/exam_marks', compact('classData', 'groupData', 'sectionData', 'shiftData', 'subjectData', 'classExamData', 'academicYearData'));
     }
 }

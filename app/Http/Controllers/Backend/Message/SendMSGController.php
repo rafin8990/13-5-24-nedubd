@@ -68,4 +68,11 @@ class SendMSGController extends Controller
     }
 }
 
+public function deleteSelected(Request $request)
+{
+    $ids = $request->input('ids');
+    Contact::whereIn('id', $ids)->delete();
+    return redirect()->back()->with('success', 'contact deleted successfully');
+}
+
 }
