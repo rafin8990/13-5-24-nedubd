@@ -581,27 +581,22 @@
                             </li>
                         </ul>
                     </li>
-
-
-
-
                 </ul>
             </li>
 
 
             {{-- Message --}}
-
             <li class="dropdown">
                 <button
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
                     aria-controls="dropdown-message" data-collapse-toggle="dropdown-message">
-                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
-                        <path
-                            d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
-                        </path>
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="#ffffff" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                     </svg>
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">
-                        Messaging </span>
+
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Messaging</span>
 
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
@@ -611,21 +606,22 @@
                 </button>
 
                 <ul id="dropdown-message" class="hidden py-2 space-y-2">
-                    <li>
-                        <a href="/dashboard/contact/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                            Contact </a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/message/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Send
-                            Message</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/excelmsg/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
-                            Excel</a>
-                    </li>
+                            <li>
+                                <a href="/dashboard/contact/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add Contact </a>
+                            </li>
+                            <li>
+                                <a href="{{route('addMsg',$school_code)}}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add Message </a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/message/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Send Message</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/excelmsg/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload Excel</a>
+                            </li>
                 </ul>
             </li>
 
@@ -721,22 +717,22 @@
                         </button>
                         <ul id="dropdown-student-others" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#"
+                                <a href="{{route('feeCollection',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Form
                                     Fee</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('donation',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Donation
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('addFineFail',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Fine/Fail/Absent
                                     Fess</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('othersFee',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Others
                                     Fee</a>
                             </li>
@@ -763,77 +759,78 @@
                         </button>
                         <ul id="dropdown-student-reports" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#"
+                                <a href="{{route('DailyCollectionReport',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Daily
                                     Collection reports</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('geneTransferInquiri',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Gene.
                                     Transfer Inquiry </a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Duw/Pay
+                                <a href="{{route('DuepaySummary',$school_code)}}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Deu/Pay
                                     Summary</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('headwiseSummary',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Head
                                     wise Summary</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('othTransInquiry',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Oth.
                                     Trans Inquiry</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('transferToAccounts',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Transfer
                                     to Accounts</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('paidInvoice',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Paid
                                     Invoice</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('ListOfdueOrPay',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Due/Pay</a>
                             </li>
+
                             <li>
-                                <a href="#"
+                                <a href="{{route('listOfHeadWise',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     of Head wise </a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('listOfSpecialDiscount',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Special Discount</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('listOfMonthWiseFees',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Month wise Fees</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('listOfFineOrFailOrAbsent',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Fine / Fail/Absent</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('listOfDonation',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Donation</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('listOfFormFees',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Form Fees</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{route('monthlyPaidDetails',$school_code)}}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Monthly
                                     Paid Details</a>
                             </li>
