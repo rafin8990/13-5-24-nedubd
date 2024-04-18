@@ -1,6 +1,6 @@
 @extends('Backend.app')
 @section('title')
-    Subject Wise Report
+    Noipunno Report
 @endsection
 
 

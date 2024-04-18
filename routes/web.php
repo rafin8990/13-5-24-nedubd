@@ -154,6 +154,11 @@ use App\Http\Controllers\Backend\Assessment\BasicSetting\SetupAssParadarsitaNoip
 use App\Http\Controllers\Backend\Assessment\BasicSetting\ParadarsitaSuchokExamController;
 // Assessment => Assessment Reports
 use App\Http\Controllers\Backend\Assessment\AssessmentReports\SubjectWiseReportController;
+use App\Http\Controllers\Backend\Assessment\AssessmentReports\AllSubjectWiseController;
+use App\Http\Controllers\Backend\Assessment\AssessmentReports\NoipunnoReportController;
+use App\Http\Controllers\Backend\Assessment\AssessmentReports\NoipunnoAllSubjectController;
+use App\Http\Controllers\Backend\Assessment\AssessmentReports\NoipunnoMullaonPrintController;
+use App\Http\Controllers\Backend\Assessment\AssessmentReports\NoipunnoBIController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -671,4 +676,9 @@ Route::prefix('dashboard')->group(function () {
 
     // Assessment => Assessment Reports
     Route::get("/assessment/assessmentReports/subjectWiseReport/{schoolCode}", [SubjectWiseReportController::class, "SubjectWiseReportView"])->name("subjectWiseReport.view");
+    Route::get("/assessment/assessmentReports/allSubjectWise/{schoolCode}", [AllSubjectWiseController::class, "AllSubjectWiseView"])->name("allSubjectWise.view");
+    Route::get("/assessment/assessmentReports/noipunnoReport/{schoolCode}", [NoipunnoReportController::class, "NoipunnoReportView"])->name("noipunnoReport.view");
+    Route::get("/assessment/assessmentReports/noipunnoAllSubject/{schoolCode}", [NoipunnoAllSubjectController::class, "NoipunnoAllSubjectView"])->name("noipunnoAllSubject.view");
+    Route::get("/assessment/assessmentReports/noipunnoMullaonPrint/{schoolCode}", [NoipunnoMullaonPrintController::class, "NoipunnoMullaonPrintView"])->name("noipunnoMullaonPrint.view");
+    Route::get("/assessment/assessmentReports/noipunnoBI/{schoolCode}", [NoipunnoBIController::class, "NoipunnoBIView"])->name("noipunnoBI.view");
 });

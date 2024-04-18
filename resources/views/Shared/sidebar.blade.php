@@ -1085,27 +1085,27 @@
                                     Subject Wise Report</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/assessment/assessmentReports/allSubjectWise/{{ $school_code }}"
                                 class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                                 All Subject Wise</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/assessment/assessmentReports/noipunnoReport/{{ $school_code }}"
                                 class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
                                 Report</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/assessment/assessmentReports/noipunnoAllSubject/{{ $school_code }}"
                                 class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
                                 All Subject</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/assessment/assessmentReports/noipunnoMullaonPrint/{{ $school_code }}"
                                 class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
                                 Mullaon Print</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/assessment/assessmentReports/noipunnoBI/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
                                     BI</a>
                             </li>
