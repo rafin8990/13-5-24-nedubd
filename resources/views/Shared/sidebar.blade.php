@@ -588,29 +588,20 @@
                 </ul>
             </li>
 
-            
-                    {{-- Message --}}
 
-                    <li class="dropdown">
-                        <button
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
-                            aria-controls="dropdown-message" data-collapse-toggle="dropdown-message">
-                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                fill="#ffffff">
-                                <path
-                                    d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
-                                </path>
-                            </svg>
-                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">
-                               Messaging </span>
+            {{-- Message --}}
 
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 10 6">
-                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-
+            <li class="dropdown">
+                <button
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group cursor-pointer hover:bg-slate-100/20"
+                    aria-controls="dropdown-message" data-collapse-toggle="dropdown-message">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
+                        <path
+                            d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z">
+                        </path>
+                    </svg>
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">
+                        Messaging </span>
                         <ul id="dropdown-message" class="hidden py-2 space-y-2">
                             <li>
                                 <a href="/dashboard/contact/{{ $school_code }}"
@@ -630,6 +621,7 @@
                             </li>
                         </ul>
                     </li>    
+
             <!-- student accounts  -->
 
             <li class="dropdown">
@@ -653,52 +645,52 @@
 
                 <ul id="dropdown-student-Accounts" class="hidden py-2 space-y-2">
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/paySlipCollection/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
                             Pay Slip Collection</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/quickCollection/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Quick
                             Collection</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/printUnpaidPaySlip/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Print
                             Unpaid Payslip </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/collectUnpaidPaySlip/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Collect
                             Unpaid PaySlip</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/deletePaySlip/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Delete
                             Payslip</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/newStdAddPaySlip/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">New
                             STD Add PaySlip</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/newOldStdAddPaySlip/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">New/Old
                             STD Add payslip</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/generatePayslip/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Generate
                             Payslip</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/editGeneratedPayslip/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Edit
                             Generated Payslip</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/dashboard/studentAccounts/generateMultiplePayslip/{{ $school_code }}"
                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Generate
                             Multiple Payslip</a>
                     </li>
@@ -844,6 +836,154 @@
                     </li>
                 </ul>
             </li>
+
+
+            <!-- Generel Accounts  -->
+            <li class="dropdown">
+                <button type="button"
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
+                    aria-controls="dropdown-student-Attendence" data-collapse-toggle="dropdown-student-Attendence">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
+                        <path
+                            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM8 13V15H6V13H8ZM13 13V15H11V13H13ZM18 13V15H16V13H18ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+                        </path>
+                    </svg>
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Generel
+                        Accounts</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+
+                </button>
+                <ul id="dropdown-student-Attendence" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="/dashboard/generalAccounts/cashPaymentVoucher/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Cash
+                            Payment Voucher</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/generalAccounts/cashReceiptVoucher/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Cash
+                            Receipt Voucher</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/generalAccounts/bankPaymentVoucher/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Bank
+                            Payment Voucher</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/generalAccounts/bankReceiptVoucher/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Bank
+                            Receipt Voucher</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/generalAccounts/journalVoucher/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Journal
+                            Voucher</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/generalAccounts/contraVoucher/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Contra
+                            Voucher</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/generalAccounts/voucherPosting/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Voucher
+                            Posting</a>
+                    </li>
+                    {{-- Reports (General Accounts) --}}
+                    <li class="dropdown ml-6">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            aria-controls="dropdown-general-accounts-report" data-collapse-toggle="dropdown-general-accounts-report">
+
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Reports
+                                (General Accounts)</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <ul id="dropdown-general-accounts-report" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/accountsVoucher/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Accounts Voucher</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/cashBook/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Cash
+                                    Book</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/bankBook/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Bank
+                                    Book</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/journalBook/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Journal
+                                    Book</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/incomeExpenseSummary/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Income
+                                    Expense Summary</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/trialBalance/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Trial
+                                    Balance</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/balanceSheet/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Balance
+                                    Sheet</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/incomeStatement/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Income
+                                    Statement</a>
+                            </li>
+                        </ul>
+
+                    </li>
+
+                    {{-- My Account --}}
+                    <li class="dropdown ml-6">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            aria-controls="dropdown-my-account" data-collapse-toggle="dropdown-my-account">
+
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">My Account</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <ul id="dropdown-my-account" class="hidden py-2 space-y-2">
+                            <li>
+                                {{-- <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/accountsVoucher/{{ $school_code }}" --}}
+                                <a href="/dashboard/generalAccounts/myAccount/currentBalance/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Current Balance</a>
+                                <a href="/dashboard/generalAccounts/myAccount/personalStatement/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Personal Statement</a>
+                                <a href="/dashboard/generalAccounts/myAccount/allStatement/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    All Statement</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </li>
+
 
             <!-- Student Attendence  -->
             <li class="dropdown">
