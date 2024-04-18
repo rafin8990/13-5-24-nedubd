@@ -138,8 +138,6 @@ use App\Http\Controllers\Backend\GeneralAccounts\Reports_GeneralAccounts\IncomeS
 use App\Http\Controllers\Backend\GeneralAccounts\MyAccount\CurrentBalanceController;
 use App\Http\Controllers\Backend\GeneralAccounts\MyAccount\PersonalStatementController;
 use App\Http\Controllers\Backend\GeneralAccounts\MyAccount\AllStatementController;
-
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -165,7 +163,7 @@ Route::get('/login-user', [AuthController::class, 'loginUser'])->name('login-use
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/{schoolCode}', [DashboardController::class, 'index'])->name('dashboard.index');
-    // NEDUBD Module
+    // NEDUBD Module 
     Route::get('/addAdmin/{schoolCode}', [NEDUBDController::class, 'addAdmin']);
     Route::post('/create-admin', [NEDUBDController::class, 'createAdmin'])->name('admin.add');
     Route::get('/addSchoolInfo/{schoolCode}', [NEDUBDController::class, 'addSchoolInfo']);
@@ -196,13 +194,13 @@ Route::prefix('dashboard')->group(function () {
     //update student profile
     Route::get('/studentProfileUpdate/{schoolCode}', [StudentProfileUpdateController::class, 'studentProfileUpdate'])->name('studentProfileUpdate');
     Route::get('/findData/{schoolCode}', [StudentProfileUpdateController::class, 'findData'])->name('studentData');
-
+    
     //Update Student ->Add Student
     Route::get('/getStudent/{schoolCode}', [BasicAddStudentController::class, 'getStudent'])->name('getStudent');
     Route::post('/postStudent', [BasicAddStudentController::class,'postStudent'])->name('postStudent');
 
-
-    //update student
+    
+    //update student 
     Route::get('/student_update/{id}/{schoolCode}', [UpdateStudentController::class, 'student_update'])->name('student_update');
     Route::put('/students/{id}', [UpdateStudentController::class, 'updateStudent'])->name('students.update');
 
@@ -224,7 +222,7 @@ Route::prefix('dashboard')->group(function () {
     //Migrate Student
     Route::get('/migrateStudent/{schoolCode}', [MigrateStudentController::class, 'migrateStudent'])->name('migrateStudent');
 
-
+   
 
 
 
@@ -243,7 +241,7 @@ Route::prefix('dashboard')->group(function () {
 
 
     Route::get('/classSectionSTdTotal/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionSTdTotal'])->name('classSectionSTdTotal');
-
+    
     Route::get('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf']);
 
     Route::post('/classSectionStdtotalDownload/{schoolCode}', [classSectionSTdTotalController::class, 'classSectionStdTotalDownloadpdf'])->name('classSectionStdTotalDownload');
@@ -259,7 +257,7 @@ Route::prefix('dashboard')->group(function () {
 
     Route::get('/getStudentID/{schoolCode}/{class}', [StudentDetailsController::class, 'getStudentID']);
     Route::post('/StudentDetailsPrint/{schoolCode}', [StudentDetailsController::class, 'StudentDetailsPrint'])->name('StudentDetailsPrint');
-
+    
     Route::get('/studentIdCard/{schoolCode}', [studentIdCardController::class, 'student_id_card']);
 
     Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto'])->name('studentListWithPhoto');
@@ -296,15 +294,13 @@ Route::get('/listOfDonation/{schoolCode}', [ListOfDonationController::class, 'li
 Route::get('/listOfFormFees/{schoolCode}', [ListOfFormFeesController::class, 'listOfFormFees'])->name('listOfFormFees');
 Route::get('/monthlyPaidDetails/{schoolCode}', [MonthlyPaidDetailsController::class, 'monthlyPaidDetails'])->name('monthlyPaidDetails');
 
-
     // sayem - student attendence 
-
     Route::get('/addStudentAttendence/{schoolCode}', [AttendenceController::class, "add_student_attence"])->name('addStudentAttendence');
     Route::get('/studentLeaveForm/{schoolCode}', [AttendenceController::class, "student_leave_form"])->name('studentLeaveForm');
     Route::get('/addLeaveType/{schoolCode}', [AttendenceController::class, "add_leave_type"])->name('addLeaveType');
 
 
-    // report Student Attendence
+    // report Student Attendence 
     Route::get('/attendenceReport/{schoolCode}', [ReportStudentAttendenceController::class, "attendence_report"])->name('attendenceReport');
     Route::get('/attendenceBlankReport/{schoolCode}', [ReportStudentAttendenceController::class, "attendence_blank_report"])->name('attendenceBlankReport');
     Route::get('/dateWiseReport/{schoolCode}', [ReportStudentAttendenceController::class, "date_wise_report"])->name('dateWiseReport');
@@ -316,6 +312,9 @@ Route::get('/monthlyPaidDetails/{schoolCode}', [MonthlyPaidDetailsController::cl
     // exam-Result --------------------------------------
 
     Route::get('/marksInput/{schoolCode}', [MarkInputController::class, 'exam_marks']);
+    Route::post('/exam-marks/get-groups/{schoolCode}',[MarkInputController::class, 'getGroups'])->name('exam-marks.get-groups');
+    Route::post('/exam-marks/get-sections/{schoolCode}',[MarkInputController::class, 'getSections'])->name('exam-marks.get-sections');
+    Route::post('/exam-marks/get-shifts', [MarkInputController::class, 'getShifts'])->name('exam-marks.get-shifts');
 
     Route::get('/exam_process/{schoolCode}', [ExamProcessController::class, 'exam_process']);
     Route::get('/getStudents/{schoolCode}/{class}/{group}/{section}', [ExamProcessController::class, 'getStudents']);
@@ -346,14 +345,16 @@ Route::get('/monthlyPaidDetails/{schoolCode}', [MonthlyPaidDetailsController::cl
     Route::get('/grand_exam_setup/{schoolCode}', [GrandFinalController::class, 'setupGrand']);
     Route::get('/grandFinalList/{schoolCode}', [GrandFinalListController::class, 'grandFinalList'])->name('grandFinalList');
     Route::post('/viewGrandFinal/{schoolCode}', [GrandFinalListController::class, 'viewGrandFinal'])->name('viewGrandFinal');
-
+ 
     //Message
     Route::get('/contact/{schoolCode}', [AddContactController::class, 'Contact'])->name('contact');
     Route::post('/addContact', [AddContactController::class, 'addContact'])->name('addContact');
-
+    
     Route::get('/message/{schoolCode}', [SendMSGController::class, 'message'])->name('message');
     Route::post('/sendMessage', [SendMSGController::class, 'sendMessage'])->name('sendMessage');
     Route::delete('/delete_contact/{id}', [SendMSGController::class, 'delete_add_contact'])->name('delete.contact');
+    
+    
     Route::get('/excelmsg/{schoolCode}', [ExcelMSGController::class, 'excelMsg'])->name('excelmsg');
     Route::get('/download-contact/{schoolCode}', [ExcelMSGController::class, 'downloadDemo'])->name('download.contact');
     Route::post('/uploadExcel', [ExcelMSGController::class, 'uploadExcel'])->name('uploadExcel');
@@ -517,7 +518,7 @@ Route::get('/monthlyPaidDetails/{schoolCode}', [MonthlyPaidDetailsController::cl
 
     Route::get('/listSignature/{schoolCode}', [AddSignatureController::class, 'listSignature']);
 
-    //Add Exam Publish
+    //Add Exam Publish 
     Route::get('/ExamPublish/{schoolCode}', [ExamPublishController::class, 'ExamPublish']);
     Route::post('/addExamPublish/{schoolCode}', [ExamPublishController::class, 'store_add_exam_publish'])->name('store.exampublish');
     Route::delete('/delete_exam/{id}', [ViewExamPublishController::class, 'delete_add_exam'])->name('delete.report');
@@ -528,10 +529,10 @@ Route::get('/monthlyPaidDetails/{schoolCode}', [MonthlyPaidDetailsController::cl
     Route::put('/store_grandFinal/{schoolCode}', [SetGrandFinalController::class, 'store_grandFinal'])->name('store.grandfinal');
     Route::get('/viewExamMarkSetup/{schoolCode}', [ViewExamMarkSetUpController::class, 'viewExamMarkSetup']);
 
-    //sequential wise exam
+    //sequential wise exam 
     Route::get('/SequentialExam/{schoolCode}', [SequentialWiseExamController::class, 'SequentialExam'])->name('sequentialExam');
     Route::put('/SetExamMarks/{schoolCode}', [SequentialWiseExamController::class, 'store_sequential_exam'])->name('store.sequentialExam');
-    //sequential wise exam
+    //sequential wise exam 
     Route::get('/SetExamMarks', [SetExamMarksController::class, 'SetExamMarks']);
 
     //Set signature
@@ -593,50 +594,45 @@ Route::get('/monthlyPaidDetails/{schoolCode}', [MonthlyPaidDetailsController::cl
     Route::get('/ExamBlankSheet/{schoolCode}', [ExamBlankSheetController::class, "ExamBlankSheet"]);
 
 
-    // NEDUBD Add School Admin
+    // NEDUBD Add School Admin 
     Route::get('/addSchoolAdmin/{schoolCode}', [SchoolAdminController::class, "addSchoolAdmin"]);
     Route::post('/createSchoolAdmin', [SchoolAdminController::class, "createSchoolAdmin"])->name('schoolAdmin.create');
 
-
-
-
-
-    // Student Accounts
-    Route::get("/studentAccounts/paySlipCollection/{schoolCode}", [PaySlipCollectionController::class, "PaySlipForm"])->name("paySlipCollection.view");
-    Route::get("/studentAccounts/quickCollection/{schoolCode}", [QuickCollectionController::class, "QuickCollectionView"])->name("quickCollection.view");
-    Route::get("/studentAccounts/printUnpaidPaySlip/{schoolCode}", [PrintUnpaidPaySlipController::class, "PrintUnpaidPaySlipForm"])->name("printUnpaidPaySlip.view");
-    Route::get("/studentAccounts/collectUnpaidPaySlip/{schoolCode}", [CollectUnpaidPaySlipController::class, "CollectUnpaidPaySlipView"])->name("collectUnpaidPaySlip.view");
-    Route::get("/studentAccounts/deletePaySlip/{schoolCode}", [DeletePaySlipController::class, "DeletePaySlipView"])->name("deletePaySlip.view");
-    Route::get("/studentAccounts/newStdAddPaySlip/{schoolCode}", [NewStdAddPaySlipController::class, "NewStdAddPaySlipView"])->name("newStdAddPaySlip.view");
-    Route::get("/studentAccounts/newOldStdAddPaySlip/{schoolCode}", [NewOldStdAddPaySlipController::class, "NewOldStdAddPaySlipView"])->name("newOldStdAddPaySlip.view");
-    Route::get("/studentAccounts/generatePayslip/{schoolCode}", [GeneratePayslipController::class, "GeneratePayslipView"])->name("generatePayslip.view");
-    Route::get("/studentAccounts/editGeneratedPayslip/{schoolCode}", [EditGeneratedPayslipController::class, "EditGeneratedPayslipView"])->name("editGeneratedPayslip.view");
-    Route::get("/studentAccounts/generateMultiplePayslip/{schoolCode}", [GenerateMultiplePayslipController::class, "GenerateMultiplePayslipView"])->name("generateMultiplePayslip.view");
-
-
-    // General Accounts
-    Route::get("/generalAccounts/cashPaymentVoucher/{schoolCode}", [CashPaymentVoucherController::class, "CashPaymentVoucherView"])->name("cashPaymentVoucher.view");
-    Route::get("/generalAccounts/cashReceiptVoucher/{schoolCode}", [CashReceiptVoucherController::class, "CashReceiptVoucherView"])->name("cashReceiptVoucher.view");
-    Route::get("/generalAccounts/bankPaymentVoucher/{schoolCode}", [BankPaymentVoucherController::class, "BankPaymentVoucherView"])->name("bankPaymentVoucher.view");
-    Route::get("/generalAccounts/bankReceiptVoucher/{schoolCode}", [BankReceiptVoucherController::class, "BankReceiptVoucherView"])->name("bankReceiptVoucher.view");
-    Route::get("/generalAccounts/journalVoucher/{schoolCode}", [JournalVoucherController::class, "JournalVoucherView"])->name("journalVoucher.view");
-    Route::get("/generalAccounts/contraVoucher/{schoolCode}", [ContraVoucherController::class, "ContraVoucherView"])->name("contraVoucher.view");
-    Route::get("/generalAccounts/voucherPosting/{schoolCode}", [VoucherPostingController::class, "VoucherPostingView"])->name("voucherPosting.view");
-
-    // General Accounts => Reports (General Accounts)
-    Route::get("/generalAccounts/Reports_GeneralAccounts/accountsVoucher/{schoolCode}", [AccountsVoucherController::class, "AccountsVoucherView"])->name("accountsVoucher.view");
-    Route::get("/generalAccounts/Reports_GeneralAccounts/cashBook/{schoolCode}", [CashBookController::class, "CashBookView"])->name("cashBook.view");
-    Route::get("/generalAccounts/Reports_GeneralAccounts/bankBook/{schoolCode}", [BankBookController::class, "BankBookView"])->name("bankBook.view");
-    Route::get("/generalAccounts/Reports_GeneralAccounts/journalBook/{schoolCode}", [JournalBookController::class, "JournalBookView"])->name("journalBook.view");
-    Route::get("/generalAccounts/Reports_GeneralAccounts/incomeExpenseSummary/{schoolCode}", [IncomeExpenseSummaryController::class, "IncomeExpenseSummaryView"])->name("incomeExpenseSummary.view");
-    Route::get("/generalAccounts/Reports_GeneralAccounts/trialBalance/{schoolCode}", [TrialBalanceController::class, "TrialBalanceView"])->name("trialBalance.view");
-    Route::get("/generalAccounts/Reports_GeneralAccounts/balanceSheet/{schoolCode}", [BalanceSheetController::class, "BalanceSheetView"])->name("balanceSheet.view");
-    Route::get("/generalAccounts/Reports_GeneralAccounts/incomeStatement/{schoolCode}", [IncomeStatementController::class, "IncomeStatementView"])->name("incomeStatement.view");
-
-
-    Route::get("/generalAccounts/myAccount/currentBalance/{schoolCode}", [CurrentBalanceController::class, "CurrentBalanceView"])->name("currentBalance.view");
-    Route::get("/generalAccounts/myAccount/personalStatement/{schoolCode}", [PersonalStatementController::class, "PersonalStatementView"])->name("personalStatement.view");
-    Route::get("/generalAccounts/myAccount/allStatement/{schoolCode}", [AllStatementController::class, "AllStatementView"])->name("allStatement.view");
-
+      // Student Accounts
+      Route::get("/studentAccounts/paySlipCollection/{schoolCode}", [PaySlipCollectionController::class, "PaySlipForm"])->name("paySlipCollection.view");
+      Route::get("/studentAccounts/quickCollection/{schoolCode}", [QuickCollectionController::class, "QuickCollectionView"])->name("quickCollection.view");
+      Route::get("/studentAccounts/printUnpaidPaySlip/{schoolCode}", [PrintUnpaidPaySlipController::class, "PrintUnpaidPaySlipForm"])->name("printUnpaidPaySlip.view");
+      Route::get("/studentAccounts/collectUnpaidPaySlip/{schoolCode}", [CollectUnpaidPaySlipController::class, "CollectUnpaidPaySlipView"])->name("collectUnpaidPaySlip.view");
+      Route::get("/studentAccounts/deletePaySlip/{schoolCode}", [DeletePaySlipController::class, "DeletePaySlipView"])->name("deletePaySlip.view");
+      Route::get("/studentAccounts/newStdAddPaySlip/{schoolCode}", [NewStdAddPaySlipController::class, "NewStdAddPaySlipView"])->name("newStdAddPaySlip.view");
+      Route::get("/studentAccounts/newOldStdAddPaySlip/{schoolCode}", [NewOldStdAddPaySlipController::class, "NewOldStdAddPaySlipView"])->name("newOldStdAddPaySlip.view");
+      Route::get("/studentAccounts/generatePayslip/{schoolCode}", [GeneratePayslipController::class, "GeneratePayslipView"])->name("generatePayslip.view");
+      Route::get("/studentAccounts/editGeneratedPayslip/{schoolCode}", [EditGeneratedPayslipController::class, "EditGeneratedPayslipView"])->name("editGeneratedPayslip.view");
+      Route::get("/studentAccounts/generateMultiplePayslip/{schoolCode}", [GenerateMultiplePayslipController::class, "GenerateMultiplePayslipView"])->name("generateMultiplePayslip.view");
+  
+  
+      // General Accounts
+      Route::get("/generalAccounts/cashPaymentVoucher/{schoolCode}", [CashPaymentVoucherController::class, "CashPaymentVoucherView"])->name("cashPaymentVoucher.view");
+      Route::get("/generalAccounts/cashReceiptVoucher/{schoolCode}", [CashReceiptVoucherController::class, "CashReceiptVoucherView"])->name("cashReceiptVoucher.view");
+      Route::get("/generalAccounts/bankPaymentVoucher/{schoolCode}", [BankPaymentVoucherController::class, "BankPaymentVoucherView"])->name("bankPaymentVoucher.view");
+      Route::get("/generalAccounts/bankReceiptVoucher/{schoolCode}", [BankReceiptVoucherController::class, "BankReceiptVoucherView"])->name("bankReceiptVoucher.view");
+      Route::get("/generalAccounts/journalVoucher/{schoolCode}", [JournalVoucherController::class, "JournalVoucherView"])->name("journalVoucher.view");
+      Route::get("/generalAccounts/contraVoucher/{schoolCode}", [ContraVoucherController::class, "ContraVoucherView"])->name("contraVoucher.view");
+      Route::get("/generalAccounts/voucherPosting/{schoolCode}", [VoucherPostingController::class, "VoucherPostingView"])->name("voucherPosting.view");
+  
+      // General Accounts => Reports (General Accounts)
+      Route::get("/generalAccounts/Reports_GeneralAccounts/accountsVoucher/{schoolCode}", [AccountsVoucherController::class, "AccountsVoucherView"])->name("accountsVoucher.view");
+      Route::get("/generalAccounts/Reports_GeneralAccounts/cashBook/{schoolCode}", [CashBookController::class, "CashBookView"])->name("cashBook.view");
+      Route::get("/generalAccounts/Reports_GeneralAccounts/bankBook/{schoolCode}", [BankBookController::class, "BankBookView"])->name("bankBook.view");
+      Route::get("/generalAccounts/Reports_GeneralAccounts/journalBook/{schoolCode}", [JournalBookController::class, "JournalBookView"])->name("journalBook.view");
+      Route::get("/generalAccounts/Reports_GeneralAccounts/incomeExpenseSummary/{schoolCode}", [IncomeExpenseSummaryController::class, "IncomeExpenseSummaryView"])->name("incomeExpenseSummary.view");
+      Route::get("/generalAccounts/Reports_GeneralAccounts/trialBalance/{schoolCode}", [TrialBalanceController::class, "TrialBalanceView"])->name("trialBalance.view");
+      Route::get("/generalAccounts/Reports_GeneralAccounts/balanceSheet/{schoolCode}", [BalanceSheetController::class, "BalanceSheetView"])->name("balanceSheet.view");
+      Route::get("/generalAccounts/Reports_GeneralAccounts/incomeStatement/{schoolCode}", [IncomeStatementController::class, "IncomeStatementView"])->name("incomeStatement.view");
+  
+  
+      Route::get("/generalAccounts/myAccount/currentBalance/{schoolCode}", [CurrentBalanceController::class, "CurrentBalanceView"])->name("currentBalance.view");
+      Route::get("/generalAccounts/myAccount/personalStatement/{schoolCode}", [PersonalStatementController::class, "PersonalStatementView"])->name("personalStatement.view");
+      Route::get("/generalAccounts/myAccount/allStatement/{schoolCode}", [AllStatementController::class, "AllStatementView"])->name("allStatement.view");
+  
 });
-
