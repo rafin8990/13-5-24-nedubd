@@ -158,6 +158,7 @@
 
                     </tr>
                 </thead>
+                
                 <tbody>
                     @if ($student !== null)
                         {{-- @dd($student) <!-- Add this line to inspect the value --> --}}
