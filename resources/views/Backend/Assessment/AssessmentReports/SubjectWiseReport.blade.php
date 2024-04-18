@@ -1,0 +1,42 @@
+@extends('Backend.app')
+@section('title')
+    Subject Wise Report
+@endsection
+
+
+@section('Dashboard')
+    <div class="w-full mx-auto p-5 space-y-10">
+        <div>
+            <h1 class="text-xl font-semibold">Prograss Report</h1>
+        </div>
+
+        {{-- first section --}}
+        <div class="grid grid-cols-2">
+            <div class="">
+                <form action="{{ url('') }}" method="POST">
+                    @csrf
+                    <div class="py-5 px-2 space-y-3 flex flex-col">
+                        <div class="grid grid-cols-4 space-x-5 items-center">
+                            <label for="class" class="ml-auto mb-2 text-sm font-medium text-gray-900 ">CLASS : </label>
+                            <select id="class" name="class"
+                                class="col-span-3 bg-gray-50 border border-gray-300 px-5 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1 block w-5/6">
+                                <option selected>Select</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="FR">France</option>
+                                <option value="DE">Germany</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-4 space-x-5 items-center">
+                            <label for="bill_challan_no" class="ml-auto mb-2 text-sm font-medium text-gray-900 ">পারদর্শিতা
+                                সূচক মান :</label>
+                            <input type="number" value="" name="bill_challan_no" id="bill_challan_no"
+                                class="col-span-3 bg-gray-50 border border-gray-300 px-5 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1 block w-5/6"
+                                placeholder="" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection

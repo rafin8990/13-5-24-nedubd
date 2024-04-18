@@ -94,6 +94,7 @@ use App\Http\Controllers\Backend\StudentAccounts\EditGeneratedPayslipController;
 use App\Http\Controllers\Backend\StudentAccounts\GenerateMultiplePayslipController;
 use App\Http\Controllers\Backend\StudentAccounts\QuickCollectionController;
 
+
 // General Accounts
 use App\Http\Controllers\Backend\GeneralAccounts\CashPaymentVoucherController;
 use App\Http\Controllers\Backend\GeneralAccounts\CashReceiptVoucherController;
@@ -102,7 +103,7 @@ use App\Http\Controllers\Backend\GeneralAccounts\BankReceiptVoucherController;
 use App\Http\Controllers\Backend\GeneralAccounts\JournalVoucherController;
 use App\Http\Controllers\Backend\GeneralAccounts\ContraVoucherController;
 use App\Http\Controllers\Backend\GeneralAccounts\VoucherPostingController;
- // General Accounts => Reports (General Accounts)
+// General Accounts => Reports (General Accounts)
 use App\Http\Controllers\Backend\GeneralAccounts\Reports_GeneralAccounts\AccountsVoucherController;
 use App\Http\Controllers\Backend\GeneralAccounts\Reports_GeneralAccounts\CashBookController;
 use App\Http\Controllers\Backend\GeneralAccounts\Reports_GeneralAccounts\BankBookController;
@@ -111,9 +112,24 @@ use App\Http\Controllers\Backend\GeneralAccounts\Reports_GeneralAccounts\IncomeE
 use App\Http\Controllers\Backend\GeneralAccounts\Reports_GeneralAccounts\TrialBalanceController;
 use App\Http\Controllers\Backend\GeneralAccounts\Reports_GeneralAccounts\BalanceSheetController;
 use App\Http\Controllers\Backend\GeneralAccounts\Reports_GeneralAccounts\IncomeStatementController;
+// General Accounts => MyAccount
 use App\Http\Controllers\Backend\GeneralAccounts\MyAccount\CurrentBalanceController;
 use App\Http\Controllers\Backend\GeneralAccounts\MyAccount\PersonalStatementController;
 use App\Http\Controllers\Backend\GeneralAccounts\MyAccount\AllStatementController;
+
+
+// Assessment
+use App\Http\Controllers\Backend\Assessment\AssessmentInputController;
+// Assessment => Basic Setting
+use App\Http\Controllers\Backend\Assessment\BasicSetting\ParadarsitaSuchokController;
+use App\Http\Controllers\Backend\Assessment\BasicSetting\ParadarsitaSuchokExcelController;
+use App\Http\Controllers\Backend\Assessment\BasicSetting\ParadarsitaSuchokMatraController;
+use App\Http\Controllers\Backend\Assessment\BasicSetting\ParadarsitaSuchokMatra_2_Controller;
+use App\Http\Controllers\Backend\Assessment\BasicSetting\AddNoipunnoNameController;
+use App\Http\Controllers\Backend\Assessment\BasicSetting\SetupAssParadarsitaNoipunnoController;
+use App\Http\Controllers\Backend\Assessment\BasicSetting\ParadarsitaSuchokExamController;
+// Assessment => Assessment Reports
+use App\Http\Controllers\Backend\Assessment\AssessmentReports\SubjectWiseReportController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -175,7 +191,7 @@ Route::prefix('dashboard')->group(function () {
 
     //Update Student ->Add Student
     Route::get('/getStudent/{schoolCode}', [BasicAddStudentController::class, 'getStudent'])->name('getStudent');
-    Route::post('/postStudent', [BasicAddStudentController::class,'postStudent'])->name('postStudent');
+    Route::post('/postStudent', [BasicAddStudentController::class, 'postStudent'])->name('postStudent');
 
 
     //update student
@@ -239,12 +255,12 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/studentIdCard/{schoolCode}', [studentIdCardController::class, 'student_id_card']);
 
     Route::get('/studentListWithPhoto/{schoolCode}', [StudentListWithPhotoController::class, 'studentListWithPhoto'])->name('studentListWithPhoto');
-    Route::post('/listStudent', [StudentListWithPhotoController::class,'viewStudentListPhoto'])->name('viewStudentListPhoto');
+    Route::post('/listStudent', [StudentListWithPhotoController::class, 'viewStudentListPhoto'])->name('viewStudentListPhoto');
 
 
     Route::get('/studentProfile/{schoolCode}', [StudentProfileController::class, 'student_profile']);
     Route::get('/studentShortList/{schoolCode}', [addShortListController::class, 'studentShortList']);
-    Route::post('/viewStudentShortList',[addShortListController::class,'viewStudentShortList'])->name('viewStudentShortList');
+    Route::post('/viewStudentShortList', [addShortListController::class, 'viewStudentShortList'])->name('viewStudentShortList');
     Route::get('/testimonial/{schoolCode}', [testimonialController::class, 'testimonial']);
     Route::get('/transferCertificate/{schoolCode}', [trasnferCertificateController::class, 'trasnfer_certificate']);
     Route::get('/transferCertificateList/{schoolCode}', [trasnferCertificateListController::class, 'trasnfer_certificate_list']);
@@ -583,9 +599,25 @@ Route::prefix('dashboard')->group(function () {
     Route::get("/generalAccounts/Reports_GeneralAccounts/balanceSheet/{schoolCode}", [BalanceSheetController::class, "BalanceSheetView"])->name("balanceSheet.view");
     Route::get("/generalAccounts/Reports_GeneralAccounts/incomeStatement/{schoolCode}", [IncomeStatementController::class, "IncomeStatementView"])->name("incomeStatement.view");
 
-
+    // General Accounts => My Account
     Route::get("/generalAccounts/myAccount/currentBalance/{schoolCode}", [CurrentBalanceController::class, "CurrentBalanceView"])->name("currentBalance.view");
     Route::get("/generalAccounts/myAccount/personalStatement/{schoolCode}", [PersonalStatementController::class, "PersonalStatementView"])->name("personalStatement.view");
     Route::get("/generalAccounts/myAccount/allStatement/{schoolCode}", [AllStatementController::class, "AllStatementView"])->name("allStatement.view");
+
+
+    // Assessment
+    Route::get("/assessment/assessmentInput/{schoolCode}", [AssessmentInputController::class, "AssessmentInputView"])->name("assessmentInput.view");
+
+    // Assessment => Basic Setting
+    Route::get("/assessment/basicSetting/paradarsitaSuchok/{schoolCode}", [ParadarsitaSuchokController::class, "ParadarsitaSuchokView"])->name("paradarsitaSuchok.view");
+    Route::get("/assessment/basicSetting/paradarsitaSuchokExcel/{schoolCode}", [ParadarsitaSuchokExcelController::class, "ParadarsitaSuchokExcelView"])->name("paradarsitaSuchokExcel.view");
+    Route::get("/assessment/basicSetting/paradarsitaSuchokMatra/{schoolCode}", [ParadarsitaSuchokMatraController::class, "ParadarsitaSuchokMatraView"])->name("paradarsitaSuchokMatra.view");
+    Route::get("/assessment/basicSetting/paradarsitaSuchokMatra_2/{schoolCode}", [ParadarsitaSuchokMatra_2_Controller::class, "ParadarsitaSuchokMatra_2_View"])->name("paradarsitaSuchokMatra_2.view");
+    Route::get("/assessment/basicSetting/addNoipunnoName/{schoolCode}", [AddNoipunnoNameController::class, "AddNoipunnoNameView"])->name("addNoipunnoName.view");
+    Route::get("/assessment/basicSetting/setupAssParadarsitaNoipunno/{schoolCode}", [SetupAssParadarsitaNoipunnoController::class, "SetupAssParadarsitaNoipunnoView"])->name("setupAssParadarsitaNoipunno.view");
+    Route::get("/assessment/basicSetting/paradarsitaSuchokExam/{schoolCode}", [ParadarsitaSuchokExamController::class, "ParadarsitaSuchokExamView"])->name("paradarsitaSuchokExam.view");
+
+    // Assessment => Assessment Reports
+    Route::get("/assessment/assessmentReports/subjectWiseReport/{schoolCode}", [SubjectWiseReportController::class, "SubjectWiseReportView"])->name("subjectWiseReport.view");
 
 });
