@@ -14,10 +14,6 @@ class AddContactController extends Controller
    }
 
    public function addContact(Request $request){
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ed2cf9041eeb6b5682f978a74539ba9e76c3219
       $existingContact=Contact::where('school_code',$request->school_code)->where('action','approved')->where('contact',$request->contact)->exists();
 
 

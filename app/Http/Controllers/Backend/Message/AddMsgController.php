@@ -22,3 +22,4 @@ class AddMsgController extends Controller
         return redirect()->back()->with('success','Message added successfully');
 
        } 
+    }
