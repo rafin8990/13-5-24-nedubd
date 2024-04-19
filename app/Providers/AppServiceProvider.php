@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use App\Models\SchoolAdmin;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -52,6 +54,12 @@ class AppServiceProvider extends ServiceProvider
                  ->with('school_code',$school_code);
 
 
+        });
+
+         // Define the repeatDot directive
+         Blade::directive('repeatDot', function ($times) {
+            // Generate a string with dots repeated $times times
+            return "<?php echo str_repeat('.', $times); ?>";
         });
     }
 }

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class CashPaymentVoucherController extends Controller
 {
-    public function CashPaymentVoucherView(){
+    public function CashPaymentVoucherView()
+    {
         return view("Backend.GeneralAccounts.CashPaymentVoucher");
     }
 }

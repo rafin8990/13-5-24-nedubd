@@ -624,8 +624,8 @@
                             </li>
                 </ul>
             </li>
-            <!-- student accounts  -->
 
+            <!-- student accounts  -->
             <li class="dropdown">
                 <button type="button"
                     class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
@@ -899,7 +899,8 @@
                     <li class="dropdown ml-6">
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
-                            aria-controls="dropdown-general-accounts-report" data-collapse-toggle="dropdown-general-accounts-report">
+                            aria-controls="dropdown-general-accounts-report"
+                            data-collapse-toggle="dropdown-general-accounts-report">
 
                             <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Reports
                                 (General Accounts)</span>
@@ -960,7 +961,8 @@
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
                             aria-controls="dropdown-my-account" data-collapse-toggle="dropdown-my-account">
 
-                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">My Account</span>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">My
+                                Account</span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
@@ -981,11 +983,136 @@
                                     All Statement</a>
                             </li>
                         </ul>
-
                     </li>
                 </ul>
             </li>
 
+            {{-- Assessment --}}
+            <li class="dropdown">
+                <button type="button"
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
+                    aria-controls="dropdown-assessment" data-collapse-toggle="dropdown-assessment">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff">
+                        <path
+                            d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 11H4V19H20V11ZM8 13V15H6V13H8ZM13 13V15H11V13H13ZM18 13V15H16V13H18ZM7 5H4V9H20V5H17V7H15V5H9V7H7V5Z">
+                        </path>
+                    </svg>
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Assessment</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
+                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4" />
+                    </svg>
+
+                </button>
+                <ul id="dropdown-assessment" class="hidden py-2 space-y-2">
+                    {{-- Basic Setting --}}
+                    <li class="dropdown ml-6">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            aria-controls="dropdown-basic_setting" data-collapse-toggle="dropdown-basic_setting">
+
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Basic
+                                Setting</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <ul id="dropdown-basic_setting" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="/dashboard/assessment/basicSetting/paradarsitaSuchok/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Paradarsita Suchok</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/basicSetting/paradarsitaSuchokExcel/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Paradarsita
+                                    Suchok Excel</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/basicSetting/paradarsitaSuchokMatra/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Paradarsita
+                                    Suchok Matra</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/basicSetting/paradarsitaSuchokMatra_2/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Paradarsita
+                                    Suchok Matra</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/basicSetting/addNoipunnoName/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
+                                    Noipunno Name</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/basicSetting/setupAssParadarsitaNoipunno/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Setup
+                                    Ass. Paradarsita Noipunno</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/basicSetting/paradarsitaSuchokExam/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Paradarsita
+                                    Suchok Exam</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="/dashboard/assessment/assessmentInput/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Assessment
+                            Input</a>
+                    </li>
+                    {{-- Assessment Reports --}}
+                    <li class="dropdown ml-6">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            aria-controls="dropdown-assessment_reports"
+                            data-collapse-toggle="dropdown-assessment_reports">
+
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Assessment Reports</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+                        </button>
+                        <ul id="dropdown-assessment_reports" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="/dashboard/assessment/assessmentReports/subjectWiseReport/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Subject Wise Report</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/assessmentReports/allSubjectWise/{{ $school_code }}"
+                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                All Subject Wise</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/assessmentReports/noipunnoReport/{{ $school_code }}"
+                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
+                                Report</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/assessmentReports/noipunnoAllSubject/{{ $school_code }}"
+                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
+                                All Subject</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/assessmentReports/noipunnoMullaonPrint/{{ $school_code }}"
+                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
+                                Mullaon Print</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/assessment/assessmentReports/noipunnoBI/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
+                                    BI</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
 
             <!-- Student Attendence  -->
             <li class="dropdown">
