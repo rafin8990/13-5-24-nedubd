@@ -606,22 +606,26 @@
                 </button>
 
                 <ul id="dropdown-message" class="hidden py-2 space-y-2">
-                            <li>
-                                <a href="/dashboard/contact/{{ $school_code }}"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add Contact </a>
-                            </li>
-                            <li>
-                                <a href="{{route('addMsg',$school_code)}}"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add Message </a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/message/{{ $school_code }}"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Send Message</a>
-                            </li>
-                            <li>
-                                <a href="/dashboard/excelmsg/{{ $school_code }}"
-                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload Excel</a>
-                            </li>
+                    <li>
+                        <a href="/dashboard/contact/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
+                            Contact </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('addMsg', $school_code) }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
+                            Message </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/message/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Send
+                            Message</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/excelmsg/{{ $school_code }}"
+                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Upload
+                            Excel</a>
+                    </li>
                 </ul>
             </li>
 
@@ -699,14 +703,8 @@
                     <!-- others  -->
                     <li class="dropdown">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
+                            class="flex items-center w-full p-2 pl-7 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
                             aria-controls="dropdown-student-others" data-collapse-toggle="dropdown-student-others">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 "
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"
-                                viewBox="0 0 18 21">
-                                <path
-                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                            </svg>
                             <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Others
                             </span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -715,24 +713,24 @@
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
-                        <ul id="dropdown-student-others" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-student-others" class="hidden py-2 space-y-2 pl-5">
                             <li>
-                                <a href="{{route('feeCollection',$school_code)}}"
+                                <a href="{{ route('feeCollection', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Form
                                     Fee</a>
                             </li>
                             <li>
-                                <a href="{{route('donation',$school_code)}}"
+                                <a href="{{ route('donation', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Donation
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('addFineFail',$school_code)}}"
+                                <a href="{{ route('addFineFail', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Fine/Fail/Absent
                                     Fess</a>
                             </li>
                             <li>
-                                <a href="{{route('othersFee',$school_code)}}"
+                                <a href="{{ route('othersFee', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Others
                                     Fee</a>
                             </li>
@@ -741,14 +739,9 @@
                     <!-- reports student fees  -->
                     <li class="dropdown">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
-                            aria-controls="dropdown-student-reports" data-collapse-toggle="dropdown-student-reports">
-                            <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 "
-                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="#ffffff"
-                                viewBox="0 0 18 21">
-                                <path
-                                    d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                            </svg>
+                            class="flex items-center w-full p-2 pl-7 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
+                            aria-controls="dropdown-student-fees-reports"
+                            data-collapse-toggle="dropdown-student-fees-reports">
                             <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Reports
                                 (STD FEES) </span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -757,80 +750,80 @@
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
-                        <ul id="dropdown-student-reports" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-student-fees-reports" class="hidden py-2 space-y-2 pl-5">
                             <li>
-                                <a href="{{route('DailyCollectionReport',$school_code)}}"
+                                <a href="{{ route('DailyCollectionReport', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Daily
                                     Collection reports</a>
                             </li>
                             <li>
-                                <a href="{{route('geneTransferInquiri',$school_code)}}"
+                                <a href="{{ route('geneTransferInquiri', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Gene.
                                     Transfer Inquiry </a>
                             </li>
                             <li>
-                                <a href="{{route('DuepaySummary',$school_code)}}"
+                                <a href="{{ route('DuepaySummary', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Deu/Pay
                                     Summary</a>
                             </li>
                             <li>
-                                <a href="{{route('headwiseSummary',$school_code)}}"
+                                <a href="{{ route('headwiseSummary', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Head
                                     wise Summary</a>
                             </li>
                             <li>
-                                <a href="{{route('othTransInquiry',$school_code)}}"
+                                <a href="{{ route('othTransInquiry', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Oth.
                                     Trans Inquiry</a>
                             </li>
                             <li>
-                                <a href="{{route('transferToAccounts',$school_code)}}"
+                                <a href="{{ route('transferToAccounts', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Transfer
                                     to Accounts</a>
                             </li>
                             <li>
-                                <a href="{{route('paidInvoice',$school_code)}}"
+                                <a href="{{ route('paidInvoice', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Paid
                                     Invoice</a>
                             </li>
                             <li>
-                                <a href="{{route('ListOfdueOrPay',$school_code)}}"
+                                <a href="{{ route('ListOfdueOrPay', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Due/Pay</a>
                             </li>
 
                             <li>
-                                <a href="{{route('listOfHeadWise',$school_code)}}"
+                                <a href="{{ route('listOfHeadWise', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     of Head wise </a>
                             </li>
                             <li>
-                                <a href="{{route('listOfSpecialDiscount',$school_code)}}"
+                                <a href="{{ route('listOfSpecialDiscount', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Special Discount</a>
                             </li>
                             <li>
-                                <a href="{{route('listOfMonthWiseFees',$school_code)}}"
+                                <a href="{{ route('listOfMonthWiseFees', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Month wise Fees</a>
                             </li>
                             <li>
-                                <a href="{{route('listOfFineOrFailOrAbsent',$school_code)}}"
+                                <a href="{{ route('listOfFineOrFailOrAbsent', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Fine / Fail/Absent</a>
                             </li>
                             <li>
-                                <a href="{{route('listOfDonation',$school_code)}}"
+                                <a href="{{ route('listOfDonation', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Donation</a>
                             </li>
                             <li>
-                                <a href="{{route('listOfFormFees',$school_code)}}"
+                                <a href="{{ route('listOfFormFees', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">List
                                     Of Form Fees</a>
                             </li>
                             <li>
-                                <a href="{{route('monthlyPaidDetails',$school_code)}}"
+                                <a href="{{ route('monthlyPaidDetails', $school_code) }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Monthly
                                     Paid Details</a>
                             </li>
@@ -896,9 +889,9 @@
                             Posting</a>
                     </li>
                     {{-- Reports (General Accounts) --}}
-                    <li class="dropdown ml-6">
+                    <li class="dropdown">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            class="flex items-center w-full p-2 pl-7 text-base text-gray-900 transition duration-75 rounded-lg group "
                             aria-controls="dropdown-general-accounts-report"
                             data-collapse-toggle="dropdown-general-accounts-report">
 
@@ -910,7 +903,7 @@
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
-                        <ul id="dropdown-general-accounts-report" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-general-accounts-report" class="hidden py-2 space-y-2 pl-5">
                             <li>
                                 <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/accountsVoucher/{{ $school_code }}"
                                     class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
@@ -956,9 +949,9 @@
                     </li>
 
                     {{-- My Account --}}
-                    <li class="dropdown ml-6">
+                    <li class="dropdown">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            class="flex items-center w-full p-2 pl-7 text-base text-gray-900 transition duration-75 rounded-lg group "
                             aria-controls="dropdown-my-account" data-collapse-toggle="dropdown-my-account">
 
                             <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">My
@@ -969,7 +962,7 @@
                                     stroke-width="2" d="m1 1 4 4 4-4" />
                             </svg>
                         </button>
-                        <ul id="dropdown-my-account" class="hidden py-2 space-y-2">
+                        <ul id="dropdown-my-account" class="hidden py-2 space-y-2  pl-5">
                             <li>
                                 {{-- <a href="/dashboard/generalAccounts/Reports_GeneralAccounts/accountsVoucher/{{ $school_code }}" --}}
                                 <a href="/dashboard/generalAccounts/myAccount/currentBalance/{{ $school_code }}"
@@ -1071,7 +1064,8 @@
                             aria-controls="dropdown-assessment_reports"
                             data-collapse-toggle="dropdown-assessment_reports">
 
-                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Assessment Reports</span>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Assessment
+                                Reports</span>
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
@@ -1086,23 +1080,23 @@
                             </li>
                             <li>
                                 <a href="/dashboard/assessment/assessmentReports/allSubjectWise/{{ $school_code }}"
-                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
-                                All Subject Wise</a>
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    All Subject Wise</a>
                             </li>
                             <li>
                                 <a href="/dashboard/assessment/assessmentReports/noipunnoReport/{{ $school_code }}"
-                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
-                                Report</a>
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
+                                    Report</a>
                             </li>
                             <li>
                                 <a href="/dashboard/assessment/assessmentReports/noipunnoAllSubject/{{ $school_code }}"
-                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
-                                All Subject</a>
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
+                                    All Subject</a>
                             </li>
                             <li>
                                 <a href="/dashboard/assessment/assessmentReports/noipunnoMullaonPrint/{{ $school_code }}"
-                                class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
-                                Mullaon Print</a>
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Noipunno
+                                    Mullaon Print</a>
                             </li>
                             <li>
                                 <a href="/dashboard/assessment/assessmentReports/noipunnoBI/{{ $school_code }}"
@@ -1359,9 +1353,10 @@
 
                 </button>
                 <ul id="dropdown-basic-setting" class="hidden py-2 space-y-2">
+                    {{-- Common Settings --}}
                     <li class="dropdown">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            class="flex items-center w-full p-2  pl-7 text-base text-gray-900 transition duration-75 rounded-lg group "
                             aria-controls="dropdown-common-setting" data-collapse-toggle="dropdown-common-setting">
                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                 fill="#ffffff">
@@ -1464,102 +1459,196 @@
                         </ul>
                     </li>
 
+                    {{-- FEES Settings --}}
+                    <li class="dropdown">
+                        <button type="button"
+                            class="flex items-center w-full p-2 pl-7 text-base text-gray-900 transition duration-75 rounded-lg group "
+                            aria-controls="dropdown-fees-settings" data-collapse-toggle="dropdown-fees-settings">
+                            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                fill="#ffffff">
+                                <path
+                                    d="M6.17071 18C6.58254 16.8348 7.69378 16 9 16C10.3062 16 11.4175 16.8348 11.8293 18H22V20H11.8293C11.4175 21.1652 10.3062 22 9 22C7.69378 22 6.58254 21.1652 6.17071 20H2V18H6.17071ZM12.1707 11C12.5825 9.83481 13.6938 9 15 9C16.3062 9 17.4175 9.83481 17.8293 11H22V13H17.8293C17.4175 14.1652 16.3062 15 15 15C13.6938 15 12.5825 14.1652 12.1707 13H2V11H12.1707ZM6.17071 4C6.58254 2.83481 7.69378 2 9 2C10.3062 2 11.4175 2.83481 11.8293 4H22V6H11.8293C11.4175 7.16519 10.3062 8 9 8C7.69378 8 6.58254 7.16519 6.17071 6H2V4H6.17071ZM9 6C9.55228 6 10 5.55228 10 5C10 4.44772 9.55228 4 9 4C8.44772 4 8 4.44772 8 5C8 5.55228 8.44772 6 9 6ZM15 13C15.5523 13 16 12.5523 16 12C16 11.4477 15.5523 11 15 11C14.4477 11 14 11.4477 14 12C14 12.5523 14.4477 13 15 13ZM9 20C9.55228 20 10 19.5523 10 19C10 18.4477 9.55228 18 9 18C8.44772 18 8 18.4477 8 19C8 19.5523 8.44772 20 9 20Z">
+                                </path>
+                            </svg>
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">FEES
+                                Settings</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+
+                        </button>
+                        <ul id="dropdown-fees-settings" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="/dashboard/basicSettings/feesSettings/addFeeType/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
+                                    FEE TYPE</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/basicSettings/feesSettings/feesSetup/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">FEES
+                                    Setup</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/basicSettings/feesSettings/addPaySlipType/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
+                                    PAY SLIP TYPE</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/basicSettings/feesSettings/paySlipSetup/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">PAY
+                                    SLIP Setup</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/basicSettings/feesSettings/waiverType/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">WAIVER
+                                    Type</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/basicSettings/feesSettings/waiverSetup/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">WAIVER
+                                    Setup</a>
+                            </li>
+                            {{-- Reports (FEES Settings) --}}
+                            <li class="dropdown">
+                                <button type="button"
+                                    class="flex items-center w-full p-2 pl-7 text-base text-gray-900 transition duration-75 rounded-lg group "
+                                    aria-controls="dropdown-reports-fees-settings"
+                                    data-collapse-toggle="dropdown-reports-fees-settings">
+                                    <span
+                                        class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Reports
+                                        (FEES Settings)</span>
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 10 6">
+                                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg>
+
+                                </button>
+                                <ul id="dropdown-reports-fees-settings" class="hidden py-2 space-y-2 pl-5">
+                                    <li>
+                                        <a href="/dashboard/basicSettings/feesSettings/reportFeesSettings/allFees/{{ $school_code }}"
+                                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">ALL
+                                            FEES</a>
+                                    </li>
+                                    <li>
+                                        <a href="/dashboard/basicSettings/feesSettings/reportFeesSettings/allPaySlip/{{ $school_code }}"
+                                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">ALL
+                                            PAY SLIP</a>
+                                    </li>
+                                    <li>
+                                        <a href="/dashboard/basicSettings/feesSettings/reportFeesSettings/individualPaySlip/{{ $school_code }}"
+                                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">INDIVIDUAL
+                                            PAY SLIP</a>
+                                    </li>
+                                    <li>
+                                        <a href="/dashboard/basicSettings/feesSettings/reportFeesSettings/individualWaiver/{{ $school_code }}"
+                                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">INDIVIDUAL
+                                            WAIVER</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Exam Setting -->
+                    <li class="dropdown">
+                        <button type="button"
+                            class="flex items-center w-full p-2 pl-7 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
+                            aria-controls="dropdown-exam-setting" data-collapse-toggle="dropdown-exam-setting">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="#ffffff" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg>
+
+                            <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Exam
+                                Setting</span>
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 10 6">
+                                <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 4 4 4-4" />
+                            </svg>
+
+                        </button>
+                        <ul id="dropdown-exam-setting" class="hidden py-2 space-y-2">
+
+                            <li>
+                                <a href="/dashboard/addGradePoint/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
+                                    Grade Point</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/addShortCode/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
+                                    Short Code</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/setShortCode/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
+                                    Short Code</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('get.exam.marks', $school_code) }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
+                                    Exam Marks</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/setForthSubject/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
+                                    4th Subject</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/AddReportName/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Add Report Name</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/AddSignature/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
+                                    Add Signature</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/setGradeSetup/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grade
+                                    Setup</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/GrandFinal/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grand
+                                    Final
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/SetSignature/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
+                                    Signature
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/ExamPublish/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Exam
+                                    Publish
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/dashboard/SequentialExam/{{ $school_code }}"
+                                    class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Sequential
+                                    Wise Exam
+                                </a>
+                            </li>
+                        </ul>
+
+
+                    </li>
                 </ul>
 
             </li>
 
-            <!-- Exam Setting -->
-            <li class="dropdown">
-                <button type="button"
-                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-slate-100/20"
-                    aria-controls="dropdown-exam-setting" data-collapse-toggle="dropdown-exam-setting">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="#ffffff" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    </svg>
 
-                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap text-white ">Exam
-                        Setting</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 10 6">
-                        <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4" />
-                    </svg>
-
-                </button>
-                <ul id="dropdown-exam-setting" class="hidden py-2 space-y-2">
-
-                    <li>
-                        <a href="/dashboard/addGradePoint/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                            Grade Point</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/addShortCode/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Add
-                            Short Code</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/setShortCode/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
-                            Short Code</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('get.exam.marks', $school_code) }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
-                            Exam Marks</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/setForthSubject/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
-                            4th Subject</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/AddReportName/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
-                            Add Report Name</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/AddSignature/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">
-                            Add Signature</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/setGradeSetup/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grade
-                            Setup</a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/GrandFinal/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Grand
-                            Final
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/SetSignature/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Set
-                            Signature
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/ExamPublish/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Exam
-                            Publish
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/dashboard/SequentialExam/{{ $school_code }}"
-                            class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">Sequential
-                            Wise Exam
-                        </a>
-                    </li>
-                </ul>
-
-
-            </li>
             <!-- collapsible submenus -->
         </ul>
     </div>

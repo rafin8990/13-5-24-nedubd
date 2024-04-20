@@ -38,11 +38,25 @@ use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoCont
 use App\Http\Controllers\Backend\Student\studentReports\EsifListController;
 use App\Http\Controllers\Backend\Student\UploadExcelFileController;
 
+
+
+// student accounts
+use App\Http\Controllers\Backend\Student_Account\PaySlipCollectionController;
+use App\Http\Controllers\Backend\Student_Account\PrintUnpaidPaySlipController;
+use App\Http\Controllers\Backend\Student_Account\CollectUnpaidPaySlipController;
+use App\Http\Controllers\Backend\Student_Account\DeletePaySlipController;
+use App\Http\Controllers\Backend\Student_Account\NewStdAddPaySlipController;
+use App\Http\Controllers\Backend\Student_Account\NewOldStdAddPaySlipController;
+use App\Http\Controllers\Backend\Student_Account\GeneratePayslipController;
+use App\Http\Controllers\Backend\Student_Account\EditGeneratedPayslipController;
+use App\Http\Controllers\Backend\Student_Account\GenerateMultiplePayslipController;
+use App\Http\Controllers\Backend\Student_Account\QuickCollectionController;
+// Student Accounts => Others
 use App\Http\Controllers\Backend\Student_Account\Others\FromFeeController;
 use App\Http\Controllers\Backend\Student_Account\Others\DonationController;
 use App\Http\Controllers\Backend\Student_Account\Others\OthersFeeController;
 use App\Http\Controllers\Backend\Student_Account\Others\FineFailController;
-
+// Student Accounts => Others
 use App\Http\Controllers\Backend\Student_Account\Reports\DailyCollectionReportController;
 use App\Http\Controllers\Backend\Student_Account\Reports\geneTranferInquiriController;
 use App\Http\Controllers\Backend\Student_Account\Reports\DuePaySummaryController;
@@ -65,6 +79,19 @@ use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Backend\ExamResult\ExamResultController;
 use App\Http\Controllers\Backend\ExamResult\ExamProcessController;
 
+
+// Basic Setting => Fees Setting
+use App\Http\Controllers\Backend\FeesSetting\AddFeeTypeController;
+use App\Http\Controllers\Backend\FeesSetting\FeesSetupController;
+use App\Http\Controllers\Backend\FeesSetting\AddPaySlipTypeController;
+use App\Http\Controllers\Backend\FeesSetting\PaySlipSetupController;
+use App\Http\Controllers\Backend\FeesSetting\WaiverTypeController;
+use App\Http\Controllers\Backend\FeesSetting\WaiverSetupController;
+use App\Http\Controllers\Backend\FeesSetting\ReportFeesSettings\AllFeesController;
+use App\Http\Controllers\Backend\FeesSetting\ReportFeesSettings\AllPaySlipController;
+use App\Http\Controllers\Backend\FeesSetting\ReportFeesSettings\IndividualPaySlipController;
+use App\Http\Controllers\Backend\FeesSetting\ReportFeesSettings\IndividualWaiverController;
+// Basic Setting => Exam Setting
 use App\Http\Controllers\Backend\ExamSetting\AddGradePointController;
 use App\Http\Controllers\Backend\ExamSetting\AddShortCodeController;
 use App\Http\Controllers\Backend\ExamSetting\GradeSetupController;
@@ -105,18 +132,6 @@ use App\Http\Controllers\Backend\Student\StudentReports\StudentProfileController
 use App\Http\Controllers\Backend\Student\StudentReports\testimonialController;
 use App\Http\Controllers\Backend\Student\StudentReports\trasnferCertificateController;
 use App\Http\Controllers\Backend\Student\StudentReports\trasnferCertificateListController;
-
-// student accounts
-use App\Http\Controllers\Backend\StudentAccounts\PaySlipCollectionController;
-use App\Http\Controllers\Backend\StudentAccounts\PrintUnpaidPaySlipController;
-use App\Http\Controllers\Backend\StudentAccounts\CollectUnpaidPaySlipController;
-use App\Http\Controllers\Backend\StudentAccounts\DeletePaySlipController;
-use App\Http\Controllers\Backend\StudentAccounts\NewStdAddPaySlipController;
-use App\Http\Controllers\Backend\StudentAccounts\NewOldStdAddPaySlipController;
-use App\Http\Controllers\Backend\StudentAccounts\GeneratePayslipController;
-use App\Http\Controllers\Backend\StudentAccounts\EditGeneratedPayslipController;
-use App\Http\Controllers\Backend\StudentAccounts\GenerateMultiplePayslipController;
-use App\Http\Controllers\Backend\StudentAccounts\QuickCollectionController;
 
 
 // General Accounts
@@ -294,8 +309,21 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/transferCertificate/{schoolCode}', [trasnferCertificateController::class, 'trasnfer_certificate']);
     Route::get('/transferCertificateList/{schoolCode}', [trasnferCertificateListController::class, 'trasnfer_certificate_list']);
 
+
+
+
     //Students Accounts
-//others
+    Route::get("/studentAccounts/paySlipCollection/{schoolCode}", [PaySlipCollectionController::class, "PaySlipForm"])->name("paySlipCollection.view");
+    Route::get("/studentAccounts/quickCollection/{schoolCode}", [QuickCollectionController::class, "QuickCollectionView"])->name("quickCollection.view");
+    Route::get("/studentAccounts/printUnpaidPaySlip/{schoolCode}", [PrintUnpaidPaySlipController::class, "PrintUnpaidPaySlipForm"])->name("printUnpaidPaySlip.view");
+    Route::get("/studentAccounts/collectUnpaidPaySlip/{schoolCode}", [CollectUnpaidPaySlipController::class, "CollectUnpaidPaySlipView"])->name("collectUnpaidPaySlip.view");
+    Route::get("/studentAccounts/deletePaySlip/{schoolCode}", [DeletePaySlipController::class, "DeletePaySlipView"])->name("deletePaySlip.view");
+    Route::get("/studentAccounts/newStdAddPaySlip/{schoolCode}", [NewStdAddPaySlipController::class, "NewStdAddPaySlipView"])->name("newStdAddPaySlip.view");
+    Route::get("/studentAccounts/newOldStdAddPaySlip/{schoolCode}", [NewOldStdAddPaySlipController::class, "NewOldStdAddPaySlipView"])->name("newOldStdAddPaySlip.view");
+    Route::get("/studentAccounts/generatePayslip/{schoolCode}", [GeneratePayslipController::class, "GeneratePayslipView"])->name("generatePayslip.view");
+    Route::get("/studentAccounts/editGeneratedPayslip/{schoolCode}", [EditGeneratedPayslipController::class, "EditGeneratedPayslipView"])->name("editGeneratedPayslip.view");
+    Route::get("/studentAccounts/generateMultiplePayslip/{schoolCode}", [GenerateMultiplePayslipController::class, "GenerateMultiplePayslipView"])->name("generateMultiplePayslip.view");
+    //others
     Route::get('/FeeCollection/{schoolCode}', [FromFeeController::class, 'AddFromFee'])->name('feeCollection');
     Route::get('/donation/{schoolCode}', [DonationController::class, 'AddDonationFee'])->name('donation');
     Route::get('/othersFee/{schoolCode}', [OthersFeeController::class, 'AddOthersFee'])->name('othersFee');
@@ -568,9 +596,23 @@ Route::prefix('dashboard')->group(function () {
 
 
 
-    // Exam Setting End .............................................................................................................
+
+    // Fees Setting Start .............................................................................................................
+
+    // Basic Setting => Fees Setting
+    Route::get('/basicSettings/feesSettings/addFeeType/{schoolCode}', [AddFeeTypeController::class, 'AddFeeTypeView'])->name('addFeeType.view');
+    Route::get('/basicSettings/feesSettings/feesSetup/{schoolCode}', [FeesSetupController::class, 'FeesSetupView'])->name('feesSetup.view');
+    Route::get('/basicSettings/feesSettings/addPaySlipType/{schoolCode}', [AddPaySlipTypeController::class, 'AddPaySlipTypeView'])->name('addPaySlipType.view');
+    Route::get('/basicSettings/feesSettings/paySlipSetup/{schoolCode}', [PaySlipSetupController::class, 'PaySlipSetupView'])->name('paySlipSetup.view');
+    Route::get('/basicSettings/feesSettings/waiverType/{schoolCode}', [WaiverTypeController::class, 'WaiverTypeView'])->name('waiverType.view');
+    Route::get('/basicSettings/feesSettings/waiverSetup/{schoolCode}', [WaiverSetupController::class, 'WaiverSetupView'])->name('waiverSetup.view');
+    Route::get('/basicSettings/feesSettings/reportFeesSettings/allFees/{schoolCode}', [AllFeesController::class, 'AllFeesView'])->name('rllFeesReport.view');
+    Route::get('/basicSettings/feesSettings/reportFeesSettings/allPaySlip/{schoolCode}', [AllPaySlipController::class, 'AllPaySlipView'])->name('allPaySlipReport.view');
+    Route::get('/basicSettings/feesSettings/reportFeesSettings/individualPaySlip/{schoolCode}', [IndividualPaySlipController::class, 'IndividualPaySlipView'])->name('individualPaySlipReport.view');
+    Route::get('/basicSettings/feesSettings/reportFeesSettings/individualWaiver/{schoolCode}', [IndividualWaiverController::class, 'IndividualWaiverView'])->name('individualWaiverReport.view');
 
 
+    // Fees Setting End .............................................................................................................
 
 
 
@@ -623,20 +665,6 @@ Route::prefix('dashboard')->group(function () {
 
 
 
-    // Student Accounts
-    Route::get("/studentAccounts/paySlipCollection/{schoolCode}", [PaySlipCollectionController::class, "PaySlipForm"])->name("paySlipCollection.view");
-    Route::get("/studentAccounts/quickCollection/{schoolCode}", [QuickCollectionController::class, "QuickCollectionView"])->name("quickCollection.view");
-    Route::get("/studentAccounts/printUnpaidPaySlip/{schoolCode}", [PrintUnpaidPaySlipController::class, "PrintUnpaidPaySlipForm"])->name("printUnpaidPaySlip.view");
-    Route::get("/studentAccounts/collectUnpaidPaySlip/{schoolCode}", [CollectUnpaidPaySlipController::class, "CollectUnpaidPaySlipView"])->name("collectUnpaidPaySlip.view");
-    Route::get("/studentAccounts/deletePaySlip/{schoolCode}", [DeletePaySlipController::class, "DeletePaySlipView"])->name("deletePaySlip.view");
-    Route::get("/studentAccounts/newStdAddPaySlip/{schoolCode}", [NewStdAddPaySlipController::class, "NewStdAddPaySlipView"])->name("newStdAddPaySlip.view");
-    Route::get("/studentAccounts/newOldStdAddPaySlip/{schoolCode}", [NewOldStdAddPaySlipController::class, "NewOldStdAddPaySlipView"])->name("newOldStdAddPaySlip.view");
-    Route::get("/studentAccounts/generatePayslip/{schoolCode}", [GeneratePayslipController::class, "GeneratePayslipView"])->name("generatePayslip.view");
-    Route::get("/studentAccounts/editGeneratedPayslip/{schoolCode}", [EditGeneratedPayslipController::class, "EditGeneratedPayslipView"])->name("editGeneratedPayslip.view");
-    Route::get("/studentAccounts/generateMultiplePayslip/{schoolCode}", [GenerateMultiplePayslipController::class, "GenerateMultiplePayslipView"])->name("generateMultiplePayslip.view");
-
-
-
     // General Accounts
     Route::get("/generalAccounts/cashPaymentVoucher/{schoolCode}", [CashPaymentVoucherController::class, "CashPaymentVoucherView"])->name("cashPaymentVoucher.view");
     Route::get("/generalAccounts/cashReceiptVoucher/{schoolCode}", [CashReceiptVoucherController::class, "CashReceiptVoucherView"])->name("cashReceiptVoucher.view");
@@ -645,7 +673,6 @@ Route::prefix('dashboard')->group(function () {
     Route::get("/generalAccounts/journalVoucher/{schoolCode}", [JournalVoucherController::class, "JournalVoucherView"])->name("journalVoucher.view");
     Route::get("/generalAccounts/contraVoucher/{schoolCode}", [ContraVoucherController::class, "ContraVoucherView"])->name("contraVoucher.view");
     Route::get("/generalAccounts/voucherPosting/{schoolCode}", [VoucherPostingController::class, "VoucherPostingView"])->name("voucherPosting.view");
-
     // General Accounts => Reports (General Accounts)
     Route::get("/generalAccounts/Reports_GeneralAccounts/accountsVoucher/{schoolCode}", [AccountsVoucherController::class, "AccountsVoucherView"])->name("accountsVoucher.view");
     Route::get("/generalAccounts/Reports_GeneralAccounts/cashBook/{schoolCode}", [CashBookController::class, "CashBookView"])->name("cashBook.view");
@@ -655,16 +682,15 @@ Route::prefix('dashboard')->group(function () {
     Route::get("/generalAccounts/Reports_GeneralAccounts/trialBalance/{schoolCode}", [TrialBalanceController::class, "TrialBalanceView"])->name("trialBalance.view");
     Route::get("/generalAccounts/Reports_GeneralAccounts/balanceSheet/{schoolCode}", [BalanceSheetController::class, "BalanceSheetView"])->name("balanceSheet.view");
     Route::get("/generalAccounts/Reports_GeneralAccounts/incomeStatement/{schoolCode}", [IncomeStatementController::class, "IncomeStatementView"])->name("incomeStatement.view");
-
     // General Accounts => My Account
     Route::get("/generalAccounts/myAccount/currentBalance/{schoolCode}", [CurrentBalanceController::class, "CurrentBalanceView"])->name("currentBalance.view");
     Route::get("/generalAccounts/myAccount/personalStatement/{schoolCode}", [PersonalStatementController::class, "PersonalStatementView"])->name("personalStatement.view");
     Route::get("/generalAccounts/myAccount/allStatement/{schoolCode}", [AllStatementController::class, "AllStatementView"])->name("allStatement.view");
 
 
+
     // Assessment
     Route::get("/assessment/assessmentInput/{schoolCode}", [AssessmentInputController::class, "AssessmentInputView"])->name("assessmentInput.view");
-
     // Assessment => Basic Setting
     Route::get("/assessment/basicSetting/paradarsitaSuchok/{schoolCode}", [ParadarsitaSuchokController::class, "ParadarsitaSuchokView"])->name("paradarsitaSuchok.view");
     Route::get("/assessment/basicSetting/paradarsitaSuchokExcel/{schoolCode}", [ParadarsitaSuchokExcelController::class, "ParadarsitaSuchokExcelView"])->name("paradarsitaSuchokExcel.view");
@@ -673,7 +699,6 @@ Route::prefix('dashboard')->group(function () {
     Route::get("/assessment/basicSetting/addNoipunnoName/{schoolCode}", [AddNoipunnoNameController::class, "AddNoipunnoNameView"])->name("addNoipunnoName.view");
     Route::get("/assessment/basicSetting/setupAssParadarsitaNoipunno/{schoolCode}", [SetupAssParadarsitaNoipunnoController::class, "SetupAssParadarsitaNoipunnoView"])->name("setupAssParadarsitaNoipunno.view");
     Route::get("/assessment/basicSetting/paradarsitaSuchokExam/{schoolCode}", [ParadarsitaSuchokExamController::class, "ParadarsitaSuchokExamView"])->name("paradarsitaSuchokExam.view");
-
     // Assessment => Assessment Reports
     Route::get("/assessment/assessmentReports/subjectWiseReport/{schoolCode}", [SubjectWiseReportController::class, "SubjectWiseReportView"])->name("subjectWiseReport.view");
     Route::get("/assessment/assessmentReports/allSubjectWise/{schoolCode}", [AllSubjectWiseController::class, "AllSubjectWiseView"])->name("allSubjectWise.view");

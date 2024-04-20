@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\StudentAccounts;
+namespace App\Http\Controllers\Backend\Student_Account;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class EditGeneratedPayslipController extends Controller
 {
     public function EditGeneratedPayslipView(Request $request){
-        return view("Backend.StudentAccounts.EditGeneratedPayslip");
+        return view("Backend.Student_accounts.EditGeneratedPayslip");
     }
 }
