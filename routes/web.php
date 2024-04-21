@@ -606,8 +606,12 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/basicSettings/feesSettings/addFeeType/{schoolCode}/{id}', [AddFeeTypeController::class, 'FeeTypeDelete'])->name('addFeeType.delete');
     Route::put('/basicSettings/feesSettings/addFeeType/{schoolCode}/{id}', [AddFeeTypeController::class, 'FeeTypeUpdate'])->name('addFeeType.update');
     Route::get('/basicSettings/feesSettings/addFeeType/{schoolCode}/print', [AddFeeTypeController::class, 'FeeTypePrint'])->name('addFeeType.print');
-
+    // fees Setup
     Route::get('/basicSettings/feesSettings/feesSetup/{schoolCode}', [FeesSetupController::class, 'FeesSetupView'])->name('feesSetup.view');
+    Route::post('/basicSettings/feesSettings/feesSetup/viewFeeTypesData/{schoolCode}', [FeesSetupController::class, 'ViewFeeTypesData'])->name('feesSetup.viewFeeTypesData.view');
+    Route::post('/add_fees_setup/{schoolCode}',[FeesSetupController::class,'add_fees_setup'])->name('add_fees_setup');
+
+
     Route::get('/basicSettings/feesSettings/addPaySlipType/{schoolCode}', [AddPaySlipTypeController::class, 'AddPaySlipTypeView'])->name('addPaySlipType.view');
     Route::get('/basicSettings/feesSettings/paySlipSetup/{schoolCode}', [PaySlipSetupController::class, 'PaySlipSetupView'])->name('paySlipSetup.view');
     Route::get('/basicSettings/feesSettings/waiverType/{schoolCode}', [WaiverTypeController::class, 'WaiverTypeView'])->name('waiverType.view');

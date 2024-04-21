@@ -10,13 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('add_fee_types', function (Blueprint $table) {
+        Schema::create('add_fees', function (Blueprint $table) {
             $table->id();
-            $table->string('fee_type_name');
-            $table->integer('position');
+            $table->string('class_name');
+            $table->string('group_name');
+            $table->string('fee_type');
+            $table->string('fee_amount');
             $table->enum('action', ['pending', 'approved', 'delete', 'edit'])->default('approved');
             $table->string('school_code');
-            $table->enum('status', ['active', 'in active'])->default('active');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('add_fee_types');
+        Schema::dropIfExists('add_fees');
     }
 };

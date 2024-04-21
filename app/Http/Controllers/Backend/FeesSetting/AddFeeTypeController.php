@@ -41,6 +41,7 @@ class AddFeeTypeController extends Controller
             $addFeeType->fee_type_name = $request->input('fee_type_name');
             $addFeeType->position = $request->input('position');
             $addFeeType->status = $request->input('status') ? 'active' : 'in active';
+            $addFeeType->school_code = $schoolCode;
             $addFeeType->save();
 
             return redirect()->route('addFeeType.view', ["schoolCode" => $schoolCode])->with('success', 'Fee Type Added Successfully');

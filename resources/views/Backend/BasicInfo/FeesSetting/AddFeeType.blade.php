@@ -301,7 +301,7 @@
                 clearTimeout(typingTimer);
 
                 // Start a new timer after 2 seconds
-                typingTimer = setTimeout(handleFormSubmit, 2000);
+                typingTimer = setTimeout(handleFormSubmit, 1200);
             });
         }
     });

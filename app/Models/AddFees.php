@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class AddFeeType extends Model
+class AddFees extends Model
 {
     use HasFactory;
 
-    protected $table = 'add_fee_types';
 
+    protected $table = 'add_fees';
 
     protected $fillable = [
-        'fee_type_name',
-        'position',
-        'status',
+        'class_name',
+        'group_name',
+        'fee_type',
+        'fee_amount',
+        'action',
         'school_code',
-        'action'
     ];
 }
