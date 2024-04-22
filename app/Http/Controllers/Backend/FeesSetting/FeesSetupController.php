@@ -51,8 +51,9 @@ class FeesSetupController extends Controller
                 $fees_setup->fee_amount = $fee_amount;
                 $fees_setup->save();
             }
-
         }
+
+        return back()->withSuccess('Fees Setup successful');
     }
 
     // public function ViewClassData()

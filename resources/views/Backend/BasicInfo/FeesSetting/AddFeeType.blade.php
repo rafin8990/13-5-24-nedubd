@@ -102,7 +102,7 @@
 
 
             </div>
-            <a href="{{route("addFeeType.print", $schoolCode)}}" target="_blank"
+            <a href="{{ route('addFeeType.print', $schoolCode) }}" target="_blank"
                 class="text-white bg-gradient-to-br from-red-600 to-red-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center uppercase">
                 Print
             </a>
@@ -261,46 +261,31 @@
                                                 </div>
                                             </div>
                                             {{-- Update Fee type modal form end --}}
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
                 </div>
+                </td>
+                </tr>
+                @endforeach
+                </tbody>
+                </table>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 
 <script>
-    // Function to handle form submission
     function handleFormSubmit() {
-        // Fetch the search term from the input field
         var searchTerm = document.getElementById('search_types').value;
-
-        // If the search term is empty, don't submit the form
-        // if (searchTerm.trim() === '') {
-           // return;
-        // }
-
-        // Submit the form programmatically
         document.getElementById('searchForm').submit();
     }
 
-    // Initialize a variable to hold the timer ID
     var typingTimer;
 
-    // Add event listener once the DOM content is loaded
     document.addEventListener('DOMContentLoaded', function() {
-        // Attach an input event listener to the search input field
         var searchInput = document.getElementById('search_types');
         if (searchInput) {
             searchInput.addEventListener('input', function() {
-                // Clear the existing timer
                 clearTimeout(typingTimer);
-
-                // Start a new timer after 2 seconds
                 typingTimer = setTimeout(handleFormSubmit, 1200);
             });
         }

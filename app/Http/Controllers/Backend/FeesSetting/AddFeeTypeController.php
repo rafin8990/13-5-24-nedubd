@@ -56,7 +56,7 @@ class AddFeeTypeController extends Controller
     public function FeeTypeDelete(Request $request, $schoolCode, $id)
     {
         try {
-            $feeType = AddFeeType::where('id', $id)->first();
+            $feeType = AddFeeType::where("school_code", $schoolCode)->where('id', $id)->first();
             $feeType->delete();
 
             return redirect()->route('addFeeType.view', ["schoolCode" => $schoolCode])->with('success', 'Fee Type Deleted Successfully');
@@ -76,7 +76,7 @@ class AddFeeTypeController extends Controller
                 'position' => 'required | integer',
             ]);
 
-            $feeType = AddFeeType::where('id', $id)->first();
+            $feeType = AddFeeType::where("school_code", $schoolCode)->where('id', $id)->first();
             $feeType->fee_type_name = $request->input('fee_type_name');
             $feeType->position = $request->input('position');
             $feeType->status = $request->input('status') ? 'active' : 'in active';
