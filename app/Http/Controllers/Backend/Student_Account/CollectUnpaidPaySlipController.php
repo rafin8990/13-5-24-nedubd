@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\StudentAccounts;
+namespace App\Http\Controllers\Backend\Student_Account;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class CollectUnpaidPaySlipController extends Controller
 {
     public function CollectUnpaidPaySlipView(Request $request){
-        return view("Backend.StudentAccounts.CollectUnpaidPaySlip");
+        return view("Backend.Student_accounts.CollectUnpaidPaySlip");
     }
 }

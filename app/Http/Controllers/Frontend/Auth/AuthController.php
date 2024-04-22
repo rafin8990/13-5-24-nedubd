@@ -17,12 +17,12 @@ class AuthController extends Controller
     public function index()
     {
         // $school_code=Session::get('school_code');
-      
+
         //  if($school_code){
         //     return redirect('/dashboard',$school_code);
         //  }
         //  else{
-             return view("Auth.Login");   
+             return view("Auth.Login");
     }
 
     public function loginUser(Request $request)
@@ -33,14 +33,14 @@ class AuthController extends Controller
             'password' => 'required|string|min:4',
         ]);
 
-        
+
 
         $admin = Admin::where('email', $request->name)->orWhere('phone_number', $request->name)->first();
         $schoolAdmin = SchoolAdmin::where('email', $request->name)->orWhere('mobile_number', $request->name)->first();
         $student = Student::where('student_id', $request->name)->orWhere('email', $request->name)->orWhere('father_mobile', $request->name)->first();
         $teacher = Teacher::where('teacher_id', $request->name)->orWhere('mobile', $request->name)->first();
 
-       
+
         if ($admin) {
             if (Hash::check($request->password, $admin->password)) {
                 Session::put('AdminId', $admin->id);
@@ -51,7 +51,7 @@ class AuthController extends Controller
                 return back()->with('error', 'Login failed. Please check your Id or password.');
             }
         }
-        
+
         else if($student){
             if (Hash::check($request->password, $student->password)) {
                 Session::put('studentId', $student->id);
@@ -102,7 +102,7 @@ class AuthController extends Controller
             Session::pull('AdminId');
             return redirect('/login');
         }
-        
+
     }
 
 }
