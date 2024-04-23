@@ -13,7 +13,7 @@
 
     <div class="w-full border mx-auto p-5 space-y-10">
         {{-- <form action="" method="POST"> --}}
-        @csrf
+        {{-- @csrf --}}
         <div class="flex space-x-20">
             <button data-modal-target="add_pay_slip_type_modal" data-modal-toggle="add_pay_slip_type_modal" type="button"
                 class="text-white bg-gradient-to-br from-blue-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1 text-center uppercase">
@@ -139,7 +139,7 @@
                                         </form>
 
                                         {{-- Update Fee Type --}}
-                                        <di class="mb-3">
+                                        <div class="mb-3">
                                             <svg data-modal-target="update_fee_type_modal_{{ $slipType->id }}"
                                                 data-modal-toggle="update_fee_type_modal_{{ $slipType->id }}"
                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -224,6 +224,7 @@
                                                 </div>
                                             </div>
                                             {{-- Update Pay Slip type modal form end --}}
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -255,7 +256,6 @@
             searchInput.addEventListener('input', function() {
                 // Clear the existing timer
                 clearTimeout(typingTimer);
-
                 // Start a new timer after 2 seconds
                 typingTimer = setTimeout(handleFormSubmit, 1200);
             });

@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Backend\FeesSetting;
 use App\Http\Controllers\Controller;
 use App\Models\AddClass;
 use App\Models\AddFees;
+use App\Models\AddFeeType;
 use App\Models\AddGroup;
 use App\Models\AddPaySlip;
 use App\Models\AddPaySlipType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaySlipSetupController extends Controller
 {
@@ -28,7 +30,6 @@ class PaySlipSetupController extends Controller
 
     public function PaySlipSetupGetData(Request $request, $school_code)
     {
-        // dd($request);
         $class = $request->class;
         $group = $request->group;
         $pay_slip_type = $request->pay_slip_type;
@@ -45,8 +46,6 @@ class PaySlipSetupController extends Controller
 
     public function StorePaySlipSetup(Request $request, $school_code)
     {
-        // dd($request->all());
-
         $class = $request->fees_data_class;
         $group = $request->fees_data_group;
         $pay_slip_type = $request->pay_slip_type_name;
@@ -65,6 +64,17 @@ class PaySlipSetupController extends Controller
                     ->where('pay_slip_type', $pay_slip_type)
                     ->where('fee_type_name', $fee_type_name)->first();
                 if (!$checkExistance) {
+                    // updating the check mark of AddFeeType Table
+                    $addFeeType = AddFees::where("school_code", $school_code)
+                        ->where('action', 'approved')
+                        ->where('class_name', $class)
+                        ->where('group_name', $group)
+                        ->where('fee_type', $fee_type_name)
+                        ->first();
+                    $addFeeType->status = "checked";
+                    $addFeeType->save();
+
+                    // create a new Pay Slip
                     $paySlip = new AddPaySlip();
                     $paySlip->class_name = $class;
                     $paySlip->group_name = $group;

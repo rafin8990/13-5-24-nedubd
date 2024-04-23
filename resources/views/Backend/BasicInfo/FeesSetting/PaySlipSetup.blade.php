@@ -8,6 +8,7 @@
 
     <!-- Message -->
     @include('/Message/message')
+
     <div class="mb-5">
         <h1>Pay Slip Setup</h1>
     </div>
@@ -85,8 +86,8 @@
                                     <th scope="col" class="px-6 py-3">
                                         <div class="flex items-center justify-center space-x-2">
                                             <span>STATUS</span>
-                                            <input id="default-checkbox" type="checkbox" value=""
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            {{-- <input id="default-checkbox" type="checkbox" value=""
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> --}}
                                         </div>
                                     </th>
                                 </tr>
@@ -112,6 +113,7 @@
                                             </td>
                                             <td class="px-6 py-4">
                                                 <input id="status" name="status[{{ $feesData->fee_type }}]"
+                                                    {{ $feesData->status === 'checked' ? "disabled" : '' }} {{ $feesData->status === 'checked' ? "checked" : '' }}
                                                     type="checkbox" value="{{ $feesData->fee_type }}"
                                                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
                                             </td>

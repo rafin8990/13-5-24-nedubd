@@ -17,6 +17,7 @@ class AddFees extends Model
         'group_name',
         'fee_type',
         'fee_amount',
+        'status',
         'action',
         'school_code',
     ];
