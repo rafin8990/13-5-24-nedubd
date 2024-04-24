@@ -10,13 +10,20 @@
         }
     </style>
     <div class="mt-10">
+
+        <div class="w-full text-center mb-10">
+            <h1 class="text-xl font-semibold">
+                Before searching for data here, ensure that you have added data from <span class="text-red-300 font-bold bg-red-50 px-1 rounded">Fees Setting/Pay Slip Setup</span>
+            </h1>
+        </div>
+
         <form action="{{ route('individualPaySlipReport.print', $school_code) }}"
             class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-2/5 mx-auto space-y-3">
             <div class="space-y-3">
                 <div class="grid grid-cols-4 place-items-start  gap-5">
-                    <label for="class" class="block mb-2 text-sm font-medium whitespace-noWrap ">Class
+                    <label for="class_name" class="block mb-2 text-sm font-medium whitespace-noWrap ">Class
                         :</label>
-                    <select id="class" name="class"
+                    <select id="class_name" name="class_name"
                         class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
                         <option disabled selected>Select Class</option>
                         @foreach ($classes as $class)
@@ -25,8 +32,8 @@
                     </select>
                 </div>
                 <div class="grid grid-cols-4 place-items-start  gap-5">
-                    <label for="pay_slip" class="block mb-2 text-sm font-medium whitespace-noWrap ">PAY SLIP : </label>
-                    <select id="pay_slip" name="pay_slip"
+                    <label for="pay_slip_type_name" class="block mb-2 text-sm font-medium whitespace-noWrap ">PAY SLIP : </label>
+                    <select id="pay_slip_type_name" name="pay_slip_type_name"
                         class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
                         <option disabled selected>Select </option>
                         @foreach ($paySlipTypes as $paySlipType)
