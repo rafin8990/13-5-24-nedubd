@@ -13,6 +13,11 @@
         <h1>Pay Slip Setup</h1>
     </div>
 
+    <div class="w-full text-center mb-10">
+        <h1 class="text-xl font-semibold">
+            Before searching for data here, ensure that you have added data from <span class="text-red-300 font-bold bg-red-50 px-1 rounded">Fees Setting/Fees Setup</span>
+        </h1>
+    </div>
 
     <div class="w-full border mx-auto p-5 space-y-10">
         <form action="{{ route('paySlipSetup.getData', $school_code) }}" method="POST">
@@ -113,15 +118,15 @@
                                             </td>
                                             <td class="px-6 py-4">
                                                 <input id="status" name="status[{{ $feesData->fee_type }}]"
-                                                    {{ $feesData->status === 'checked' ? "disabled" : '' }} {{ $feesData->status === 'checked' ? "checked" : '' }}
-                                                    type="checkbox" value="{{ $feesData->fee_type }}"
+                                                    {{-- {{ $feesData->status === 'checked' && $paySlipTypeName ? 'disabled' : '' }} --}}
+                                                    {{-- {{ $feesData->status === 'checked' ? 'checked' : '' }}  --}}
+                                                    type="checkbox"
+                                                    value="{{ $feesData->fee_type }}"
                                                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
                                             </td>
-
                                         </tr>
                                     @endforeach
                                 @endif
-
                             </tbody>
                         </table>
                     </div>

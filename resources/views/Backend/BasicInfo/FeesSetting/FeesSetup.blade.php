@@ -10,6 +10,12 @@
     </div>
     @include('Shared.alert')
 
+    <div class="w-full text-center mb-10">
+        <h1 class="text-xl font-semibold">
+            Before searching for data here, ensure that you have added data from <span
+                class="text-red-300 font-bold bg-red-50 px-1 rounded">Fees Setting/Add Fee Type</span>
+        </h1>
+    </div>
 
     <div class="w-full border mx-auto p-5 space-y-10">
         <form action="{{ route('feesSetup.FeeTypesData.view', $school_code) }}" method="post">
@@ -101,9 +107,9 @@
                         </table>
                     </div>
 
-                    <input name="class" class="hidden" type="text" value="{{ $classdata}}" >
-                    <input name="group" class="hidden" type="text" value="{{ $groupdata}}" >
-                    <input name="school_code" class="hidden" type="text" value="{{ $school_code }}" >
+                    <input name="class" class="hidden" type="text" value="{{ $classdata }}">
+                    <input name="group" class="hidden" type="text" value="{{ $groupdata }}">
+                    <input name="school_code" class="hidden" type="text" value="{{ $school_code }}">
                     <div class="w-full flex justify-center items-center gap-10 mt-20">
                         <button type="submit"
                             class="text-white bg-gradient-to-br from-blue-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-20 py-2.5 text-center">

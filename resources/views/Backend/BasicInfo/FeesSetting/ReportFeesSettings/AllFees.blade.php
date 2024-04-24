@@ -10,6 +10,14 @@
         }
     </style>
     <div class=" mt-10">
+
+        <div class="w-full text-center mb-10">
+            <h1 class="text-xl font-semibold">
+                Before searching for data here, ensure that you have added data from <span
+                    class="text-red-300 font-bold bg-red-50 px-1 rounded">Fees Setting/Fees Setup</span>
+            </h1>
+        </div>
+
         <form method="GET" action="{{ route('allFeesReport.getData', $school_code) }}"
             class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-2/5 mx-auto space-y-3">
             @csrf

@@ -80,19 +80,21 @@
                                     class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                     <th scope="row"
                                         class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{-- {{ $feeType->id }} --}}
+                                        1
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{-- {{ $feeType->fee_type_name }} --}}
+                                        class
                                     </td>
+                                    @foreach ($paySlipTypes as $key => $paySlipType)
+                                        <td class="px-6 py-4">
+                                            {{ $allAmountOfpaySlips[$key] }}
+                                        </td>
+                                    @endforeach
                                     <td class="px-6 py-4">
-                                        {{-- {{ $feeType->position }} --}}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{-- {{ $feeType->status }} --}}
+                                        {{ $totalAmount }}
                                     </td>
                                 </tr>
-                                <tr
+                                {{-- <tr
                                     class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                     <th scope="row"
                                         class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -104,9 +106,9 @@
 
                                     </td>
                                     <td class="px-6 py-4">
-                                        00
+                                        {{ $totalAmount }} - {{ $totalAmountOfpaySlips }}
                                     </td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
