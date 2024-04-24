@@ -12,7 +12,7 @@
 
 
     <div class="w-full border mx-auto p-5 space-y-10">
-        <form action="{{ route('feesSetup.viewFeeTypesData.view', $school_code) }}" method="post">
+        <form action="{{ route('feesSetup.FeeTypesData.view', $school_code) }}" method="post">
             @csrf
             <div class="grid grid-cols-4 items-center gap-16">
                 <div class="">

@@ -6,7 +6,7 @@
 
 @section('Dashboard')
     <div class="w-full mx-auto p-5 space-y-10">
-        <form action="" method="POST">
+        <form action="{{ url('') }}" method="POST">
             @csrf
             <div class="grid grid-cols-6 items-center gap-5">
                 <div class="space-y-2">

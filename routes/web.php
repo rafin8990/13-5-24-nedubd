@@ -608,7 +608,7 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/basicSettings/feesSettings/addFeeType/{schoolCode}/print', [AddFeeTypeController::class, 'FeeTypePrint'])->name('addFeeType.print');
     // fees Setup
     Route::get('/basicSettings/feesSettings/feesSetup/{schoolCode}', [FeesSetupController::class, 'FeesSetupView'])->name('feesSetup.view');
-    Route::post('/basicSettings/feesSettings/feesSetup/viewFeeTypesData/{schoolCode}', [FeesSetupController::class, 'ViewFeeTypesData'])->name('feesSetup.viewFeeTypesData.view');
+    Route::post('feesSetup/viewFeeTypesData/{schoolCode}', [FeesSetupController::class, 'ViewFeeTypesData'])->name('feesSetup.FeeTypesData.view');
     Route::post('/add_fees_setup/{schoolCode}', [FeesSetupController::class, 'add_fees_setup'])->name('add_fees_setup');
     // add pay slip type
     Route::get('/basicSettings/feesSettings/addPaySlipType/{schoolCode}', [AddPaySlipTypeController::class, 'AddPaySlipTypeView'])->name('addPaySlipType.view');
@@ -624,11 +624,21 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/basicSettings/feesSettings/waiverType/{schoolCode}', [WaiverTypeController::class, 'StoreWaiverType'])->name('waiverType.store');
     Route::delete('/basicSettings/feesSettings/waiverType/{schoolCode}/{id}', [WaiverTypeController::class, 'DeleteWaiverType'])->name('waiverType.delete');
     Route::put('/basicSettings/feesSettings/waiverType/{schoolCode}/{id}', [WaiverTypeController::class, 'UpdateWaiverType'])->name('waiverType.update');
-
+    // waiver setup
     Route::get('/basicSettings/feesSettings/waiverSetup/{schoolCode}', [WaiverSetupController::class, 'WaiverSetupView'])->name('waiverSetup.view');
-    Route::get('/basicSettings/feesSettings/reportFeesSettings/allFees/{schoolCode}', [AllFeesController::class, 'AllFeesView'])->name('rllFeesReport.view');
-    Route::get('/basicSettings/feesSettings/reportFeesSettings/allPaySlip/{schoolCode}', [AllPaySlipController::class, 'AllPaySlipView'])->name('allPaySlipReport.view');
-    Route::get('/basicSettings/feesSettings/reportFeesSettings/individualPaySlip/{schoolCode}', [IndividualPaySlipController::class, 'IndividualPaySlipView'])->name('individualPaySlipReport.view');
+    Route::get('/waiverSetup/getData/{schoolCode}', [WaiverSetupController::class, 'WaiverSetupGetData'])->name('waiverSetup.getData');
+    Route::post('/waiverSetup/storeWaiberStudent/{schoolCode}', [WaiverSetupController::class, 'WaiverStudentListSetup'])->name('studentListWaiverSetup.store');
+    // Report (Fees Setting) => All Fees
+    Route::get('/reportFeesSettings/allFees/{schoolCode}', [AllFeesController::class, 'AllFeesView'])->name('allFeesReport.view');
+    Route::get('/allFees/getData/{schoolCode}', [AllFeesController::class, 'GetAllFeesReportData'])->name('allFeesReport.getData');
+    Route::get('/allFees/print/{schoolCode}', [AllFeesController::class, 'FeesReportDataPrint'])->name('allFeesReport.print');
+    // Report (Fees Setting) => All Pay Slip
+    Route::get('/reportFeesSettings/allPaySlip/{schoolCode}', [AllPaySlipController::class, 'AllPaySlipView'])->name('allPaySlipReport.view');
+    Route::get('/allPaySlip/print/{schoolCode}', [AllPaySlipController::class, 'AllPaySlipPrint'])->name('allPaySlip.print');
+    // Report (Fees Setting) => Individual Pay Slip
+    Route::get('/reportFeesSettings/individualPaySlip/{schoolCode}', [IndividualPaySlipController::class, 'IndividualPaySlipView'])->name('individualPaySlipReport.view');
+    Route::get('reportFeesSettings/PrintindividualPaySlip/{schoolCode}', [IndividualPaySlipController::class, 'PrintIndividualPaySlip'])->name('individualPaySlipReport.print');
+
     Route::get('/basicSettings/feesSettings/reportFeesSettings/individualWaiver/{schoolCode}', [IndividualWaiverController::class, 'IndividualWaiverView'])->name('individualWaiverReport.view');
 
 

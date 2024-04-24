@@ -165,7 +165,7 @@
                                         </form>
 
                                         {{-- Update Fee Type --}}
-                                        <di class="mb-3">
+                                        <div class="mb-3">
                                             <svg data-modal-target="update_fee_type_modal_{{ $feeType->id }}"
                                                 data-modal-toggle="update_fee_type_modal_{{ $feeType->id }}"
                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -261,15 +261,15 @@
                                                 </div>
                                             </div>
                                             {{-- Update Fee type modal form end --}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                </td>
-                </tr>
-                @endforeach
-                </tbody>
-                </table>
             </div>
         </div>
-    </div>
     </div>
 @endsection
 

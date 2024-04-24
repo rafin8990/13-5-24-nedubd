@@ -10,7 +10,8 @@
         }
     </style>
     <div class=" mt-10">
-        <form action="" class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-2/5 mx-auto space-y-3">
+        <form action="{{ route('allPaySlip.print', $school_code) }}"
+            class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-2/5 mx-auto space-y-3">
             <div class="space-y-3">
                 <div class="grid grid-cols-4 place-items-start  gap-5">
                     <label for="class" class="block mb-2 text-sm font-medium whitespace-noWrap ">Class
@@ -18,18 +19,19 @@
                     <select id="class" name="class"
                         class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
                         <option disabled selected>Select Class</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
+                        @foreach ($classes as $class)
+                            <option value="{{ $class->class_name }}">{{ $class->class_name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="grid grid-cols-4 place-items-start  gap-5">
-                    <label for="group" class="block mb-2 text-sm font-medium whitespace-noWrap ">Group
-                        :</label>
+                    <label for="group" class="block mb-2 text-sm font-medium whitespace-noWrap">Group:</label>
                     <select id="group" name="group"
                         class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
                         <option disabled selected>Select </option>
-                        <option value="">x</option>
-                        <option value="">y</option>
+                        @foreach ($groups as $group)
+                            <option value="{{ $group->group_name }}">{{ $group->group_name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

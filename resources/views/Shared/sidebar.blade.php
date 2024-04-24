@@ -1524,21 +1524,20 @@
                                         <path stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" d="m1 1 4 4 4-4" />
                                     </svg>
-
                                 </button>
                                 <ul id="dropdown-reports-fees-settings" class="hidden py-2 space-y-2 pl-5">
                                     <li>
-                                        <a href="/dashboard/basicSettings/feesSettings/reportFeesSettings/allFees/{{ $school_code }}"
+                                        <a href="{{ route('allFeesReport.view', $school_code) }}"
                                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">ALL
                                             FEES</a>
                                     </li>
                                     <li>
-                                        <a href="/dashboard/basicSettings/feesSettings/reportFeesSettings/allPaySlip/{{ $school_code }}"
+                                        <a href="{{ route('allPaySlipReport.view', $school_code) }}"
                                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">ALL
                                             PAY SLIP</a>
                                     </li>
                                     <li>
-                                        <a href="/dashboard/basicSettings/feesSettings/reportFeesSettings/individualPaySlip/{{ $school_code }}"
+                                        <a href="{{ route('individualPaySlipReport.view', $school_code) }}"
                                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">INDIVIDUAL
                                             PAY SLIP</a>
                                     </li>
