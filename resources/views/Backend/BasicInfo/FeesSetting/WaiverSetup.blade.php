@@ -9,6 +9,8 @@
         <h1>Discount Setup </h1>
     </div>
 
+    <!-- Message -->
+    @include('/Message/message')
 
     <div class="w-full border mx-auto p-5 space-y-10">
         {{-- top section --}}
@@ -85,7 +87,7 @@
                 @csrf
 
                 <div class="grid grid-cols-2 gap-5">
-                    {{-- table 1 --}}
+                    {{-- Fees Table --}}
                     <div>
                         <div class="bg-blue-200 text-center rounded-lg">
                             <h1 class="py-1">STUDENT WISE WAIVER SETUP LIST</h1>
@@ -93,7 +95,7 @@
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                 <thead class="text-xs text-white uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
+                                    <tr class="text-center">
                                         <th scope="col" class="px-6 py-3">
                                             <input id="default-checkbox" type="checkbox" value=""
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -110,25 +112,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr
-                                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                        <th scope="row"
-                                            class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-
-                                        </th>
-                                        <td class="px-6 py-4">
-
-                                        </td>
-                                        <td class="px-6 py-4">
-
-                                        </td>
-                                    </tr>
+                                    @if ($sessionAllFees)
+                                        @foreach ($sessionAllFees as $fee)
+                                            <tr
+                                                class="odd:bg-white text-center odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                                <th scope="row"
+                                                    class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                    <div class="mx-auto">
+                                                        <input id="default-checkbox" type="checkbox" value="selected"
+                                                            name="fees_select[{{ $fee->id }}]"
+                                                            class="w-4 h-4 ml-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                    </div>
+                                                </th>
+                                                <td class="px-6 py-4">
+                                                    {{ $fee->fee_type }}
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    {{ $fee->fee_amount }}
+                                                </td>
+                                                <td class="px-6 py-4">
+                                                    {{ $sessionPercentageAmounts[$fee->id] }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    {{-- table 2 --}}
+                    {{-- stutdent table --}}
                     <div>
                         <div class="bg-blue-200 text-center rounded-lg">
                             <h1 class="py-1">CLASS WISE PAY SLIP SETUP LIST </h1>
@@ -164,7 +177,7 @@
                                                     class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <div class="mx-auto">
                                                         <input id="default-checkbox" type="checkbox" value="selected"
-                                                            name="select[{{ $student->id }}]"
+                                                            name="student_select[{{ $student->nedubd_student_id }}]"
                                                             class="w-4 h-4 ml-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                     </div>
                                                 </th>
@@ -173,14 +186,12 @@
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     {{ $student->name }}
-                                                    <input type="text" class="hidden" value="{{ $student->name }}"
-                                                        name="student_name[{{ $student->id }}]">
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     {{ $student->student_id }}
                                                     <input type="text" class="hidden"
-                                                        value="{{ $student->student_id }}"
-                                                        name="student_id[{{ $student->id }}]">
+                                                        value="{{ $student->nedubd_student_id }}"
+                                                        name="student_id[{{ $student->nedubd_student_id }}]">
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     {{ $student->student_roll }}
@@ -197,17 +208,17 @@
                 <input type="text" class="hidden" value="{{ $sessionClass }}" name="student_class">
                 <input type="text" class="hidden" value="{{ $sessionGroup }}" name="student_group">
                 <input type="text" class="hidden" value="{{ $sessionSection }}" name="student_section">
-                <input type="text" class="hidden" value="{{ $sessionWaiver_type }}" name="weiver_type_name">
-                <input type="text" class="hidden" value="{{ $sessionPercentage }}" name="weiver_percentage">
+                <input type="text" class="hidden" value="{{ $sessionWaiver_type }}" name="waiver_type_name">
+                <input type="text" class="hidden" value="{{ $sessionPercentage }}" name="waiver_percentage">
 
                 {{-- bottom section --}}
                 <div class="">
                     <div class="w-full flex justify-center items-center gap-20 mt-20">
                         <div class="flex items-center space-x-2 ">
                             <h3>Waiver Expire DATE: </h3>
-                            <input type="date" value="" name="waiver_expire_date" id="waiver_expire_date"
+                            <input type="date" name="waiver_expire_date" id="waiver_expire_date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1"
-                                placeholder="" />
+                                value="<?php echo date('Y-m-d'); ?>" />
                         </div>
                         <button type="submit"
                             class="text-white bg-gradient-to-br from-blue-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-20 py-2.5 text-center">
