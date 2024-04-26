@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="flex items-start mb-5">
                                         <div class="flex items-center h-5">
-                                            <input id="status" name="status" type="checkbox" value="true"
+                                            <input id="status" name="status" type="checkbox" value="true" checked
                                                 class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
                                         </div>
                                         <label for="status"
@@ -88,14 +88,10 @@
                 {{-- search box --}}
                 <form id="searchForm" method="GET" action="{{ route('waiverType.view', $school_code) }}">
                     <input type="text" value="{{ request('search_types') }}" name="search_types" id="search_types"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1 block w-96"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1 block w-96 mt-3"
                         placeholder="Search..." />
                 </form>
             </div>
-            <button type="submit"
-                class="text-white bg-gradient-to-br from-red-600 to-red-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center uppercase">
-                Print
-            </button>
         </div>
 
         <div class="space-y-1">

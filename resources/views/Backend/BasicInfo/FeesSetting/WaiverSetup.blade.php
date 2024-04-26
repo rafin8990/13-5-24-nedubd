@@ -97,7 +97,7 @@
                                 <thead class="text-xs text-white uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
                                     <tr class="text-center">
                                         <th scope="col" class="px-6 py-3">
-                                            <input id="default-checkbox" type="checkbox" value=""
+                                            <input id="waiver_header_checkbox" type="checkbox" value=""
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         </th>
                                         <th scope="col" class="px-6 py-3 bg-blue-500">
@@ -119,7 +119,7 @@
                                                 <th scope="row"
                                                     class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <div class="mx-auto">
-                                                        <input id="default-checkbox" type="checkbox" value="selected"
+                                                        <input id="" type="checkbox" value="selected"
                                                             name="fees_select[{{ $fee->id }}]"
                                                             class="w-4 h-4 ml-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                     </div>
@@ -151,7 +151,7 @@
                                 <thead class="text-xs text-white uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="px-6 py-3">
-                                            <input id="default-checkbox" type="checkbox" value=""
+                                            <input id="student_header_checkbox" type="checkbox" value=""
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         </th>
                                         <th scope="col" class="px-6 py-3 bg-blue-500">
@@ -176,8 +176,8 @@
                                                 <th scope="row"
                                                     class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <div class="mx-auto">
-                                                        <input id="default-checkbox" type="checkbox" value="selected"
-                                                            name="student_select[{{ $student->nedubd_student_id }}]"
+                                                        <input id="" type="checkbox" value="selected"
+                                                            name="student_select[{{ $student->id }}]"
                                                             class="w-4 h-4 ml-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                     </div>
                                                 </th>
@@ -188,10 +188,10 @@
                                                     {{ $student->name }}
                                                 </td>
                                                 <td class="px-6 py-4">
-                                                    {{ $student->student_id }}
+                                                    {{ $student->nedubd_student_id }}
                                                     <input type="text" class="hidden"
-                                                        value="{{ $student->nedubd_student_id }}"
-                                                        name="student_id[{{ $student->nedubd_student_id }}]">
+                                                        value="{{ $student->id }}"
+                                                        name="student_id[{{ $student->id }}]">
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     {{ $student->student_roll }}
@@ -236,3 +236,28 @@
         </div>
     </div>
 @endsection
+
+
+<script>
+    // for waiver table
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerCheckbox = document.getElementById('waiver_header_checkbox');
+        const rowCheckboxes = document.querySelectorAll('input[name^="fees_select"]');
+        headerCheckbox.addEventListener('change', function() {
+            rowCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = headerCheckbox.checked;
+            });
+        });
+    });
+
+    // for student table
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerCheckbox = document.getElementById('student_header_checkbox');
+        const rowCheckboxes = document.querySelectorAll('input[name^="student_select"]');
+        headerCheckbox.addEventListener('change', function() {
+            rowCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = headerCheckbox.checked;
+            });
+        });
+    });
+</script>

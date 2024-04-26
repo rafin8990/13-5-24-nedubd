@@ -13,8 +13,17 @@ class IndividualPaySlipController extends Controller
 {
     public function IndividualPaySlipView(Request $request, $school_code)
     {
-        $classes = AddClass::where("school_code", $school_code)->where('action', 'approved')->get();
-        $paySlipTypes = AddPaySlipType::where("school_code", $school_code)->where('action', 'approved')->get();
+        // $classes = AddClass::where("school_code", $school_code)->where('action', 'approved')->get();
+        $classes = AddPaySlip::where("school_code", $school_code)
+            ->where('action', 'approved')
+            ->select('class_name')
+            ->distinct()
+            ->get();
+        $paySlipTypes = AddPaySlip::where("school_code", $school_code)
+            ->where('action', 'approved')
+            ->select('pay_slip_type')
+            ->distinct()
+            ->get();
         return view('Backend.BasicInfo.FeesSetting.ReportFeesSettings.IndividualPaySlip', compact("classes", "paySlipTypes"));
     }
 
@@ -24,14 +33,13 @@ class IndividualPaySlipController extends Controller
         $class = $request->input('class_name');
         $pay_slip_type = $request->input('pay_slip_type_name');
 
-        $schoolInfo = SchoolInfo::where('school_code', $school_code)->first();
         $date = now();
+        $schoolInfo = SchoolInfo::where('school_code', $school_code)->first();
         $individualPaySlipsData = AddPaySlip::where("school_code", $school_code)
             ->where('action', 'approved')
             ->where("class_name", $class)
             ->where('pay_slip_type', $pay_slip_type)
             ->get();
-
         $TotalAmount = AddPaySlip::where("school_code", $school_code)
             ->where('action', 'approved')
             ->where("class_name", $class)

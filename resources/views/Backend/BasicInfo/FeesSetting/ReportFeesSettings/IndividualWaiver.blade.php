@@ -10,7 +10,9 @@
         }
     </style>
     <div class=" mt-10">
-        <form action="" class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-2/5 mx-auto space-y-3">
+        <form method="GET" action="{{ route('individualWaiverReport.getData', $school_code) }}"
+            class="p-5 shadowStyle rounded-[8px] border border-slate-300 w-2/5 mx-auto space-y-3">
+            @csrf
             <div class="space-y-3">
                 <div class="grid grid-cols-4 place-items-start  gap-5">
                     <label for="class" class="block mb-2 text-sm font-medium whitespace-noWrap ">Class
@@ -18,8 +20,9 @@
                     <select id="class" name="class"
                         class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
                         <option disabled selected>Select Class</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
+                        @foreach ($classes as $key => $class)
+                            <option value="{{ $class }}">{{ $class }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="grid grid-cols-4 place-items-start  gap-5">
@@ -27,8 +30,9 @@
                     <select id="student_id" name="student_id"
                         class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
                         <option disabled selected>Select</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
+                        @foreach ($students_id as $primaryKey => $student_id)
+                            <option value="{{ $primaryKey }}">{{ $student_id }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="grid grid-cols-4 place-items-start  gap-5">
@@ -36,8 +40,9 @@
                     <select id="waiver_type" name="waiver_type"
                         class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
                         <option disabled selected>Select</option>
-                        <option value="">x</option>
-                        <option value="">y</option>
+                        @foreach ($waiver_types as $waiver_type)
+                            <option value="{{ $waiver_type }}">{{ $waiver_type }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

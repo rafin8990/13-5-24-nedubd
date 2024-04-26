@@ -53,63 +53,73 @@
 
 
             {{-- All fee types --}}
-            <div class="space-y-1">
+            <div class="space-y-2 mt-10">
+                <div class="w-full flex justify-between items-center">
+                    <div>
+                        <h1 class="uppercase font-semibold text-gray-500">Name: {{ $individualWaiverData[0]->name }}
+                        </h1>
+                    </div>
+                    <div>
+                        <h1 class="uppercase font-semibold text-gray-500">Id:
+                            {{ $individualWaiverData[0]->nedubd_student_id }}</h1>
+                    </div>
+                    <div>
+                        <h1 class="uppercase font-semibold text-gray-500">DISCOUNT:
+                            {{ $individualWaiverData[0]->waiver_type_name }}</h1>
+                    </div>
+                </div>
                 <div class="mt-10">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead class="text-xs text-white uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                            <thead class="text-xs text-white uppercase bg-blue-600">
                                 <tr class="text-center">
                                     <th scope="col" class="px-6 py-3 bg-blue-500">
                                         SL
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        CLASS
+                                        Fee Type
                                     </th>
-                                    @foreach ($paySlipTypes as $key => $paySlipType)
-                                        <th scope="col"
-                                            class="px-6 py-3 {{ ($key + 1) % 2 !== 0 ? 'bg-blue-500' : '' }}">
-                                            {{ $paySlipType->pay_slip_type_name }}
-                                        </th>
-                                    @endforeach
                                     <th scope="col" class="px-6 py-3 bg-blue-500">
-                                        TOTAL
+                                        Amount
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 bg-blue-500">
+                                        WAIVER
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($individualWaiverData as $key => $waiver)
+                                    <tr
+                                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 text-center">
+                                        <td class="px-6 py-4">
+                                            {{ $key + 1 }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $waiver->fee_type }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $waiver->fee_amount }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ ($waiver->fee_amount / 100) * $waiver->waiver_percentage }}
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 <tr
                                     class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 text-center">
-                                    <th scope="row"
-                                        class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        1
-                                    </th>
                                     <td class="px-6 py-4">
-                                        class
+                                        {{-- {{ $key + 1 }} --}}
                                     </td>
-                                    @foreach ($paySlipTypes as $key => $paySlipType)
-                                        <td class="px-6 py-4">
-                                            {{ $allAmountOfpaySlips[$key] }}
-                                        </td>
-                                    @endforeach
-                                    <td class="px-6 py-4">
-                                        {{ $totalAmount }}
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                        Total =
+                                    </td>
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                        {{ $totalFeeAmount }}
+                                    </td>
+                                    <td class="px-6 py-4 font-bold text-lg">
+                                        {{ $totalDiscount }}
                                     </td>
                                 </tr>
-                                {{-- <tr
-                                    class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                    <th scope="row"
-                                        class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    </th>
-                                    <td class="px-6 py-4 text-end">
-                                        Total
-                                    </td>
-                                    <td class="px-6 py-4">
-
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{ $totalAmount }} - {{ $totalAmountOfpaySlips }}
-                                    </td>
-                                </tr> --}}
                             </tbody>
                         </table>
                     </div>

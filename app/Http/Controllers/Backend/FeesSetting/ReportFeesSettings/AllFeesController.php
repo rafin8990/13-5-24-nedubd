@@ -13,8 +13,19 @@ class AllFeesController extends Controller
 {
     public function AllFeesView(Request $request, $school_code)
     {
-        $classes = AddClass::where("school_code", $school_code)->where('action', 'approved')->get();
-        $groups = AddGroup::where("school_code", $school_code)->where('action', 'approved')->get();
+        // $classes = AddClass::where("school_code", $school_code)->where('action', 'approved')->get();
+        // $groups = AddGroup::where("school_code", $school_code)->where('action', 'approved')->get();
+        $classes = AddFees::where("school_code", $school_code)
+            ->where('action', 'approved')
+            ->select('class_name')
+            ->distinct()
+            ->get();
+        $groups = AddFees::where("school_code", $school_code)
+            ->where('action', 'approved')
+            ->select('group_name')
+            ->distinct()
+            ->get();
+        // dump($AllFess);
         return view('Backend.BasicInfo.FeesSetting.ReportFeesSettings.AllFees', compact('classes', 'groups', 'school_code'));
     }
 

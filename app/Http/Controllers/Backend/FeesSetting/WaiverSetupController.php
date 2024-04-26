@@ -80,8 +80,6 @@ class WaiverSetupController extends Controller
             $percentageAmounts[$value->id] = ($value->fee_amount / 100) * floor(intval($percentage));
         }
 
-        // dd($percentageAmounts);
-
         return redirect()->route('waiverSetup.view', $school_code)->with([
             'students' => $students,
             'allFeesAccordingToClass' => $allFeesAccordingToClass,
@@ -94,15 +92,12 @@ class WaiverSetupController extends Controller
         ]);
     }
 
-    /*     fee_id
-        nedubd_student_id
-        waiver_type_name
-        waiver_percentage
-        waiver_expire_date
-        schoolCode
-        action */
+
+
     public function WaiverStudentListSetup(Request $request, $school_code)
     {
+        // dd($request->all());
+
         // $class = $request->input('student_class');
         // $group = $request->input('student_group');
         // dd(1000 / 100 * 2);
@@ -119,14 +114,14 @@ class WaiverSetupController extends Controller
                     $checkExistance = Waiver::where("schoolCode", $school_code)
                         ->where('action', 'approved')
                         ->where('fee_id', $FeeId)
-                        ->where('nedubd_student_id', $studentId)
+                        ->where('student_id', $studentId)
                         ->where('waiver_type_name', $waiver_type_name)
                         ->where('waiver_type_name', $waiver_type_name)
                         ->first();
                     if (!$checkExistance) {
                         $waiver = new Waiver();
                         $waiver->fee_id = $FeeId;
-                        $waiver->nedubd_student_id = $studentId;
+                        $waiver->student_id = $studentId;
                         $waiver->waiver_type_name = $waiver_type_name;
                         $waiver->waiver_percentage = intval($waiver_percentage);
                         $waiver->waiver_expire_date = $waiver_expire_date;

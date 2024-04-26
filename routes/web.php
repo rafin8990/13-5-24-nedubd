@@ -638,8 +638,9 @@ Route::prefix('dashboard')->group(function () {
     // Report (Fees Setting) => Individual Pay Slip
     Route::get('/reportFeesSettings/individualPaySlip/{schoolCode}', [IndividualPaySlipController::class, 'IndividualPaySlipView'])->name('individualPaySlipReport.view');
     Route::get('reportFeesSettings/PrintindividualPaySlip/{schoolCode}', [IndividualPaySlipController::class, 'PrintIndividualPaySlip'])->name('individualPaySlipReport.print');
-
-    Route::get('/basicSettings/feesSettings/reportFeesSettings/individualWaiver/{schoolCode}', [IndividualWaiverController::class, 'IndividualWaiverView'])->name('individualWaiverReport.view');
+    // Report (Fees Setting) => Individual Waiver
+    Route::get('/reportFeesSettings/individualWaiver/{schoolCode}', [IndividualWaiverController::class, 'IndividualWaiverView'])->name('individualWaiverReport.view');
+    Route::get('/individualWaiver/getData/{schoolCode}', [IndividualWaiverController::class, 'GetDataIndividualWaiver'])->name('individualWaiverReport.getData');
 
 
     // Fees Setting End .............................................................................................................

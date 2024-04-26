@@ -1542,7 +1542,7 @@
                                             PAY SLIP</a>
                                     </li>
                                     <li>
-                                        <a href="/dashboard/basicSettings/feesSettings/reportFeesSettings/individualWaiver/{{ $school_code }}"
+                                        <a href="{{route("individualWaiverReport.view", $school_code)}}"
                                             class="flex items-center w-full p-2 text-white  transition duration-75 rounded-lg pl-11 group  hover:bg-slate-100/20 ">INDIVIDUAL
                                             WAIVER</a>
                                     </li>

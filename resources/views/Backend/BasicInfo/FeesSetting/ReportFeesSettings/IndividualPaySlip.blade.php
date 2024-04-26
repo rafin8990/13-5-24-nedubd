@@ -37,7 +37,7 @@
                         class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
                         <option disabled selected>Select </option>
                         @foreach ($paySlipTypes as $paySlipType)
-                            <option value="{{ $paySlipType->pay_slip_type_name }}">{{ $paySlipType->pay_slip_type_name }}
+                            <option value="{{ $paySlipType->pay_slip_type }}">{{ $paySlipType->pay_slip_type }}
                             </option>
                         @endforeach
                     </select>

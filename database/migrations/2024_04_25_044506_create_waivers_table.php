@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('waivers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('fee_id')->constrained('add_fees')->onDelete('cascade');
-            $table->string('nedubd_student_id');
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->string('waiver_type_name');
             $table->integer('waiver_percentage');
             $table->date('waiver_expire_date');

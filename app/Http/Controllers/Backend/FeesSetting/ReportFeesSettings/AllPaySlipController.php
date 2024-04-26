@@ -15,8 +15,16 @@ class AllPaySlipController extends Controller
 {
     public function AllPaySlipView(Request $request, $school_code)
     {
-        $classes = AddClass::where("school_code", $school_code)->where('action', 'approved')->get();
-        $groups = AddGroup::where("school_code", $school_code)->where('action', 'approved')->get();
+        $classes = AddPaySlip::where("school_code", $school_code)
+            ->where('action', 'approved')
+            ->select('class_name')
+            ->distinct()
+            ->get();
+        $groups = AddPaySlip::where("school_code", $school_code)
+            ->where('action', 'approved')
+            ->select('group_name')
+            ->distinct()
+            ->get();
         return view('Backend.BasicInfo.FeesSetting.ReportFeesSettings.AllPaySlip', compact('classes', 'groups', 'school_code'));
     }
 
