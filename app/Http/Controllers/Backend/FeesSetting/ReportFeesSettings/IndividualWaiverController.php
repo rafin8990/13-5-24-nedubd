@@ -39,15 +39,40 @@ class IndividualWaiverController extends Controller
 
     public function GetDataIndividualWaiver(Request $request, $school_code)
     {
+        $class = $request->input('class');
+        $waiver_type = $request->input('waiver_type');
+        $student_id = $request->input('student_id');
+
+        // validation checking
+        if (!$class || !$waiver_type || !$student_id) {
+            return redirect()->back()->with('error', 'Please select all fields');
+        }
+
+        $individualPaySlipsData = Waiver::where("waivers.schoolCode", $school_code)
+            ->where('waivers.action', 'approved')
+            ->join('students', 'waivers.student_id', '=', 'students.id')
+            ->select('students.Class_name', 'students.nedubd_student_id', 'students.id', 'students.name')
+            ->pluck('students.id', 'students.nedubd_student_id')
+            ->toArray();
+        // $student_id = $parts = explode(" - ", $student_id)[0];
+        $student_id = explode(" - ", $student_id)[0];
+
+
         $individualWaiverData = Waiver::where("waivers.schoolCode", $school_code)
             ->where('waivers.action', 'approved')
             ->join('add_fees', 'fee_id', '=', 'add_fees.id')
             ->join('students', 'waivers.student_id', '=', 'students.id')
             ->select('waivers.*', 'students.name', 'students.nedubd_student_id', 'add_fees.fee_amount', 'add_fees.fee_type')
-            ->where('students.Class_name', $request->input('class'))
-            ->where('waivers.student_id', $request->input('student_id'))
-            ->where('waivers.waiver_type_name', $request->input('waiver_type'))
+            ->where('students.Class_name', $class)
+            ->where('waivers.student_id', $individualPaySlipsData[$student_id])
+            ->where('waivers.waiver_type_name', $waiver_type)
             ->get();
+
+        // dd($individualWaiverData);
+
+        if(count($individualWaiverData) == 0){
+            return redirect()->back()->with('error', 'No data found');
+        };
 
         $totalFeeAmount = 0;
         $totalDiscount = 0;

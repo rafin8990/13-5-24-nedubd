@@ -84,11 +84,11 @@
                                         1
                                     </th>
                                     <td class="px-6 py-4">
-                                        class
+                                        {{$class}}
                                     </td>
-                                    @foreach ($paySlipTypes as $key => $paySlipType)
+                                    @foreach ($paySlipTypes as $paySlipType)
                                         <td class="px-6 py-4">
-                                            {{ $allAmountOfpaySlips[$key] }}
+                                            {{$allAmountOfpaySlips[$paySlipType->pay_slip_type_name]}}
                                         </td>
                                     @endforeach
                                     <td class="px-6 py-4">

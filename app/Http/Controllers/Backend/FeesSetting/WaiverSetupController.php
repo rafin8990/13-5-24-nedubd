@@ -53,26 +53,66 @@ class WaiverSetupController extends Controller
 
 
 
-    public function WaiverSetupGetData(Request $request, $school_code)
+    public function GetStudents(Request $request, $school_code)
     {
         $class = $request->input('class');
         $group = $request->input('group');
         $section = $request->input('section');
-        $waiver_type = $request->input('waiver_type');
-        $percentage = $request->input('percentage');
 
         $students = Student::where("school_code", $school_code)
             ->where('action', 'approved')
             ->where('Class_name', $class)
-            ->where('group', $group)
-            ->where('section', $section)
+            ->when($group !== "Select", function ($query) use ($group) {
+                return $query->where('group', $group);
+            })
+            ->when($section !== "Select", function ($query) use ($section) {
+                return $query->where('section', $section);
+            })
             ->get();
+
+        return redirect()->route('waiverSetup.view', $school_code)->with([
+            'students' => $students,
+            'class' => $class,
+            'group' => $group,
+            'section' => $section,
+        ]);
+    }
+
+    public function WaiverSetupGetData(Request $request, $school_code)
+    {
+        // $class = $request->input('class');
+        // $group = $request->input('group');
+        $section = $request->input('selected_section');
+        $waiver_type = $request->input('waiver_type');
+        $percentage = $request->input('percentage');
+        $class = $request->input('selected_group');
+        $group = $request->input('selected_class');
+
+        $students = Student::where("school_code", $school_code)
+            ->where('action', 'approved')
+            ->where('Class_name', $class)
+            ->when($group !== "Select", function ($query) use ($group) {
+                return $query->where('group', $group);
+            })
+            ->when($section !== "Select", function ($query) use ($section) {
+                return $query->where('section', $section);
+            })
+            ->get();
+
+        // $students = Student::where("school_code", $school_code)
+        //     ->where('action', 'approved')
+        //     ->where('Class_name', $class)
+        //     ->where('group', $group)
+        //     ->where('section', $section)
+        //     ->get();
 
 
         $allFeesAccordingToClass = AddFees::where("school_code", $school_code)
             ->where('action', 'approved')
             ->where('Class_name', $class)
-            ->where('group_name', $group)
+            ->when($group !== "Select", function ($query) use ($group) {
+                return $query->where('group_name', $group);
+            })
             ->get();
 
         $percentageAmounts = [];
@@ -96,13 +136,8 @@ class WaiverSetupController extends Controller
 
     public function WaiverStudentListSetup(Request $request, $school_code)
     {
-        // dd($request->all());
-
-        // $class = $request->input('student_class');
-        // $group = $request->input('student_group');
-        // dd(1000 / 100 * 2);
+        $waiver_amounts = $request->input('waiver_amount',[]);
         $waiver_type_name = $request->input('waiver_type_name');
-        $waiver_percentage = $request->input('waiver_percentage');
         $waiver_expire_date = $request->input('waiver_expire_date');
         $allStudentId = $request->input('student_id', []);
         $selectedStudentsId = $request->input('student_select', []);
@@ -123,7 +158,7 @@ class WaiverSetupController extends Controller
                         $waiver->fee_id = $FeeId;
                         $waiver->student_id = $studentId;
                         $waiver->waiver_type_name = $waiver_type_name;
-                        $waiver->waiver_percentage = intval($waiver_percentage);
+                        $waiver->waiver_amount = $waiver_amounts[$FeeId];
                         $waiver->waiver_expire_date = $waiver_expire_date;
                         $waiver->schoolCode = $school_code;
                         $waiver->save();

@@ -14,16 +14,20 @@
 
     <div class="w-full border mx-auto p-5 space-y-10">
         {{-- top section --}}
-        <form action="{{ route('waiverSetup.getData', $school_code) }}" method="GET">
-            @csrf
-            <div class="grid grid-cols-6 items-center gap-5">
+
+
+        <div class="grid grid-cols-2 items-center gap-5">
+            <form class="grid grid-cols-3 gap-5" id="waiver_setup_form" action="{{ route('GetStudent.data', $school_code) }}"
+                method="GET">
                 <div class="">
                     <label for="class" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CLASS:</label>
-                    <select id="class" name="class"
+                    <select id="class" onchange="onClassChange()" name="class"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Select</option>
                         @foreach ($classes as $class)
-                            <option value="{{ $class->class_name }}">{{ $class->class_name }}</option>
+                            <option {{ $sessionClass === $class->class_name ? 'selected' : '' }}
+                                value="{{ $class->class_name }}">
+                                {{ $class->class_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -31,11 +35,13 @@
                 <div class="">
                     <label for="group"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Group:</label>
-                    <select id="group" name="group"
+                    <select id="group" onchange="onGroupChange()" name="group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Select</option>
                         @foreach ($groups as $group)
-                            <option value="{{ $group->group_name }}">{{ $group->group_name }}</option>
+                            <option
+                                {{ (isset($sessionGroup) ? ($sessionGroup === $group->group_name ? 'selected' : '') : $group->group_name === 'N/A') ? 'selected' : '' }}
+                                value="{{ $group->group_name }}">{{ $group->group_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -43,15 +49,21 @@
                 <div class="">
                     <label for="section"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Section:</label>
-                    <select id="section" name="section"
+                    <select id="section" onchange="onSectionChange()" name="section"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Select</option>
                         @foreach ($sections as $section)
-                            <option value="{{ $section->section_name }}">{{ $section->section_name }}</option>
+                            <option {{ $sessionSection === $section->section_name ? 'selected' : '' }}
+                                value="{{ $section->section_name }}">{{ $section->section_name }}</option>
                         @endforeach
                     </select>
                 </div>
 
+            </form>
+
+            <form id="waiver_setup_Get" class="grid grid-cols-3 gap-5"
+                action="{{ route('waiverSetup.getData', $school_code) }}" method="GET">
+                @csrf
                 <div class="">
                     <label for="waiver_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waiver
                         TYPE:</label>
@@ -59,7 +71,9 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Select</option>
                         @foreach ($waiverTypes as $waiverType)
-                            <option value="{{ $waiverType->waiver_type_name }}">{{ $waiverType->waiver_type_name }}</option>
+                            <option {{ $sessionWaiver_type === $waiverType->waiver_type_name ? 'selected' : '' }}
+                                value="{{ $waiverType->waiver_type_name }}">{{ $waiverType->waiver_type_name }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -67,19 +81,23 @@
                 <div class="">
                     <label for="percentage" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">PERCENTAGE
                         %:</label>
-                    <input type="number" value="" name="percentage" id="percentage"
+                    <input type="number" value="{{ isset($sessionPercentage) ? $sessionPercentage : '' }}"
+                        name="percentage" id="percentage"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1"
                         placeholder="" />
                 </div>
 
                 <div>
-                    <button type="submit"
+                    <button onclick="GetData()" type="submit"
                         class="text-white bg-gradient-to-br from-blue-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center uppercase mt-5">
                         get data
                     </button>
                 </div>
-            </div>
-        </form>
+                <input class="hidden" name="selected_class" type="text" value="{{ $sessionGroup }}">
+                <input class="hidden" name="selected_group" type="text" value="{{ $sessionClass }}">
+                <input class="hidden" name="selected_section" type="text" value="{{ $sessionSection }}">
+            </form>
+        </div>
 
         {{-- middle section --}}
         <div class="space-y-1">
@@ -121,7 +139,7 @@
                                                     <div class="mx-auto">
                                                         <input id="" type="checkbox" value="selected"
                                                             name="fees_select[{{ $fee->id }}]"
-                                                            class="w-4 h-4 ml-3 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                     </div>
                                                 </th>
                                                 <td class="px-6 py-4">
@@ -131,7 +149,9 @@
                                                     {{ $fee->fee_amount }}
                                                 </td>
                                                 <td class="px-6 py-4">
-                                                    {{ $sessionPercentageAmounts[$fee->id] }}
+                                                    <input type="number"
+                                                        value="{{ $sessionPercentageAmounts[$fee->id] }}"
+                                                        name="waiver_amount[{{ $fee->id }}]">
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -148,7 +168,8 @@
                         </div>
                         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-white uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
+                                <thead
+                                    class="text-xs text-white uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="px-6 py-3">
                                             <input id="student_header_checkbox" type="checkbox" value=""
@@ -189,8 +210,7 @@
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     {{ $student->nedubd_student_id }}
-                                                    <input type="text" class="hidden"
-                                                        value="{{ $student->id }}"
+                                                    <input type="text" class="hidden" value="{{ $student->id }}"
                                                         name="student_id[{{ $student->id }}]">
                                                 </td>
                                                 <td class="px-6 py-4">
@@ -209,7 +229,6 @@
                 <input type="text" class="hidden" value="{{ $sessionGroup }}" name="student_group">
                 <input type="text" class="hidden" value="{{ $sessionSection }}" name="student_section">
                 <input type="text" class="hidden" value="{{ $sessionWaiver_type }}" name="waiver_type_name">
-                <input type="text" class="hidden" value="{{ $sessionPercentage }}" name="waiver_percentage">
 
                 {{-- bottom section --}}
                 <div class="">
@@ -260,4 +279,31 @@
             });
         });
     });
+</script>
+
+<script>
+    function submitForm() {
+        document.getElementById("waiver_setup_form").submit();
+    }
+
+    // function submitFormAll() {
+    //     document.getElementById("waiver_setup_form").submit();
+    //     document.getElementById("waiver_setup_Get").submit();
+    // }
+
+    function onClassChange() {
+        submitForm();
+    }
+
+    function onGroupChange() {
+        submitForm();
+    }
+
+    function onSectionChange() {
+        submitForm();
+    }
+
+    // function GetData() {
+    //     submitFormAll();
+    // }
 </script>

@@ -19,72 +19,159 @@ class PaySlipSetupController extends Controller
         $classes = AddClass::where("school_code", $school_code)->where('action', 'approved')->get();
         $groups = AddGroup::where("school_code", $school_code)->where('action', 'approved')->get();
         $paySlipTypes = AddPaySlipType::where("school_code", $school_code)->where('action', 'approved')->get();
-        $feesSetupData = $request->session()->get('FeesData');
+        $feesTypes = $request->session()->get('FeesTypesSession');
+        $TotalPaySlipAmount = $request->session()->get('TotalPaySlipAmountSession');
+        $fees_amounts = $request->session()->get('fees_amountsSession');
+        $PaySlipData = $request->session()->get('PaySlipDataSession');
         $paySlipTypeName = $request->session()->get('paySlipTypeSession');
-        $classData = $request->session()->get('class');
-        $groupData = $request->session()->get('group');
+        $classTo = $request->session()->get('classToSession');
+        $classFrom = $request->session()->get('classFromSession');
+        $groupName = $request->session()->get('groupSession');
 
-        return view('Backend.BasicInfo.FeesSetting.PaySlipSetup', compact('classes', 'groups', 'paySlipTypes', 'school_code', 'feesSetupData', 'paySlipTypeName', 'classData', 'groupData'));
+        return view('Backend.BasicInfo.FeesSetting.PaySlipSetup', compact('classes', 'groups', 'paySlipTypes', 'school_code', 'PaySlipData', 'paySlipTypeName', 'classTo', 'classFrom', 'groupName', 'feesTypes', 'fees_amounts', 'TotalPaySlipAmount'));
     }
 
 
     public function PaySlipSetupGetData(Request $request, $school_code)
     {
-        $class = $request->class;
-        $group = $request->group;
-        $pay_slip_type = $request->pay_slip_type;
+        // dd($request->all());
+        if ($request->class_to == "Select" || $request->class_from == "Select" || $request->pay_slip_type == "Select") {
+            return back()->withError('Please select class, group and pay-slip-type Fields');
+        } else {
+            $classTo = $request->class_to;
+            $classFrom = $request->class_from;
+            $group = $request->group;
+            $pay_slip_type = $request->pay_slip_type;
 
-        $FeesSetupData = AddFees::where("school_code", $school_code)->where('action', 'approved')->where('class_name', $class)->where('group_name', $group)->get();
+            $fees_types = AddFeeType::where("school_code", $school_code)
+                ->where('action', 'approved')
+                ->get();
 
-        return redirect()->route('paySlipSetup.view', $school_code)->with([
-            'FeesData' => $FeesSetupData,
-            'paySlipTypeSession' => $pay_slip_type,
-            'class' => $class,
-            'group' => $group,
-        ]);
+            $fees_amounts = AddFees::where("school_code", $school_code)
+                ->where('action', 'approved')
+                ->where('class_name', $classFrom)
+                ->where('group_name', $group)
+                ->pluck('fee_amount', 'fee_type')
+                ->toArray();
+
+
+            $PaySlipData = AddPaySlip::where("school_code", $school_code)
+                ->where('action', 'approved')
+                ->where('class_name', $classFrom)
+                ->where('group_name', $group)
+                ->where('pay_slip_type', $pay_slip_type)
+                ->pluck('fees_amount', 'fee_type_name')
+                ->toArray();
+
+            $TotalPaySlipAmount = AddPaySlip::where("school_code", $school_code)
+                ->where('action', 'approved')
+                ->where('class_name', $classFrom)
+                ->where('group_name', $group)
+                ->where('pay_slip_type', $pay_slip_type)
+                ->sum('fees_amount');
+
+
+            return redirect()->route('paySlipSetup.view', $school_code)->with([
+                'PaySlipDataSession' => $PaySlipData,
+                'TotalPaySlipAmountSession' => $TotalPaySlipAmount,
+                'fees_amountsSession' => $fees_amounts,
+                'FeesTypesSession' => $fees_types,
+                'paySlipTypeSession' => $pay_slip_type,
+                'classToSession' => $classTo,
+                'classFromSession' => $classFrom,
+                'groupSession' => $group,
+            ]);
+        }
     }
+
+    /*    public function PaySlipSetupGetData(Request $request, $school_code)
+       {
+           // dd($request->all());
+           if ($request->class_to == "Select" || $request->class_from == "Select") {
+               return back()->withError('Please select class');
+           } else {
+               $classTo = $request->class_to;
+               $classFrom = $request->class_from;
+               $group = $request->group;
+               $pay_slip_type = $request->pay_slip_type;
+
+               $fees_types = AddFeeType::where("school_code", $school_code)
+                   ->where('action', 'approved')
+                   ->get();
+
+
+               $PaySlips = AddPaySlip::where("school_code", $school_code)
+                   ->where('action', 'approved')
+                   ->where('class_name', $classFrom)
+                   ->where('group_name', $group)
+                   ->where('pay_slip_type', $pay_slip_type)
+                   ->get();
+
+               // dd($fees_types);
+               // dd($PaySlips);
+
+               $PaySlipData = [];
+               $totalAmountOfPaySlip = 0;
+               foreach ($PaySlips as $key => $value) {
+                   $PaySlipData[$value->fee_type_name] = $value->fees_amount;
+                   $totalAmountOfPaySlip += $value->fees_amount;
+               }
+
+               // dd($PaySlipData);
+
+               return redirect()->route('paySlipSetup.view', $school_code)->with([
+                   'PaySlipDataSession' => $PaySlipData,
+                   'FeesTypesSession' => $fees_types,
+                   'paySlipTypeSession' => $pay_slip_type,
+                   'classToSession' => $classTo,
+                   'classFromSession' => $classFrom,
+                   'groupSession' => $group,
+                   'totalAmountOfPaySlipSession' => $totalAmountOfPaySlip,
+               ]);
+           }
+       } */
 
     public function StorePaySlipSetup(Request $request, $school_code)
     {
+        // dd($request->all());
+
         $class = $request->fees_data_class;
         $group = $request->fees_data_group;
         $pay_slip_type = $request->pay_slip_type_name;
 
         $fee_type_names = $request->input('fee_type_name', []);
-        $fee_amounts = $request->input('fees_amount', []);
+        $fee_amounts = $request->input('fee_amount', []);
         $statuses = $request->input('status', []);
 
+        // dd($fee_type_names, $fee_amounts, $statuses, $class, $group, $pay_slip_type);
 
         foreach ($fee_type_names as $key => $fee_type_name) {
             if (isset($statuses[$fee_type_name])) {
-                $checkExistance = AddPaySlip::where("school_code", $school_code)
+                AddPaySlip::updateOrCreate(
+                    [
+                        'school_code' => $school_code,
+                        'class_name' => $class,
+                        'group_name' => $group,
+                        'pay_slip_type' => $pay_slip_type,
+                        'fee_type_name' => $fee_type_name,
+                    ],
+                    [
+                        'fees_amount' => $fee_amounts[$fee_type_name],
+                        'status' => isset($statuses[$fee_type_name]) ? 'active' : 'inactive'
+                    ]
+                );
+            } else {
+                $test = AddPaySlip::where("school_code", $school_code)
                     ->where('action', 'approved')
                     ->where('class_name', $class)
                     ->where('group_name', $group)
                     ->where('pay_slip_type', $pay_slip_type)
-                    ->where('fee_type_name', $fee_type_name)->first();
-                if (!$checkExistance) {
-                    // updating the check mark of AddFeeType Table
-                    $addFeeType = AddFees::where("school_code", $school_code)
-                        ->where('action', 'approved')
-                        ->where('class_name', $class)
-                        ->where('group_name', $group)
-                        ->where('fee_type', $fee_type_name)
-                        ->first();
-                    $addFeeType->status = "checked";
-                    $addFeeType->save();
-
-                    // create a new Pay Slip
-                    $paySlip = new AddPaySlip();
-                    $paySlip->class_name = $class;
-                    $paySlip->group_name = $group;
-                    $paySlip->pay_slip_type = $pay_slip_type;
-                    $paySlip->fee_type_name = $fee_type_name;
-                    $paySlip->fees_amount = $fee_amounts[$key];
-                    $paySlip->school_code = $school_code;
-                    $paySlip->status = $statuses[$fee_type_name] ? 'active' : 'inactive';
-                    $paySlip->save();
+                    ->where('fee_type_name', $fee_type_name)
+                    ->first();
+                if ($test) {
+                    $test->delete();
                 }
+                // dump($test);
             }
         }
 

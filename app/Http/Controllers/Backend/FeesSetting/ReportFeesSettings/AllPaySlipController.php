@@ -35,13 +35,17 @@ class AllPaySlipController extends Controller
 
         $schoolInfo = SchoolInfo::where('school_code', $school_code)->first();
         $paySlipTypes = AddPaySlipType::where('school_code', $school_code)->where('action', 'approved')->get();
-        // $feesData = AddFees::where("school_code", $school_code)->where('action', 'approved')->where("class_name", $class)->where("group_name", $group)->get();
-        $paySlipsData = AddPaySlip::where("school_code", $school_code)->where('action', 'approved')->where("class_name", $class)->where("group_name", $group)->get();
 
         $allAmountOfpaySlips = [];
         foreach ($paySlipTypes as $key => $paySlipType) {
-            $totalAmountOfpaySlips = AddPaySlip::where("school_code", $school_code)->where('action', 'approved')->where("class_name", $class)->where("group_name", $group)->where('pay_slip_type', $paySlipType->pay_slip_type_name)->sum('fees_amount');
-            $allAmountOfpaySlips[$key] = $totalAmountOfpaySlips;
+            $totalAmountOfpaySlips = AddPaySlip::where("school_code", $school_code)
+                ->where('action', 'approved')
+                ->where("class_name", $class)
+                ->where("group_name", $group)
+                ->where('pay_slip_type', $paySlipType->pay_slip_type_name)
+                ->sum('fees_amount');
+
+            $allAmountOfpaySlips[$paySlipType->pay_slip_type_name] = $totalAmountOfpaySlips;
         }
 
         // total amount
@@ -51,6 +55,6 @@ class AllPaySlipController extends Controller
         }
 
         $date = now();
-        return view('Backend.BasicInfo.FeesSetting.ReportFeesSettings.AllPaySlipPrint', compact('schoolInfo', 'date', 'school_code', 'paySlipTypes', 'paySlipsData', 'allAmountOfpaySlips', 'totalAmount'));
+        return view('Backend.BasicInfo.FeesSetting.ReportFeesSettings.AllPaySlipPrint', compact('schoolInfo', 'date', 'school_code', 'paySlipTypes', 'allAmountOfpaySlips', 'totalAmount', 'class'));
     }
 }

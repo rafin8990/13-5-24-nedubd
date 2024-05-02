@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignId('fee_id')->constrained('add_fees')->onDelete('cascade');
             $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
             $table->string('waiver_type_name');
-            $table->integer('waiver_percentage');
+            $table->integer('waiver_amount');
             $table->date('waiver_expire_date');
             $table->string('schoolCode');
             $table->enum('action', ['approved', 'pending'])->default('approved');

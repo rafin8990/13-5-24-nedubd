@@ -5,9 +5,8 @@
 
 
 @section('Dashboard')
-
     <!-- Message -->
-    @include('/Message/message')
+    @include('Shared.alert')
 
     <div class="mb-5">
         <h1>Pay Slip Setup</h1>
@@ -15,7 +14,8 @@
 
     <div class="w-full text-center mb-10">
         <h1 class="text-xl font-semibold">
-            Before searching for data here, ensure that you have added data from <span class="text-red-300 font-bold bg-red-50 px-1 rounded">Fees Setting/Fees Setup</span>
+            Before searching for data here, ensure that you have added data from <span
+                class="text-red-300 font-bold bg-red-50 px-1 rounded">Fees Setting/Fees Setup</span>
         </h1>
     </div>
 
@@ -24,12 +24,28 @@
             @csrf
             <div class="grid grid-cols-5 items-center gap-7">
                 <div class="">
-                    <label for="class" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CLASS</label>
-                    <select id="class" name="class"
+                    <label for="class_to" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CLASS
+                        TO</label>
+                    <select id="class_to" name="class_to"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Select</option>
                         @foreach ($classes as $class)
-                            <option value="{{ $class->class_name }}">{{ $class->class_name }}</option>
+                            <option {{ $class->class_name == $classTo ? 'selected' : '' }} value="{{ $class->class_name }}">
+                                {{ $class->class_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="">
+                    <label for="class_from" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CLASS
+                        FROM</label>
+                    <select id="class_from" name="class_from"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Select</option>
+                        @foreach ($classes as $class)
+                            <option {{ $class->class_name == $classFrom ? 'selected' : '' }}
+                                value="{{ $class->class_name }}">
+                                {{ $class->class_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -41,7 +57,8 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Select</option>
                         @foreach ($paySlipTypes as $paySlipType)
-                            <option value="{{ $paySlipType->pay_slip_type_name }}">{{ $paySlipType->pay_slip_type_name }}
+                            <option {{ $paySlipType->pay_slip_type_name == $paySlipTypeName ? 'selected' : '' }}
+                                value="{{ $paySlipType->pay_slip_type_name }}">{{ $paySlipType->pay_slip_type_name }}
                             </option>
                         @endforeach
                     </select>
@@ -52,9 +69,9 @@
                         :</label>
                     <select id="group" name="group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Select</option>
                         @foreach ($groups as $group)
-                            <option value="{{ $group->group_name }}">{{ $group->group_name }}</option>
+                            <option {{ $group->group_name == 'N/A' ? 'selected' : '' }} value="{{ $group->group_name }}">
+                                {{ $group->group_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -98,30 +115,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @if ($feesSetupData)
-                                    @foreach ($feesSetupData as $key => $feesData)
+                                @if ($feesTypes)
+                                    @foreach ($feesTypes as $key => $feeType)
                                         <tr
                                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                             <td class="px-6 py-4">
                                                 {{ $key + 1 }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ $feesData->fee_type }}
+                                                {{ $feeType->fee_type_name }}
                                                 <input type="text" class="hidden" name="fee_type_name[]"
-                                                    value="{{ $feesData->fee_type }}">
+                                                    value="{{ $feeType->fee_type_name }}">
                                             </td>
                                             <td class="px-6 py-4">
-                                                {{ $feesData->fee_amount }}
-                                                <input type="text" class="hidden" name="fees_amount[]"
-                                                    value="{{ $feesData->fee_amount }}">
+                                                {{ isset($fees_amounts[$feeType->fee_type_name]) ? $fees_amounts[$feeType->fee_type_name] : 0 }}
+                                                <input type="text" class="hidden"
+                                                    name="fee_amount[{{ $feeType->fee_type_name }}]"
+                                                    value="{{ isset($fees_amounts[$feeType->fee_type_name]) ? $fees_amounts[$feeType->fee_type_name] : 0 }}">
                                             </td>
                                             <td class="px-6 py-4">
-                                                <input id="status" name="status[{{ $feesData->fee_type }}]"
-                                                    {{-- {{ $feesData->status === 'checked' && $paySlipTypeName ? 'disabled' : '' }} --}}
-                                                    {{-- {{ $feesData->status === 'checked' ? 'checked' : '' }}  --}}
-                                                    type="checkbox"
-                                                    value="{{ $feesData->fee_type }}"
+                                                <input id="status" name="status[{{ $feeType->fee_type_name }}]"
+                                                    {{ isset($PaySlipData[$feeType->fee_type_name]) ? 'checked' : '' }}
+                                                    type="checkbox" value="selected"
                                                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" />
                                             </td>
                                         </tr>
@@ -132,8 +147,8 @@
                     </div>
 
 
-                    <input type="text" class="hidden" name="fees_data_class" value="{{ $classData }}">
-                    <input type="text" class="hidden" name="fees_data_group" value="{{ $groupData }}">
+                    <input type="text" class="hidden" name="fees_data_class" value="{{ $classTo }}">
+                    <input type="text" class="hidden" name="fees_data_group" value="{{ $groupName }}">
                     <input type="text" class="hidden" name="pay_slip_type_name" value="{{ $paySlipTypeName }}">
                     <div class="w-full flex justify-center items-center gap-10 mt-20">
                         <button type="submit"
@@ -144,13 +159,34 @@
                             class="text-white bg-gradient-to-br from-red-600 to-red-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-20 py-2.5 text-center">
                             Close
                         </button>
-                        <h1>
-                            Total =
+                        <h1>Total: <span id="totalAmount">{{ $TotalPaySlipAmount }}</span></h1>
 
-                        </h1>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 @endsection
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let totalAmount = document.getElementById('totalAmount');
+        var fees_amounts = {!! json_encode($fees_amounts) !!};
+        let total = {!! json_encode($TotalPaySlipAmount) !!};
+        const rowCheckboxes = document.querySelectorAll('input[name^="status"]');
+        rowCheckboxes.forEach(element => {
+            element.addEventListener('change', (e) => {
+                var checkboxName = e.target.name;
+                var extractedName = checkboxName.match(/\[(.*?)\]/)[1];
+                if (e.target.checked) {
+                    total = parseInt(fees_amounts[extractedName]) + total;
+                    totalAmount.innerText = total;
+                } else {
+                    total = total - parseInt(fees_amounts[extractedName]);
+                    totalAmount.innerText = total;
+                }
+            })
+        });
+    });
+</script>

@@ -22,12 +22,26 @@
             @csrf
             <div class="grid grid-cols-4 items-center gap-16">
                 <div class="">
-                    <label for="class" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CLASS</label>
-                    <select id="class" name="class"
+                    <label for="class_to" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CLASS
+                        To</label>
+                    <select id="class_to" name="class_to"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Select</option>
                         @foreach ($classes as $class)
-                            <option value="{{ $class->class_name }}">{{ $class->class_name }}</option>
+                            <option {{ $class->class_name === $classTo ? "selected" : ""}} value="{{ $class->class_name }}">{{ $class->class_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="">
+                    <label for="class_from" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">CLASS From
+                        :
+                    </label>
+                    <select id="class_from" name="class_from"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Select</option>
+                        @foreach ($classes as $class)
+                            <option {{ $class->class_name === $classFrom ? "selected" : ""}} value="{{ $class->class_name }}">{{ $class->class_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -38,9 +52,9 @@
                         :</label>
                     <select id="group" name="group"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>Select</option>
                         @foreach ($groups as $group)
-                            <option value="{{ $group->group_name }}">{{ $group->group_name }}</option>
+                            <option {{ $group->group_name == 'N/A' ? 'selected' : '' }} value="{{ $group->group_name }}">
+                                {{ $group->group_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -97,7 +111,9 @@
                                                 {{ $data->fee_type_name }}
                                             </td>
                                             <td class="px-6 py-4">
-                                                <input name="fee_amount[]" type="text" id="">
+                                                <input name="fee_amount[]"
+                                                    value="{{ isset($existingFeesInfo[$data->fee_type_name]) ? $existingFeesInfo[$data->fee_type_name] : 0 }}"
+                                                    type="text" id="">
                                             </td>
                                         </tr>
                                     @endforeach
@@ -107,8 +123,8 @@
                         </table>
                     </div>
 
-                    <input name="class" class="hidden" type="text" value="{{ $classdata }}">
-                    <input name="group" class="hidden" type="text" value="{{ $groupdata }}">
+                    <input name="class_to" class="hidden" type="text" value="{{ $classTo }}">
+                    <input name="group" class="hidden" type="text" value="{{ $groupName }}">
                     <input name="school_code" class="hidden" type="text" value="{{ $school_code }}">
                     <div class="w-full flex justify-center items-center gap-10 mt-20">
                         <button type="submit"

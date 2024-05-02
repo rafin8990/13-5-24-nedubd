@@ -13,48 +13,67 @@ class FeesSetupController extends Controller
 {
     public function FeesSetupView(Request $request, $school_code)
     {
+        $fessTypes = $request->session()->get('feesTypeData');
+        $classTo = $request->session()->get('class_to');
+        $classFrom = $request->session()->get('class_from');
+        $groupName = $request->session()->get('group');
+
         $classes = AddClass::where("school_code", $school_code)->where('action', 'approved')->get();
         $groups = AddGroup::where("school_code", $school_code)->where('action', 'approved')->get();
+        $selectedFees = AddFees::where("school_code", $school_code)
+            ->where('action', 'approved')
+            ->where('group_name', $groupName)
+            ->where('class_name', $classFrom)
+            ->select("fee_type", "fee_amount")
+            ->get();
 
-        $fessTypes = $request->session()->get('feesTypeData');
-        $classdata = $request->session()->get('class');
-        $groupdata = $request->session()->get('group');
-        // dd($group);
-        return view('Backend.BasicInfo.FeesSetting.FeesSetup', compact('classes', 'groups', 'school_code', 'fessTypes', 'classdata', 'groupdata'));
+        $existingFeesInfo = [];
+
+        foreach ($selectedFees as $key => $fee) {
+            $existingFeesInfo[$fee->fee_type] = $fee->fee_amount;
+        }
+
+        return view('Backend.BasicInfo.FeesSetting.FeesSetup', compact('classes', 'groups', 'school_code', 'fessTypes', 'classTo', 'classFrom', 'groupName', 'existingFeesInfo'));
     }
 
     public function ViewFeeTypesData(Request $request, $school_code)
     {
+        if ($request->class_to == "Select" || $request->class_from == "Select") {
+            return back()->withError('Please select class');
+        } else {
+            $fees_types = AddFeeType::where("school_code", $school_code)
+                ->where('action', 'approved')
+                ->get();
+            $class_to = $request->class_to;
+            $class_from = $request->class_from;
+            $group = $request->group;
+            return redirect()->route('feesSetup.view', $school_code)->with([
+                'feesTypeData' => $fees_types,
+                'class_to' => $class_to,
+                'class_from' => $class_from,
+                'group' => $group,
+            ]);
 
-        $fees_types = AddFeeType::where("school_code", $school_code)->where('action', 'approved')->get();
-
-        return redirect()->route('feesSetup.view', $school_code)->with([
-            'feesTypeData' => $fees_types,
-            'class' => $request->class,
-            'group' => $request->group
-        ]);
+        }
     }
 
     public function add_fees_setup(Request $request, $school_code)
     {
-        // dd($request->all());
         $feeTypesAndFeeAmount = array_combine($request->fee_type, $request->fee_amount);
-        // dd($mergedArray);
         foreach ($feeTypesAndFeeAmount as $fee_type => $fee_amount) {
-            $isFeeTypeExist = AddFees::where("school_code", $school_code)->where('action', 'approved')->where('class_name', $request->class)->where('group_name', $request->group)->where('fee_type', $fee_type)->first();
-            if ($isFeeTypeExist == null) {
-                $fees_setup = new AddFees();
-                $fees_setup->school_code = $school_code;
-                $fees_setup->class_name = $request->class;
-                $fees_setup->group_name = $request->group;
-                $fees_setup->fee_type = $fee_type;
-                $fees_setup->fee_amount = $fee_amount;
-                $fees_setup->save();
-            }
+            AddFees::updateOrCreate(
+                [
+                    'school_code' => $school_code,
+                    'class_name' => $request->class_to,
+                    'group_name' => $request->group,
+                    'fee_type' => $fee_type,
+                ],
+                [
+                    'fee_amount' => $fee_amount,
+                ]
+            );
         }
 
         return back()->withSuccess('Fees Setup successful');
     }
-
-    // public function ViewClassData()
 }

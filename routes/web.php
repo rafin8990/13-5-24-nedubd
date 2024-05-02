@@ -38,6 +38,8 @@ use App\Http\Controllers\Backend\Student\studentReports\StudentListWithPhotoCont
 use App\Http\Controllers\Backend\Student\studentReports\EsifListController;
 use App\Http\Controllers\Backend\Student\UploadExcelFileController;
 
+// Online Application
+use App\Http\Controllers\Backend\OnlineApplication\ListOfApplicantController;
 
 
 // student accounts
@@ -207,6 +209,13 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/addSchoolInfo/{schoolCode}', [NEDUBDController::class, 'addSchoolInfo']);
     Route::post('/create-schoolInfo', [NEDUBDController::class, 'createSchoolInfo'])->name('schoolInfo.add');
 
+
+
+    // Online Application
+    Route::get('/onlineApplication/listOfApplicant/{schoolCode}', [ListOfApplicantController::class, 'ListOfApplicantView'])->name("listOfApplicant.view");
+    Route::get('/onlineApplication/onlineApplicationForm/{schoolCode}', [ListOfApplicantController::class, 'OnlineApplicationForm'])->name("onlineApplicationForm.view");
+    Route::get('/onlineApplication/blankApplicationForm/{schoolCode}', [ListOfApplicantController::class, 'BlankApplicationForm'])->name("blankApplicationForm.view");
+    Route::get('/onlineApplication/reportApplication/{schoolCode}', [ListOfApplicantController::class, 'ReportApplicationView'])->name("reportApplication.view");
 
 
     // student module
@@ -626,6 +635,7 @@ Route::prefix('dashboard')->group(function () {
     Route::put('/basicSettings/feesSettings/waiverType/{schoolCode}/{id}', [WaiverTypeController::class, 'UpdateWaiverType'])->name('waiverType.update');
     // waiver setup
     Route::get('/basicSettings/feesSettings/waiverSetup/{schoolCode}', [WaiverSetupController::class, 'WaiverSetupView'])->name('waiverSetup.view');
+    Route::get('/waiverSetup/getStudents/{schoolCode}', [WaiverSetupController::class, 'GetStudents'])->name('GetStudent.data');
     Route::get('/waiverSetup/getData/{schoolCode}', [WaiverSetupController::class, 'WaiverSetupGetData'])->name('waiverSetup.getData');
     Route::post('/waiverSetup/storeWaiberStudent/{schoolCode}', [WaiverSetupController::class, 'WaiverStudentListSetup'])->name('studentListWaiverSetup.store');
     // Report (Fees Setting) => All Fees
