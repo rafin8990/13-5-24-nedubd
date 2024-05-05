@@ -84,57 +84,9 @@ class PaySlipSetupController extends Controller
         }
     }
 
-    /*    public function PaySlipSetupGetData(Request $request, $school_code)
-       {
-           // dd($request->all());
-           if ($request->class_to == "Select" || $request->class_from == "Select") {
-               return back()->withError('Please select class');
-           } else {
-               $classTo = $request->class_to;
-               $classFrom = $request->class_from;
-               $group = $request->group;
-               $pay_slip_type = $request->pay_slip_type;
-
-               $fees_types = AddFeeType::where("school_code", $school_code)
-                   ->where('action', 'approved')
-                   ->get();
-
-
-               $PaySlips = AddPaySlip::where("school_code", $school_code)
-                   ->where('action', 'approved')
-                   ->where('class_name', $classFrom)
-                   ->where('group_name', $group)
-                   ->where('pay_slip_type', $pay_slip_type)
-                   ->get();
-
-               // dd($fees_types);
-               // dd($PaySlips);
-
-               $PaySlipData = [];
-               $totalAmountOfPaySlip = 0;
-               foreach ($PaySlips as $key => $value) {
-                   $PaySlipData[$value->fee_type_name] = $value->fees_amount;
-                   $totalAmountOfPaySlip += $value->fees_amount;
-               }
-
-               // dd($PaySlipData);
-
-               return redirect()->route('paySlipSetup.view', $school_code)->with([
-                   'PaySlipDataSession' => $PaySlipData,
-                   'FeesTypesSession' => $fees_types,
-                   'paySlipTypeSession' => $pay_slip_type,
-                   'classToSession' => $classTo,
-                   'classFromSession' => $classFrom,
-                   'groupSession' => $group,
-                   'totalAmountOfPaySlipSession' => $totalAmountOfPaySlip,
-               ]);
-           }
-       } */
 
     public function StorePaySlipSetup(Request $request, $school_code)
     {
-        // dd($request->all());
-
         $class = $request->fees_data_class;
         $group = $request->fees_data_group;
         $pay_slip_type = $request->pay_slip_type_name;
@@ -143,7 +95,6 @@ class PaySlipSetupController extends Controller
         $fee_amounts = $request->input('fee_amount', []);
         $statuses = $request->input('status', []);
 
-        // dd($fee_type_names, $fee_amounts, $statuses, $class, $group, $pay_slip_type);
 
         foreach ($fee_type_names as $key => $fee_type_name) {
             if (isset($statuses[$fee_type_name])) {

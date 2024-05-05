@@ -49,7 +49,9 @@ use App\Http\Controllers\Backend\Student_Account\CollectUnpaidPaySlipController;
 use App\Http\Controllers\Backend\Student_Account\DeletePaySlipController;
 use App\Http\Controllers\Backend\Student_Account\NewStdAddPaySlipController;
 use App\Http\Controllers\Backend\Student_Account\NewOldStdAddPaySlipController;
+// generate pay slips
 use App\Http\Controllers\Backend\Student_Account\GeneratePayslipController;
+
 use App\Http\Controllers\Backend\Student_Account\EditGeneratedPayslipController;
 use App\Http\Controllers\Backend\Student_Account\GenerateMultiplePayslipController;
 use App\Http\Controllers\Backend\Student_Account\QuickCollectionController;
@@ -329,7 +331,13 @@ Route::prefix('dashboard')->group(function () {
     Route::get("/studentAccounts/deletePaySlip/{schoolCode}", [DeletePaySlipController::class, "DeletePaySlipView"])->name("deletePaySlip.view");
     Route::get("/studentAccounts/newStdAddPaySlip/{schoolCode}", [NewStdAddPaySlipController::class, "NewStdAddPaySlipView"])->name("newStdAddPaySlip.view");
     Route::get("/studentAccounts/newOldStdAddPaySlip/{schoolCode}", [NewOldStdAddPaySlipController::class, "NewOldStdAddPaySlipView"])->name("newOldStdAddPaySlip.view");
+    // Generate payslips
     Route::get("/studentAccounts/generatePayslip/{schoolCode}", [GeneratePayslipController::class, "GeneratePayslipView"])->name("generatePayslip.view");
+    Route::get("/studentAccounts/getPaySlipData/{schoolCode}", [GeneratePayslipController::class, "GetPaySlipData"])->name("PaySlipData.get");
+    Route::get("/studentAccounts/getFeeDataTypes/{schoolCode}", [GeneratePayslipController::class, "GetFeeDataTypes"])->name("feeDataTypes.get");
+    Route::get("/studentAccounts/getAllInformation/{schoolCode}", [GeneratePayslipController::class, "GetAllInformation"])->name("AllInformation.get");
+    Route::post("/studentAccounts/storeGeneratePaySlip/{schoolCode}", [GeneratePayslipController::class, "StoreGeneratePaySlip"])->name("generatePaySlip.store");
+
     Route::get("/studentAccounts/editGeneratedPayslip/{schoolCode}", [EditGeneratedPayslipController::class, "EditGeneratedPayslipView"])->name("editGeneratedPayslip.view");
     Route::get("/studentAccounts/generateMultiplePayslip/{schoolCode}", [GenerateMultiplePayslipController::class, "GenerateMultiplePayslipView"])->name("generateMultiplePayslip.view");
     //others

@@ -12,8 +12,9 @@ class Waiver extends Model
     protected $fillable = [
         "fee_id",
         "nedubd_student_id",
+        "fee_type_name",
         "waiver_type_name",
-        "waiver_percentage",
+        "waiver_amount",
         "waiver_expire_date",
         "schoolCode",
         "action",
