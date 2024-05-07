@@ -162,17 +162,17 @@ class GeneratePayslipController extends Controller
                     [
                         'student_id' => $input_student_id[$student_id],
                         'action' => 'approved',
-                        'school_code' => $school_code
+                        'school_code' => $school_code,
+                        'month' => $month,
+                        'year' => $year,
+                        'class' => $class,
+                        'pay_slip_type' => $pay_slip_type,
                     ],
 
                     // Values to update or create
                     [
-                        'month' => $month,
-                        'year' => $year,
                         'last_pay_date' => $last_pay_date,
-                        'class' => $class,
                         'group' => $group,
-                        'pay_slip_type' => $pay_slip_type,
                         'amount' => $input_fees_amount[$student_id],
                         'waiver' => $input_waiver[$student_id],
                         'payable' => $input_fees_amount[$student_id] - $input_waiver[$student_id],

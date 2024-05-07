@@ -101,7 +101,7 @@
                                             {{ $waiver->fee_amount }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ ($waiver->fee_amount / 100) * $waiver->waiver_percentage }}
+                                            {{ $waiver->waiver_amount }}
                                         </td>
                                     </tr>
                                 @endforeach

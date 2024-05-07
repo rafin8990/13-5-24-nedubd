@@ -179,8 +179,8 @@
                     <h1 class="py-1">Transaction Data</h1>
                 </div>
                 <div class="">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg h-auto max-h-[400px] overflow-scroll">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
                             <thead class="text-xs text-white uppercase bg-blue-600 dark:bg-gray-700 dark:text-gray-400">
                                 <tr id="table_header_row">
                                     <th scope="col" class="px-6 py-3">
@@ -215,7 +215,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody id="table_body">
+                            <tbody id="table_body" class="" style="height: 500px">
 
                             </tbody>
                         </table>
@@ -510,10 +510,10 @@
                     return response.json();
                 })
                 .then(data => {
-                    // if (data.length <= 0) {
-                    //     showError('There is no data found')
-                    //     return;
-                    // }
+                    if (data.length <= 0) {
+                        showError('There is no data found')
+                        return;
+                    }
                     updateTableContent(data)
                 })
                 .catch(error => {
@@ -547,7 +547,8 @@
 
                                 // create month_year column
                                 const monthYearTD = document.createElement('td');
-                                monthYearTD.classList.add("px-6", "py-4")
+                                monthYearTD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 monthYearTD.style.maxWidth = "100px";
                                 const monthYearInputBox = document.createElement(
                                     'input');
@@ -555,7 +556,8 @@
                                 monthYearInputBox.name =
                                     `input_month_year[${student.nedubd_student_id}][${student.month_year}]`;
                                 monthYearInputBox.value = student.month_year;
-                                monthYearInputBox.classList.add('border-0', 'w-fit')
+                                monthYearInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 monthYearInputBox.readOnly = true;
                                 monthYearTD.appendChild(monthYearInputBox);
                                 tr.appendChild(monthYearTD);
@@ -564,14 +566,16 @@
                                 // create student_id column
                                 const studentId_TD = document.createElement('td');
                                 studentId_TD.style.maxWidth = "100px";
-                                studentId_TD.classList.add("px-6", "py-4")
+                                studentId_TD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 const studentIdInputBox = document.createElement(
                                     'input');
                                 studentIdInputBox.type = 'text'
                                 studentIdInputBox.name =
                                     `input_nedubd_student_id[${student.nedubd_student_id}]`;
                                 studentIdInputBox.value = student.nedubd_student_id;
-                                studentIdInputBox.classList.add('border-0', 'w-fit')
+                                studentIdInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 studentIdInputBox.readOnly = true;
                                 studentId_TD.appendChild(studentIdInputBox);
                                 tr.appendChild(studentId_TD);
@@ -580,14 +584,16 @@
                                 // create STUDENT NAME column
                                 const studentName_TD = document.createElement('td');
                                 studentName_TD.style.maxWidth = "100px";
-                                studentName_TD.classList.add("px-6", "py-4")
+                                studentName_TD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 const studentNameInputBox = document.createElement(
                                     'input');
                                 studentNameInputBox.type = 'text'
                                 studentNameInputBox.name =
                                     `input_name[${student.nedubd_student_id}]`;
                                 studentNameInputBox.value = student.name;
-                                studentNameInputBox.classList.add('border-0', 'w-fit')
+                                studentNameInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 studentNameInputBox.readOnly = true;
                                 studentName_TD.appendChild(studentNameInputBox);
                                 tr.appendChild(studentName_TD);
@@ -596,14 +602,16 @@
                                 // create student class column
                                 const studentClass_TD = document.createElement('td');
                                 studentClass_TD.style.maxWidth = "100px";
-                                studentClass_TD.classList.add("px-6", "py-4")
+                                studentClass_TD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 const studentClassInputBox = document.createElement(
                                     'input');
                                 studentClassInputBox.type = 'text'
                                 studentClassInputBox.name =
                                     `input_Class_name[${student.nedubd_student_id}]`;
                                 studentClassInputBox.value = student.Class_name;
-                                studentClassInputBox.classList.add('border-0', 'w-fit')
+                                studentClassInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 studentClassInputBox.readOnly = true;
                                 studentClass_TD.appendChild(studentClassInputBox);
                                 tr.appendChild(studentClass_TD);
@@ -613,14 +621,16 @@
                                 // create student roll column
                                 const studentRoll_TD = document.createElement('td');
                                 studentRoll_TD.style.maxWidth = "100px";
-                                studentRoll_TD.classList.add("px-6", "py-4")
+                                studentRoll_TD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 const studentRollInputBox = document.createElement(
                                     'input');
                                 studentRollInputBox.type = 'text'
                                 studentRollInputBox.name =
                                     `input_student_roll[${student.nedubd_student_id}]`;
                                 studentRollInputBox.value = student.student_roll;
-                                studentRollInputBox.classList.add('border-0', 'w-fit')
+                                studentRollInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 studentRollInputBox.readOnly = true;
                                 studentRoll_TD.appendChild(studentRollInputBox);
                                 tr.appendChild(studentRoll_TD);
@@ -629,14 +639,16 @@
                                 // create payslip type column
                                 const payslipType_TD = document.createElement('td');
                                 payslipType_TD.style.maxWidth = "100px";
-                                payslipType_TD.classList.add("px-6", "py-4")
+                                payslipType_TD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 const payslipTypeInputBox = document.createElement(
                                     'input');
                                 payslipTypeInputBox.type = 'text'
                                 payslipTypeInputBox.name =
                                     `input_pay_slip_type[${student.nedubd_student_id}]`;
                                 payslipTypeInputBox.value = student.pay_slip_type;
-                                payslipTypeInputBox.classList.add('border-0', 'w-fit')
+                                payslipTypeInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 payslipTypeInputBox.readOnly = true;
                                 payslipType_TD.appendChild(payslipTypeInputBox);
                                 tr.appendChild(payslipType_TD);
@@ -647,14 +659,16 @@
                                 // create payslip amount column
                                 const payslipAmount_TD = document.createElement('td');
                                 payslipAmount_TD.style.maxWidth = "100px";
-                                payslipAmount_TD.classList.add("px-6", "py-4")
+                                payslipAmount_TD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 const payslipAmountInputBox = document.createElement(
                                     'input');
                                 payslipAmountInputBox.type = 'text'
                                 payslipAmountInputBox.name =
                                     `input_pay_slip_amount[${student.nedubd_student_id}]`;
                                 payslipAmountInputBox.value = student.pay_slip_amount;
-                                payslipAmountInputBox.classList.add('border-0', 'w-fit')
+                                payslipAmountInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 payslipAmountInputBox.readOnly = true;
                                 payslipAmount_TD.appendChild(payslipAmountInputBox);
                                 tr.appendChild(payslipAmount_TD);
@@ -664,14 +678,16 @@
                                 // create student WAIVER column
                                 const waiverAmount_TD = document.createElement('td');
                                 waiverAmount_TD.style.maxWidth = "100px";
-                                waiverAmount_TD.classList.add("px-6", "py-4")
+                                waiverAmount_TD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 const waiverAmountInputBox = document.createElement(
                                     'input');
                                 waiverAmountInputBox.type = 'text'
                                 waiverAmountInputBox.name =
                                     `input_waiver[${student.nedubd_student_id}]`;
                                 waiverAmountInputBox.value = student.waiver;
-                                waiverAmountInputBox.classList.add('border-0', 'w-fit')
+                                waiverAmountInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 waiverAmountInputBox.readOnly = true;
                                 waiverAmount_TD.appendChild(waiverAmountInputBox);
                                 tr.appendChild(waiverAmount_TD);
@@ -681,7 +697,8 @@
                                 // create student PAYABLE column
                                 const payableAmount_TD = document.createElement('td');
                                 payableAmount_TD.style.maxWidth = "100px";
-                                payableAmount_TD.classList.add("px-6", "py-4")
+                                payableAmount_TD.classList.add("px-6", "py-4",
+                                    'overflow-hidden')
                                 const payableAmountInputBox = document.createElement(
                                     'input');
                                 payableAmountInputBox.type = 'text'
@@ -689,7 +706,8 @@
                                     `input_payable[${student.nedubd_student_id}]`;
                                 payableAmountInputBox.value = student.pay_slip_amount -
                                     student.waiver;
-                                payableAmountInputBox.classList.add('border-0', 'w-fit')
+                                payableAmountInputBox.classList.add('border-0', 'w-fit',
+                                    'focus:ring-0')
                                 payableAmountInputBox.readOnly = true;
                                 payableAmount_TD.appendChild(payableAmountInputBox);
                                 tr.appendChild(payableAmount_TD);
@@ -719,6 +737,8 @@
 
                                 // append table row into the table body
                                 table_body.appendChild(tr);
+
+                                totalStudents.value = slColumn - 1;
                             }
                         })
                     }
@@ -793,14 +813,14 @@ function updateTableContent(data) {
                             }
                         }
                         const td = document.createElement('td');
-                        td.classList.add("px-6", "py-4")
+                        td.classList.add("px-6", "py-4", 'overflow-hidden')
                         const inputBox = document.createElement(
                             'input');
                         inputBox.type = 'text'
                         inputBox.name =
                             `input_${currentKey}[${student.student_id}]`;
                         inputBox.value = element;
-                        inputBox.classList.add('border-0', 'w-fit')
+                        inputBox.classList.add('border-0', 'w-fit', 'focus:ring-0')
                         inputBox.readOnly = true;
                         td.appendChild(inputBox);
                         tr.appendChild(td);

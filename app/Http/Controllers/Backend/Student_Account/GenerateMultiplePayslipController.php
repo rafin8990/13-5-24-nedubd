@@ -152,51 +152,54 @@ class GenerateMultiplePayslipController extends Controller
 
     public function StoreMultiplePayslipData(Request $request, $school_code)
     {
-        $commonPaySlipType = $request->input("pay_slip_type");
-        $commonYear = $request->input("year");
-        $commonLastPayDate = $request->input("last_pay_date");
+        try {
+            $commonPaySlipType = $request->input("pay_slip_type");
+            $commonYear = $request->input("year");
+            $commonLastPayDate = $request->input("last_pay_date");
 
-        $monthYears = $request->input("input_month_year", []);
-        $studentIds = $request->input("input_nedubd_student_id", []);
-        // $studentNames = $request->input("input_name", []);
-        $studentClasses = $request->input("input_Class_name", []);
-        // $studentRoles = $request->input("input_student_roll", []);
-        $studentPaySlipAmounts = $request->input("input_pay_slip_amount", []);
-        $studentWaiver = $request->input("input_waiver", []);
-        $studentPayable = $request->input("input_payable", []);
-        $studentGroups = $request->input("input_group", []);
-        // $input_pay_slip_types = $request->input("input_pay_slip_type", []);
+            $monthYears = $request->input("input_month_year", []);
+            $studentIds = $request->input("input_nedubd_student_id", []);
+            // $studentNames = $request->input("input_name", []);
+            $studentClasses = $request->input("input_Class_name", []);
+            // $studentRoles = $request->input("input_student_roll", []);
+            $studentPaySlipAmounts = $request->input("input_pay_slip_amount", []);
+            $studentWaiver = $request->input("input_waiver", []);
+            $studentPayable = $request->input("input_payable", []);
+            $studentGroups = $request->input("input_group", []);
+            // $input_pay_slip_types = $request->input("input_pay_slip_type", []);
 
 
-        foreach ($studentIds as $studentId) {
-            foreach ($monthYears as $key => $individualMonthYear) {
-                foreach ($individualMonthYear as $key2 => $monthYear) {
-                    $month = explode(".", $monthYear)[0];
-                    // $year = explode(".", $monthYear)[1];
+            foreach ($studentIds as $studentId) {
+                foreach ($monthYears as $key => $individualMonthYear) {
+                    foreach ($individualMonthYear as $key2 => $monthYear) {
+                        $month = explode(".", $monthYear)[0];
+                        // $year = explode(".", $monthYear)[1];
 
-                    GeneratePayslip::updateOrCreate(
-                        [
-                            'student_id' => $studentId,
-                            'action' => 'approved',
-                            'school_code' => $school_code,
-                            'month' => $month,
-                            'year' => $commonYear,
-                            'class' => $studentClasses[$studentId],
-                        ],
-                        [
-                            'last_pay_date' => $commonLastPayDate,
-                            'group' => $studentGroups[$studentId],
-                            'pay_slip_type' => $commonPaySlipType,
-                            'amount' => $studentPaySlipAmounts[$studentId],
-                            'waiver' => $studentWaiver[$studentId],
-                            'payable' => $studentPayable[$studentId],
-                        ]
-                    );
+                        GeneratePayslip::updateOrCreate(
+                            [
+                                'student_id' => $studentId,
+                                'action' => 'approved',
+                                'school_code' => $school_code,
+                                'month' => $month,
+                                'year' => $commonYear,
+                                'class' => $studentClasses[$studentId],
+                                'pay_slip_type' => $commonPaySlipType,
+                            ],
+                            [
+                                'last_pay_date' => $commonLastPayDate,
+                                'group' => $studentGroups[$studentId],
+                                'amount' => $studentPaySlipAmounts[$studentId],
+                                'waiver' => $studentWaiver[$studentId],
+                                'payable' => $studentPayable[$studentId],
+                            ]
+                        );
+                    }
                 }
             }
+
+            return redirect()->back()->with('success', 'Multiple Payslips Generated Successfully');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'An error occurred while Generating Multiple Payslips.');
         }
-
-
-        return redirect()->back()->with('success', 'Multiple Payslips Generated Successfully');
     }
 }

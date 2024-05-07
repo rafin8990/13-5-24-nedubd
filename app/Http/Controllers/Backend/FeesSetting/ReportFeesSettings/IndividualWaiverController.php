@@ -70,15 +70,16 @@ class IndividualWaiverController extends Controller
 
         // dd($individualWaiverData);
 
-        if(count($individualWaiverData) == 0){
+        if (count($individualWaiverData) == 0) {
             return redirect()->back()->with('error', 'No data found');
-        };
+        }
+        ;
 
         $totalFeeAmount = 0;
         $totalDiscount = 0;
         foreach ($individualWaiverData as $key => $waiver) {
-            $totalFeeAmount += $waiver->fee_amount;
-            $totalDiscount += ($waiver->fee_amount / 100) * $waiver->waiver_percentage;
+            $totalFeeAmount += intval($waiver->fee_amount);
+            $totalDiscount += $waiver->waiver_amount;
         }
 
         $schoolInfo = SchoolInfo::where('school_code', $school_code)->first();
