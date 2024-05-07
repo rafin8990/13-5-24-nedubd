@@ -140,15 +140,13 @@
                         </select>
                     </div>
 
-                    {{-- session_year --}}
+                    {{-- academic_year --}}
                     <div class="">
-                        <label for="session_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year
+                        <label for="academic_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year
                             :</label>
-                        <select id="session_year" name="session_year"
+                        <select id="academic_year" name="academic_year"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Select</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
                         </select>
                     </div>
 
@@ -197,7 +195,8 @@
                                 class="text-white bg-gradient-to-br from-blue-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-16 py-1 text-center">
                                 Save
                             </button>
-                            <button type="button" class="text-white bg-gradient-to-br from-red-600 to-red-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-16 py-1 text-center">
+                            <button type="button"
+                                class="text-white bg-gradient-to-br from-red-600 to-red-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-16 py-1 text-center">
                                 Close
                             </button>
                         </div>
@@ -212,6 +211,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         var schoolCode = {!! json_encode($school_code) !!};
+        var academicYears = {!! json_encode($academicYears) !!};
 
         const month = document.getElementById('month');
         const year = document.getElementById('year');
@@ -221,7 +221,7 @@
         const student_group = document.getElementById('group');
         const getInformation = document.getElementById('getInformation');
         const session = document.getElementById('session');
-        const session_year = document.getElementById('session_year');
+        const academic_year = document.getElementById('academic_year');
         const table_header_row = document.getElementById('table_header_row');
         const table_body = document.getElementById('table_body');
 
@@ -245,7 +245,7 @@
         // set year
         year.value = currentYear;
 
-        // set mont_year
+        // set month_year
         month.addEventListener('change', (e) => {
             month_year.value = e.target.value + "." + year.value;
         })
@@ -313,11 +313,21 @@
 
 
 
+        // set academic year
+        academicYears.forEach((year) => {
+            const yearOption = document.createElement('option');
+            yearOption.value = year.academic_year_name;
+            yearOption.textContent = year.academic_year_name;
+            academic_year.appendChild(yearOption);
+        })
+
+
+
         // get all information
         getInformation.addEventListener('click', (e) => {
             e.preventDefault();
             fetch(
-                    `/dashboard/studentAccounts/getAllInformation/${schoolCode}?class_name=${className}&group_name=${groupName}&month_year=${month_year.value}&pay_slip_type=${pay_slip_type.value}&session=${session.value}&session_year=${session_year.value}`
+                    `/dashboard/studentAccounts/getAllInformation/${schoolCode}?class_name=${className}&group_name=${groupName}&month_year=${month_year.value}&pay_slip_type=${pay_slip_type.value}&session=${session.value}&academic_year=${academic_year.value}`
                 )
                 .then(response => {
                     if (!response.ok) {

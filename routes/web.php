@@ -339,7 +339,10 @@ Route::prefix('dashboard')->group(function () {
     Route::post("/studentAccounts/storeGeneratePaySlip/{schoolCode}", [GeneratePayslipController::class, "StoreGeneratePaySlip"])->name("generatePaySlip.store");
 
     Route::get("/studentAccounts/editGeneratedPayslip/{schoolCode}", [EditGeneratedPayslipController::class, "EditGeneratedPayslipView"])->name("editGeneratedPayslip.view");
+    // Generate multiple payslips
     Route::get("/studentAccounts/generateMultiplePayslip/{schoolCode}", [GenerateMultiplePayslipController::class, "GenerateMultiplePayslipView"])->name("generateMultiplePayslip.view");
+    Route::get("/studentAccounts/getStudentInformation/{schoolCode}", [GenerateMultiplePayslipController::class, "GetStudentInformation"])->name("studentInformation.get");
+    Route::get("/studentAccounts/storeMultiplePayslipData/{schoolCode}", [GenerateMultiplePayslipController::class, "StoreMultiplePayslipData"])->name("multiplePayslipData.store");
     //others
     Route::get('/FeeCollection/{schoolCode}', [FromFeeController::class, 'AddFromFee'])->name('feeCollection');
     Route::get('/donation/{schoolCode}', [DonationController::class, 'AddDonationFee'])->name('donation');

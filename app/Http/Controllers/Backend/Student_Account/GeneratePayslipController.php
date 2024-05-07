@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Student_Account;
 
 use App\Http\Controllers\Controller;
 use App\Models\AddAcademicSession;
+use App\Models\AddAcademicYear;
 use App\Models\AddClass;
 use App\Models\AddGroup;
 use App\Models\AddPaySlip;
@@ -30,9 +31,14 @@ class GeneratePayslipController extends Controller
             ->where('school_code', $school_code)
             ->get();
 
+        $academicYears = AddAcademicYear::where('action', 'approved')
+            ->where('school_code', $school_code)
+            ->select('academic_year_name')
+            ->get();
+
         // dd($academicSessions);
 
-        return view("Backend.Student_accounts.GeneratePayslip", compact("classes", 'groups', 'academicSessions', 'school_code'));
+        return view("Backend.Student_accounts.GeneratePayslip", compact("classes", 'groups', 'academicSessions', 'school_code', 'academicYears'));
     }
 
     public function GetPaySlipData(Request $request, $school_code)
@@ -53,19 +59,12 @@ class GeneratePayslipController extends Controller
 
     public function GetAllInformation(Request $request, $school_code)
     {
-
-        // dd($request->all());
-
-
         $class = $request->query('class_name');
         $group = $request->query('group_name');
-        // $year = $request->input('month');
         $month_year = $request->query('month_year');
-        // $last_pay_date = $request->input('last_pay_date');
         $pay_slip_type = $request->query('pay_slip_type');
         $session = $request->query('session');
-        // $status = $request->input('status');
-        $session_year = $request->query('session_year');
+        $academic_year = $request->query('academic_year');
 
         $students = Student::where('school_code', $school_code)
             ->where('action', 'approved')
@@ -74,8 +73,8 @@ class GeneratePayslipController extends Controller
             ->when($session !== "Select", function ($query) use ($session) {
                 return $query->where('session', $session);
             })
-            ->when($session_year !== "Select", function ($query) use ($session_year) {
-                return $query->where('year', $session_year);
+            ->when($academic_year !== "Select", function ($query) use ($academic_year) {
+                return $query->where('year', $academic_year);
             })
             ->get();
 

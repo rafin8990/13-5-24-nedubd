@@ -147,13 +147,14 @@ class WaiverSetupController extends Controller
 
         foreach ($allStudentId as $studentId => $value) {
             if (isset($selectedStudentsId[$studentId])) {
+                // dd($studentId);
                 foreach ($selectedFeesId as $FeeId => $value) {
                     $feeInfo = AddFees::where('school_code', $school_code)
                         ->where('action', 'approved')
                         ->where('id', $FeeId)
                         ->select('fee_type')
                         ->first();
-                    /* $checkExistance = Waiver::where("schoolCode", $school_code)
+                    $checkExistance = Waiver::where("schoolCode", $school_code)
                         ->where('action', 'approved')
                         ->where('fee_id', $FeeId)
                         ->where('fee_type_name', $feeInfo->fee_type)
@@ -171,13 +172,19 @@ class WaiverSetupController extends Controller
                         $waiver->waiver_expire_date = $waiver_expire_date;
                         $waiver->schoolCode = $school_code;
                         $waiver->save();
-                    } */
+                    } else {
+                        $checkExistance->waiver_amount = $waiver_amounts[$FeeId];
+                        $checkExistance->waiver_expire_date = $waiver_expire_date;
+                        $checkExistance->save();
+                    }
 
-                    Waiver::updateOrCreate(
+
+                    /* Waiver::updateOrCreate(
                         [
                             'fee_id' => $FeeId,
                             'student_id' => $studentId,
                             'schoolCode' => $school_code,
+                            'action' => '$school_code',
                             'fee_type_name' => $feeInfo->fee_type,
                             'waiver_type_name' => $waiver_type_name,
                         ],
@@ -185,7 +192,7 @@ class WaiverSetupController extends Controller
                             'waiver_amount' => $waiver_amounts[$FeeId],
                             'waiver_expire_date' => $waiver_expire_date,
                         ]
-                    );
+                    ); */
                 }
             }
         }
