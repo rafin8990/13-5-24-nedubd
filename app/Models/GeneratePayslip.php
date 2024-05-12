@@ -21,6 +21,13 @@ class GeneratePayslip extends Model
         "amount",
         "waiver",
         "payable",
+        "voucher_number",
+        "collect_date",
+        "due_amount",
+        "paid_amount",
+        "waiver_approaved_by",
+        "note",
+        "payment_status",
         "school_code",
         "action",
     ];

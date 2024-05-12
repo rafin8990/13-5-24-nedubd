@@ -66,16 +66,6 @@
                     </div>
                 </div>
 
-                {{-- <div class="grid grid-cols-4 place-items-start  gap-5">
-                    <label for="student_id" class="block mb-2 text-sm font-medium whitespace-noWrap ">Student ID: </label>
-                    <select id="student_id" name="student_id"
-                        class="col-span-3 bg-gray-50  text-gray-900 text-sm rounded-lg  block w-full p-2.5">
-                        <option disabled selected>Select</option>
-                        @foreach ($students_id as $primaryKey => $student_id)
-                            <option value="{{ $primaryKey }}">{{ $student_id }}</option>
-                        @endforeach
-                    </select>
-                </div> --}}
 
                 <div class="grid grid-cols-4 place-items-start  gap-5">
                     <label for="waiver_type" class="block mb-2 text-sm font-medium whitespace-noWrap ">Waiver Type :</label>
@@ -99,6 +89,7 @@
 
     <script>
         var mainData = {!! json_encode($students_id) !!};
+        console.log(mainData);
         let data = Object.values(mainData);
         let data2 = Object.keys(mainData);
         console.log(data2);

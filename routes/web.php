@@ -324,7 +324,12 @@ Route::prefix('dashboard')->group(function () {
 
 
     //Students Accounts
+    // Payslip Collection
     Route::get("/studentAccounts/paySlipCollection/{schoolCode}", [PaySlipCollectionController::class, "PaySlipForm"])->name("paySlipCollection.view");
+    Route::get("/studentAccounts/paySlipCollection/getStudentRoll/{schoolCode}", [PaySlipCollectionController::class, "GetStudentRoll"])->name("StudentRoll.get");
+    Route::get("/studentAccounts/paySlipCollection/studentWisePaySlips/{schoolCode}", [PaySlipCollectionController::class, "StudentWisePaySlips"])->name("sutentPaySlips.get");
+    Route::post("/studentAccounts/paySlipCollection/storePaySlipData/{schoolCode}", [PaySlipCollectionController::class, "StorePaySlipData"])->name("paySlipData.store");
+
     Route::get("/studentAccounts/quickCollection/{schoolCode}", [QuickCollectionController::class, "QuickCollectionView"])->name("quickCollection.view");
     Route::get("/studentAccounts/printUnpaidPaySlip/{schoolCode}", [PrintUnpaidPaySlipController::class, "PrintUnpaidPaySlipForm"])->name("printUnpaidPaySlip.view");
     Route::get("/studentAccounts/collectUnpaidPaySlip/{schoolCode}", [CollectUnpaidPaySlipController::class, "CollectUnpaidPaySlipView"])->name("collectUnpaidPaySlip.view");

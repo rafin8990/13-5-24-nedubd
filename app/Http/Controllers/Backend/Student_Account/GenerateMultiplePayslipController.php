@@ -57,6 +57,8 @@ class GenerateMultiplePayslipController extends Controller
         $academic_session = $request->query("academic_session");
         $academic_year = $request->query("academic_year");
 
+        $test = $monthQuery;
+
         $allStudents = [];
         $classesArray = explode(',', $classQuery);
         $monthsArray = explode(',', $monthQuery);
@@ -144,7 +146,6 @@ class GenerateMultiplePayslipController extends Controller
                 ];
             }
         }
-
         return $monthWiseAllClassStudent;
     }
 
@@ -152,11 +153,26 @@ class GenerateMultiplePayslipController extends Controller
 
     public function StoreMultiplePayslipData(Request $request, $school_code)
     {
+        $monthList = [
+            "january" => "01",
+            "february" => "02",
+            "march" => "03",
+            "april" => "04",
+            "may" => "05",
+            "june" => "06",
+            "july" => "07",
+            "august" => "08",
+            "september" => "09",
+            "october" => "10",
+            "november" => "11",
+            "december" => "12"
+        ];
+
         try {
             $commonPaySlipType = $request->input("pay_slip_type");
             $commonYear = $request->input("year");
             $commonLastPayDate = $request->input("last_pay_date");
-
+            $relatedMonth = explode("-", $commonLastPayDate);
             $monthYears = $request->input("input_month_year", []);
             $studentIds = $request->input("input_nedubd_student_id", []);
             // $studentNames = $request->input("input_name", []);
@@ -174,7 +190,7 @@ class GenerateMultiplePayslipController extends Controller
                     foreach ($individualMonthYear as $key2 => $monthYear) {
                         $month = explode(".", $monthYear)[0];
                         // $year = explode(".", $monthYear)[1];
-
+                        $IndividualLastPayDate = $relatedMonth[0] . "-" . $monthList[$month] . "-" . $relatedMonth[2];
                         GeneratePayslip::updateOrCreate(
                             [
                                 'student_id' => $studentId,
@@ -186,7 +202,7 @@ class GenerateMultiplePayslipController extends Controller
                                 'pay_slip_type' => $commonPaySlipType,
                             ],
                             [
-                                'last_pay_date' => $commonLastPayDate,
+                                'last_pay_date' => $IndividualLastPayDate,
                                 'group' => $studentGroups[$studentId],
                                 'amount' => $studentPaySlipAmounts[$studentId],
                                 'waiver' => $studentWaiver[$studentId],

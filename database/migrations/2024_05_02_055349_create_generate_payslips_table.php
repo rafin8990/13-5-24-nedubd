@@ -8,14 +8,7 @@ return new class extends Migration {
     /**
      * Run the migrations.
      */
-    // Month.Year
-// last_pay_date => validation of the date
-// Student_Id
-// class
-// pay_slip_type
-// amount
-// waiver
-// payable
+
 
     public function up(): void
     {
@@ -31,6 +24,13 @@ return new class extends Migration {
             $table->integer('amount');
             $table->integer('waiver');
             $table->integer('payable');
+            $table->string('voucher_number')->nullable();
+            $table->string('collect_date')->nullable();
+            $table->integer('due_amount')->nullable();
+            $table->integer('paid_amount')->nullable();
+            $table->string('waiver_approaved_by')->nullable();
+            $table->string('note')->nullable();
+            $table->enum('payment_status', ['paid', 'unpaid'])->default('unpaid');
             $table->string('school_code');
             $table->enum('action', ['approved', 'pending'])->default('approved');
             $table->timestamps();

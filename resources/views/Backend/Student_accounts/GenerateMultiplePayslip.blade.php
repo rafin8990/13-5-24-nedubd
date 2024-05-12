@@ -514,6 +514,7 @@
                         showError('There is no data found')
                         return;
                     }
+                    console.log(data);
                     updateTableContent(data)
                 })
                 .catch(error => {
@@ -526,7 +527,7 @@
             table_body.innerHTML = "";
             let slColumn = 1;
             monthList.forEach((month) => {
-                data[month].forEach(element => {
+                data[month]?.forEach(element => {
                     if (element.students.length > 0) {
                         // console.log(element);
                         element.students.forEach((student, index) => {
