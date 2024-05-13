@@ -901,6 +901,7 @@
                 payablePaySlips.appendChild(tr);
             })
 
+            // update content of the totalAmount, totalWaiver, totalPayable
             t_amount.value = totalAmount;
             t_waiver.value = totalWaiver;
             t_payable.value = totalPayable;
